@@ -1,0 +1,67 @@
+
+:root {
+  --primary-color: #000;
+  --secondary-color: #fff;
+  --error-color: transparent;
+  --primary-button-color: #50b3a2;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background: var(--secondary-color);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+li {
+  /* color: var(--error-color); */
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  /* background-color: var(--primary-button-color); */
+  border: none;
+  border-radius: 4px;
+  /* color: var(--secondary-color); */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  /* background-color: #349684; */
+}

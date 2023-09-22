@@ -1,19 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
-import OpenModalButton from "../OpenModalButton";
+import { useModal } from '../../context/Modal';
+import { useHistory } from "react-router-dom";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+import './Navigation.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { setModalContent, closeModal } = useModal();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
-
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
 
   useEffect(() => {
     if (!showMenu) return;
@@ -34,15 +36,37 @@ function ProfileButton({ user }) {
     dispatch(logout());
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  const closeMenu = () => setShowMenu(false);
+  const handleLoginClick = () => {
+    history.push("/login");
+    setModalContent(<LoginFormModal />);
+    closeModal();
+  };
+
+  const handleSignupClick = () => {
+    history.push("/signup");
+    setModalContent(<SignupFormModal />);
+    closeModal();
+  };
+
+  const handleProfileClick = () => {
+    if (user) {
+      setShowMenu(!showMenu);
+    } else {
+      setModalContent(
+        <div>
+          <li><button onClick={handleLoginClick}>Log In</button></li>
+          <li><button onClick={handleSignupClick}>Sign Up</button></li>
+        </div>
+      );
+    }
+  };
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button className="" onClick={handleProfileClick}>
+        <FontAwesomeIcon icon={faBars} className="menu-icon" color="black" />
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <ul className={"profile-dropdown" + (showMenu ? " show" : "")} ref={ulRef}>
         {user ? (
           <>
             <li>{user.username}</li>
@@ -51,21 +75,7 @@ function ProfileButton({ user }) {
               <button onClick={handleLogout}>Log Out</button>
             </li>
           </>
-        ) : (
-          <>
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
-
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </>
-        )}
+        ) : null}
       </ul>
     </>
   );
