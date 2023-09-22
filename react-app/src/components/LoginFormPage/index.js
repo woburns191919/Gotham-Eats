@@ -1,57 +1,104 @@
-import React, { useState } from "react";
-import { login } from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import './LoginForm.css';
+import React, { useState, useEffect, useRef  } from "react";
+import * as sessionActions from "../../store/session";
+import { useDispatch } from "react-redux";
+import { useHistory, NavLink } from "react-router-dom";
+import { useModal } from "../../context/Modal";
+import "./LoginForm.css";
 
-function LoginFormPage() {
+function LoginFormModal() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("");
+  const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
+  const { closeModal } = useModal();
+  const [showMenu, setShowMenu] = useState(false);
 
-  if (sessionUser) return <Redirect to="/" />;
+  const ulRef = useRef();
+  const history = useHistory();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
-    }
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = (e) => {
+      if (!ulRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
+
+    document.addEventListener('click', closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
+  const closeMenu = () => setShowMenu(false);
+
+
+  const handleModalClose = () => {
+     setCredential("");
+     setPassword("");
+     setErrors({});
+     closeModal();
   };
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors({});
+    return dispatch(sessionActions.login({ credential, password }))
+      .then(handleModalClose)
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
+  };
+
+  const isLoginDisabled = () => credential.length < 4 || password.length < 6;
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-    </>
+    <form onSubmit={handleSubmit} className="login-form">
+        <h2 className="login-title">Log In</h2>
+
+        {errors.credential && <p className="error-message">{errors.credential}</p>}
+
+        <div className="input-group">
+            <input
+                type="text"
+                value={credential}
+                placeholder="Username or Email"
+                onChange={(e) => setCredential(e.target.value)}
+                required
+            />
+        </div>
+
+        <div className="input-group">
+            <input
+                type="password"
+                value={password}
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+            />
+            {errors.password && <p className="error-message">{errors.password}</p>}
+        </div>
+
+        <button className="login-btn" type="submit" disabled={isLoginDisabled()}>Log In</button>
+
+        <NavLink
+           style={{ textDecoration: 'solid' }}
+           className="demo-btn"
+           onClick={(e) =>{
+                const demoCredential = "Demo-lition";
+                const demoPassword = "password";
+                closeMenu();
+                closeModal();
+                return dispatch(sessionActions.login({credential: demoCredential, password: demoPassword}));
+           }}>Demo User</NavLink>
+    </form>
+</>
+
   );
 }
 
-export default LoginFormPage;
+export default LoginFormModal;
