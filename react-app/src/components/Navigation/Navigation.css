@@ -1,16 +1,11 @@
-:root {
-  --primary-color: #000;
-  --secondary-color: #fff;
-  --highlight-color: #50b3a2;
-}
 
 .navBar-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: transparent;
   padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .navBar-inner-container {
@@ -19,6 +14,7 @@
   justify-content: flex-start;
   width: 80%;
   max-width: 1200px;
+  background-color: transparent;
 }
 
 .navBar-left {
@@ -44,13 +40,17 @@
 
 .navbar-logo h1 {
   margin: 0;
-  font-size: 24px;
-  color: #333;
+  font-size: 28px;
+  color: white;
   text-align: center;
+  /* font-family: 'BatmanForeverOutline', sans-serif; */
+  font-family: 'BatmanForeverAlternate', sans-serif;
+  text-shadow: 2px 2px black;
 }
 
 .login-btn,
-.signup-btn {
+.signup-btn,
+.cart-btn {
   margin-left: 10px;
   padding: 8px 16px;
   text-decoration: none;
@@ -126,21 +126,11 @@
   transform: translateX(0);
 }
 
-/* Existing CSS (as you've provided) starts here */
 
 .line {
   width: 100%;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin-top: 5px;
-}
-
-.navBar-container {
-  display: flex;
-  background-color: #fff;
-  width: 1008px;
-  height: 101px;
-  margin-top: -28px;
-  padding: 12px 0px;
 }
 
 .navBar-inner-container {
@@ -307,13 +297,7 @@
   margin-right: 15px;
 }
 
-.login-btn, .signup-btn {
-  border-radius: 4px;
-  padding: 10px 15px;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.login-btn:hover, .signup-btn:hover {
+.login-btn:hover, .signup-btn:hover, .cart-btn:hover {
   background-color: #333;
   color: #fff;
 }
@@ -321,13 +305,26 @@
 .login-btn {
   margin-right: 10px;
   border: 1px solid #333;
-  background-color: transparent;
-  color: #333;
+  background-color:#E2E2E2;
+  color: black;
+  border-radius: 110px;
+  font-family: 'BatmanForeverAlternate', sans-serif;
 }
 
 .signup-btn {
-  background-color: #333;
-  color: #fff;
+  background-color:#E2E2E2;
+  color: black;
+  border-radius: 110px;
+  font-family: 'BatmanForeverAlternate', sans-serif;
+}
+
+.cart-btn {
+  background-color:#E2E2E2;
+  color: black;
+  border-radius: 110px;
+  margin-right: 19px;
+  margin-top: 2px;
+  font-family: 'BatmanForeverAlternate', sans-serif;
 }
 
 .navBar-spacer {
@@ -348,4 +345,12 @@
 
 .modal-slide-in.show {
   transform: translateX(0);
+}
+
+.login-signup-menu{
+  margin-top: 14px;
+}
+
+.fas {
+  font-size: 12px;
 }

@@ -63,8 +63,8 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button className="" onClick={handleProfileClick}>
-        <FontAwesomeIcon icon={faBars} className="menu-icon" color="black" />
+      <button className="login-signup-menu" onClick={handleProfileClick}>
+        <FontAwesomeIcon icon={faBars} color="white" />
       </button>
       <ul className={"profile-dropdown" + (showMenu ? " show" : "")} ref={ulRef}>
         {user ? (
