@@ -102,7 +102,7 @@ restaurant_list=[
         })
     ),
 
-    catwoman_feast = Restaurant(
+    Restaurant(
         owner_id=3,
         streetAddress="Feline Alley 7",
         city="Gotham",
