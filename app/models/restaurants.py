@@ -11,7 +11,7 @@ class Restaurant(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
   id = db.Column(db.Integer, primary_key=True)
-  owner_id = db.Column(db.Integer,nullable=False)
+  owner_id = db.Column(db.Integer, db.ForeignKey("users.id"),nullable=False)
   streetAddress = db.Column(db.String(255),nullable=False)
   city = db.Column(db.String(255), nullable=False)
   state = db.Column(db.String(50), nullable=False)
@@ -22,6 +22,8 @@ class Restaurant(db.Model, UserMixin):
   hours = db.Column(db.Text, nullable=False)
   created_at=db.Column(db.DateTime, default=datetime.now())
   updated_at=db.Column(db.DateTime, default=datetime.now())
+
+  user = db.relationship("User", back_populates="restaurants")
 
 
   def to_dict(self):

@@ -25,6 +25,14 @@ class User(db.Model, UserMixin):
     created_at=db.Column(db.DateTime, default=datetime.now())
     updated_at=db.Column(db.DateTime, default=datetime.now())
 
+    restaurants = db.relationship("Restaurant", back_populates="user")
+    reviews = db.relationship("Review", back_populates="user")
+    shopping_cart = db.relationship("ShoppingCart", back_populates="user", uselist=False)
+
+
+
+
+
 
 
     @property

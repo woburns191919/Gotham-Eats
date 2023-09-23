@@ -13,11 +13,13 @@ class Review(db.Model, UserMixin):
 
         id = db.Column(db.Integer, primary_key=True)
         restaurant_id = db.Column(db.Integer,nullable=False)
-        user_id = db.Column(db.Integer,nullable=False)
+        user_id = db.Column(db.Integer,db.ForeignKey("users.id"),nullable=False)
         review = db.Column(db.Text,nullable=False)
         stars = db.Column(db.Integer, nullable=False)
         created_at=db.Column(db.DateTime, default=datetime.now())
         updated_at=db.Column(db.DateTime, default=datetime.now())
+
+        user = db.relationship("User", back_populates="reviews")
 
 
   def to_dict(self):

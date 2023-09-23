@@ -18,6 +18,11 @@ class MenuItem(db.Model, UserMixin):
         description = db.Column(db.Text, nullable=False)
         price = db.Column(db.Decimal(10, 2), nullable=False)
         type = db.Column(db.Varchar(50), nullable=False)
+        shopping_cart_id = db.Column(db.Integer, db.ForeignKey('shopping_carts.id'))
+
+
+        shopping_cart = db.relationship("ShoppingCart", back_populates="menu_items")
+
 
 
 
