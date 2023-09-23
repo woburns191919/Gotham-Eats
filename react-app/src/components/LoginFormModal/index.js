@@ -98,7 +98,7 @@ function LoginFormModal() {
     </form>
 </>
 
-  );
+);
 }
 
 export default LoginFormModal;
