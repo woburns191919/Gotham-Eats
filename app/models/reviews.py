@@ -12,7 +12,7 @@ class Review(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
         id = db.Column(db.Integer, primary_key=True)
-        restaurant_id = db.Column(db.Integer,nullable=False)
+        restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'),nullable=False)
         user_id = db.Column(db.Integer,db.ForeignKey("users.id"),nullable=False)
         review = db.Column(db.Text,nullable=False)
         stars = db.Column(db.Integer, nullable=False)
@@ -20,7 +20,7 @@ class Review(db.Model, UserMixin):
         updated_at=db.Column(db.DateTime, default=datetime.now())
 
         user = db.relationship("User", back_populates="reviews")
-
+        restaurant= db.relationship("Restaurant", back_populates='reviews')
 
   def to_dict(self):
       return {

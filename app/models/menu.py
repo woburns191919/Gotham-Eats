@@ -12,8 +12,9 @@ class Menu(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
         id = db.Column(db.Integer, primary_key=True)
-        restaurant_id = db.Column(db.Integer,nullable=False)
-
+        restaurant_id = db.Column(db.Integer,db.ForeignKey('restaurants.id'),nullable=False)
+        menu_items=db.relationship('MenuItem',back_populates='menu')
+        restaurant=db.relationship('Restaurant',back_populates='menu')
 
 
   def to_dict(self):

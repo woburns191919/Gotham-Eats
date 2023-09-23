@@ -20,10 +20,15 @@ class Restaurant(db.Model, UserMixin):
   name = db.Column(db.String(255),nullable=False)
   description=db.Column(db.Text, nullable=False)
   hours = db.Column(db.Text, nullable=False)
+  previmgg=db.Column(db.Text, nullable=False)
+
   created_at=db.Column(db.DateTime, default=datetime.now())
   updated_at=db.Column(db.DateTime, default=datetime.now())
 
   user = db.relationship("User", back_populates="restaurants")
+  reviews= db.relationship("Review", back_populates="restaurant")
+  menu_items=db.relationship('MenuItem', back_populates='restaurant')
+  menu=db.relationship('Menu',back_populates='restaurant',uselist=False)
 
 
   def to_dict(self):
@@ -38,4 +43,5 @@ class Restaurant(db.Model, UserMixin):
           'name': self.name,
           'description': self.description,
           'hours': self.hours,
+          'previmg': self.previmg
       }
