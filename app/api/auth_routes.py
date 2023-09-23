@@ -40,7 +40,11 @@ def login():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
-        user = User.query.filter(or_(User.email == form.data['credential'], User.phone == form.data['credential'])).first()
+        credential = form.credential.data
+        # user = User.query.filter(or_(
+        user = User.query.filter((User.email == credential) | (
+            User.phone == credential)).first()
+        # User.email == form.data['credential'], User.phone == form.data['credential'])).first()
 
         # user = User.query.filter(or_(User.email == form.data['email'], User.phone == form.data['phone'])).first()
         login_user(user)
