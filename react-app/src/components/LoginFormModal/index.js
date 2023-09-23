@@ -83,7 +83,7 @@ function LoginFormModal() {
             {errors.password && <p className="error-message">{errors.password}</p>}
         </div>
 
-        <button className="login-btn" type="submit" disabled={isLoginDisabled()}>Log In</button>
+        <button className="login-btn-modal" type="submit" disabled={isLoginDisabled()}>Log In</button>
 
         <button
            style={{ textDecoration: 'solid' }}
@@ -98,7 +98,7 @@ function LoginFormModal() {
     </form>
 </>
 
-  );
+);
 }
 
 export default LoginFormModal;
