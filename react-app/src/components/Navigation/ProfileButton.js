@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import { useModal } from '../../context/Modal';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -53,18 +53,21 @@ function ProfileButton({ user }) {
       setShowMenu(!showMenu);
     } else {
       setModalContent(
-        <div>
+        <div classname="side-modal">
           <li><button onClick={handleLoginClick}>Log In</button></li>
           <li><button onClick={handleSignupClick}>Sign Up</button></li>
+          <Link>Add your restaurant</Link>
         </div>
       );
     }
   };
 
+  
+
   return (
     <>
-      <button className="" onClick={handleProfileClick}>
-        <FontAwesomeIcon icon={faBars} className="menu-icon" color="black" />
+      <button className="login-signup-menu" onClick={handleProfileClick}>
+        <FontAwesomeIcon icon={faBars} color="white" />
       </button>
       <ul className={"profile-dropdown" + (showMenu ? " show" : "")} ref={ulRef}>
         {user ? (

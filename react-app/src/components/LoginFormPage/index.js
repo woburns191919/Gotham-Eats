@@ -3,7 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import "./LoginForm.css";
+import "../LoginFormModal/LoginForm.css";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
