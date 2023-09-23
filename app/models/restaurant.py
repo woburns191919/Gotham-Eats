@@ -12,13 +12,14 @@ class Restaurant(db.Model, UserMixin):
 
   id = db.Column(db.Integer, primary_key=True)
   owner_id = db.Column(db.Integer,nullable=False)
-  address = db.Column(db.String(100),nullable=False)
-  hours = db.Column(db.Text, nullable=False)
-  city = db.Column(db.String(40), nullable=False)
-  state = db.Column(db.String(40), nullable=False)
-  country =db.Column(db.String(40),nullable=False)
-  name = db.Column(db.String(40),nullable=False)
+  streetAddress = db.Column(db.String(255),nullable=False)
+  city = db.Column(db.String(255), nullable=False)
+  state = db.Column(db.String(50), nullable=False)
+  postalCode=db.Column(db.String(50), nullable=False)
+  country =db.Column(db.String(50),nullable=False)
+  name = db.Column(db.String(255),nullable=False)
   description=db.Column(db.Text, nullable=False)
+  hours = db.Column(db.Text, nullable=False)
   created_at=db.Column(db.DateTime, default=datetime.now())
   updated_at=db.Column(db.DateTime, default=datetime.now())
 
@@ -27,11 +28,12 @@ class Restaurant(db.Model, UserMixin):
       return {
           'id': self.id,
           'owner_id': self.owner_id,
-          'address': self.address,
-          'hours': self.hours,
+          'streetAddress': self.streetAddress,
           'city': self.city,
           'state': self.state,
+          'postalCode': self.postalCode,
           'country': self.country,
           'name': self.name,
           'description': self.description,
+          'hours': self.hours,
       }
