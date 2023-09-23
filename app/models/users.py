@@ -11,15 +11,27 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    firstName = db.Column(db.String(40),nullable=False)
-    lastName = db.Column(db.String(40),nullable=False)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    firstName = db.Column(db.String(255),nullable=False)
+    lastName = db.Column(db.String(255),nullable=False)
+    username = db.Column(db.String(255), nullable=False, unique=True)
     hashedPassword = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    address=db.Column(db.String(100),nullable=False)
+    streetAddress=db.Column(db.String(255),nullable=False)
+    city= db.Column(db.String(255), nullable=False)
+    state=db.Column(db.String(50), nullable=False)
+    postalCode=db.Column(db.Integer, nullable=False)
+    country=db.Column(db.String(50), nullable=False)
     phone=db.Column(db.Integer,nullable=False)
     created_at=db.Column(db.DateTime, default=datetime.now())
     updated_at=db.Column(db.DateTime, default=datetime.now())
+
+    restaurants = db.relationship("Restaurant", back_populates="user")
+    reviews = db.relationship("Review", back_populates="user")
+    shopping_cart = db.relationship("ShoppingCart", back_populates="user", uselist=False)
+
+
+
+
 
 
 
@@ -37,6 +49,14 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'firstName': self.firstName,
+            'lastName': self.lastName,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'streetAddress': self.streetAddress,
+            'city': self.city,
+            'state': self.state,
+            'postalCode': self.postalCode,
+            'country': self.country,
+            'phone': self.phone
         }
