@@ -29,8 +29,8 @@ function LoginFormModal() {
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
-  const closeMenu = () => setShowMenu(false);
 
+  const closeMenu = () => setShowMenu(false);
 
   const handleModalClose = () => {
      setCredential("");
@@ -38,7 +38,6 @@ function LoginFormModal() {
      setErrors({});
      closeModal();
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,11 +52,25 @@ function LoginFormModal() {
       });
   };
 
+  const handleDemoLogin = (e) => {
+    e.preventDefault();
+    const demoCredential = "demo@aa.io";
+    const demoPassword = "password";
+    return dispatch(sessionActions.login({ credential: demoCredential, password: demoPassword }))
+      .then(handleModalClose)
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
+  };
+
   const isLoginDisabled = () => credential.length < 4 || password.length < 6;
 
   return (
     <>
-    <form onSubmit={handleSubmit} className="login-form">
+      <form onSubmit={handleSubmit} className="login-form">
         <h2 className="login-title">Log In</h2>
 
         {errors.credential && <p className="error-message">{errors.credential}</p>}
@@ -66,7 +79,7 @@ function LoginFormModal() {
             <input
                 type="text"
                 value={credential}
-                placeholder="Username or Email"
+                placeholder="Phone Number or Email"
                 onChange={(e) => setCredential(e.target.value)}
                 required
             />
@@ -86,19 +99,21 @@ function LoginFormModal() {
         <button className="login-btn-modal" type="submit" disabled={isLoginDisabled()}>Log In</button>
 
         <button
-           style={{ textDecoration: 'solid' }}
-           className="demo-btn"
-           onClick={(e) =>{
-                const demoCredential = "Demo-lition";
-                const demoPassword = "password";
-                closeMenu();
-                closeModal();
-                return dispatch(sessionActions.login({credential: demoCredential, password: demoPassword}));
-           }}>Login as Demo User</button>
-    </form>
-</>
-
-);
+          style={{ textDecoration: 'solid' }}
+          className="demo-btn"
+          onClick={(e) =>{
+            const demoCredential = "alfred@waynemanor.com'";
+            const demoPassword = "password";
+            closeMenu();
+            closeModal();
+            return dispatch(sessionActions.login({credential: demoCredential, password: demoPassword}));
+       }}
+        >
+          Login as Demo User
+        </button>
+      </form>
+    </>
+  );
 }
 
 export default LoginFormModal;

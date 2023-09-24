@@ -1,27 +1,57 @@
-from app.models import db, User, environment, SCHEMA
+from ..models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
-
 def seed_users():
-    demo = User(
-        firstName="Jimbob", lastName="whale",username='Demo',  hashedPassword='password',email='demo@aa.io', address="123 hampton",phone=9136812837)
-    marnie = User(
-        firstName="Jerry", lastName="Seinfeld",username='marnie', hashedPassword='password',  email='marnie@aa.io', address="1234 hamdpton",phone=9136812838)
-    bobbie = User(
-        firstName="Mark", lastName="Zuckerberg",username='bobbie',  hashedPassword='password',email='bobbie@aa.io', address="123 hafdadfasmpton",phone=9136812839)
+    alfred = User(
+        firstName="Alfred",
+        lastName="Pennyworth",
+        username='Demo',
+        hashedPassword="password",
+        email='alfred@waynemanor.com',
+        streetAddress="1007 Mountain Drive",
+        city="Gotham",
+        state="New Jersey",
+        postalCode="10007",
+        country="United States",
+        phone='710-681-2835')
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    harley = User(
+        firstName="Harleen",
+        lastName="Quinzel",
+        username='HarleyQuinn',
+        hashedPassword="password",
+        email='harley@arkham.com',
+        streetAddress="100 Arkham Asylum",
+        city="Gotham",
+        state="New Jersey",
+        postalCode="10101",
+        country="United States",
+        phone='710-681-2836')
+
+    nightwing = User(
+        firstName="Dick",
+        lastName="Grayson",
+        username='Nightwing',
+        hashedPassword="password",
+        email='nightwing@gotham.com',
+        streetAddress="200 Oracle Tower",
+        city="Gotham",
+        state="New Jersey",
+        postalCode="10202",
+        country="United States",
+        phone='710-681-2837')
+
+    db.session.add(alfred)
+    db.session.add(harley)
+    db.session.add(nightwing)
     db.session.commit()
-
 
 
 def undo_users():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM users"))
-
     db.session.commit()
