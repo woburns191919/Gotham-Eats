@@ -102,7 +102,7 @@ function LoginFormModal() {
           style={{ textDecoration: 'solid' }}
           className="demo-btn"
           onClick={(e) =>{
-            const demoCredential = "demo@aa.io";
+            const demoCredential = "alfred@waynemanor.com'";
             const demoPassword = "password";
             closeMenu();
             closeModal();

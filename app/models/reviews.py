@@ -5,24 +5,24 @@ from datetime import datetime
 
 
 class Review(db.Model, UserMixin):
-  __tablename__ = 'reviews'
+    __tablename__ = 'reviews'
 
+    id = db.Column(db.Integer, primary_key=True)
+    restaurant_id = db.Column(db.Integer, db.ForeignKey(
+        'restaurants.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    review = db.Column(db.Text, nullable=False)
+    stars = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now())
+    updated_at = db.Column(db.DateTime, default=datetime.now())
 
-  if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+    user=db.relationship("User", back_populates="reviews")
+    restaurant=db.relationship("Restaurant", back_populates='reviews')
 
-        id = db.Column(db.Integer, primary_key=True)
-        restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'),nullable=False)
-        user_id = db.Column(db.Integer,db.ForeignKey("users.id"),nullable=False)
-        review = db.Column(db.Text,nullable=False)
-        stars = db.Column(db.Integer, nullable=False)
-        created_at=db.Column(db.DateTime, default=datetime.now())
-        updated_at=db.Column(db.DateTime, default=datetime.now())
+    if environment == "production":
+        __table_args__={'schema': SCHEMA}
 
-        user = db.relationship("User", back_populates="reviews")
-        restaurant= db.relationship("Restaurant", back_populates='reviews')
-
-  def to_dict(self):
+    def to_dict(self):
       return {
           'id': self.id,
           'restaurant_id': self.restaurant_id,
