@@ -54,7 +54,7 @@ function LoginFormModal() {
 
   const handleDemoLogin = (e) => {
     e.preventDefault();
-    const demoCredential = "demo@aa.io";
+    const demoCredential = "alfred@waynemanor.com";
     const demoPassword = "password";
     return dispatch(sessionActions.login({ credential: demoCredential, password: demoPassword }))
       .then(handleModalClose)
@@ -101,13 +101,14 @@ function LoginFormModal() {
         <button
           style={{ textDecoration: 'solid' }}
           className="demo-btn"
-          onClick={(e) =>{
-            const demoCredential = "alfred@waynemanor.com'";
-            const demoPassword = "password";
-            closeMenu();
-            closeModal();
-            return dispatch(sessionActions.login({credential: demoCredential, password: demoPassword}));
-       }}
+          onClick={handleDemoLogin}
+      //     onClick={(e) =>{
+      //       const demoCredential = "alfred@waynemanor.com";
+      //       const demoPassword = "password";
+      //       closeMenu();
+      //       closeModal();
+      //       return dispatch(sessionActions.login({credential: demoCredential, password: demoPassword}));
+      //  }}
         >
           Login as Demo User
         </button>
