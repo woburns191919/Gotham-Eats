@@ -7,8 +7,7 @@ from datetime import datetime
 class Restaurant(db.Model, UserMixin):
   __tablename__ = 'restaurants'
 
-  if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+
 
   id = db.Column(db.Integer, primary_key=True)
   owner_id = db.Column(db.Integer, db.ForeignKey("users.id"),nullable=False)
@@ -20,7 +19,7 @@ class Restaurant(db.Model, UserMixin):
   name = db.Column(db.String(255),nullable=False)
   description=db.Column(db.Text, nullable=False)
   hours = db.Column(db.Text, nullable=False)
-  previmgg=db.Column(db.Text, nullable=False)
+  previmg=db.Column(db.Text)
 
   created_at=db.Column(db.DateTime, default=datetime.now())
   updated_at=db.Column(db.DateTime, default=datetime.now())
@@ -29,6 +28,9 @@ class Restaurant(db.Model, UserMixin):
   reviews= db.relationship("Review", back_populates="restaurant")
   menu_items=db.relationship('MenuItem', back_populates='restaurant')
   menu=db.relationship('Menu',back_populates='restaurant',uselist=False)
+
+  if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
 
   def to_dict(self):
