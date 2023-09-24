@@ -2,6 +2,9 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
+from sqlalchemy import func
+from .reviews import Review
+
 
 
 class Restaurant(db.Model, UserMixin):
@@ -28,6 +31,10 @@ class Restaurant(db.Model, UserMixin):
   reviews= db.relationship("Review", back_populates="restaurant")
   menu_items=db.relationship('MenuItem', back_populates='restaurant')
   menu=db.relationship('Menu',back_populates='restaurant',uselist=False)
+
+  @property
+  def avg_stars(self):
+    return db.session.query(func.avg(Review.stars)).filter(Review.restaurant_id == self.id).scalar()
 
   if environment == "production":
         __table_args__ = {'schema': SCHEMA}
