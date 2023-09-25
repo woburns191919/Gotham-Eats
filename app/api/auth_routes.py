@@ -1,9 +1,8 @@
 from flask import Blueprint, jsonify, session, request
-from sqlalchemy import or_
-from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
+from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -29,49 +28,20 @@ def authenticate():
     return {'errors': ['Unauthorized']}
 
 
-# @auth_routes.route('/login', methods=['POST'])
-# def login():
-#     """
-#     Logs a user in
-#     """
-#     form = LoginForm()
-#     # Get the csrf_token from the request cookie and put it into the
-#     # form manually to validate_on_submit can be used
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         # Add the user to the session, we are logged in!
-#         credential = form.credential.data
-#         # user = User.query.filter(or_(
-#         user = User.query.filter((User.email == credential) | (
-#             User.phone == credential)).first()
-#         # User.email == form.data['credential'], User.phone == form.data['credential'])).first()
-
-#         # user = User.query.filter(or_(User.email == form.data['email'], User.phone == form.data['phone'])).first()
-#         login_user(user)
-#         return user.to_dict()
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
 @auth_routes.route('/login', methods=['POST'])
 def login():
-    print("Received a login request")
+    """
+    Logs a user in
+    """
     form = LoginForm()
+    # Get the csrf_token from the request cookie and put it into the
+    # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
-    
     if form.validate_on_submit():
-        credential = form.credential.data
-        print(f"Credential: {credential}, Type: {type(credential)}")
-
-        print(type(User.email), User.email)
-
-
-        user = User.query.filter(or_(User.email == credential, User.phone == credential)).first()
-        print(f"User: {user}")
-
-        if user:
-            login_user(user)
-            return user.to_dict()
-        else:
-            return {'errors': ['No user found with the provided credentials']}, 401
+        # Add the user to the session, we are logged in!
+        user = User.query.filter(User.email == form.data['email']).first()
+        login_user(user)
+        return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -93,13 +63,9 @@ def sign_up():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User(
-            firstName=form.data['firstName'],
-            lastName=form.data['lastName'],
             username=form.data['username'],
-            hashedPassword=form.data['hashedPassword'],
             email=form.data['email'],
-            address=form.data['address'],
-            phone=form.data['phone']
+            password=form.data['password']
         )
         db.session.add(user)
         db.session.commit()
