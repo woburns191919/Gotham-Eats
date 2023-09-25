@@ -1,4 +1,4 @@
-from app.models import db, MenuItem, environment, SCHEMA
+from ...app.models import db, MenuItem, environment, SCHEMA
 from sqlalchemy.sql import text
 from random import randint, random
 
@@ -69,9 +69,6 @@ Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasag
 
 meal_name_end = random.choice(Entree_List)
 
-
-
-
 translator= {
     "Buffalo Chicken Sandwich": f"/menu_item_images/entrees/buffalo_chicken_sandwich/img ({randint(1, 5)}).jpeg",
     "Chicken Tenders": f"/menu_item_images/entrees/chicken_tenders/img ({randint(1, 5)}).jpeg",
@@ -91,50 +88,69 @@ translator= {
     "Shish Kebab": f"/menu_item_images/shish_kebab/img ({randint(1, 5)}).jpeg",
 }
 
-{
-    "1_penguin" = ["scheming", "waddling", "umbrella-toting", "calculating", "icy"],
-    "2_riddler" = ["enigmatic", "puzzling", "question-asking", "clever", "green-suited"],
-    "3_ivy"= ["seductive", "poisonous", "nature-loving", "manipulative", "vibrant"],
-    "4_two_face" = ["dual-personality", "coin-flipping", "disfigured", "ambivalent", "harvey-dent"],
-    "5_scarecrow" = ["fear-inducing", "terrifying", "sinister", "psychological", "straw-hat"],
-    "6_catwoman" = ["cat-like", "thief", "feline", "independent", "whip-wielding"],
-    "7_batman" = ["mysterious", "vigilante", "cape-wearing", "dark", "justice-seeking"]
-    8_joker = ["chaotic", "maniacal", "laughter-loving", "twisted", "purple-suited"]
-    9_bane = ["muscle-bound", "venom-injecting", "intelligent", "merciless", "masked"]
-    10_mr_freeze = ["cryogenic", "cold-hearted", "ice-obsessed", "tragic", "cryosuit-wearing"]
-    11_clayface = ["shape-shifting", "malleable", "actor", "melting", "mud-like"]
-    12_firefly = ["pyromaniac", "fire-starting", "winged", "arsonist", "flame-obsessed"]
-    13_mad_hatter = ["mad", "hat-wearing", "tea-obsessed", "eccentric", "mind-controlling"]
-    14_talon = ["lethal", "assassin", "feathered", "loyal", "Court-of-Owls"]
-    15_zatanna = ["magician", "spell-casting", "charming", "mystical", "top-hat-wearing"]
-    16_bat_man = ["bat-themed", "wealthy", "genius", "inventor", "gadget-equipped"]
-    17_mayor = ["politician", "corrupt", "powerful", "manipulative", "Gotham's leader"]
-    18_green_arrow = ["archer", "vigilante", "emerald-clad", "skilled", "arrow-shooting"]
-    19_everyone_else = ["mouth-watering", "delightful", "scrumptious", "appetizing", "delectable",
-                    "enticing", "irresistible", "tasty", "flavorful", "savoring",
-                   "tempting", "yummy", "divine", "palatable", "lip-smacking",
-                   "satisfying", "succulent", "indulgent", "inspirational"]
-                   }
+villain_adj_dict = {
+    "1_penguin": ["scheming", "waddling", "umbrella-toting", "calculating", "icy"],
+    "2_riddler": ["enigmatic", "puzzling", "question-asking", "clever", "green-suited"],
+    "3_ivy": ["seductive", "poisonous", "nature-loving", "manipulative", "vibrant"],
+    "4_two_face": ["dual-personality", "coin-flipping", "disfigured", "ambivalent", "harvey-dent"],
+    "5_scarecrow": ["fear-inducing", "terrifying", "sinister", "psychological", "straw-hat"],
+    "6_catwoman": ["cat-like", "thief", "feline", "independent", "whip-wielding"],
+    "7_batman": ["mysterious", "vigilante", "cape-wearing", "dark", "justice-seeking"],
+    "8_joker": ["chaotic", "maniacal", "laughter-loving", "twisted", "purple-suited"],
+    "9_bane": ["muscle-bound", "venom-injecting", "intelligent", "merciless", "masked"],
+    "10_mr_freeze": ["cryogenic", "cold-hearted", "ice-obsessed", "tragic", "cryosuit-wearing"],
+    "11_clayface": ["shape-shifting", "malleable", "actor", "melting", "mud-like"],
+    "12_firefly": ["pyromaniac", "fire-starting", "winged", "arsonist", "flame-obsessed"],
+    "13_mad_hatter": ["mad", "hat-wearing", "tea-obsessed", "eccentric", "mind-controlling"],
+    "14_talon": ["lethal", "assassin", "feathered", "loyal", "Court-of-Owls"],
+    "15_zatanna": ["magician", "spell-casting", "charming", "mystical", "top-hat-wearing"],
+    "16_bat_man": ["bat-themed", "wealthy", "genius", "inventor", "gadget-equipped"],
+    "17_mayor": ["politician", "corrupt", "powerful", "manipulative", "Gotham's leader"],
+    "18_green_arrow": ["archer", "vigilante", "emerald-clad", "skilled", "arrow-shooting"],
+    "19_everyone_else": ["mouth-watering", "delightful", "scrumptious", "appetizing", "delectable", "enticing", "irresistible", "tasty", "flavorful", "savoring", "tempting", "yummy", "divine", "palatable" "lip-smacking", "satisfying", "succulent", "indulgent", "inspirational"]
+            }
+
+# ouradj=ourobject[counter.string()]
+
+# if counter < 19
+# selected villain =
+
+# hop in after iteration 19
+
+chosen_villain = { chosen_villain for chosen_villain, adjective in villain_adj_dict.items() }
+
+keys_list = list(chosen_villain)
+
+
+
+
+random_villain = random.choice(list(villain_adj_dict.keys()))
+
+adj_list = villain_adj_dict[random_villain]
+
+
+updated_name_of_meal= f"{random.choice(adj_list)} + {meal_name_end}"
+
+
 
 
 filepath = translator[meal_name_end]
-
-
 
 #grab the path using translator[ourpickedentree]
 
 #construct r1 entree look up top for format
 
-ownersOfRestaurant= {"1": penguin, "2":riddler, "3": Ivy, 4: Two-Face, 5: Scarecrow, 6:Catwoman, 7: Batman, 8: Joker, 9: Bane,
-10: mr freeze, 11: Clayface, 12: Firefly,13: mad hatter, 14: Talon, 15: Zatanna, 16: Batman, 18: GreenArrow}
+# ownersOfRestaurant= {"1": penguin, "2":riddler, "3": Ivy, 4: Two-Face, 5: Scarecrow, 6:Catwoman, 7: Batman, 8: Joker, 9: Bane,
+# 10: mr freeze, 11: Clayface, 12: Firefly,13: mad hatter, 14: Talon, 15: Zatanna, 16: Batman, 18: GreenArrow}
 
 #if we want also make a table of adjectives for each character.  construct name of entree  make it spicy
 
 #insert entree and make sure filepath correct.
 
-ouradj=ourobject[counter.string()]
 
-updated_name_of_meal= f"{ouradj} + {meal_name_end}"
+
+
+
 
 '''
 #************THESE ARE ALL OF THE SIDES THEYH ARE DONE EXCEPT WE missing r17
