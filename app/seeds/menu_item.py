@@ -139,15 +139,15 @@ def seed_menu_items():
         fake_price = 2.99
 
         chosen_villain = { chosen_villain for chosen_villain, adjective in villain_adj_dict.items() }
-
-        # chosen_villain = { chosen_villain: adjective for chosen_villain, adjective in villain_adj_dict.items() }
-
-
-        # our_adj_list = { adjective for chosen_villain, adjective in villain_adj_dict.items() }
         villain_list = list(chosen_villain)
-        # print(villain_list)
+        our_set = set(villain_list)
+        rand_villain_no_duplicates = list(our_set)
+        rand_villian = rand_villain_no_duplicates[randint(0, 17)]
 
-        rand_villian = villain_list[randint(0, 17)]
+        # chosen_villain = { chosen_villain for chosen_villain, adjective in villain_adj_dict.items() }
+        # villain_list = list(chosen_villain)
+
+        # rand_villian = villain_list[randint(0, 17)]
         r_var = rand_villian.split('_')
         villain_number = r_var[0]
 
