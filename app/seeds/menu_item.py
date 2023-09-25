@@ -984,6 +984,344 @@ r20_desserts = [
     MenuItem(restaurant_id=20, menu_id=20, name="Poison Ivy's Parfait", description="A sweet treat with a touch of nature", price=7.99, type="dessert", picture="path/to/poison_ivys_parfait"),
     MenuItem(restaurant_id=20, menu_id=20, name="Harley's Haunted Brownie", description="A brownie with a mischievous laugh", price=6.49, type="dessert", picture="path/to/harleys_brownie"),
 ]
+
+# Restaurant 21 - The Dark Knight Diner
+r21_entrees = [
+    MenuItem(restaurant_id=21, menu_id=21, name="Batman's Bat-Burger", description="A burger fit for a hero", price=12.99, type="entree", picture="path/to/batmans_burger"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Robin's Ribs", description="Tender ribs that even Batman approves", price=16.99, type="entree", picture="path/to/robins_ribs"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Batgirl's BBQ Chicken", description="Saucy and satisfying", price=14.99, type="entree", picture="path/to/batgirls_bbq_chicken"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Gotham Gourmet Pizza", description="A pizza with all the toppings", price=13.99, type="entree", picture="path/to/gotham_gourmet_pizza"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Justice League Lasagna", description="Layers of flavor", price=15.99, type="entree", picture="path/to/justice_league_lasagna"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Arkham Asylum Alfredo", description="Creamy pasta from the asylum's kitchen", price=16.99, type="entree", picture="path/to/arkham_asylum_alfredo"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Bat-Wing Wontons", description="Crispy wontons with a heroic twist", price=12.99, type="entree", picture="path/to/batwing_wontons"),
+    MenuItem(restaurant_id=21, menu_id=21, name="The Joker's Jambalaya", description="A chaotic mix of flavors", price=18.99, type="entree", picture="path/to/jokers_jambalaya"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Penguin's Pasta Primavera", description="A villainous veggie delight", price=14.99, type="entree", picture="path/to/penguins_pasta_primavera"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Riddler's Ramen", description="A noodle puzzle", price=13.99, type="entree", picture="path/to/riddlers_ramen"),
+]
+
+# Restaurant 21 - The Dark Knight Diner - Drinks
+r21_drinks = [
+    MenuItem(restaurant_id=21, menu_id=21, name="Bat-Signal Smoothie", description="A fruity hero's delight", price=4.49, type="drink", picture="path/to/bat_signal_smoothie"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Wonder Woman's Watermelon Cooler", description="Refreshing and powerful", price=5.99, type="drink", picture="path/to/wonder_womans_cooler"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Green Lantern Green Tea", description="Light up your day", price=3.99, type="drink", picture="path/to/green_lantern_green_tea"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Aquaman's Oceanic Elixir", description="Tastes like the sea", price=6.49, type="drink", picture="path/to/aquamans_elixir"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Flash's Flashade", description="Quick and refreshing", price=4.99, type="drink", picture="path/to/flashs_flashade"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Catwoman's Cappuccino", description="A smooth and stealthy brew", price=5.49, type="drink", picture="path/to/catwomans_cappuccino"),
+    MenuItem(restaurant_id=21, menu_id=21, name="The Batmobile Brew", description="Fueled for action", price=4.99, type="drink", picture="path/to/batmobile_brew"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Bane's Bubbly Soda", description="A powerful fizz", price=4.99, type="drink", picture="path/to/banes_bubbly_soda"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Gotham Grog", description="A grog for night owls", price=5.29, type="drink", picture="path/to/gotham_grog"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Superman's Super Smoothie", description="A drink that lifts you up", price=5.99, type="drink", picture="path/to/supermans_smoothie"),
+]
+
+# Restaurant 21 - The Dark Knight Diner - Sides
+r21_sides = [
+    MenuItem(restaurant_id=21, menu_id=21, name="Bat-Fries", description="Crispy and seasoned to perfection", price=5.49, type="side", picture="path/to/bat_fries"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Wonder Woman's Spinach Salad", description="A salad fit for an Amazon", price=4.49, type="side", picture="path/to/wonder_womans_salad"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Green Lantern Guacamole", description="A green and powerful dip", price=4.99, type="side", picture="path/to/green_lantern_guacamole"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Aquaman's Seaweed Snack", description="A taste of the ocean", price=4.99, type="side", picture="path/to/aquamans_seaweed_snack"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Flash's French Fries", description="Quick and crispy", price=4.49, type="side", picture="path/to/flashs_french_fries"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Catwoman's Coleslaw", description="Seductively delicious", price=5.49, type="side", picture="path/to/catwomans_coleslaw"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Bat-Wing Nachos", description="Loaded with heroics", price=6.49, type="side", picture="path/to/batwing_nachos"),
+    MenuItem(restaurant_id=21, menu_id=21, name="The Joker's Jalapeño Poppers", description="A spicy surprise", price=5.99, type="side", picture="path/to/jokers_jalapeno_poppers"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Penguin's Potato Salad", description="Cold and calculating", price=5.49, type="side", picture="path/to/penguins_potato_salad"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Riddler's Rice Pilaf", description="A side dish that poses questions", price=5.49, type="side", picture="path/to/riddlers_rice_pilaf"),
+]
+
+# Restaurant 21 - The Dark Knight Diner - Desserts
+r21_desserts = [
+    MenuItem(restaurant_id=21, menu_id=21, name="Batman's Brownie", description="The hero's favorite treat", price=7.49, type="dessert", picture="path/to/batmans_brownie"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Bat-Sundae", description="Ice cream with all the toppings", price=6.99, type="dessert", picture="path/to/bat_sundae"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Alfred's Apple Pie", description="A classic in Wayne Manor", price=6.49, type="dessert", picture="path/to/alfreds_apple_pie"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Gotham Cheesecake", description="Creamy and indulgent", price=8.49, type="dessert", picture="path/to/gotham_cheesecake"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Riddler's Riddle Cake", description="A cake that leaves you guessing", price=7.99, type="dessert", picture="path/to/riddlers_riddle_cake"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Joker's Jello", description="Wobbly and whimsical", price=5.49, type="dessert", picture="path/to/jokers_jello"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Catwoman's Chocolate Mousse", description="Smooth and silky", price=8.49, type="dessert", picture="path/to/catwomans_chocolate_mousse"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Bane's Brownie", description="A dessert that packs a punch", price=6.99, type="dessert", picture="path/to/banes_brownie"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Poison Ivy's Parfait", description="A sweet treat with a touch of nature", price=7.99, type="dessert", picture="path/to/poison_ivys_parfait"),
+    MenuItem(restaurant_id=21, menu_id=21, name="Harley's Haunted Brownie", description="A brownie with a mischievous laugh", price=6.49, type="dessert", picture="path/to/harleys_haunted_brownie"),
+]
+
+# Restaurant 22 - Wayne Manor Fine Dining
+r22_entrees = [
+    MenuItem(restaurant_id=22, menu_id=22, name="Bruce Wayne's Steak", description="A billionaire's favorite", price=39.99, type="entree", picture="path/to/bruce_waynes_steak"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Alfred's Roast Chicken", description="Cooked to perfection", price=29.99, type="entree", picture="path/to/alfreds_roast_chicken"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Gotham Lobster Thermidor", description="An extravagant seafood delight", price=45.99, type="entree", picture="path/to/gotham_lobster_thermidor"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Harvey Dent's Double Steak", description="Two cuts, twice the flavor", price=49.99, type="entree", picture="path/to/harvey_dents_double_steak"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Selina Kyle's Surf and Turf", description="A luxurious combination", price=42.99, type="entree", picture="path/to/selina_kyles_surf_and_turf"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Wayne Manor Wild Mushroom Risotto", description="A taste of the manor's garden", price=34.99, type="entree", picture="path/to/wayne_manor_risotto"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Riddler's Filet Mignon", description="A cut of mystery", price=38.99, type="entree", picture="path/to/riddlers_filet_mignon"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Penguin's Paella", description="A villainous seafood feast", price=46.99, type="entree", picture="path/to/penguins_paella"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Lucius Fox's Lamb Chops", description="Tech mogul's favorite", price=36.99, type="entree", picture="path/to/lucius_foxs_lamb_chops"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Damian Wayne's Duck Confit", description="A dish fit for the heir", price=37.99, type="entree", picture="path/to/damian_waynes_duck_confit"),
+]
+
+# Restaurant 22 - Wayne Manor Fine Dining - Drinks
+r22_drinks = [
+    MenuItem(restaurant_id=22, menu_id=22, name="Wayne Estate Merlot", description="A wine from the manor's vineyard", price=59.99, type="drink", picture="path/to/wayne_estate_merlot"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Lucius Fox's Old Fashioned", description="A classic cocktail with a high-tech twist", price=14.99, type="drink", picture="path/to/lucius_foxs_old_fashioned"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Selina Kyle's Sangria", description="A fruity delight", price=12.99, type="drink", picture="path/to/selina_kyles_sangria"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Gotham Gin and Tonic", description="A refreshing city favorite", price=11.99, type="drink", picture="path/to/gotham_gin_and_tonic"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Bruce Wayne's Bourbon", description="The billionaire's choice", price=17.99, type="drink", picture="path/to/bruce_waynes_bourbon"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Wayne Manor Chardonnay", description="An elegant white wine", price=54.99, type="drink", picture="path/to/wayne_manor_chardonnay"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Lucius Fox's Espresso Martini", description="A tech-infused coffee cocktail", price=16.99, type="drink", picture="path/to/lucius_foxs_espresso_martini"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Gotham Lemonade", description="A zesty and refreshing drink", price=5.99, type="drink", picture="path/to/gotham_lemonade"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Damian Wayne's Virgin Mojito", description="A non-alcoholic choice for the young heir", price=7.99, type="drink", picture="path/to/damian_waynes_virgin_mojito"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Wayne Manor Water", description="Pure and refreshing", price=2.99, type="drink", picture="path/to/wayne_manor_water"),
+]
+
+# Restaurant 22 - Wayne Manor Fine Dining - Sides
+r22_sides = [
+    MenuItem(restaurant_id=22, menu_id=22, name="Wayne Manor Mashed Potatoes", description="Creamy and buttery", price=8.99, type="side", picture="path/to/wayne_manor_mashed_potatoes"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Lucius Fox's Truffle Fries", description="Luxurious and flavorful", price=9.99, type="side", picture="path/to/lucius_foxs_truffle_fries"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Selina Kyle's Asparagus", description="Fresh and crisp", price=7.99, type="side", picture="path/to/selina_kyles_asparagus"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Gotham Garlic Bread", description="A classic side for any hero", price=5.99, type="side", picture="path/to/gotham_garlic_bread"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Bruce Wayne's Brussels Sprouts", description="Roasted to perfection", price=9.99, type="side", picture="path/to/bruce_waynes_brussels_sprouts"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Wayne Manor Caesar Salad", description="A timeless classic", price=8.99, type="side", picture="path/to/wayne_manor_caesar_salad"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Lucius Fox's Creamed Spinach", description="A rich and creamy side", price=7.99, type="side", picture="path/to/lucius_foxs_creamed_spinach"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Gotham Grilled Vegetables", description="Healthy and flavorful", price=8.99, type="side", picture="path/to/gotham_grilled_vegetables"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Damian Wayne's Mac and Cheese", description="A kid's favorite", price=7.99, type="side", picture="path/to/damian_waynes_mac_and_cheese"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Wayne Manor Wild Rice Pilaf", description="A manor specialty", price=8.99, type="side", picture="path/to/wayne_manor_rice_pilaf"),
+]
+
+# Restaurant 22 - Wayne Manor Fine Dining - Desserts
+r22_desserts = [
+    MenuItem(restaurant_id=22, menu_id=22, name="Wayne Manor Chocolate Fondue", description="Dip and indulge", price=12.99, type="dessert", picture="path/to/wayne_manor_chocolate_fondue"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Lucius Fox's Tiramisu", description="Elegant and coffee-infused", price=10.99, type="dessert", picture="path/to/lucius_foxs_tiramisu"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Selina Kyle's Black Forest Cake", description="A rich and dark delight", price=11.99, type="dessert", picture="path/to/selina_kyles_black_forest_cake"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Gotham Panna Cotta", description="Smooth and creamy", price=9.99, type="dessert", picture="path/to/gotham_panna_cotta"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Bruce Wayne's Biscuit Pudding", description="A classic dessert from the manor", price=11.99, type="dessert", picture="path/to/bruce_waynes_biscuit_pudding"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Wayne Manor White Chocolate Mousse", description="Luxurious and white as snow", price=12.99, type="dessert", picture="path/to/wayne_manor_white_chocolate_mousse"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Lucius Fox's Creme Brulee", description="A perfectly torched delight", price=10.99, type="dessert", picture="path/to/lucius_foxs_creme_brulee"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Gotham Berry Tart", description="Fresh berries in a buttery crust", price=11.99, type="dessert", picture="path/to/gotham_berry_tart"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Damian Wayne's Ice Cream Sundae", description="A young hero's favorite", price=9.99, type="dessert", picture="path/to/damian_waynes_ice_cream_sundae"),
+    MenuItem(restaurant_id=22, menu_id=22, name="Wayne Manor Affogato", description="Espresso meets ice cream", price=10.99, type="dessert", picture="path/to/wayne_manor_affogato"),
+]
+
+# Restaurant 23
+r23_entrees = [
+    MenuItem(restaurant_id=23, menu_id=23, name="The Dark Knight Burger", description="A hero's delight", price=13.99, type="entree", picture="path/to/dark_knight_burger"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Gotham City Pizza", description="Pizza with Gotham flair", price=16.99, type="entree", picture="path/to/gotham_city_pizza"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Batwing BBQ Ribs", description="Smoky and succulent", price=18.99, type="entree", picture="path/to/batwing_bbq_ribs"),
+    MenuItem(restaurant_id=23, menu_id=23, name="The Bat-Salad", description="A fresh and heroic salad", price=9.99, type="entree", picture="path/to/bat_salad"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Catwoman's Calzone", description="A cat-inspired delight", price=15.99, type="entree", picture="path/to/catwomans_calzone"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Bat-Spicy Pasta", description="A pasta with a kick", price=14.99, type="entree", picture="path/to/bat_spicy_pasta"),
+    MenuItem(restaurant_id=23, menu_id=23, name="The Bat-Taco", description="A taco fit for a hero", price=12.99, type="entree", picture="path/to/bat_taco"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Joker's Jalapeño Burger", description="A burger with a twist", price=15.99, type="entree", picture="path/to/jokers_jalapeno_burger"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Penguin's Pepperoni Pasta", description="A villainous pasta", price=13.99, type="entree", picture="path/to/penguins_pepperoni_pasta"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Two-Face Tenders", description="Chicken tenders with a dual flavor", price=12.99, type="entree", picture="path/to/two_face_tenders"),
+]
+
+r23_drinks = [
+    MenuItem(restaurant_id=23, menu_id=23, name="Bat-Juice", description="Energize like a hero", price=4.99, type="drink", picture="path/to/bat_juice"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Robin's Refresher", description="A sidekick's favorite", price=3.99, type="drink", picture="path/to/robins_refresher"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Batgirl's Blueberry Smoothie", description="A fruity delight", price=5.99, type="drink", picture="path/to/batgirls_smoothie"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Gotham Green Tea", description="Calm your inner hero", price=3.99, type="drink", picture="path/to/gotham_green_tea"),
+    MenuItem(restaurant_id=23, menu_id=23, name="The Bat-Shake", description="Thick and chocolatey", price=5.99, type="drink", picture="path/to/bat_shake"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Bane's Brew", description="A powerful energy drink", price=5.99, type="drink", picture="path/to/banes_brew"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Gotham Grog", description="A grog for night owls", price=5.29, type="drink", picture="path/to/gotham_grog"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Harley's Huckleberry Lemonade", description="Mischievously sweet", price=4.99, type="drink", picture="path/to/harleys_lemonade"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Riddler's Raspberry Soda", description="A fizzy enigma", price=4.99, type="drink", picture="path/to/riddlers_raspberry_soda"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Penguin's Pale Ale", description="A brew as cold as ice", price=6.99, type="drink", picture="path/to/penguins_pale_ale"),
+]
+
+r23_sides = [
+    MenuItem(restaurant_id=23, menu_id=23, name="Gotham Garlic Fries", description="Crispy and flavorful", price=5.49, type="side", picture="path/to/gotham_garlic_fries"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Scarecrow's Slaw", description="Fearfully delicious", price=4.49, type="side", picture="path/to/scarecrow_slaw"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Harley's Hash Browns", description="Crispy and mischievous", price=4.99, type="side", picture="path/to/harleys_hash_browns"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Poison Ivy's Polenta", description="Smooth and villainously rich", price=5.99, type="side", picture="path/to/poison_ivys_polenta"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Bane's Beans", description="Hearty and powerful baked beans", price=4.99, type="side", picture="path/to/banes_beans"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Catwoman's Carrots", description="Sliced carrots with a touch of elegance", price=4.49, type="side", picture="path/to/catwomans_carrots"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Riddler's Rice Pilaf", description="A side dish that poses questions", price=5.49, type="side", picture="path/to/riddlers_rice_pilaf"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Harley's Hushpuppies", description="Fried to a crazy crunch", price=4.99, type="side", picture="path/to/harleys_hushpuppies"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Penguin's Potato Salad", description="Cold and calculating", price=5.49, type="side", picture="path/to/penguins_potato_salad"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Two-Face Taters", description="Mashed with a dual personality", price=5.99, type="side", picture="path/to/two_face_taters"),
+]
+
+r23_desserts = [
+    MenuItem(restaurant_id=23, menu_id=23, name="Batman's Brownie", description="The hero's favorite treat", price=7.49, type="dessert", picture="path/to/batmans_brownie"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Bat-Sundae", description="Ice cream with all the toppings", price=6.99, type="dessert", picture="path/to/bat_sundae"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Alfred's Apple Pie", description="A classic in Wayne Manor", price=6.49, type="dessert", picture="path/to/alfreds_apple_pie"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Gotham Cheesecake", description="Creamy and indulgent", price=8.49, type="dessert", picture="path/to/gotham_cheesecake"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Riddler's Riddle Cake", description="A cake that leaves you guessing", price=7.99, type="dessert", picture="path/to/riddlers_riddle_cake"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Joker's Jello", description="Wobbly and whimsical", price=5.49, type="dessert", picture="path/to/jokers_jello"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Catwoman's Chocolate Mousse", description="Smooth and silky", price=8.49, type="dessert", picture="path/to/catwomans_chocolate_mousse"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Bane's Brownie", description="A dessert that packs a punch", price=6.99, type="dessert", picture="path/to/banes_brownie"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Poison Ivy's Parfait", description="A sweet treat with a touch of nature", price=7.99, type="dessert", picture="path/to/poison_ivys_parfait"),
+    MenuItem(restaurant_id=23, menu_id=23, name="Harley's Haunted Brownie", description="A brownie with a mischievous laugh", price=6.49, type="dessert", picture="path/to/harleys_haunted_brownie"),
+]
+
+r23_menu = r23_entrees + r23_drinks + r23_sides + r23_desserts
+
+r23_ = Restaurant(
+    id=23,
+    name="Gotham Grill",
+    description="Where heroes and villains dine together",
+    address="123 Batcave Road, Gotham City",
+    phone_number="+1 987-654-3210",
+    picture="path/to/gotham_grill_picture",
+    menu=r23_menu,
+)
+
+# Restaurant 24
+r24_entrees = [
+    MenuItem(restaurant_id=24, menu_id=24, name="Batsignal Burger", description="Summon your appetite", price=13.99, type="entree", picture="path/to/batsignal_burger"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Wayne Manor Pizza", description="Pizza with manor elegance", price=16.99, type="entree", picture="path/to/wayne_manor_pizza"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Batmobile BBQ Ribs", description="Grilled to perfection", price=18.99, type="entree", picture="path/to/batmobile_bbq_ribs"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Gotham Garden Salad", description="Freshness from the city", price=9.99, type="entree", picture="path/to/gotham_garden_salad"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Riddler's Ricotta Calzone", description="A puzzling delight", price=15.99, type="entree", picture="path/to/riddlers_ricotta_calzone"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Bat-Spiced Pasta", description="Spices of the night", price=14.99, type="entree", picture="path/to/bat_spiced_pasta"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Gotham Taco", description="A taco for the city", price=12.99, type="entree", picture="path/to/gotham_taco"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Joker's Jackfruit Burger", description="A plant-based twist", price=15.99, type="entree", picture="path/to/jokers_jackfruit_burger"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Penguin's Penne Pasta", description="An icy pasta creation", price=13.99, type="entree", picture="path/to/penguins_penne_pasta"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Two-Face Fries", description="A duality of flavors", price=12.99, type="entree", picture="path/to/two_face_fries"),
+]
+
+r24_drinks = [
+    MenuItem(restaurant_id=24, menu_id=24, name="Batbrew Coffee", description="Awaken your inner hero", price=4.99, type="drink", picture="path/to/batbrew_coffee"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Robin's Recovery Shake", description="Recharge like a sidekick", price=3.99, type="drink", picture="path/to/robins_recovery_shake"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Batgirl's Berry Blast", description="A fruity burst of energy", price=5.99, type="drink", picture="path/to/batgirls_berry_blast"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Gotham Green Smoothie", description="A healthy hero's choice", price=3.99, type="drink", picture="path/to/gotham_green_smoothie"),
+    MenuItem(restaurant_id=24, menu_id=24, name="The Bat-Cream Soda", description="Creamy and nostalgic", price=5.99, type="drink", picture="path/to/bat_cream_soda"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Catwoman's Caffeine Kick", description="An espresso with a twist", price=5.99, type="drink", picture="path/to/catwomans_caffeine_kick"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Riddler's Riddle Refresher", description="A puzzling thirst quencher", price=4.99, type="drink", picture="path/to/riddlers_riddle_refresher"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Penguin's Pale Ale", description="A brew as cold as ice", price=6.99, type="drink", picture="path/to/penguins_pale_ale"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Two-Face Tea", description="A dual-flavored tea", price=4.99, type="drink", picture="path/to/two_face_tea"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Gotham Grog", description="A grog for night owls", price=5.29, type="drink", picture="path/to/gotham_grog"),
+]
+
+r24_sides = [
+    MenuItem(restaurant_id=24, menu_id=24, name="Bat-Taters", description="Crispy and heroic", price=5.49, type="side", picture="path/to/bat_taters"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Scarecrow's Slaw", description="Fearfully delicious", price=4.49, type="side", picture="path/to/scarecrow_slaw"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Harley's Hash Browns", description="Crispy and mischievous", price=4.99, type="side", picture="path/to/harleys_hash_browns"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Poison Ivy's Polenta", description="Smooth and villainously rich", price=5.99, type="side", picture="path/to/poison_ivys_polenta"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Bane's Beans", description="Hearty and powerful baked beans", price=4.99, type="side", picture="path/to/banes_beans"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Catwoman's Carrots", description="Sliced carrots with a touch of elegance", price=4.49, type="side", picture="path/to/catwomans_carrots"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Riddler's Rice Pilaf", description="A side dish that poses questions", price=5.49, type="side", picture="path/to/riddlers_rice_pilaf"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Two-Face Taters", description="Mashed with a dual personality", price=5.99, type="side", picture="path/to/two_face_taters"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Gotham Garlic Bread", description="A classic side for any hero", price=5.99, type="side", picture="path/to/gotham_garlic_bread"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Wayne Manor Wild Rice Pilaf", description="A manor specialty", price=8.99, type="side", picture="path/to/wayne_manor_rice_pilaf"),
+]
+
+r24_desserts = [
+    MenuItem(restaurant_id=24, menu_id=24, name="Bat-Cake", description="A cake fit for a hero", price=7.49, type="dessert", picture="path/to/bat_cake"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Bat-Sundae", description="Ice cream with all the toppings", price=6.99, type="dessert", picture="path/to/bat_sundae"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Wayne Manor Apple Pie", description="A classic from the manor", price=6.49, type="dessert", picture="path/to/wayne_manor_apple_pie"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Gotham Chocolate Mousse", description="Rich and decadent", price=8.49, type="dessert", picture="path/to/gotham_chocolate_mousse"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Riddler's Riddle Delight", description="A dessert that challenges", price=7.99, type="dessert", picture="path/to/riddlers_riddle_delight"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Joker's Gelato", description="Laughably delicious", price=5.49, type="dessert", picture="path/to/jokers_gelato"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Catwoman's Tiramisu", description="Elegance in every bite", price=8.49, type="dessert", picture="path/to/catwomans_tiramisu"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Bane's Brownie", description="A dessert with a punch", price=6.99, type="dessert", picture="path/to/banes_brownie"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Poison Ivy's Parfait", description="A sweet treat with a hint of nature", price=7.99, type="dessert", picture="path/to/poison_ivys_parfait"),
+    MenuItem(restaurant_id=24, menu_id=24, name="Harley's Haunted Cupcake", description="A cupcake with a mischievous grin", price=6.56, type="dessert", picture="path/to/banes_brownie"),
+]
+
+r25_entrees = [
+    MenuItem(restaurant_id=25, menu_id=25, name="Gotham Grilled Cheese", description="A cheesy delight", price=12.99, type="entree", picture="path/to/gotham_grilled_cheese"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Penguin's Pesto Pasta", description="A villainous twist on pesto", price=16.99, type="entree", picture="path/to/penguins_pesto_pasta"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Batwing Buffalo Wings", description="Spicy wings for heroes", price=14.99, type="entree", picture="path/to/batwing_buffalo_wings"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Riddler's Ramen", description="A noodle puzzle", price=13.99, type="entree", picture="path/to/riddlers_ramen"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Two-Face Tacos", description="Tacos with a dual flavor", price=15.99, type="entree", picture="path/to/two_face_tacos"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Catwoman's Carbonara", description="Seductively creamy pasta", price=16.99, type="entree", picture="path/to/catwomans_carbonara"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Mr. Freeze's Filet Mignon", description="Cold and perfectly cooked", price=22.99, type="entree", picture="path/to/mr_freezes_fillet"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Bane's BBQ Brisket", description="Smoked to villainous perfection", price=19.99, type="entree", picture="path/to/banes_bbq"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Harley's Hotdog", description="A mischievous twist on a classic", price=12.99, type="entree", picture="path/to/harleys_hotdog"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Penguin's Pizza", description="Toppings as unpredictable as the villain", price=17.99, type="entree", picture="path/to/penguins_pizza"),
+]
+
+r25_drinks = [
+    MenuItem(restaurant_id=25, menu_id=25, name="Gotham Gazette Coffee", description="News-worthy caffeine", price=4.49, type="drink", picture="path/to/gotham_coffee"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Penguin's Pinot", description="A fine and fancy wine", price=9.99, type="drink", picture="path/to/penguin_pinot"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Bane's Brew", description="A powerful energy drink", price=5.99, type="drink", picture="path/to/banes_brew"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Joker's Julep", description="A laughably good drink", price=6.49, type="drink", picture="path/to/jokers_julep"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Harley's Hot Chocolate", description="Mischievously creamy", price=5.99, type="drink", picture="path/to/harleys_hot_chocolate"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Catwoman's Cappuccino", description="A smooth and stealthy brew", price=5.49, type="drink", picture="path/to/catwomans_cappuccino"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Riddler's Raspberry Soda", description="A fizzy enigma", price=4.99, type="drink", picture="path/to/riddlers_raspberry_soda"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Penguin's Pale Ale", description="A brew as cold as ice", price=6.99, type="drink", picture="path/to/penguins_pale_ale"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Two-Face Tea", description="A dual-flavored tea", price=4.99, type="drink", picture="path/to/two_face_tea"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Gotham Grog", description="A grog for night owls", price=5.29, type="drink", picture="path/to/gotham_grog"),
+]
+
+r25_sides = [
+    MenuItem(restaurant_id=25, menu_id=25, name="Gotham Grits", description="Creamy and comforting", price=5.49, type="side", picture="path/to/gotham_grits"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Scarecrow's Slaw", description="Fearfully delicious", price=4.49, type="side", picture="path/to/scarecrow_slaw"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Harley's Hash Browns", description="Crispy and mischievous", price=4.99, type="side", picture="path/to/harleys_hashbrowns"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Poison Ivy's Polenta", description="Smooth and villainously rich", price=5.99, type="side", picture="path/to/poison_ivys_polenta"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Bane's Beans", description="Hearty and powerful baked beans", price=4.99, type="side", picture="path/to/banes_beans"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Catwoman's Carrots", description="Sliced carrots with a touch of elegance", price=4.49, type="side", picture="path/to/catwomans_carrots"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Riddler's Rice Pilaf", description="A side dish that poses questions", price=5.49, type="side", picture="path/to/riddlers_pilaf"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Harley's Hushpuppies", description="Fried to a crazy crunch", price=4.99, type="side", picture="path/to/harleys_hushpuppies"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Penguin's Potato Salad", description="Cold and calculating", price=5.49, type="side", picture="path/to/penguins_salad"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Two-Face Taters", description="Mashed with a dual personality", price=5.99, type="side", picture="path/to/two_face_taters"),
+]
+
+r25_desserts = [
+    MenuItem(restaurant_id=25, menu_id=25, name="Batman's Brownie", description="The hero's favorite treat", price=7.49, type="dessert", picture="path/to/batmans_brownie"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Bat-Sundae", description="Ice cream with all the toppings", price=6.99, type="dessert", picture="path/to/bat_sundae"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Alfred's Apple Pie", description="A classic in Wayne Manor", price=6.49, type="dessert", picture="path/to/alfreds_pie"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Gotham Cheesecake", description="Creamy and indulgent", price=8.49, type="dessert", picture="path/to/gotham_cheesecake"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Riddler's Riddle Cake", description="A cake that leaves you guessing", price=7.99, type="dessert", picture="path/to/riddlers_cake"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Joker's Jello", description="Wobbly and whimsical", price=5.49, type="dessert", picture="path/to/jokers_jello"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Catwoman's Chocolate Mousse", description="Smooth and silky", price=8.49, type="dessert", picture="path/to/catwomans_mousse"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Bane's Brownie", description="A dessert that packs a punch", price=6.99, type="dessert", picture="path/to/banes_brownie"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Poison Ivy's Parfait", description="A sweet treat with a touch of nature", price=7.99, type="dessert", picture="path/to/poison_ivys_parfait"),
+    MenuItem(restaurant_id=25, menu_id=25, name="Harley's Haunted Brownie", description="A brownie with a mischievous laugh", price=6.49, type="dessert", picture="path/to/harleys_brownie"),
+]
+
+# Restaurant 26
+r26_entrees = [
+    MenuItem(restaurant_id=26, menu_id=26, name="Justice League Burger", description="A burger fit for heroes", price=14.99, type="entree", picture="path/to/justice_league_burger"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Wonder Woman Wrap", description="Amazonian flavors in a wrap", price=16.99, type="entree", picture="path/to/wonder_woman_wrap"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Superman's Spaghetti", description="Spaghetti with superpowers", price=13.99, type="entree", picture="path/to/supermans_spaghetti"),
+    MenuItem(restaurant_id=26, menu_id=26, name="The Flash's Fajitas", description="Fajitas in a flash", price=15.99, type="entree", picture="path/to/flashs_fajitas"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Aquaman's Sushi", description="Sushi from the depths", price=17.99, type="entree", picture="path/to/aquamans_sushi"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Green Lantern Grilled Chicken", description="Grilled to save the day", price=16.99, type="entree", picture="path/to/green_lantern_chicken"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Cyborg's Curry", description="High-tech curry experience", price=18.99, type="entree", picture="path/to/cyborgs_curry"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Batgirl's Burrito", description="A burrito with a sidekick", price=12.99, type="entree", picture="path/to/batgirls_burrito"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Martian Manhunter Meatloaf", description="Meatloaf from another world", price=19.99, type="entree", picture="path/to/martian_manhunter_meatloaf"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Green Arrow's Pizza", description="Pizza that hits the mark", price=17.99, type="entree", picture="path/to/green_arrows_pizza"),
+]
+
+r26_drinks = [
+    MenuItem(restaurant_id=26, menu_id=26, name="Justice League Juice", description="A heroic blend of juices", price=5.49, type="drink", picture="path/to/justice_league_juice"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Wonder Woman's Wine", description="Divine and elegant wine", price=9.99, type="drink", picture="path/to/wonder_womans_wine"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Super Soda", description="A soda with super fizz", price=4.99, type="drink", picture="path/to/super_soda"),
+    MenuItem(restaurant_id=26, menu_id=26, name="The Flash's Flashade", description="A lightning-fast lemonade", price=6.49, type="drink", picture="path/to/flashs_flashade"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Aquaman's Aqualyte", description="Hydrate like the king of the seas", price=5.99, type="drink", picture="path/to/aquamans_aqualyte"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Green Lantern Green Tea", description="Tea that ignites your willpower", price=5.49, type="drink", picture="path/to/green_lantern_tea"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Cyborg's Cyber Cola", description="Soda with a high-tech twist", price=4.99, type="drink", picture="path/to/cyborgs_cyber_cola"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Batgirl's Brew", description="A coffee with a sidekick", price=5.99, type="drink", picture="path/to/batgirls_brew"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Martian Manhunter Mojito", description="Mojito from another world", price=6.99, type="drink", picture="path/to/martian_manhunter_mojito"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Green Arrow's Gulp", description="A refreshing gulp for archers", price=5.29, type="drink", picture="path/to/green_arrows_gulp"),
+]
+
+r26_sides = [
+    MenuItem(restaurant_id=26, menu_id=26, name="Justice League Fries", description="Fries with a heroic touch", price=5.49, type="side", picture="path/to/justice_league_fries"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Wonder Woman Wedges", description="Wedges fit for an Amazon", price=4.49, type="side", picture="path/to/wonder_woman_wedges"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Superman's Salad", description="A super salad", price=4.99, type="side", picture="path/to/supermans_salad"),
+    MenuItem(restaurant_id=26, menu_id=26, name="The Flash's Fries", description="Fries in a flash", price=5.99, type="side", picture="path/to/flashs_fries"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Aquaman's Asparagus", description="Asparagus from the depths", price=4.99, type="side", picture="path/to/aquamans_asparagus"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Green Lantern Guacamole", description="Guacamole that ignites your willpower", price=4.49, type="side", picture="path/to/green_lantern_guacamole"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Cyborg's Coleslaw", description="High-tech coleslaw experience", price=5.49, type="side", picture="path/to/cyborgs_coleslaw"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Batgirl's Beans", description="Beans with a sidekick", price=4.99, type="side", picture="path/to/batgirls_beans"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Martian Manhunter Mash", description="Mashed potatoes from another world", price=5.49, type="side", picture="path/to/martian_manhunter_mash"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Green Arrow's Onion Rings", description="Onion rings that hit the mark", price=5.99, type="side", picture="path/to/green_arrows_onion_rings"),
+]
+
+r26_desserts = [
+    MenuItem(restaurant_id=26, menu_id=26, name="Justice League Sundae", description="A heroic ice cream treat", price=7.49, type="dessert", picture="path/to/justice_league_sundae"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Wonder Woman Waffle", description="Amazonian waffle delight", price=6.99, type="dessert", picture="path/to/wonder_woman_waffle"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Superman's Sorbet", description="Super sorbet for super tastes", price=6.49, type="dessert", picture="path/to/supermans_sorbet"),
+    MenuItem(restaurant_id=26, menu_id=26, name="The Flash's Flan", description="Flan in a flash", price=8.49, type="dessert", picture="path/to/flashs_flan"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Aquaman's Apple Pie", description="Pie from the depths", price=7.99, type="dessert", picture="path/to/aquamans_apple_pie"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Green Lantern Gelato", description="Gelato that ignites your willpower", price=5.49, type="dessert", picture="path/to/green_lantern_gelato"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Cyborg's Cheesecake", description="High-tech cheesecake experience", price=8.49, type="dessert", picture="path/to/cyborgs_cheesecake"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Batgirl's Brownie", description="A brownie with a sidekick", price=6.99, type="dessert", picture="path/to/batgirls_brownie"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Martian Manhunter Mousse", description="Mousse from another world", price=7.99, type="dessert", picture="path/to/martian_manhunter_mousse"),
+    MenuItem(restaurant_id=26, menu_id=26, name="Green Arrow's Cake", description="Cake that hits the mark", price=6.49, type="dessert", picture="path/to/green_arrows_cake"),
+]
+
+
+
 def seed_menu_items():
 
     menu_items = r1_entrees + r1_drinks + r1_sides + r1_desserts
