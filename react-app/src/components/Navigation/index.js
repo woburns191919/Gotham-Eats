@@ -33,13 +33,6 @@ function Navigation({ isLoaded }) {
                 <div className="navBar-inner-container">
 
                     <div className="navBar-left">
-                        {sessionUser && (
-                            <div className="navBar-create-link">
-                                {/* <NavLink to="/resaurants/new" className="create-new-spot">
-                                    Add your restaurant
-                                </NavLink> */}
-                            </div>
-                        )}
                         {isLoaded && (
                             <ul>
                                 <li>
@@ -96,20 +89,3 @@ function Navigation({ isLoaded }) {
 
 
 export default Navigation;
-
-
-// // 	return (
-// // 		<ul>
-// // 			<li>
-// // 				<NavLink exact to="/">Home</NavLink>
-// // 			</li>
-// // 			{isLoaded && (
-// // 				<li>
-// // 					<ProfileButton user={sessionUser} />
-// // 				</li>
-// // 			)}
-// // 		</ul>
-// // 	);
-// // }
-
-// // export default Navigation;

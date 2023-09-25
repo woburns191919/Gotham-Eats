@@ -1,18 +1,7 @@
-// import { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { Link, useHistory, NavLink } from "react-router-dom";
-// import { thunkGetAllRestaurants, thunkGetOwnerAllRestaurants } from "../../../store/restaurants";
-// import OpenModalButton from '../../OpenModalButton/index';
-
-// import "./GetRestaurants.css";
-
-// export default function GetRestaurants({ ownerMode = false }) {
-//   return null
-// }
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, NavLink } from "react-router-dom";
-import { thunkGetAllRestaurants, thunkGetOwnerAllRestaurants } from "../../../store/restaurants";
+import { thunkGetAllRestaurants } from "../../../store/restaurants";
 import OpenModalButton from "../../OpenModalButton/index";
 import "./GetRestaurants.css";
 
@@ -26,12 +15,8 @@ export default function GetRestaurants({ ownerMode = false }) {
   console.log("restaurants", restaurants);
 
   useEffect(() => {
-    if (ownerMode) {
-      dispatch(thunkGetOwnerAllRestaurants());
-    } else {
-      dispatch(thunkGetAllRestaurants());
-    }
-  }, [dispatch, ownerMode]);
+    dispatch(thunkGetAllRestaurants());
+  }, [dispatch]);
 
   if (!restaurantsData || !restaurantsData.restaurants) return null;
 

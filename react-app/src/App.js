@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import LoginFormModal from "./components/LoginFormModal";
 import SignupFormModal from "./components/SignupFormModal";
 import GetRestaurants from "./components/Restaurant/GetRestaurants";
+import Home from "./components/Home"
 
 function App() {
   const dispatch = useDispatch();
@@ -21,7 +22,10 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/" >
+          <Route exact path="/" >
+            <Home />
+          </Route>
+          <Route path="/restaurants" >
             <GetRestaurants />
           </Route>
           <Route path="/login" >

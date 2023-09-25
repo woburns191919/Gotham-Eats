@@ -1,28 +1,5 @@
 // import { fetch } from "./csrf";
-
-
-
-
-// ************************************************
-//                   ****types****
-// ************************************************
-const GET_ALL_RESTAURANTS = "/get_all_restaurants";
-const GET_SINGLE_RESTAURANT = "/get_single_restaurant";
-const CREATE_RESTAURANT = "create_restaurant";
-const UPDATE_RESTAURANT = "update_restaurant";
-const DELETE_RESTAURANT = "delete_restaurant";
-const GET_ALL_RESTAURANTS_OF_CURRENT_USER = "/get_all_restaurants_of_user";
-
-
-// ************************************************
-//                   ****action creator****
-// ************************************************
-const actionGetRestaurants = (restaurants) => ({ type: GET_ALL_RESTAURANTS, restaurants });
-const actionGetSingleRestaurant = (restaurant) => ({ type: GET_SINGLE_RESTAURANT, restaurant });
-const actionCreateRestaurant = (restaurant) => ({ type: CREATE_RESTAURANT, restaurant });
-const actionUpdateRestaurant = (restaurant) => ({ type: UPDATE_RESTAURANT, restaurant });
-const actionDeleteRestaurant = (id) => ({ type: DELETE_RESTAURANT, id });
-const actionGetAllOwnerRestaurants = (restaurants) => ({ type: GET_ALL_RESTAURANTS_OF_CURRENT_USER, restaurants });
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
 // ************************************************
@@ -31,37 +8,122 @@ const actionGetAllOwnerRestaurants = (restaurants) => ({ type: GET_ALL_RESTAURAN
 
 // ***************************thunkGetAllRestaurants**************************
 
-export const thunkGetAllRestaurants = () => async (dispatch) => {
-  try {
-    const res = await fetch("/api/restaurants");
-    if (res.ok) {
-      const data = await res.json();
-      console.log("Data from /api/restaurants:", data);
-      // dispatch(actionGetRestaurants(normalizeArr(data)));
-      dispatch(actionGetRestaurants(data));
-      return data;
-    } else {
-      const errors = await res.json();
-      return errors;
+export const thunkGetAllRestaurants = createAsyncThunk(
+  'restaurants/fetchAll',
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await fetch('/api/restaurants');
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      } else {
+        const errors = await res.json();
+        return rejectWithValue(errors);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
-  } catch (error) {
-    console.error("Error fetching restaurants:", error);
-    return error;
   }
-};
+);
 
-// ***************************thunkGetOwnerAllRestaurants**************************
-export const thunkGetOwnerAllRestaurants = () => async (dispatch) => {
-  const res = await fetch("/api/restaurants/current");
-  if (res.ok) {
-    const Restaurants = await res.json();
-    dispatch(actionGetAllOwnerRestaurants(Restaurants));
-    return Restaurants;
-  } else {
-    const errors = await res.json();
-    return errors;
+// ***************************thunkGetRestaurantDetail**************************
+
+export const thunkGetRestaurantDetail = createAsyncThunk(
+  'restaurants/fetchDetail',
+  async (restaurantId, { rejectWithValue }) => {
+    try {
+      const res = await fetch(`/api/restaurants/${restaurantId}`);
+      if (res.ok) {
+        const restaurant = await res.json();
+        return restaurant;
+      } else {
+        const errors = await res.json();
+        return rejectWithValue(errors);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
-};
+);
+
+// ************************************************
+//                   ****Reducer****
+// ************************************************
+
+const initialState = { allRestaurants: {}, singleRestaurant: {} };
+
+const restaurantSlice = createSlice({
+  name: 'restaurants',
+  initialState,
+  reducers: {
+    actionSetAllRestaurants: (state, action) => {
+      state.allRestaurants = action.payload;
+    },
+    actionSetSingleRestaurant: (state, action) => {
+      state.singleRestaurant = action.payload;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(thunkGetAllRestaurants.fulfilled, (state, action) => {
+        state.allRestaurants = action.payload;
+      })
+      .addCase(thunkGetRestaurantDetail.fulfilled, (state, action) => {
+        state.singleRestaurant = action.payload;
+      });
+  },
+});
+
+export const { actionSetAllRestaurants, actionSetSingleRestaurant } = restaurantSlice.actions;
+
+export default restaurantSlice.reducer;
+
+
+// ************************************************
+//                   ****types****
+// ************************************************
+// const GET_ALL_RESTAURANTS = "/get_all_restaurants";
+// const GET_SINGLE_RESTAURANT = "/get_single_restaurant";
+// const CREATE_RESTAURANT = "create_restaurant";
+// const UPDATE_RESTAURANT = "update_restaurant";
+// const DELETE_RESTAURANT = "delete_restaurant";
+// const GET_ALL_RESTAURANTS_OF_CURRENT_USER = "/get_all_restaurants_of_user";
+
+
+// ************************************************
+//                   ****action creator****
+// ************************************************
+// const actionGetRestaurants = (restaurants) => ({ type: GET_ALL_RESTAURANTS, restaurants });
+// const actionGetSingleRestaurant = (restaurant) => ({ type: GET_SINGLE_RESTAURANT, restaurant });
+// const actionCreateRestaurant = (restaurant) => ({ type: CREATE_RESTAURANT, restaurant });
+// const actionUpdateRestaurant = (restaurant) => ({ type: UPDATE_RESTAURANT, restaurant });
+// const actionDeleteRestaurant = (id) => ({ type: DELETE_RESTAURANT, id });
+// const actionGetAllOwnerRestaurants = (restaurants) => ({ type: GET_ALL_RESTAURANTS_OF_CURRENT_USER, restaurants });
+
+// ************************************************
+//                   ****Thunks****
+// ************************************************
+
+// ***************************thunkGetAllRestaurants**************************
+
+// export const thunkGetAllRestaurants = () => async (dispatch) => {
+//   try {
+//     const res = await fetch("/api/restaurants");
+//     if (res.ok) {
+//       const data = await res.json();
+//       console.log("Data from /api/restaurants:", data);
+//       // dispatch(actionGetRestaurants(normalizeArr(data)));
+//       dispatch(actionGetRestaurants(data));
+//       return data;
+//     } else {
+//       const errors = await res.json();
+//       return errors;
+//     }
+//   } catch (error) {
+//     console.error("Error fetching restaurants:", error);
+//     return error;
+//   }
+// };
 
 // // ***************************thunkGetRestaurantDetail**************************
 // export const thunkGetRestaurantDetail = (restaurantId) => async (dispatch) => {
@@ -145,48 +207,45 @@ export const thunkGetOwnerAllRestaurants = () => async (dispatch) => {
 //   }
 // };
 
-
-
-
 // ************************************************
 //                   ****Reducer****
 // ************************************************
-function normalizeArr(restaurants) {
-  const normalizedRestaurants = {};
-  restaurants.forEach((restaurant) => (normalizedRestaurants[restaurant.id] = restaurant));
-  return normalizedRestaurants;
-}
+// function normalizeArr(restaurants) {
+//   const normalizedRestaurants = {};
+//   restaurants.forEach((restaurant) => (normalizedRestaurants[restaurant.id] = restaurant));
+//   return normalizedRestaurants;
+// }
 
-const initialState = { allRestaurants: {}, singleRestaurant: {} };
+// const initialState = { allRestaurants: {}, singleRestaurant: {} };
 
 // ************************************************
-export default function restaurantReducer(state = initialState, action) {
-  let newState;
-  switch (action.type) {
-    case GET_ALL_RESTAURANTS:
-      // newState = Object.assign({}, state);
-      return { ...state, allRestaurants: action.restaurants };
-    // case GET_SINGLE_RESTAURANT:
-    //   newState = { ...state, singleRestaurant: {} };
-    //   newState.singleRestaurant = action.restaurant;
-    //   return newState;
-    // case CREATE_RESTAURANT:
-    //   newState = { ...state };
-    //   newState.singleRestaurant = action.restaurant;
-    //   return newState;
-    // case UPDATE_RESTAURANT:
-    //   newState = { ...state, singleRestaurant: {} };
-    //   newState.singleRestaurant = action.restaurant;
-    //   return newState;
-    // case DELETE_RESTAURANT:
-    //   newState = { allRestaurants: {...state.allRestaurants}, singleRestaurant: {} };
-    //   delete newState.allRestaurants[action.id];
-    //   return newState;
-    // case GET_ALL_RESTAURANTS_OF_CURRENT_USER:
-    //   newState = { ...state, allRestaurants: {} };
-    //   newState.allRestaurants = action.restaurants;
-    //   return newState;
-    default:
-      return state;
-  }
-}
+// export default function restaurantReducer(state = initialState, action) {
+//   let newState;
+//   switch (action.type) {
+//     case GET_ALL_RESTAURANTS:
+//       // newState = Object.assign({}, state);
+//       return { ...state, allRestaurants: action.restaurants };
+//     // case GET_SINGLE_RESTAURANT:
+//     //   newState = { ...state, singleRestaurant: {} };
+//     //   newState.singleRestaurant = action.restaurant;
+//     //   return newState;
+//     // case CREATE_RESTAURANT:
+//     //   newState = { ...state };
+//     //   newState.singleRestaurant = action.restaurant;
+//     //   return newState;
+//     // case UPDATE_RESTAURANT:
+//     //   newState = { ...state, singleRestaurant: {} };
+//     //   newState.singleRestaurant = action.restaurant;
+//     //   return newState;
+//     // case DELETE_RESTAURANT:
+//     //   newState = { allRestaurants: {...state.allRestaurants}, singleRestaurant: {} };
+//     //   delete newState.allRestaurants[action.id];
+//     //   return newState;
+//     // case GET_ALL_RESTAURANTS_OF_CURRENT_USER:
+//     //   newState = { ...state, allRestaurants: {} };
+//     //   newState.allRestaurants = action.restaurants;
+//     //   return newState;
+//     default:
+//       return state;
+//   }
+// }
