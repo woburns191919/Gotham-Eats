@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 
 
 
-    # Restaurant 1
+#missing r17
 r1_sides = [
     MenuItem(restaurant_id=1, menu_id=1, name="Bane's Baked Potato", description="Loaded with toppings", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (3).jpeg"),
     MenuItem(restaurant_id=1, menu_id=1, name="Joker's Breadsticks", description="Twisted and delicious", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (2).jpeg"),
@@ -18,7 +18,7 @@ r1_sides = [
     MenuItem(restaurant_id=1, menu_id=1, name="Mad Hatter's Lo Mein", description="Madly delicious", price=5.49, type="side", picture="/menu_item_images/sides/lo_mein/img (5).jpeg")
 ]
 
-# Restaurant 2 - Catwoman's Hideout Cafe
+
 r2_sides = [
     MenuItem(restaurant_id=2, menu_id=1, name="Selina's Mac and Cheese", description="Purrfectly cheesy", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (2).jpeg"),
     MenuItem(restaurant_id=2, menu_id=1, name="Ivy's Mashed Potatoes", description="Eco-friendly and creamy", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (4).jpeg"),
@@ -33,7 +33,7 @@ r2_sides = [
 ]
 
 
-# Restaurant 3 - Poison Ivy's Plant-Based Delights
+
 r3_sides = [
     MenuItem(restaurant_id=3, menu_id=1, name="Enchanted Baked Potato", description="Vibrantly delicious", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (1).jpeg"),
     MenuItem(restaurant_id=3, menu_id=1, name="Verdant Breadsticks", description="Green and crunchy", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (2).jpeg"),
@@ -47,7 +47,7 @@ r3_sides = [
     MenuItem(restaurant_id=3, menu_id=1, name="Moss-Covered Mac and Cheese", description="Cheesy and comforting", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (5).jpeg"),
 ]
 
-# Restaurant 4 - Two-Face's Duality Dishes
+
 r4_sides = [
     MenuItem(restaurant_id=4, menu_id=1, name="Good Side Baked Potato", description="Pure and comforting", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (1).jpeg"),
     MenuItem(restaurant_id=4, menu_id=1, name="Bad Side Baked Potato", description="Sinfully delicious", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (2).jpeg"),
@@ -62,7 +62,7 @@ r4_sides = [
 ]
 
 
-# Restaurant 5 - Scarecrow's Fearful Flavors
+
 r5_sides = [
     MenuItem(restaurant_id=5, menu_id=1, name="Fear-Inducing Baked Potato", description="Terrifyingly tasty", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (3).jpeg"),
     MenuItem(restaurant_id=5, menu_id=1, name="Nightmare Breadsticks", description="Hauntingly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (4).jpeg"),
@@ -76,7 +76,7 @@ r5_sides = [
     MenuItem(restaurant_id=5, menu_id=1, name="Phantom Mac and Cheese", description="Cheese to haunt your dreams", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (2).jpeg"),
 ]
 
-# Restaurant 6 - Catwoman's Purr-fect Sides
+
 r6_sides = [
     MenuItem(restaurant_id=6, menu_id=1, name="Sleek Baked Potato", description="Cat-approved flavor", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (4).jpeg"),
     MenuItem(restaurant_id=6, menu_id=1, name="Cat's Meow Breadsticks", description="Purr-fectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (5).jpeg"),
@@ -90,7 +90,7 @@ r6_sides = [
     MenuItem(restaurant_id=6, menu_id=1, name="Stealthy Mac and Cheese", description="Silently cheesy", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (3).jpeg"),
 ]
 
-# Restaurant 7 - Batman's Bat Bites
+
 r7_sides = [
     MenuItem(restaurant_id=7, menu_id=1, name="Bat-tastic Baked Potato", description="Heroically tasty", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (5).jpeg"),
     MenuItem(restaurant_id=7, menu_id=1, name="Dark Knight Breadsticks", description="Gotham's crunch", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (1).jpeg"),
@@ -104,7 +104,7 @@ r7_sides = [
     MenuItem(restaurant_id=7, menu_id=1, name="Caped Crusader Mac and Cheese", description="Cheesy heroism", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (4).jpeg"),
 ]
 
-# Restaurant 8 - Joker's Jestful Sides
+
 r8_sides = [
     MenuItem(restaurant_id=8, menu_id=1, name="Joker's Jestful Baked Potato", description="Laughably delicious", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (1).jpeg"),
     MenuItem(restaurant_id=8, menu_id=1, name="Riddler's Riddling Breadsticks", description="Puzzle-packed crunch", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (2).jpeg"),
@@ -118,7 +118,6 @@ r8_sides = [
     MenuItem(restaurant_id=8, menu_id=1, name="Penguin's Prankster Mac and Cheese", description="Cheesy antics", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (5).jpeg"),
 ]
 
-# Restaurant 9 - Bane's Brawny Bites
 r9_sides = [
     MenuItem(restaurant_id=9, menu_id=1, name="Bane's Powerhouse Baked Potato", description="Strength in flavor", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (2).jpeg"),
     MenuItem(restaurant_id=9, menu_id=1, name="Riddler's Riddling Breadsticks", description="Puzzle-packed crunch", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (3).jpeg"),
@@ -132,7 +131,7 @@ r9_sides = [
     MenuItem(restaurant_id=9, menu_id=1, name="Penguin's Prankster Mac and Cheese", description="Cheesy antics", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (1).jpeg"),
 ]
 
-# Restaurant 10 - Mr. Freeze's Chilled Delights
+
 r10_sides = [
     MenuItem(restaurant_id=10, menu_id=1, name="Frozen Baked Potato", description="Icy yet flavorful", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (3).jpeg"),
     MenuItem(restaurant_id=10, menu_id=1, name="Chilled Breadsticks", description="Frozen crunch", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (4).jpeg"),
@@ -147,7 +146,7 @@ r10_sides = [
 ]
 
 
-# Restaurant 11 - Clayface's Transforming Tastes
+
 r11_sides = [
     MenuItem(restaurant_id=11, menu_id=1, name="Morphing Baked Potato", description="Ever-changing flavors", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (3).jpeg"),
     MenuItem(restaurant_id=11, menu_id=1, name="Shape-Shifting Breadsticks", description="Twisting textures", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (4).jpeg"),
@@ -161,7 +160,7 @@ r11_sides = [
     MenuItem(restaurant_id=11, menu_id=1, name="Adaptive Mac and Cheese", description="Ever-changing cheese", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (2).jpeg"),
 ]
 
-# Restaurant 12 - Firefly's Flame-Kissed Flavors
+
 r12_sides = [
     MenuItem(restaurant_id=12, menu_id=1, name="Blazing Baked Potato", description="Fire-touched delight", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (2).jpeg"),
     MenuItem(restaurant_id=12, menu_id=1, name="Inferno Breadsticks", description="Scorching and savory", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (3).jpeg"),
@@ -175,7 +174,7 @@ r12_sides = [
     MenuItem(restaurant_id=12, menu_id=1, name="Blazing Mac and Cheese", description="Hot and cheesy", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (1).jpeg"),
 ]
 
-# Restaurant 13 - Mad Hatter's Whimsical Sides
+
 r13_sides = [
     MenuItem(restaurant_id=13, menu_id=1, name="Tea-Infused Baked Potato", description="Wonderfully whimsical", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (3).jpeg"),
     MenuItem(restaurant_id=13, menu_id=1, name="Hat-Topped Breadsticks", description="A touch of magic", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (4).jpeg"),
@@ -189,7 +188,7 @@ r13_sides = [
     MenuItem(restaurant_id=13, menu_id=1, name="Whimsy Mac and Cheese", description="Playfully cheesy", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (2).jpeg"),
 ]
 
-# Restaurant 14 - Talon's Takeout Tidbits
+
 r14_sides = [
     MenuItem(restaurant_id=14, menu_id=1, name="Assassin's Baked Potato", description="Lethally delicious", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (1).jpeg"),
     MenuItem(restaurant_id=14, menu_id=1, name="Talon's Breadsticks", description="Sharp and savory", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (2).jpeg"),
@@ -203,7 +202,7 @@ r14_sides = [
     MenuItem(restaurant_id=14, menu_id=1, name="Talon's Stealth Mac and Cheese", description="Silently cheesy", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (5).jpeg"),
 ]
 
-# Restaurant 15 - Zatanna's Magical Morsels
+
 r15_sides = [
     MenuItem(restaurant_id=15, menu_id=1, name="Enchanted Baked Potato", description="Mystically delicious", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (2).jpeg"),
     MenuItem(restaurant_id=15, menu_id=1, name="Magic Wand Breadsticks", description="Spellbindingly savory", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (3).jpeg"),
@@ -217,7 +216,6 @@ r15_sides = [
     MenuItem(restaurant_id=15, menu_id=1, name="Wizard's Mac and Cheese", description="Magically cheesy", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (1).jpeg"),
 ]
 
-# Restaurant 16 - Bat-Man's Bat Bites
 r16_sides = [
     MenuItem(restaurant_id=16, menu_id=1, name="Bat-Tato Wedges", description="Heroic and flavorful", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (1).jpeg"),
     MenuItem(restaurant_id=16, menu_id=1, name="Batwing Breadsticks", description="Crunchy and dark", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (2).jpeg"),
@@ -231,10 +229,9 @@ r16_sides = [
     MenuItem(restaurant_id=16, menu_id=1, name="Bat-Mac and Cheese", description="Dark and cheesy", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (5).jpeg"),
 ]
 
-# Restaurant 17 - A Normal Civilian (Don't reference this name)
+
 r17_sides = []
 
-# Restaurant 18 - Green Arrow's Healthy Bites
 r18_sides = [
     MenuItem(restaurant_id=18, menu_id=1, name="Arrowhead Baked Potato", description="Healthy and hearty", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (2).jpeg"),
     MenuItem(restaurant_id=18, menu_id=1, name="Quiver Breadsticks", description="Arrow-straight and savory", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (3).jpeg"),
@@ -248,7 +245,7 @@ r18_sides = [
     MenuItem(restaurant_id=18, menu_id=1, name="Arrowhead Mac and Cheese", description="Healthy and cheesy", price=5.49, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (1).jpeg"),
 ]
 
-# Restaurant 19 - A Normal Civilian (Don't reference this name)
+
 r19_sides = [
     MenuItem(restaurant_id=19, menu_id=1, name="French Fries", description="Classic and crispy", price=2.99, type="side", picture="/menu_item_images/sides/fries/img (1).jpeg"),
     MenuItem(restaurant_id=19, menu_id=1, name="Onion Rings", description="Crispy and flavorful", price=3.49, type="side", picture="/menu_item_images/sides/onion_rings/img (2).jpeg"),
@@ -262,7 +259,7 @@ r19_sides = [
     MenuItem(restaurant_id=19, menu_id=1, name="Tater Tots", description="Crispy and addictive", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (5).jpeg"),
 ]
 
-# Restaurant 20 - A Normal Civilian (Don't reference this name)
+
 r20_sides = [
     MenuItem(restaurant_id=20, menu_id=1, name="French Fries", description="Classic and crispy", price=2.99, type="side", picture="/menu_item_images/sides/fries/img (1).jpeg"),
     MenuItem(restaurant_id=20, menu_id=1, name="Onion Rings", description="Crispy and flavorful", price=3.49, type="side", picture="/menu_item_images/sides/onion_rings/img (2).jpeg"),
@@ -289,7 +286,7 @@ r21_sides = [
     MenuItem(restaurant_id=21, menu_id=1, name="Crispy Tater Tots", description="Irresistibly crispy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (5).jpeg"),
 ]
 
-# Restaurant 22 - A Normal Civilian (Don't reference this name)
+
 r22_sides = [
     MenuItem(restaurant_id=22, menu_id=1, name="Classic French Fries", description="All-time favorite", price=2.99, type="side", picture="/menu_item_images/sides/fries/img (1).jpeg"),
     MenuItem(restaurant_id=22, menu_id=1, name="Golden Onion Rings", description="Crispy and golden", price=3.49, type="side", picture="/menu_item_images/sides/onion_rings/img (2).jpeg"),
@@ -303,7 +300,6 @@ r22_sides = [
     MenuItem(restaurant_id=22, menu_id=1, name="Crispy Tater Tots", description="Crispy perfection", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (5).jpeg"),
 ]
 
-# Restaurant 23 - Gotham Greens
 r23_sides = [
     MenuItem(restaurant_id=23, menu_id=1, name="Green Beans", description="Buttery and tender", price=6.99, type="side", picture="/menu_item_images/sides/green_beans/img (1).jpeg"),
     MenuItem(restaurant_id=23, menu_id=1, name="Roasted Veggies", description="Colorful and flavorful", price=7.49, type="side", picture="/menu_item_images/sides/roasted_veggies/img (2).jpeg"),
@@ -317,7 +313,7 @@ r23_sides = [
     MenuItem(restaurant_id=23, menu_id=1, name="Garlic Bread", description="Toasty and aromatic", price=5.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (5).jpeg"),
 ]
 
-# Restaurant 24 - Gotham Delights
+
 r24_sides = [
     MenuItem(restaurant_id=24, menu_id=1, name="French Fries", description="Golden and crispy", price=3.99, type="side", picture="/menu_item_images/sides/fries/img (1).jpeg"),
     MenuItem(restaurant_id=24, menu_id=1, name="Onion Rings", description="Crispy and savory", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (2).jpeg"),
@@ -346,7 +342,7 @@ r25_sides = [
     MenuItem(restaurant_id=25, menu_id=1, name="Sweet Potato Fries", description="Sweet and savory", price=4.49, type="side", picture="/menu_item_images/sides/sweet_potato_fries/img (5).jpeg"),
 ]
 
-# Restaurant 26 - A Normal Civilian (Don't reference this name)
+
 r26_sides = [
     MenuItem(restaurant_id=26, menu_id=1, name="Grilled Salmon", description="Grilled to perfection", price=16.99, type="side", picture="/menu_item_images/sides/salmon/img (1).jpeg"),
     MenuItem(restaurant_id=26, menu_id=1, name="Crispy Calamari", description="Crispy and tender", price=12.99, type="side", picture="/menu_item_images/sides/calamari/img (2).jpeg"),
@@ -360,7 +356,7 @@ r26_sides = [
     MenuItem(restaurant_id=26, menu_id=1, name="Fresh Fruit Salad", description="Fresh and colorful", price=4.49, type="side", picture="/menu_item_images/sides/fruit_salad/img (5).jpeg"),
 ]
 
-# Restaurant 27 - Cozy Corner
+
 r27_sides = [
     MenuItem(restaurant_id=27, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (2).jpeg"),
     MenuItem(restaurant_id=27, menu_id=1, name="Broccoli", description="Melted cheddar goodness", price=4.99, type="side", picture="/menu_item_images/sides/broccoli/img (1).jpeg"),
@@ -374,7 +370,7 @@ r27_sides = [
     MenuItem(restaurant_id=27, menu_id=1, name="Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (5).jpeg"),
 ]
 
-# Restaurant 28 - The Hungry Hut
+
 r28_sides = [
     MenuItem(restaurant_id=28, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (5).jpeg"),
     MenuItem(restaurant_id=28, menu_id=1, name="Sweet Potato Fries", description="Crispy and delightful", price=4.49, type="side", picture="/menu_item_images/sides/sweet_potato_fries/img (1).jpeg"),
@@ -388,7 +384,6 @@ r28_sides = [
     MenuItem(restaurant_id=28, menu_id=1, name="Onion Rings", description="Golden and satisfying", price=3.99, type="side", picture="/menu_item_images/sides/onion_rings/img (4).jpeg"),
 ]
 
-# Restaurant 29 - The Grill House
 r29_sides = [
     MenuItem(restaurant_id=29, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (3).jpeg"),
     MenuItem(restaurant_id=29, menu_id=1, name="French Fries", description="Golden and crispy", price=3.99, type="side", picture="/menu_item_images/sides/fries/img (2).jpeg"),
@@ -402,7 +397,7 @@ r29_sides = [
     MenuItem(restaurant_id=29, menu_id=1, name="Rice Pilaf", description="Fluffy and aromatic", price=3.49, type="side", picture="/menu_item_images/sides/rice_pilaf/img (4).jpeg"),
 ]
 
-# Restaurant 30 - The Corner Cafe
+
 r30_sides = [
     MenuItem(restaurant_id=30, menu_id=1, name="Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (3).jpeg"),
     MenuItem(restaurant_id=30, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (2).jpeg"),
@@ -416,7 +411,7 @@ r30_sides = [
     MenuItem(restaurant_id=30, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (4).jpeg"),
 ]
 
-# Restaurant 31 - The Diner
+
 r31_sides = [
     MenuItem(restaurant_id=31, menu_id=1, name="Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (5).jpeg"),
     MenuItem(restaurant_id=31, menu_id=1, name="French Fries", description="Golden and crispy", price=3.99, type="side", picture="/menu_item_images/sides/fries/img (4).jpeg"),
@@ -430,7 +425,7 @@ r31_sides = [
     MenuItem(restaurant_id=31, menu_id=1, name="Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (1).jpeg"),
 ]
 
-# Restaurant 32 - The Corner Bistro
+
 r32_sides = [
     MenuItem(restaurant_id=32, menu_id=1, name="Baked Potato", description="Buttery and satisfying", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (5).jpeg"),
     MenuItem(restaurant_id=32, menu_id=1, name="Sweet Potato Fries", description="Crispy and delightful", price=4.49, type="side", picture="/menu_item_images/sides/sweet_potato_fries/img (4).jpeg"),
@@ -444,7 +439,7 @@ r32_sides = [
     MenuItem(restaurant_id=32, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (1).jpeg"),
 ]
 
-# Restaurant 33 - The Garden Grove
+
 r33_sides = [
     MenuItem(restaurant_id=33, menu_id=1, name="Coleslaw", description="Crunchy and tangy", price=2.49, type="side", picture="/menu_item_images/sides/coleslaw/img (5).jpeg"),
     MenuItem(restaurant_id=33, menu_id=1, name="Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (4).jpeg"),
@@ -458,7 +453,6 @@ r33_sides = [
     MenuItem(restaurant_id=33, menu_id=1, name="Cheesy Broccoli", description="Melted cheddar goodness", price=4.99, type="side", picture="/menu_item_images/sides/broccoli/img (1).jpeg"),
 ]
 
-# Restaurant 34 - The Grill House
 r34_sides = [
     MenuItem(restaurant_id=34, menu_id=1, name="French Fries", description="Golden and crispy", price=3.99, type="side", picture="/menu_item_images/sides/fries/img (5).jpeg"),
     MenuItem(restaurant_id=34, menu_id=1, name="Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (4).jpeg"),
@@ -472,7 +466,7 @@ r34_sides = [
     MenuItem(restaurant_id=34, menu_id=1, name="Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (1).jpeg"),
 ]
 
-# Restaurant 35 - The Garden Cafe
+
 r35_sides = [
     MenuItem(restaurant_id=35, menu_id=1, name="Breadsticks", description="Irresistibly aromatic", price=4.99, type="side", picture="/menu_item_images/sides/breadsticks/img (5).jpeg"),
     MenuItem(restaurant_id=35, menu_id=1, name="Crispy Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (4).jpeg"),
@@ -486,7 +480,7 @@ r35_sides = [
     MenuItem(restaurant_id=35, menu_id=1, name="Cheesy Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (2).jpeg"),
 ]
 
-# Restaurant 36 - The Country Kitchen
+
 r36_sides = [
     MenuItem(restaurant_id=36, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (5).jpeg"),
     MenuItem(restaurant_id=36, menu_id=1, name="Crispy Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (4).jpeg"),
@@ -500,7 +494,6 @@ r36_sides = [
     MenuItem(restaurant_id=36, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (1).jpeg"),
 ]
 
-# Restaurant 37 - The Cozy Cabin
 r37_sides = [
     MenuItem(restaurant_id=37, menu_id=1, name="Breadsticks", description="Irresistibly aromatic", price=4.99, type="side", picture="/menu_item_images/sides/breadsticks/img (5).jpeg"),
     MenuItem(restaurant_id=37, menu_id=1, name="Crispy Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (4).jpeg"),
@@ -514,7 +507,6 @@ r37_sides = [
     MenuItem(restaurant_id=37, menu_id=1, name="Cheesy Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (2).jpeg"),
 ]
 
-# Restaurant 38 - The Riverside Cafe
 r38_sides = [
     MenuItem(restaurant_id=38, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (5).jpeg"),
     MenuItem(restaurant_id=38, menu_id=1, name="Crispy Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (4).jpeg"),
@@ -528,7 +520,7 @@ r38_sides = [
     MenuItem(restaurant_id=38, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (1).jpeg"),
 ]
 
-# Restaurant 39 - The Rustic Retreat
+
 r39_sides = [
     MenuItem(restaurant_id=39, menu_id=1, name="Crispy Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (5).jpeg"),
     MenuItem(restaurant_id=39, menu_id=1, name="Buttery Baked Potato", description="Buttery and satisfying", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (4).jpeg"),
@@ -542,7 +534,7 @@ r39_sides = [
     MenuItem(restaurant_id=39, menu_id=1, name="Cheesy Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (5).jpeg"),
 ]
 
-# Restaurant 40 - The Savory Spot
+
 r40_sides = [
     MenuItem(restaurant_id=40, menu_id=1, name="Roasted Vegetables", description="Tender and colorful", price=5.99, type="side", picture="/menu_item_images/sides/roasted_veggies/img (5).jpeg"),
     MenuItem(restaurant_id=40, menu_id=1, name="Creamy Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (4).jpeg"),
@@ -556,7 +548,7 @@ r40_sides = [
     MenuItem(restaurant_id=40, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (5).jpeg"),
 ]
 
-# Restaurant 41 - The Pizzeria
+
 r41_sides = [
     MenuItem(restaurant_id=41, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (1).jpeg"),
     MenuItem(restaurant_id=41, menu_id=1, name="Creamed Spinach", description="Rich and creamy", price=4.29, type="side", picture="/menu_item_images/sides/creamed_spinach/img (5).jpeg"),
@@ -583,7 +575,7 @@ r42_sides = [
     MenuItem(restaurant_id=30, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (4).jpeg"),
 ]
 
-# Restaurant 31 - The Diner
+
 r43_sides = [
     MenuItem(restaurant_id=31, menu_id=1, name="Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (5).jpeg"),
     MenuItem(restaurant_id=31, menu_id=1, name="French Fries", description="Golden and crispy", price=3.99, type="side", picture="/menu_item_images/sides/fries/img (4).jpeg"),
@@ -597,7 +589,7 @@ r43_sides = [
     MenuItem(restaurant_id=31, menu_id=1, name="Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (1).jpeg"),
 ]
 
-# Restaurant 32 - The Corner Bistro
+
 r44_sides = [
     MenuItem(restaurant_id=32, menu_id=1, name="Baked Potato", description="Buttery and satisfying", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (5).jpeg"),
     MenuItem(restaurant_id=32, menu_id=1, name="Sweet Potato Fries", description="Crispy and delightful", price=4.49, type="side", picture="/menu_item_images/sides/sweet_potato_fries/img (4).jpeg"),
@@ -611,7 +603,7 @@ r44_sides = [
     MenuItem(restaurant_id=32, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (1).jpeg"),
 ]
 
-# Restaurant 33 - The Garden Grove
+
 r45_sides = [
     MenuItem(restaurant_id=33, menu_id=1, name="Coleslaw", description="Crunchy and tangy", price=2.49, type="side", picture="/menu_item_images/sides/coleslaw/img (5).jpeg"),
     MenuItem(restaurant_id=33, menu_id=1, name="Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (4).jpeg"),
@@ -625,7 +617,7 @@ r45_sides = [
     MenuItem(restaurant_id=33, menu_id=1, name="Cheesy Broccoli", description="Melted cheddar goodness", price=4.99, type="side", picture="/menu_item_images/sides/broccoli/img (1).jpeg"),
 ]
 
-# Restaurant 34 - The Grill House
+
 r46_sides = [
     MenuItem(restaurant_id=34, menu_id=1, name="French Fries", description="Golden and crispy", price=3.99, type="side", picture="/menu_item_images/sides/fries/img (5).jpeg"),
     MenuItem(restaurant_id=34, menu_id=1, name="Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (4).jpeg"),
@@ -639,7 +631,7 @@ r46_sides = [
     MenuItem(restaurant_id=34, menu_id=1, name="Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (1).jpeg"),
 ]
 
-# Restaurant 35 - The Garden Cafe
+
 r47_sides = [
     MenuItem(restaurant_id=35, menu_id=1, name="Breadsticks", description="Irresistibly aromatic", price=4.99, type="side", picture="/menu_item_images/sides/breadsticks/img (5).jpeg"),
     MenuItem(restaurant_id=35, menu_id=1, name="Crispy Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (4).jpeg"),
@@ -653,7 +645,7 @@ r47_sides = [
     MenuItem(restaurant_id=35, menu_id=1, name="Cheesy Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (2).jpeg"),
 ]
 
-# Restaurant 36 - The Country Kitchen
+
 r48_sides = [
     MenuItem(restaurant_id=36, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (5).jpeg"),
     MenuItem(restaurant_id=36, menu_id=1, name="Crispy Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (4).jpeg"),
@@ -680,7 +672,6 @@ r49_sides = [
     MenuItem(restaurant_id=26, menu_id=1, name="Fresh Fruit Salad", description="Fresh and colorful", price=4.49, type="side", picture="/menu_item_images/sides/fruit_salad/img (5).jpeg"),
 ]
 
-# Restaurant 27 - Cozy Corner
 r50_sides = [
     MenuItem(restaurant_id=27, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (2).jpeg"),
     MenuItem(restaurant_id=27, menu_id=1, name="Broccoli", description="Melted cheddar goodness", price=4.99, type="side", picture="/menu_item_images/sides/broccoli/img (1).jpeg"),
