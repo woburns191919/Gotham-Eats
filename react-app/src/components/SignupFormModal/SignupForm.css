@@ -62,7 +62,6 @@ button {
     transition: background-color 0.3s;
     color: white;
     font-family: 'BatmanForeverAlternate', sans-serif;
-    text-shadow: 2px 2px black;
     margin-left: 10px
 }
 
