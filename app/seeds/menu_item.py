@@ -1,8 +1,8 @@
-from ...app.models import db, MenuItem, environment, SCHEMA
+from ..models import db, MenuItem, environment, SCHEMA
 from sqlalchemy.sql import text
 from random import randint, random
 from faker import Faker
-from faker.providers import commerce
+
 
 
 
@@ -67,28 +67,31 @@ entree randomizer.  step 1:  randomly pick entree from list
 filename_entree_list=["buffalo_chicken_sandwich", "chicken_tenders", "fish_tacos", "lasagna", "philly_cheesesteak",  "spaghetti", "chicken_fajita", "fettuccine_alfredo", "gyro", "lobster", "pizza", "steak", "bbq_ribs", "chicken_parmesan", "fish_and_chips", "hamburger", "meatball_sandwich", "shish_kebab"]
 
 Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasagna", "Philly Cheesesteak", "Spaghetti", 'Chicken Fajita',"Fettuccine Alfredo", "Gyro", "Lobster", "Pizza", "Steak", "BBQ Ribs", "Chicken Parm", "Fish & Chips", "Hamburger", "Meatball Sandwich", "Shish Kebab"]
+dessert_list=['blueberry_tart',     "chocolate_chip_cookie",  "lava_cake",         "pumpkin_pie", 'carrot_cake',      "chocolate_mousse",       "milkshake",         "strawberry_shortcake", 'apple_pie',     "cheesecake",         "cupcake",                "peach_cobbler",     "tiramisu", "banana_split",  "chocolate_brownie",  "flan", "pistachio_gelato",  "vanilla_icecream"]
 
 #step 2:   from the entree list picked, get the image url and randomly assign 1-5.  we make an object with key and path values as translator.
 
 
 
-translator= {
+entree_translator= {
     "Buffalo Chicken Sandwich": f"/menu_item_images/entrees/buffalo_chicken_sandwich/img ({randint(1, 5)}).jpeg",
     "Chicken Tenders": f"/menu_item_images/entrees/chicken_tenders/img ({randint(1, 5)}).jpeg",
-    "Lasagna": f"/menu_item_images/lasagna/img ({randint(1, 5)}).jpeg",
-    "Philly Cheesesteak": f"/menu_item_images/philly_cheesesteak/img ({randint(1, 5)}).jpeg",
-    "Spaghetti": f"/menu_item_images/spaghetti/img ({randint(1, 5)}).jpeg",
-    "Chicken Fajita": f"/menu_item_images/chicken_fajita/img ({randint(1, 5)}).jpeg",
-    "Fettuccine Alfredo": f"/menu_item_images/fettuccine_alfredo/img ({randint(1, 5)}).jpeg",
-    "Gyro": f"/menu_item_images/gyro/img ({randint(1, 5)}).jpeg",
-    "Lobster": f"/menu_item_images/lobster/img ({randint(1, 5)}).jpeg",
-    "Steak": f"/menu_item_images/steak/img ({randint(1, 5)}).jpeg",
-    "BBQ Ribs": f"/menu_item_images/bbq_ribs/img ({randint(1, 5)}).jpeg",
-    "Chicken Parm": f"/menu_item_images/chicken_parmesean/img ({randint(1, 5)}).jpeg",
-    "Fish & Chips": f"/menu_item_images/fish_and_chips/img ({randint(1, 5)}).jpeg",
-    "Hamburger": f"/menu_item_images/hamburger/img ({randint(1, 5)}).jpeg",
-    "Meatball Sandwich": f"/menu_item_images/meatball_sandwich/img ({randint(1, 5)}).jpeg",
-    "Shish Kebab": f"/menu_item_images/shish_kebab/img ({randint(1, 5)}).jpeg",
+    "Lasagna": f"/menu_item_images/entrees/lasagna/img ({randint(1, 5)}).jpeg",
+    "Philly Cheesesteak": f"/menu_item_images/entrees/philly_cheesesteak/img ({randint(1, 5)}).jpeg",
+    "Spaghetti": f"/menu_item_images/entrees/spaghetti/img ({randint(1, 5)}).jpeg",
+    "Chicken Fajita": f"/menu_item_images/entrees/chicken_fajita/img ({randint(1, 5)}).jpeg",
+    "Fettuccine Alfredo": f"/menu_item_images/entrees/fettuccine_alfredo/img ({randint(1, 5)}).jpeg",
+    "Gyro": f"/menu_item_images/entrees/gyro/img ({randint(1, 5)}).jpeg",
+    "Lobster": f"/menu_item_images/entrees/lobster/img ({randint(1, 5)}).jpeg",
+    "Steak": f"/menu_item_images/entrees/steak/img ({randint(1, 5)}).jpeg",
+    "BBQ Ribs": f"/menu_item_images/entrees/bbq_ribs/img ({randint(1, 5)}).jpeg",
+    "Chicken Parm": f"/menu_item_images/entrees/chicken_parmesean/img ({randint(1, 5)}).jpeg",
+    "Fish & Chips": f"/menu_item_images/entrees/fish_and_chips/img ({randint(1, 5)}).jpeg",
+    "Hamburger": f"/menu_item_images/entrees/hamburger/img ({randint(1, 5)}).jpeg",
+    "Meatball Sandwich": f"/menu_item_images/entrees/meatball_sandwich/img ({randint(1, 5)}).jpeg",
+    "Shish Kebab": f"/menu_item_images/entrees/shish_kebab/img ({randint(1, 5)}).jpeg",
+    "Fish Tacos" : f"/menu_item_images/entrees/fish_tacos/img ({randint(1, 5)}).jpeg",
+    "Pizza" : f"/menu_item_images/entrees/pizza/img ({randint(1, 5)}).jpeg"
 }
 
 villain_adj_dict = {
@@ -113,6 +116,11 @@ villain_adj_dict = {
     "19_everyone_else": ["mouth-watering", "delightful", "scrumptious", "appetizing", "delectable", "enticing", "irresistible", "tasty", "flavorful", "savoring", "tempting", "yummy", "divine", "palatable" "lip-smacking", "satisfying", "succulent", "indulgent", "inspirational"]
             }
 
+def fakePrice():
+    az= 5
+    zy=30
+    rand_num = random.uniform(az,zy)
+    return rand_num
 # ouradj=ourobject[counter.string()]
 
 # if counter < 19
@@ -120,43 +128,45 @@ villain_adj_dict = {
 
 # hop in after iteration 19
 
-fake = Faker()
-fake.add_provider(commerce.Provider)
-counter=0
-all_entrees=[]
-for i in range(0,50):
-    entree_name_end = random.choice(Entree_List)
+def seed_menu_items():
+    counter=0
+    all_entrees=[]
+    for i in range(0,50):
 
-    fake_price = fake.price({ min: 5, max: 30 })
+        entree_name_end = Entree_List[randint(0,17)]
+        dessert_name_end= dessert_list[randint(0,17)]
 
-    chosen_villain = { chosen_villain for chosen_villain, adjective in villain_adj_dict.items() }
+        fake_price = 2.99
 
-    # chosen_villain = { chosen_villain: adjective for chosen_villain, adjective in villain_adj_dict.items() }
+        chosen_villain = { chosen_villain for chosen_villain, adjective in villain_adj_dict.items() }
+
+        # chosen_villain = { chosen_villain: adjective for chosen_villain, adjective in villain_adj_dict.items() }
 
 
-    # our_adj_list = { adjective for chosen_villain, adjective in villain_adj_dict.items() }
-    villain_list = list(chosen_villain)
-    # print(villain_list)
+        # our_adj_list = { adjective for chosen_villain, adjective in villain_adj_dict.items() }
+        villain_list = list(chosen_villain)
+        # print(villain_list)
 
-    rand_villian = villain_list[randint(0, 17)]
-    r_var = rand_villian.split('_')
-    villain_number = r_var[0]
+        rand_villian = villain_list[randint(0, 17)]
+        r_var = rand_villian.split('_')
+        villain_number = r_var[0]
 
-    curr_adj_list = villain_adj_dict[rand_villian]
+        curr_adj_list = villain_adj_dict[rand_villian]
 
-    all_entrees[counter] = MenuItem(
-        restaurant_id=int(villain_number),
-        menu_id=int(villain_number),
-        name=f"{curr_adj_list[randint(0, len(curr_adj_list - 1))]} {entree_name_end}",
-        description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
-        price=fake_price,
-        type="entree",
-        picture=translator[entree_name_end]
-    )
-    counter+=1
+        currnew=MenuItem(
+            restaurant_id=int(villain_number),
+            menu_id=int(villain_number),
+            name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {entree_name_end}",
+            description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
+            price=fake_price,
+            type="entree",
+            picture=entree_translator[entree_name_end]
+        )
+        all_entrees.append(currnew)
+        counter+=1
 
-db.session.add_all(all_entrees)
-db.session.commit()
+    db.session.add_all(all_entrees)
+    db.session.commit()
 
 
 
@@ -954,12 +964,10 @@ def seed_menu_items():
     db.session.add_all(menu_items)
     db.session.commit()
 
-
+'''
 def undo_menu_items():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.menu_items RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM menu_items"))
     db.session.commit()
-
-'''

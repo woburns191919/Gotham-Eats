@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     firstName = db.Column(db.String(255),nullable=False)
     lastName = db.Column(db.String(255),nullable=False)
     username = db.Column(db.String(255), nullable=False, unique=True)
-    hashedPassword = db.Column(db.String(255), nullable=False)
+    password = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     streetAddress=db.Column(db.String(255),nullable=False)
     city= db.Column(db.String(255), nullable=False)
