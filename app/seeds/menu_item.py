@@ -1,6 +1,9 @@
 from ...app.models import db, MenuItem, environment, SCHEMA
 from sqlalchemy.sql import text
 from random import randint, random
+from faker import Faker
+from faker.providers import commerce
+
 
 
 '''
@@ -117,28 +120,45 @@ villain_adj_dict = {
 
 # hop in after iteration 19
 
+fake = Faker()
+fake.add_provider(commerce.Provider)
+
+fake_price = fake.price({ min: 5, max: 30 })
+
 chosen_villain = { chosen_villain for chosen_villain, adjective in villain_adj_dict.items() }
 
 keys_list = list(chosen_villain)
 
-
 chosen_villain = { chosen_villain: adjective for chosen_villain, adjective in villain_adj_dict.items() }
+
 
 # our_adj_list = { adjective for chosen_villain, adjective in villain_adj_dict.items() }
 villain_list = list(chosen_villain)
+# print(villain_list)
 
-r_choice = random.choice(villain_list)
+rand_villian = villain_list[randint(0, 18)]
+r_var = rand_villian.split('_')
+villain_number = r_var[0]
 
-print(r_choice)
+curr_adj_list = villain_adj_dict[rand_villian]
+entree = [0]
+entree[0] = MenuItem(
+    restaurant_id=int(villain_number),
+    menu_id=int(villain_number),
+    name=f"{curr_adj_list[randint(0, len(curr_adj_list - 1))]} {meal_name_end}",
+    description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {meal_name_end}s",
+    price=fake_price,
+    type="entree",
+    picture=translator[meal_name_end]
+)
+
+# finished_var = MenuItem(
+#       restaurant_id=villain_number, menu_id=villain_number, name="Pork Chop", description="Grilled pork chop with apple sauce", price=20.99, type="entree", picture="path/to/picture5"
+#       )
 
 
 
-updated_name_of_meal= f"{random.choice(adj_list)} + {meal_name_end}"
 
-
-
-
-filepath = translator[meal_name_end]
 
 #grab the path using translator[ourpickedentree]
 
