@@ -1,5 +1,6 @@
 from app.models import db, MenuItem, environment, SCHEMA
 from sqlalchemy.sql import text
+from random import randint, random
 
 
 '''
@@ -60,19 +61,64 @@ r1_desserts = [
 '''
 entree randomizer.  step 1:  randomly pick entree from list
 '''
-filename_list=[`buffalo_chicken_sandwich  chicken_tenders    fish_tacos  lasagna            philly_cheesesteak  spaghetti
-       chicken_fajita            fettucine_alfredo  gyro        lobster            pizza               steak
-bbq_ribs  chicken_parmesan          fish_and_chips     hamburger   meatball_sandwich  shish_kebab`]
-Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasagna", "Philly Cheesesteak",
- "Spaghetti", 'Chicken Fajita',"Fetucine Alfredo", "Gyro", "Lobster", "Pizza", "Steak",
- "BBQ Ribs", "Chicken Parm", "Fish & Chips", "Hamburger", "Meatball Sandwich", "Shish Kebab"]
+filename_list=["buffalo_chicken_sandwich", "chicken_tenders", "fish_tacos", "lasagna", "philly_cheesesteak",  "spaghetti", "chicken_fajita", "fettuccine_alfredo", "gyro", "lobster", "pizza", "steak", "bbq_ribs", "chicken_parmesan", "fish_and_chips", "hamburger", "meatball_sandwich", "shish_kebab"]
+
+Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasagna", "Philly Cheesesteak", "Spaghetti", 'Chicken Fajita',"Fettuccine Alfredo", "Gyro", "Lobster", "Pizza", "Steak", "BBQ Ribs", "Chicken Parm", "Fish & Chips", "Hamburger", "Meatball Sandwich", "Shish Kebab"]
 
 #step 2:   from the entree list picked, get the image url and randomly assign 1-5.  we make an object with key and path values as translator.
 
-translator={"Buffalo Chicken Sandwich": "/menu_item_images/entrees/corn_on_the_cob/img (1).jpeg"}
-[buffalo_chicken_sandwich  chicken_tenders    fish_tacos  lasagna            philly_cheesesteak  spaghetti
-   chicken_fajita            fettucine_alfredo  gyro        lobster            pizza               steak
-bbq_ribs  chicken_parmesan          fish_and_chips     hamburger   meatball_sandwich  shish_kebab]
+meal_name_end = random.choice(Entree_List)
+
+meal_name_end.append(f"{}")
+
+
+translator= {
+    "Buffalo Chicken Sandwich": f"/menu_item_images/entrees/buffalo_chicken_sandwich/img ({randint(1, 5)}).jpeg",
+    "Chicken Tenders": f"/menu_item_images/entrees/chicken_tenders/img ({randint(1, 5)}).jpeg",
+    "Lasagna": f"/menu_item_images/lasagna/img ({randint(1, 5)}).jpeg",
+    "Philly Cheesesteak": f"/menu_item_images/philly_cheesesteak/img ({randint(1, 5)}).jpeg",
+    "Spaghetti": f"/menu_item_images/spaghetti/img ({randint(1, 5)}).jpeg",
+    "Chicken Fajita": f"/menu_item_images/chicken_fajita/img ({randint(1, 5)}).jpeg",
+    "Fettuccine Alfredo": f"/menu_item_images/fettuccine_alfredo/img ({randint(1, 5)}).jpeg",
+    "Gyro": f"/menu_item_images/gyro/img ({randint(1, 5)}).jpeg",
+    "Lobster": f"/menu_item_images/lobster/img ({randint(1, 5)}).jpeg",
+    "Steak": f"/menu_item_images/steak/img ({randint(1, 5)}).jpeg",
+    "BBQ Ribs": f"/menu_item_images/bbq_ribs/img ({randint(1, 5)}).jpeg",
+    "Chicken Parm": f"/menu_item_images/chicken_parmesean/img ({randint(1, 5)}).jpeg",
+    "Fish & Chips": f"/menu_item_images/fish_and_chips/img ({randint(1, 5)}).jpeg",
+    "Hamburger": f"/menu_item_images/hamburger/img ({randint(1, 5)}).jpeg",
+    "Meatball Sandwich": f"/menu_item_images/meatball_sandwich/img ({randint(1, 5)}).jpeg",
+    "Shish Kebab": f"/menu_item_images/shish_kebab/img ({randint(1, 5)}).jpeg",
+}
+
+{
+    "1_penguin" = ["scheming", "waddling", "umbrella-toting", "calculating", "icy"],
+    "2_riddler" = ["enigmatic", "puzzling", "question-asking", "clever", "green-suited"],
+    "3_ivy"= ["seductive", "poisonous", "nature-loving", "manipulative", "vibrant"],
+    "4_two_face" = ["dual-personality", "coin-flipping", "disfigured", "ambivalent", "harvey-dent"],
+    "5_scarecrow" = ["fear-inducing", "terrifying", "sinister", "psychological", "straw-hat"],
+    "6_catwoman" = ["cat-like", "thief", "feline", "independent", "whip-wielding"],
+    "7_batman" = ["mysterious", "vigilante", "cape-wearing", "dark", "justice-seeking"]
+    8_joker = ["chaotic", "maniacal", "laughter-loving", "twisted", "purple-suited"]
+    9_bane = ["muscle-bound", "venom-injecting", "intelligent", "merciless", "masked"]
+    10_mr_freeze = ["cryogenic", "cold-hearted", "ice-obsessed", "tragic", "cryosuit-wearing"]
+    11_clayface = ["shape-shifting", "malleable", "actor", "melting", "mud-like"]
+    12_firefly = ["pyromaniac", "fire-starting", "winged", "arsonist", "flame-obsessed"]
+    13_mad_hatter = ["mad", "hat-wearing", "tea-obsessed", "eccentric", "mind-controlling"]
+    14_talon = ["lethal", "assassin", "feathered", "loyal", "Court-of-Owls"]
+    15_zatanna = ["magician", "spell-casting", "charming", "mystical", "top-hat-wearing"]
+    16_bat_man = ["bat-themed", "wealthy", "genius", "inventor", "gadget-equipped"]
+    17_mayor = ["politician", "corrupt", "powerful", "manipulative", "Gotham's leader"]
+    18_green_arrow = ["archer", "vigilante", "emerald-clad", "skilled", "arrow-shooting"]
+    19_everyone_else = ["mouth-watering", "delightful", "scrumptious", "appetizing", "delectable",
+                    "enticing", "irresistible", "tasty", "flavorful", "savoring",
+                   "tempting", "yummy", "divine", "palatable", "lip-smacking",
+                   "satisfying", "succulent", "indulgent", "inspirational"]
+                   }
+
+
+filepath = translator[meal_name_end]
+
 
 
 #grab the path using translator[ourpickedentree]
