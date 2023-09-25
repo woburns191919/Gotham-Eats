@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
     history.push('/');
   };
 
-  // const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+
   const ulClassName = "profile-dropdown";
 
   return (
@@ -86,7 +86,6 @@ function ProfileButton({ user }) {
                 </ul>
                 <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history('/owner/resaurants') }}>Manage Resaurants</button></ul>
                 <ul><button onClick={logout} className="buttons center-menu center-menu1">Log Out</button></ul>
-                {/* <Link>Add your restaurant</Link> */}
               </>
             ) : (
               <>
@@ -106,6 +105,7 @@ function ProfileButton({ user }) {
                     modalComponent={<SignupFormModal />}
                   />
                 </ul>
+                {<Link clssName="prof-add-res" to="/new">Add your restaurant</Link>}
               </>
             )}
           </ul>
