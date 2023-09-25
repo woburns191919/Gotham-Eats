@@ -32,11 +32,11 @@ function Navigation({ isLoaded }) {
 
 
                     <div className="navBar-right">
+                        <NavLink to="/cart" className="cart-btn">
+                            <i className="fas fa-shopping-cart"></i> Cart
+                        </NavLink>
                         {sessionUser ? null : (
                             <>
-                                <NavLink to="/cart" className="cart-btn">
-                                    <i className="fas fa-shopping-cart"></i> Cart
-                                </NavLink>
                                 <NavLink to="/login" className="login-btn">
                                     <i className="fas fa-user"></i> Log in
                                 </NavLink>

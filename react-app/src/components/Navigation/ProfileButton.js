@@ -62,7 +62,7 @@ function ProfileButton({ user }) {
     }
   };
 
-  
+
 
   return (
     <>
@@ -75,7 +75,7 @@ function ProfileButton({ user }) {
             <li>{user.username}</li>
             <li>{user.email}</li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+            <button onClick={handleLogout} className="buttons center-menu center-menu1">Log Out</button>
             </li>
           </>
         ) : null}
