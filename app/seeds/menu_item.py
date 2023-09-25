@@ -122,11 +122,15 @@ chosen_villain = { chosen_villain for chosen_villain, adjective in villain_adj_d
 keys_list = list(chosen_villain)
 
 
+chosen_villain = { chosen_villain: adjective for chosen_villain, adjective in villain_adj_dict.items() }
 
+# our_adj_list = { adjective for chosen_villain, adjective in villain_adj_dict.items() }
+villain_list = list(chosen_villain)
 
-random_villain = random.choice(list(villain_adj_dict.keys()))
+r_choice = random.choice(villain_list)
 
-adj_list = villain_adj_dict[random_villain]
+print(r_choice)
+
 
 
 updated_name_of_meal= f"{random.choice(adj_list)} + {meal_name_end}"
