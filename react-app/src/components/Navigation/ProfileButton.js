@@ -44,7 +44,7 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
     closeMenu();
-    history('/');
+    history.push('/');
   };
 
   // const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -52,65 +52,65 @@ function ProfileButton({ user }) {
 
   return (
     <>
-    <div className="profile-dropdown-container">
-      <div className="btn">
-      <button className="navigation-btn" aria-label="Main navigation menu" onClick={openMenu}>
-  {!user ? (
-    <>
-      <FontAwesomeIcon icon={faBars} className="menu-icon" />
-      <FontAwesomeIcon icon={faUserCircle} className="profile-icon" />
-    </>
-  ) : (
-    <>
-    <FontAwesomeIcon icon={faBars} className="menu-icon" />
-    <div className="user-initials1">{userInitials.toUpperCase()}</div>
-    </>
-  )}
-</button>
+      <div className="profile-dropdown-container">
+        <div className="btn">
+          <button className="navigation-btn" aria-label="Main navigation menu" onClick={openMenu}>
+            {!user ? (
+              <>
+                <FontAwesomeIcon icon={faBars} className="menu-icon" />
+                <FontAwesomeIcon icon={faUserCircle} className="profile-icon" />
+              </>
+            ) : (
+              <>
+                <FontAwesomeIcon icon={faBars} className="menu-icon" />
+                <div className="user-initials1">{userInitials.toUpperCase()}</div>
+              </>
+            )}
+          </button>
 
 
-      </div>
-      <div className="menu-drop-down">
+        </div>
+        <div className="menu-drop-down">
 
-      <ul className={ulClassName} ref={ulRef} style={{ display: showMenu ? 'block' : 'none' }}>
-        {user ? (
-          <>
-             <li className="center-menu greeting">Hello, {user.firstName}</li>
-             <li className="center-menu email">{user.email}</li>
-             <hr />
-            <ul className="center-menu">
-            <Link to="/users/show" onClick={closeMenu} style={{ textDecoration: 'none', color: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-              <FontAwesomeIcon icon={faUserCircle} style={{ marginRight: '8px' }} />
-              <li className="center-menu center-menu-profile">Your Profile</li>
-            </Link>
-            </ul>
-            <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={ (e) => {closeMenu(); history('/owner/spots')}}>Manage Spots</button></ul>
-            <ul><button type="button" className="Manage-spot-button center-menu1" onClick={(e)=>{closeMenu(); history('/reviews/current') }}>Manage Reviews</button></ul>
-            <ul><button onClick={logout} className="buttons center-menu center-menu1">Log Out</button></ul>
-          </>
-        ) : (
-          <>
-          <ul className="center-menu center-menu-login">
-            <OpenModalMenuItem
-            className="center-menu"
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-              />
+          <ul className={ulClassName} ref={ulRef} style={{ display: showMenu ? 'block' : 'none' }}>
+            {user ? (
+              <>
+                <li className="center-menu greeting">Hello, {user.firstName}</li>
+                <li className="center-menu email">{user.email}</li>
+                <hr />
+                <ul className="center-menu">
+                  <Link to="/users/show" onClick={closeMenu} style={{ textDecoration: 'none', color: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <FontAwesomeIcon icon={faUserCircle} style={{ marginRight: '8px' }} />
+                    <li className="center-menu center-menu-profile">Your Profile</li>
+                  </Link>
+                </ul>
+                <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history('/owner/spots') }}>Manage Spots</button></ul>
+                <ul><button type="button" className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history('/reviews/current') }}>Manage Reviews</button></ul>
+                <ul><button onClick={logout} className="buttons center-menu center-menu1">Log Out</button></ul>
+              </>
+            ) : (
+              <>
+                <ul className="center-menu center-menu-login">
+                  <OpenModalMenuItem
+                    className="center-menu"
+                    itemText="Log In"
+                    onItemClick={closeMenu}
+                    modalComponent={<LoginFormModal />}
+                  />
+                </ul>
+                <ul className="center-menu center-menu-signUp">
+                  <OpenModalMenuItem
+                    className="center-menu"
+                    itemText="Sign Up"
+                    onItemClick={closeMenu}
+                    modalComponent={<SignupFormModal />}
+                  />
+                </ul>
+              </>
+            )}
           </ul>
-          <ul  className="center-menu center-menu-signUp">
-            <OpenModalMenuItem
-              className="center-menu"
-              itemText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-              />
-          </ul>
-          </>
-        )}
-      </ul>
+        </div>
       </div>
-    </div>
     </>
   );
 }
