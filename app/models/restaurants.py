@@ -52,5 +52,6 @@ class Restaurant(db.Model, UserMixin):
           'name': self.name,
           'description': self.description,
           'hours': self.hours,
-          'previmg': self.previmg
+          'previmg': self.previmg,
+          'avgRating': self.avg_stars
       }

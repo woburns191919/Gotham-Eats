@@ -18,6 +18,7 @@
   max-width: 1002px;
   margin: 0 auto;
   margin-top: 102px;
+
 }
 
 .restaurant-img-main-div,
@@ -56,14 +57,6 @@
 
 .restaurant-box:hover {
     cursor: pointer;
-}
-
-.ownerRestaurant-img,
-.restaurant-img {
-    width: 223px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
 }
 
 .restaurant-info-flex {
@@ -105,4 +98,10 @@
 
 .owner-div update-delete-btns button:hover {
     cursor: pointer;
+}
+
+.res-name{
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

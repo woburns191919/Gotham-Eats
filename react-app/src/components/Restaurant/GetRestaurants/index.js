@@ -20,6 +20,7 @@ export default function GetRestaurants({ ownerMode = false }) {
 
   if (!restaurantsData || !restaurantsData.restaurants) return null;
 
+
   return (
     <div className="main-container">
       {ownerMode && (
@@ -37,11 +38,11 @@ export default function GetRestaurants({ ownerMode = false }) {
         {restaurants.map((restaurant) => (
           <div className={`${ownerMode ? "ownerRestaurant-restaurant-img-main-div" : "restaurant-img-main-div"}`} key={restaurant.id}>
             <Link to={`/restaurants/${restaurant.id}`} style={{ textDecoration: "none", color: "var(--black)" }}>
-              <div className={`restaurant-box ${ownerMode ? "ownerRestaurant" : ""}`} title={restaurant.name}>
+              <div className={`restaurant-box ${ownerMode ? "ownerRestaurant" : ""}`}>
                 <img src={restaurant.previmg
-                } className={ownerMode ? "ownerRestaurant-img" : "restaurant-img"} alt={restaurant.name} />
+                } className={ownerMode ? "ownerRestaurant-img" : "restaurant-img"} alt="" />
                 <div className="restaurant-info-flex">
-                  <p className="p-card-style location-p-tag">{`${restaurant.location}`}</p>
+                  <p className="res-name">{restaurant.name}({restaurant.streetAddress})</p>
                   <p className="avgRating-p-tag">{restaurant.avgRating ? restaurant.avgRating.toFixed(1) : <span className="boldText">New</span>}</p>
                 </div>
               </div>
