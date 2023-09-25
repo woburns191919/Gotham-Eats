@@ -3,7 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
 
-
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -13,8 +12,8 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(255),nullable=False)
     lastName = db.Column(db.String(255),nullable=False)
-    username = db.Column(db.String(255), nullable=False, unique=True)
-    hashedPassword = db.Column(db.String(255), nullable=False)
+    username = db.Column(db.String(40), nullable=False, unique=True)
+    hashed_password = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     streetAddress=db.Column(db.String(255),nullable=False)
     city= db.Column(db.String(255), nullable=False)
@@ -32,11 +31,11 @@ class User(db.Model, UserMixin):
 
     @property
     def password(self):
-        return self.hashedPassword
+        return self.hashed_password
 
     @password.setter
     def password(self, password):
-        self.hashedPassword = generate_password_hash(password)
+        self.hashed_password = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
