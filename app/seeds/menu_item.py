@@ -2,9 +2,93 @@ from app.models import db, MenuItem, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
+'''
+*******************this section is just for reference.  example of complete
+seeder file:
+
+r1_entrees = [
+    MenuItem(restaurant_id=1, menu_id=1, name="Chicken Alfredo", description="Creamy chicken pasta", price=15.99, type="entree", picture="path/to/picture1"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Beef Lasagna", description="Layered beef and cheese", price=16.99, type="entree", picture="path/to/picture2"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Grilled Salmon", description="Salmon with a lemon herb glaze", price=18.99, type="entree", picture="path/to/picture3"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Steak Frites", description="Juicy steak with French fries", price=22.99, type="entree", picture="path/to/picture4"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Pork Chop", description="Grilled pork chop with apple sauce", price=20.99, type="entree", picture="path/to/picture5"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Lamb Curry", description="Spicy and flavorful lamb curry", price=17.99, type="entree", picture="path/to/picture6"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Vegetable Stir-Fry", description="Assorted vegetables in a savory sauce", price=14.99, type="entree", picture="path/to/picture7"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Spaghetti Carbonara", description="Creamy pasta with bacon and cheese", price=15.49, type="entree", picture="path/to/picture8"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Chicken Tikka Masala", description="Chicken in a creamy tomato sauce", price=16.49, type="entree", picture="path/to/picture9"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Beef Stew", description="Hearty beef stew with vegetables", price=16.79, type="entree", picture="path/to/picture10"),
+]
+r1_drinks = [
+    MenuItem(restaurant_id=1, menu_id=1, name="Mango Smoothie", description="Refreshing mango blend", price=5.99, type="drink", picture="path/to/picture11"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Iced Latte", description="Chilled coffee with milk", price=4.99, type="drink", picture="path/to/picture12"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Green Tea", description="Warm and soothing", price=3.49, type="drink", picture="path/to/picture13"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Lemonade", description="Sweet and tangy", price=4.49, type="drink", picture="path/to/picture14"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Red Wine", description="Rich and full-bodied", price=7.99, type="drink", picture="path/to/picture15"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Craft Beer", description="Local brew", price=6.49, type="drink", picture="path/to/picture16"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Espresso", description="Strong and aromatic", price=3.99, type="drink", picture="path/to/picture17"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Champagne", description="Bubbly and crisp", price=9.99, type="drink", picture="path/to/picture18"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Bloody Mary", description="Spicy and invigorating", price=7.99, type="drink", picture="path/to/picture19"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Mojito", description="Minty and refreshing", price=6.99, type="drink", picture="path/to/picture20"),
+]
+r1_sides = [
+    MenuItem(restaurant_id=1, menu_id=1, name="French Fries", description="Golden and crispy", price=3.99, type="side", picture="path/to/picture21"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="path/to/picture22"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="path/to/picture23"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Mashed Potatoes", description="Creamy and buttery", price=3.49, type="side", picture="path/to/picture24"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Coleslaw", description="Crunchy and tangy", price=2.49, type="side", picture="path/to/picture25"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Green Beans", description="Sauteed with garlic", price=2.99, type="side", picture="path/to/picture26"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="path/to/picture27"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Bread Rolls", description="Soft and warm", price=2.49, type="side", picture="path/to/picture28"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Garden Salad", description="Fresh and light", price=3.99, type="side", picture="path/to/picture29"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Rice Pilaf", description="Fluffy and aromatic", price=3.49, type="side", picture="path/to/picture30"),
+]
+r1_desserts = [
+    MenuItem(restaurant_id=1, menu_id=1, name="Chocolate Mousse", description="Rich and creamy dessert", price=6.99, type="dessert", picture="path/to/picture31"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Cheesecake", description="Smooth and sweet cheesecake", price=7.99, type="dessert", picture="path/to/picture32"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Panna Cotta", description="Silky and light", price=6.49, type="dessert", picture="path/to/picture33"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Brownie Sundae", description="Warm brownie with ice cream", price=6.99, type="dessert", picture="path/to/picture34"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Apple Pie", description="Spiced apple filling with flaky crust", price=5.99, type="dessert", picture="path/to/picture35"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Lemon Tart", description="Tangy and sweet", price=5.49, type="dessert", picture="path/to/picture36"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Tiramisu", description="Layered coffee-soaked dessert", price=7.49, type="dessert", picture="path/to/picture37"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Gelato", description="Rich and creamy Italian ice cream", price=5.99, type="dessert", picture="path/to/picture38"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Creme Brulee", description="Crunchy caramel top with creamy custard", price=6.79, type="dessert", picture="path/to/picture39"),
+    MenuItem(restaurant_id=1, menu_id=1, name="Chocolate Cake", description="Decadent and moist", price=6.49, type="dessert", picture="path/to/picture40"),
+]
+
+**************************************************
+'''
+'''
+entree randomizer.  step 1:  randomly pick entree from list
+'''
+filename_list=[`buffalo_chicken_sandwich  chicken_tenders    fish_tacos  lasagna            philly_cheesesteak  spaghetti
+       chicken_fajita            fettucine_alfredo  gyro        lobster            pizza               steak
+bbq_ribs  chicken_parmesan          fish_and_chips     hamburger   meatball_sandwich  shish_kebab`]
+Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasagna", "Philly Cheesesteak",
+ "Spaghetti", 'Chicken Fajita',"Fetucine Alfredo", "Gyro", "Lobster", "Pizza", "Steak",
+ "BBQ Ribs", "Chicken Parm", "Fish & Chips", "Hamburger", "Meatball Sandwich", "Shish Kebab"]
+
+#step 2:   from the entree list picked, get the image url and randomly assign 1-5.  we make an object with key and path values as translator.
+
+translator={"Buffalo Chicken Sandwich": "/menu_item_images/entrees/corn_on_the_cob/img (1).jpeg"}
+[buffalo_chicken_sandwich  chicken_tenders    fish_tacos  lasagna            philly_cheesesteak  spaghetti
+   chicken_fajita            fettucine_alfredo  gyro        lobster            pizza               steak
+bbq_ribs  chicken_parmesan          fish_and_chips     hamburger   meatball_sandwich  shish_kebab]
 
 
-#missing r17
+#grab the path using translator[ourpickedentree]
+
+#construct r1 entree look up top for format
+
+ownersOfRestaurant= {"1": penguin, "2":riddler, "3": Ivy, 4: Two-Face, 5: Scarecrow, 6:Catwoman, 7: Batman, 8: Joker, 9: Bane,
+10: mr freeze, 11: Clayface, 12: Firefly,13: mad hatter, 14: Talon, 15: Zatanna, 16: Batman, 18: GreenArrow}
+
+#if we want also make a table of adjectives for each character.  construct name of entree  make it spicy
+
+#insert entree and make sure filepath correct.
+
+
+'''
+#************THESE ARE ALL OF THE SIDES THEYH ARE DONE EXCEPT WE missing r17
 r1_sides = [
     MenuItem(restaurant_id=1, menu_id=1, name="Bane's Baked Potato", description="Loaded with toppings", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (3).jpeg"),
     MenuItem(restaurant_id=1, menu_id=1, name="Joker's Breadsticks", description="Twisted and delicious", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (2).jpeg"),
@@ -684,8 +768,11 @@ r50_sides = [
     MenuItem(restaurant_id=27, menu_id=1, name="Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (4).jpeg"),
     MenuItem(restaurant_id=27, menu_id=1, name="Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (5).jpeg"),
 ]
+'''
 
 
+'''  ********OUR ACTUAL SEED MENU.   WE WILL COMMBINE ALL ARAYS THEN
+ADD TO DATABASE AND COMMIT THEM.
 def seed_menu_items():
 
     menu_items = r1_entrees + r1_drinks + r1_sides + r1_desserts
@@ -775,3 +862,5 @@ def undo_menu_items():
     else:
         db.session.execute(text("DELETE FROM menu_items"))
     db.session.commit()
+
+'''
