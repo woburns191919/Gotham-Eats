@@ -458,6 +458,241 @@ r33_sides = [
     MenuItem(restaurant_id=33, menu_id=1, name="Cheesy Broccoli", description="Melted cheddar goodness", price=4.99, type="side", picture="/menu_item_images/sides/broccoli/img (1).jpeg"),
 ]
 
+# Restaurant 34 - The Grill House
+r34_sides = [
+    MenuItem(restaurant_id=34, menu_id=1, name="French Fries", description="Golden and crispy", price=3.99, type="side", picture="/menu_item_images/sides/fries/img (5).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (4).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (3).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Baked Potato", description="Buttery and satisfying", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (2).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (1).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (5).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Sweet Potato Fries", description="Crispy and delightful", price=4.49, type="side", picture="/menu_item_images/sides/sweet_potato_fries/img (4).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (3).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Green Beans", description="Sautéed to perfection", price=3.99, type="side", picture="/menu_item_images/sides/green_beans/img (2).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (1).jpeg"),
+]
+
+# Restaurant 35 - The Garden Cafe
+r35_sides = [
+    MenuItem(restaurant_id=35, menu_id=1, name="Breadsticks", description="Irresistibly aromatic", price=4.99, type="side", picture="/menu_item_images/sides/breadsticks/img (5).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Crispy Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (4).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Fresh Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/garden_salad/img (3).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (2).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Roasted Vegetables", description="Tender and colorful", price=5.99, type="side", picture="/menu_item_images/sides/roasted_veggies/img (1).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Creamy Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (5).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Tasty Corn on the Cob", description="Naturally sweet", price=3.99, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (4).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Buttered Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (4).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (3).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Cheesy Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (2).jpeg"),
+]
+
+# Restaurant 36 - The Country Kitchen
+r36_sides = [
+    MenuItem(restaurant_id=36, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (5).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Crispy Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (4).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Buttery Baked Potato", description="Buttery and satisfying", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (3).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Savory Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (2).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Roasted Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (1).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Tasty Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (5).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Fresh Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/garden_salad/img (4).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (3).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Creamed Spinach", description="Rich and creamy", price=4.29, type="side", picture="/menu_item_images/sides/creamed_spinach/img (2).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (1).jpeg"),
+]
+
+# Restaurant 37 - The Cozy Cabin
+r37_sides = [
+    MenuItem(restaurant_id=37, menu_id=1, name="Breadsticks", description="Irresistibly aromatic", price=4.99, type="side", picture="/menu_item_images/sides/breadsticks/img (5).jpeg"),
+    MenuItem(restaurant_id=37, menu_id=1, name="Crispy Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (4).jpeg"),
+    MenuItem(restaurant_id=37, menu_id=1, name="Fresh Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/garden_salad/img (3).jpeg"),
+    MenuItem(restaurant_id=37, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (2).jpeg"),
+    MenuItem(restaurant_id=37, menu_id=1, name="Roasted Vegetables", description="Tender and colorful", price=5.99, type="side", picture="/menu_item_images/sides/roasted_veggies/img (1).jpeg"),
+    MenuItem(restaurant_id=37, menu_id=1, name="Creamy Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (5).jpeg"),
+    MenuItem(restaurant_id=37, menu_id=1, name="Tasty Corn on the Cob", description="Naturally sweet", price=3.99, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (4).jpeg"),
+    MenuItem(restaurant_id=37, menu_id=1, name="Buttered Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (4).jpeg"),
+    MenuItem(restaurant_id=37, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (3).jpeg"),
+    MenuItem(restaurant_id=37, menu_id=1, name="Cheesy Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (2).jpeg"),
+]
+
+# Restaurant 38 - The Riverside Cafe
+r38_sides = [
+    MenuItem(restaurant_id=38, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (5).jpeg"),
+    MenuItem(restaurant_id=38, menu_id=1, name="Crispy Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (4).jpeg"),
+    MenuItem(restaurant_id=38, menu_id=1, name="Buttery Baked Potato", description="Buttery and satisfying", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (3).jpeg"),
+    MenuItem(restaurant_id=38, menu_id=1, name="Savory Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (2).jpeg"),
+    MenuItem(restaurant_id=38, menu_id=1, name="Roasted Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (1).jpeg"),
+    MenuItem(restaurant_id=38, menu_id=1, name="Tasty Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (5).jpeg"),
+    MenuItem(restaurant_id=38, menu_id=1, name="Fresh Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/garden_salad/img (4).jpeg"),
+    MenuItem(restaurant_id=38, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (3).jpeg"),
+    MenuItem(restaurant_id=38, menu_id=1, name="Creamed Spinach", description="Rich and creamy", price=4.29, type="side", picture="/menu_item_images/sides/creamed_spinach/img (2).jpeg"),
+    MenuItem(restaurant_id=38, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (1).jpeg"),
+]
+
+# Restaurant 39 - The Rustic Retreat
+r39_sides = [
+    MenuItem(restaurant_id=39, menu_id=1, name="Crispy Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (5).jpeg"),
+    MenuItem(restaurant_id=39, menu_id=1, name="Buttery Baked Potato", description="Buttery and satisfying", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (4).jpeg"),
+    MenuItem(restaurant_id=39, menu_id=1, name="Savory Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (3).jpeg"),
+    MenuItem(restaurant_id=39, menu_id=1, name="Roasted Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (2).jpeg"),
+    MenuItem(restaurant_id=39, menu_id=1, name="Tasty Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (1).jpeg"),
+    MenuItem(restaurant_id=39, menu_id=1, name="Fresh Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/garden_salad/img (5).jpeg"),
+    MenuItem(restaurant_id=39, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (4).jpeg"),
+    MenuItem(restaurant_id=39, menu_id=1, name="Creamed Spinach", description="Rich and creamy", price=4.29, type="side", picture="/menu_item_images/sides/creamed_spinach/img (3).jpeg"),
+    MenuItem(restaurant_id=39, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (2).jpeg"),
+    MenuItem(restaurant_id=39, menu_id=1, name="Cheesy Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (5).jpeg"),
+]
+
+# Restaurant 40 - The Savory Spot
+r40_sides = [
+    MenuItem(restaurant_id=40, menu_id=1, name="Roasted Vegetables", description="Tender and colorful", price=5.99, type="side", picture="/menu_item_images/sides/roasted_veggies/img (5).jpeg"),
+    MenuItem(restaurant_id=40, menu_id=1, name="Creamy Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (4).jpeg"),
+    MenuItem(restaurant_id=40, menu_id=1, name="Tasty Corn on the Cob", description="Naturally sweet", price=3.99, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (3).jpeg"),
+    MenuItem(restaurant_id=40, menu_id=1, name="Buttered Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (2).jpeg"),
+    MenuItem(restaurant_id=40, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (5).jpeg"),
+    MenuItem(restaurant_id=40, menu_id=1, name="Cheesy Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (4).jpeg"),
+    MenuItem(restaurant_id=40, menu_id=1, name="Breadsticks", description="Irresistibly aromatic", price=4.99, type="side", picture="/menu_item_images/sides/breadsticks/img (3).jpeg"),
+    MenuItem(restaurant_id=40, menu_id=1, name="Crispy Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (2).jpeg"),
+    MenuItem(restaurant_id=40, menu_id=1, name="Fresh Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/garden_salad/img (1).jpeg"),
+    MenuItem(restaurant_id=40, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (5).jpeg"),
+]
+
+# Restaurant 41 - The Pizzeria
+r41_sides = [
+    MenuItem(restaurant_id=41, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (1).jpeg"),
+    MenuItem(restaurant_id=41, menu_id=1, name="Creamed Spinach", description="Rich and creamy", price=4.29, type="side", picture="/menu_item_images/sides/creamed_spinach/img (5).jpeg"),
+    MenuItem(restaurant_id=41, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (4).jpeg"),
+    MenuItem(restaurant_id=41, menu_id=1, name="Cheesy Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (3).jpeg"),
+    MenuItem(restaurant_id=41, menu_id=1, name="Breadsticks", description="Irresistibly aromatic", price=4.99, type="side", picture="/menu_item_images/sides/breadsticks/img (2).jpeg"),
+    MenuItem(restaurant_id=41, menu_id=1, name="Crispy Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (1).jpeg"),
+    MenuItem(restaurant_id=41, menu_id=1, name="Fresh Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/garden_salad/img (5).jpeg"),
+    MenuItem(restaurant_id=41, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (4).jpeg"),
+    MenuItem(restaurant_id=41, menu_id=1, name="Roasted Vegetables", description="Tender and colorful", price=5.99, type="side", picture="/menu_item_images/sides/roasted_veggies/img (3).jpeg"),
+    MenuItem(restaurant_id=41, menu_id=1, name="Creamy Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (1).jpeg"),
+]
+
+r42_sides = [
+    MenuItem(restaurant_id=30, menu_id=1, name="Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (3).jpeg"),
+    MenuItem(restaurant_id=30, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (2).jpeg"),
+    MenuItem(restaurant_id=30, menu_id=1, name="Sweet Potato Fries", description="Crispy and delightful", price=4.49, type="side", picture="/menu_item_images/sides/sweet_potato_fries/img (1).jpeg"),
+    MenuItem(restaurant_id=30, menu_id=1, name="Green Beans", description="Sautéed to perfection", price=3.99, type="side", picture="/menu_item_images/sides/green_beans/img (5).jpeg"),
+    MenuItem(restaurant_id=30, menu_id=1, name="Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (4).jpeg"),
+    MenuItem(restaurant_id=30, menu_id=1, name="Breadsticks", description="Irresistibly aromatic", price=4.99, type="side", picture="/menu_item_images/sides/breadsticks/img (3).jpeg"),
+    MenuItem(restaurant_id=30, menu_id=1, name="Crispy Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (2).jpeg"),
+    MenuItem(restaurant_id=30, menu_id=1, name="Fresh Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/salad/img (1).jpeg"),
+    MenuItem(restaurant_id=30, menu_id=1, name="Cheesy Broccoli", description="Melted cheddar goodness", price=4.99, type="side", picture="/menu_item_images/sides/broccoli/img (5).jpeg"),
+    MenuItem(restaurant_id=30, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (4).jpeg"),
+]
+
+# Restaurant 31 - The Diner
+r43_sides = [
+    MenuItem(restaurant_id=31, menu_id=1, name="Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (5).jpeg"),
+    MenuItem(restaurant_id=31, menu_id=1, name="French Fries", description="Golden and crispy", price=3.99, type="side", picture="/menu_item_images/sides/fries/img (4).jpeg"),
+    MenuItem(restaurant_id=31, menu_id=1, name="Roasted Vegetables", description="Tender and colorful", price=5.99, type="side", picture="/menu_item_images/sides/roasted_veggies/img (3).jpeg"),
+    MenuItem(restaurant_id=31, menu_id=1, name="Creamy Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (2).jpeg"),
+    MenuItem(restaurant_id=31, menu_id=1, name="Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (1).jpeg"),
+    MenuItem(restaurant_id=31, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (5).jpeg"),
+    MenuItem(restaurant_id=31, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (4).jpeg"),
+    MenuItem(restaurant_id=31, menu_id=1, name="Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (3).jpeg"),
+    MenuItem(restaurant_id=31, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (2).jpeg"),
+    MenuItem(restaurant_id=31, menu_id=1, name="Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (1).jpeg"),
+]
+
+# Restaurant 32 - The Corner Bistro
+r44_sides = [
+    MenuItem(restaurant_id=32, menu_id=1, name="Baked Potato", description="Buttery and satisfying", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (5).jpeg"),
+    MenuItem(restaurant_id=32, menu_id=1, name="Sweet Potato Fries", description="Crispy and delightful", price=4.49, type="side", picture="/menu_item_images/sides/sweet_potato_fries/img (4).jpeg"),
+    MenuItem(restaurant_id=32, menu_id=1, name="Green Beans", description="Sautéed to perfection", price=3.99, type="side", picture="/menu_item_images/sides/green_beans/img (3).jpeg"),
+    MenuItem(restaurant_id=32, menu_id=1, name="Garlic Parmesan Breadsticks", description="Irresistibly aromatic", price=4.99, type="side", picture="/menu_item_images/sides/breadsticks/img (2).jpeg"),
+    MenuItem(restaurant_id=32, menu_id=1, name="Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (1).jpeg"),
+    MenuItem(restaurant_id=32, menu_id=1, name="Crispy Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (5).jpeg"),
+    MenuItem(restaurant_id=32, menu_id=1, name="Fresh Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/garden_salad/img (4).jpeg"),
+    MenuItem(restaurant_id=32, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (3).jpeg"),
+    MenuItem(restaurant_id=32, menu_id=1, name="Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (2).jpeg"),
+    MenuItem(restaurant_id=32, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (1).jpeg"),
+]
+
+# Restaurant 33 - The Garden Grove
+r45_sides = [
+    MenuItem(restaurant_id=33, menu_id=1, name="Coleslaw", description="Crunchy and tangy", price=2.49, type="side", picture="/menu_item_images/sides/coleslaw/img (5).jpeg"),
+    MenuItem(restaurant_id=33, menu_id=1, name="Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (4).jpeg"),
+    MenuItem(restaurant_id=33, menu_id=1, name="Bread Rolls", description="Soft and warm", price=2.49, type="side", picture="/menu_item_images/sides/bread_rolls/img (3).jpeg"),
+    MenuItem(restaurant_id=33, menu_id=1, name="Garden Salad", description="Fresh and light", price=3.99, type="side", picture="/menu_item_images/sides/garden_salad/img (2).jpeg"),
+    MenuItem(restaurant_id=33, menu_id=1, name="Roasted Cauliflower", description="Tender and flavorful", price=4.49, type="side", picture="/menu_item_images/sides/roasted_cauliflower/img (1).jpeg"),
+    MenuItem(restaurant_id=33, menu_id=1, name="Sweet Potato Fries", description="Crispy and delightful", price=4.49, type="side", picture="/menu_item_images/sides/sweet_potato_fries/img (5).jpeg"),
+    MenuItem(restaurant_id=33, menu_id=1, name="Lo Mein", description="Savory noodle delight", price=5.49, type="side", picture="/menu_item_images/sides/lo_mein/img (4).jpeg"),
+    MenuItem(restaurant_id=33, menu_id=1, name="Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (3).jpeg"),
+    MenuItem(restaurant_id=33, menu_id=1, name="Baked Potato", description="Buttery and satisfying", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (2).jpeg"),
+    MenuItem(restaurant_id=33, menu_id=1, name="Cheesy Broccoli", description="Melted cheddar goodness", price=4.99, type="side", picture="/menu_item_images/sides/broccoli/img (1).jpeg"),
+]
+
+# Restaurant 34 - The Grill House
+r46_sides = [
+    MenuItem(restaurant_id=34, menu_id=1, name="French Fries", description="Golden and crispy", price=3.99, type="side", picture="/menu_item_images/sides/fries/img (5).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (4).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (3).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Baked Potato", description="Buttery and satisfying", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (2).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (1).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (5).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Sweet Potato Fries", description="Crispy and delightful", price=4.49, type="side", picture="/menu_item_images/sides/sweet_potato_fries/img (4).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (3).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Green Beans", description="Sautéed to perfection", price=3.99, type="side", picture="/menu_item_images/sides/green_beans/img (2).jpeg"),
+    MenuItem(restaurant_id=34, menu_id=1, name="Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (1).jpeg"),
+]
+
+# Restaurant 35 - The Garden Cafe
+r47_sides = [
+    MenuItem(restaurant_id=35, menu_id=1, name="Breadsticks", description="Irresistibly aromatic", price=4.99, type="side", picture="/menu_item_images/sides/breadsticks/img (5).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Crispy Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (4).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Fresh Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/garden_salad/img (3).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (2).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Roasted Vegetables", description="Tender and colorful", price=5.99, type="side", picture="/menu_item_images/sides/roasted_veggies/img (1).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Creamy Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (5).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Tasty Corn on the Cob", description="Naturally sweet", price=3.99, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (4).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Buttered Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (4).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (3).jpeg"),
+    MenuItem(restaurant_id=35, menu_id=1, name="Cheesy Mac and Cheese", description="Cheesy and comforting", price=4.99, type="side", picture="/menu_item_images/sides/mac_and_cheese/img (2).jpeg"),
+]
+
+# Restaurant 36 - The Country Kitchen
+r48_sides = [
+    MenuItem(restaurant_id=36, menu_id=1, name="Garlic Bread", description="Toasty and buttery", price=2.99, type="side", picture="/menu_item_images/sides/garlic_bread/img (5).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Crispy Onion Rings", description="Crispy and delicious", price=4.49, type="side", picture="/menu_item_images/sides/onion_rings/img (4).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Buttery Baked Potato", description="Buttery and satisfying", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (3).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Savory Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (2).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Roasted Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (1).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Tasty Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (5).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Fresh Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/garden_salad/img (4).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Zesty Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (3).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Creamed Spinach", description="Rich and creamy", price=4.29, type="side", picture="/menu_item_images/sides/creamed_spinach/img (2).jpeg"),
+    MenuItem(restaurant_id=36, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (1).jpeg"),
+]
+
+r49_sides = [
+    MenuItem(restaurant_id=26, menu_id=1, name="Grilled Salmon", description="Grilled to perfection", price=16.99, type="side", picture="/menu_item_images/sides/salmon/img (1).jpeg"),
+    MenuItem(restaurant_id=26, menu_id=1, name="Crispy Calamari", description="Crispy and tender", price=12.99, type="side", picture="/menu_item_images/sides/calamari/img (2).jpeg"),
+    MenuItem(restaurant_id=26, menu_id=1, name="Caesar Salad", description="Classic and flavorful", price=8.99, type="side", picture="/menu_item_images/sides/caesar_salad/img (3).jpeg"),
+    MenuItem(restaurant_id=26, menu_id=1, name="Garlic Buttered Asparagus", description="Buttery and aromatic", price=7.99, type="side", picture="/menu_item_images/sides/asparagus/img (4).jpeg"),
+    MenuItem(restaurant_id=26, menu_id=1, name="Loaded Baked Potatoes", description="Loaded with toppings", price=6.99, type="side", picture="/menu_item_images/sides/baked_potatoes/img (5).jpeg"),
+    MenuItem(restaurant_id=26, menu_id=1, name="Crispy French Fries", description="Crispy and seasoned", price=5.99, type="side", picture="/menu_item_images/sides/fries/img (1).jpeg"),
+    MenuItem(restaurant_id=26, menu_id=1, name="Savory Stuffing", description="Savory and comforting", price=4.99, type="side", picture="/menu_item_images/sides/stuffing/img (2).jpeg"),
+    MenuItem(restaurant_id=26, menu_id=1, name="Buttered Corn", description="Buttery and sweet", price=3.99, type="side", picture="/menu_item_images/sides/corn/img (3).jpeg"),
+    MenuItem(restaurant_id=26, menu_id=1, name="Soft Dinner Rolls", description="Soft and fluffy", price=2.99, type="side", picture="/menu_item_images/sides/rolls/img (4).jpeg"),
+    MenuItem(restaurant_id=26, menu_id=1, name="Fresh Fruit Salad", description="Fresh and colorful", price=4.49, type="side", picture="/menu_item_images/sides/fruit_salad/img (5).jpeg"),
+]
+
+# Restaurant 27 - Cozy Corner
+r50_sides = [
+    MenuItem(restaurant_id=27, menu_id=1, name="Fried Rice", description="Flavorful rice medley", price=5.49, type="side", picture="/menu_item_images/sides/fried_rice/img (2).jpeg"),
+    MenuItem(restaurant_id=27, menu_id=1, name="Broccoli", description="Melted cheddar goodness", price=4.99, type="side", picture="/menu_item_images/sides/broccoli/img (1).jpeg"),
+    MenuItem(restaurant_id=27, menu_id=1, name="Onion Rings", description="Golden and satisfying", price=3.99, type="side", picture="/menu_item_images/sides/onion_rings/img (3).jpeg"),
+    MenuItem(restaurant_id=27, menu_id=1, name="Breadsticks", description="Irresistibly aromatic", price=4.99, type="side", picture="/menu_item_images/sides/breadsticks/img (4).jpeg"),
+    MenuItem(restaurant_id=27, menu_id=1, name="Mashed Potatoes", description="Buttery and smooth", price=4.49, type="side", picture="/menu_item_images/sides/mashed_potatoes/img (5).jpeg"),
+    MenuItem(restaurant_id=27, menu_id=1, name="Roasted Vegetables", description="Tender and colorful", price=5.99, type="side", picture="/menu_item_images/sides/roasted_veggies/img (1).jpeg"),
+    MenuItem(restaurant_id=27, menu_id=1, name="Tater Tots", description="Perfectly crunchy", price=3.99, type="side", picture="/menu_item_images/sides/tater_tots/img (2).jpeg"),
+    MenuItem(restaurant_id=27, menu_id=1, name="Garden Salad", description="Crisp and refreshing", price=4.99, type="side", picture="/menu_item_images/sides/salad/img (3).jpeg"),
+    MenuItem(restaurant_id=27, menu_id=1, name="Corn on the Cob", description="Naturally sweet", price=3.49, type="side", picture="/menu_item_images/sides/corn_on_the_cob/img (4).jpeg"),
+    MenuItem(restaurant_id=27, menu_id=1, name="Nachos", description="Loaded with flavor", price=4.79, type="side", picture="/menu_item_images/sides/nachos/img (5).jpeg"),
+]
 
 
 def seed_menu_items():
