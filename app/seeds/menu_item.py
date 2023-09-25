@@ -69,7 +69,7 @@ Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasag
 
 meal_name_end = random.choice(Entree_List)
 
-meal_name_end.append(f"{}")
+
 
 
 translator= {
@@ -132,6 +132,9 @@ ownersOfRestaurant= {"1": penguin, "2":riddler, "3": Ivy, 4: Two-Face, 5: Scarec
 
 #insert entree and make sure filepath correct.
 
+ouradj=ourobject[counter.string()]
+
+updated_name_of_meal= f"{ouradj} + {meal_name_end}"
 
 '''
 #************THESE ARE ALL OF THE SIDES THEYH ARE DONE EXCEPT WE missing r17
