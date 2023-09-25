@@ -64,13 +64,13 @@ r1_desserts = [
 '''
 entree randomizer.  step 1:  randomly pick entree from list
 '''
-filename_list=["buffalo_chicken_sandwich", "chicken_tenders", "fish_tacos", "lasagna", "philly_cheesesteak",  "spaghetti", "chicken_fajita", "fettuccine_alfredo", "gyro", "lobster", "pizza", "steak", "bbq_ribs", "chicken_parmesan", "fish_and_chips", "hamburger", "meatball_sandwich", "shish_kebab"]
+filename_entree_list=["buffalo_chicken_sandwich", "chicken_tenders", "fish_tacos", "lasagna", "philly_cheesesteak",  "spaghetti", "chicken_fajita", "fettuccine_alfredo", "gyro", "lobster", "pizza", "steak", "bbq_ribs", "chicken_parmesan", "fish_and_chips", "hamburger", "meatball_sandwich", "shish_kebab"]
 
 Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasagna", "Philly Cheesesteak", "Spaghetti", 'Chicken Fajita',"Fettuccine Alfredo", "Gyro", "Lobster", "Pizza", "Steak", "BBQ Ribs", "Chicken Parm", "Fish & Chips", "Hamburger", "Meatball Sandwich", "Shish Kebab"]
 
 #step 2:   from the entree list picked, get the image url and randomly assign 1-5.  we make an object with key and path values as translator.
 
-meal_name_end = random.choice(Entree_List)
+
 
 translator= {
     "Buffalo Chicken Sandwich": f"/menu_item_images/entrees/buffalo_chicken_sandwich/img ({randint(1, 5)}).jpeg",
@@ -122,35 +122,45 @@ villain_adj_dict = {
 
 fake = Faker()
 fake.add_provider(commerce.Provider)
+counter=0
+all_entrees=[]
+for i in range(0,50):
+    entree_name_end = random.choice(Entree_List)
 
-fake_price = fake.price({ min: 5, max: 30 })
+    fake_price = fake.price({ min: 5, max: 30 })
 
-chosen_villain = { chosen_villain for chosen_villain, adjective in villain_adj_dict.items() }
+    chosen_villain = { chosen_villain for chosen_villain, adjective in villain_adj_dict.items() }
 
-keys_list = list(chosen_villain)
-
-chosen_villain = { chosen_villain: adjective for chosen_villain, adjective in villain_adj_dict.items() }
+    # chosen_villain = { chosen_villain: adjective for chosen_villain, adjective in villain_adj_dict.items() }
 
 
-# our_adj_list = { adjective for chosen_villain, adjective in villain_adj_dict.items() }
-villain_list = list(chosen_villain)
-# print(villain_list)
+    # our_adj_list = { adjective for chosen_villain, adjective in villain_adj_dict.items() }
+    villain_list = list(chosen_villain)
+    # print(villain_list)
 
-rand_villian = villain_list[randint(0, 18)]
-r_var = rand_villian.split('_')
-villain_number = r_var[0]
+    rand_villian = villain_list[randint(0, 17)]
+    r_var = rand_villian.split('_')
+    villain_number = r_var[0]
 
-curr_adj_list = villain_adj_dict[rand_villian]
-entree = [0]
-entree[0] = MenuItem(
-    restaurant_id=int(villain_number),
-    menu_id=int(villain_number),
-    name=f"{curr_adj_list[randint(0, len(curr_adj_list - 1))]} {meal_name_end}",
-    description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {meal_name_end}s",
-    price=fake_price,
-    type="entree",
-    picture=translator[meal_name_end]
-)
+    curr_adj_list = villain_adj_dict[rand_villian]
+
+    all_entrees[counter] = MenuItem(
+        restaurant_id=int(villain_number),
+        menu_id=int(villain_number),
+        name=f"{curr_adj_list[randint(0, len(curr_adj_list - 1))]} {entree_name_end}",
+        description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
+        price=fake_price,
+        type="entree",
+        picture=translator[entree_name_end]
+    )
+    counter+=1
+
+db.session.add_all(all_entrees)
+db.session.commit()
+
+
+
+
 
 # finished_var = MenuItem(
 #       restaurant_id=villain_number, menu_id=villain_number, name="Pork Chop", description="Grilled pork chop with apple sauce", price=20.99, type="entree", picture="path/to/picture5"
