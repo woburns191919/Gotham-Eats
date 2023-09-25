@@ -58,29 +58,12 @@
   transition: background-color 0.3s;
 }
 
-
-.login-btn {
-  background-color: transparent;
-  border: 1px solid #333;
-  color: #333;
-}
-
-.signup-btn {
-  background-color: #333;
-  color: white;
-}
-
 .login-btn:hover,
 .signup-btn:hover {
   background-color: #555;
   color: white;
 }
 
-.line {
-  margin-top: 10px;
-  border: none;
-  border-top: 1px solid #e0e0e0;
-}
 
 .fas {
   font-size: 24px;
@@ -127,13 +110,6 @@
   transform: translateX(0);
 }
 
-
-.line {
-  width: 100%;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  margin-top: 5px;
-}
-
 .navBar-inner-container {
   display: flex;
   justify-content: space-between;
@@ -168,19 +144,6 @@
   align-items: center;
 }
 
-.create-new-spot {
-  text-decoration: none;
-  color: #008489;
-  font-size: 18px;
-  font-weight: bold;
-  margin-left: 30px;
-  align-items: center;
-}
-
-.create-new-spot:hover {
-  color: #005e63;
-}
-
 .profile-dropdown .center-menu-profile a {
   text-decoration: none;
   color: #008489;
@@ -198,7 +161,7 @@
   display: inline-block;
 }
 
-.navigation-btn {
+/* .navigation-btn {
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -206,7 +169,7 @@
   padding: 5px 10px;
   border-radius: 21px;
   border: 1px solid grey;
-}
+} */
 
 .menu-icon {
   stroke: currentColor;
@@ -317,6 +280,7 @@
   color: black;
   border-radius: 110px;
   font-family: 'BatmanForeverAlternate', sans-serif;
+      font-size: 15px;
 }
 
 .cart-btn {
@@ -326,6 +290,11 @@
   margin-right: 19px;
   margin-top: 2px;
   font-family: 'BatmanForeverAlternate', sans-serif;
+  width: 71px;
+  display: flex;
+  height: 23px;
+  align-items: center;
+  font-size: 15px;
 }
 
 .navBar-spacer {
@@ -355,3 +324,24 @@
 .fas {
   font-size: 12px;
 }
+
+.navBar-right button {
+  background-color:#E2E2E2;
+  color: black;
+  border-radius: 110px;
+  margin-right: 19px;
+  margin-top: 2px;
+  font-family: 'BatmanForeverAlternate', sans-serif;
+  width: 90px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: 40px;
+}
+
+.navBar-right button:hover {
+  background-color: #333;
+  color: #fff;
+  font-size: 15px;
+}
+
+

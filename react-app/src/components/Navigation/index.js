@@ -15,17 +15,17 @@ function Navigation({ isLoaded }) {
         if (!showMenu) return;
 
         const closeMenu = (e) => {
-          if (!ulRef.current.contains(e.target)) {
-            setShowMenu(false);
-          }
+            if (!ulRef.current.contains(e.target)) {
+                setShowMenu(false);
+            }
         };
 
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-      }, [showMenu]);
+    }, [showMenu]);
 
-      const closeMenu = () => setShowMenu(false);
+    const closeMenu = () => setShowMenu(false);
 
     return (
         <>
@@ -59,27 +59,32 @@ function Navigation({ isLoaded }) {
 
                     <div className="navBar-right">
                         <NavLink to="/cart" className="cart-btn">
-                            <i className="fas fa-shopping-cart"></i> Cart
+                            <i className="fas fa-shopping-cart" style={{ marginRight: '6px' }}></i>Cart
                         </NavLink>
                         {sessionUser ? null : (
                             <>
-                             <OpenModalMenuItem
-                                className="login-btn fas fa-user"
-                                itemText="Log In"
-                                onItemClick={closeMenu}
-                                modalComponent={<LoginFormModal />}
-                             />
-                              <OpenModalMenuItem
-                                className="signup-btn"
-                                itemText="Sign Up"
-                                onItemClick={closeMenu}
-                                modalComponent={<SignupFormModal />}
-                              />
-                                <NavLink to="/login" className="login-btn">
+
+                                <OpenModalMenuItem
+                                    className="login-btn"
+                                    itemText={
+                                        <span>
+                                            <i className="fas fa-user"></i> Log in
+                                        </span>
+                                    }
+                                    onItemClick={closeMenu}
+                                    modalComponent={<LoginFormModal />}
+                                />
+                                <OpenModalMenuItem
+                                    className="signup-btn"
+                                    itemText="Sign up"
+                                    onItemClick={closeMenu}
+                                    modalComponent={<SignupFormModal />}
+                                />
+                                {/* <NavLink to="/login" className="login-btn">
                                     <i className="fas fa-user"></i> Log in
 
                                 </NavLink>
-                                <NavLink to="/signup" className="signup-btn">Sign up</NavLink>
+                                <NavLink to="/signup" className="signup-btn">Sign up</NavLink> */}
                             </>
                         )}
                     </div>
