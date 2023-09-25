@@ -14,6 +14,13 @@ function Navigation({ isLoaded }) {
                 <div className="navBar-inner-container">
 
                     <div className="navBar-left">
+                        {sessionUser && (
+                            <div className="navBar-create-link">
+                                {/* <NavLink to="/resaurants/new" className="create-new-spot">
+                                    Add your restaurant
+                                </NavLink> */}
+                            </div>
+                        )}
                         {isLoaded && (
                             <ul>
                                 <li>

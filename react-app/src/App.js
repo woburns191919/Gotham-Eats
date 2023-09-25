@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LoginFormModal from "./components/LoginFormModal";
 import SignupFormModal from "./components/SignupFormModal";
+import GetRestaurants from "./components/Restaurant/GetRestaurants";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,12 +21,19 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/" >
+            <GetRestaurants />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/owner/restaurants">
+            <GetRestaurants ownerMode={true} />
+          </Route>
+          <Route>Page Not Found</Route>
         </Switch>
       )}
     </>
