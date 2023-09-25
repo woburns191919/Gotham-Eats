@@ -1,15 +1,25 @@
 
-:root {
-  --primary-color: #000;
-  --secondary-color: #fff;
-  --error-color: transparent;
-  --primary-button-color: #50b3a2;
+
+
+h2 {
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'BatmanForeverAlternate', sans-serif;
+    text-shadow: 2px 2px black;
 }
 
-h1 {
-  text-align: center;
-  color: var(--primary-color);
-  margin-bottom: 20px;
+.login-btn-modal {
+  color: white;
+    font-family: 'BatmanForeverAlternate', sans-serif;
+    text-shadow: 2px 2px black;
+}
+
+.demo-btn {
+  color: white;
+    font-family: 'BatmanForeverAlternate', sans-serif;
+    text-shadow: 2px 2px black;
 }
 
 form {
