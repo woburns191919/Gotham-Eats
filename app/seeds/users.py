@@ -2,12 +2,13 @@ from ..models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
+
 def seed_users():
     alfred = User(
         firstName="Alfred",
         lastName="Pennyworth",
         username='Demo',
-        hashedPassword="password",
+        password="password",
         email='alfred@waynemanor.com',
         streetAddress="1007 Mountain Drive",
         city="Gotham",
@@ -20,7 +21,7 @@ def seed_users():
         firstName="Harleen",
         lastName="Quinzel",
         username='HarleyQuinn',
-        hashedPassword="password",
+        password="password",
         email='harley@arkham.com',
         streetAddress="100 Arkham Asylum",
         city="Gotham",
@@ -33,7 +34,7 @@ def seed_users():
         firstName="Dick",
         lastName="Grayson",
         username='Nightwing',
-        hashedPassword="password",
+        password="password",
         email='nightwing@gotham.com',
         streetAddress="200 Oracle Tower",
         city="Gotham",
@@ -55,3 +56,5 @@ def undo_users():
     else:
         db.session.execute(text("DELETE FROM users"))
     db.session.commit()
+
+
