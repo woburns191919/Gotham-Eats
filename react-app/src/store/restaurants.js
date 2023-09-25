@@ -36,7 +36,7 @@ export const thunkGetAllRestaurants = () => async (dispatch) => {
     const res = await fetch("/api/restaurants");
     if (res.ok) {
       const data = await res.json();
-      console.log("Data from /api/restaurants:", data); // Log the response data
+      console.log("Data from /api/restaurants:", data);
       // dispatch(actionGetRestaurants(normalizeArr(data)));
       dispatch(actionGetRestaurants(data));
       return data;
@@ -157,13 +157,14 @@ function normalizeArr(restaurants) {
   return normalizedRestaurants;
 }
 
-const initialState = { allRestaurants: [], singleRestaurant: {} };
+const initialState = { allRestaurants: {}, singleRestaurant: {} };
 
 // ************************************************
 export default function restaurantReducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case GET_ALL_RESTAURANTS:
+      // newState = Object.assign({}, state);
       return { ...state, allRestaurants: action.restaurants };
     // case GET_SINGLE_RESTAURANT:
     //   newState = { ...state, singleRestaurant: {} };

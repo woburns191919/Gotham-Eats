@@ -1,12 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
+import OpenModalMenuItem from './OpenModalMenuItem';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const [showMenu, setShowMenu] = useState(false);
+    const ulRef = useRef();
+    useEffect(() => {
+        if (!showMenu) return;
+
+        const closeMenu = (e) => {
+          if (!ulRef.current.contains(e.target)) {
+            setShowMenu(false);
+          }
+        };
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+      }, [showMenu]);
+
+      const closeMenu = () => setShowMenu(false);
 
     return (
         <>
@@ -44,8 +63,21 @@ function Navigation({ isLoaded }) {
                         </NavLink>
                         {sessionUser ? null : (
                             <>
+                             <OpenModalMenuItem
+                                className="login-btn fas fa-user"
+                                itemText="Log In"
+                                onItemClick={closeMenu}
+                                modalComponent={<LoginFormModal />}
+                             />
+                              <OpenModalMenuItem
+                                className="signup-btn"
+                                itemText="Sign Up"
+                                onItemClick={closeMenu}
+                                modalComponent={<SignupFormModal />}
+                              />
                                 <NavLink to="/login" className="login-btn">
                                     <i className="fas fa-user"></i> Log in
+
                                 </NavLink>
                                 <NavLink to="/signup" className="signup-btn">Sign up</NavLink>
                             </>

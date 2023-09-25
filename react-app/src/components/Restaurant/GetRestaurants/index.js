@@ -33,7 +33,7 @@ export default function GetRestaurants({ ownerMode = false }) {
     }
   }, [dispatch, ownerMode]);
 
-  if (!restaurantsData || !restaurantsData.restaurants) return <div>Loading...</div>;
+  if (!restaurantsData || !restaurantsData.restaurants) return null;
 
   return (
     <div className="main-container">
