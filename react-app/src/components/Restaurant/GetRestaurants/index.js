@@ -8,8 +8,8 @@ import "./GetRestaurants.css";
 export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const restaurants = useSelector((state) => state.restaurants.allRestaurants);
-  const restaurantsData = useSelector((state) => state.restaurants);
+  const restaurantsData  = useSelector((state) => state.restaurants.allRestaurants);
+  // const restaurantsData = useSelector((state) => state.restaurants);
   const restaurants = restaurantsData.restaurants;
   const sessionUser = useSelector((state) => state.session.user);
   console.log("restaurants", restaurants);
