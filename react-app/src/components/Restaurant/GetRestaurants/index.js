@@ -8,7 +8,7 @@ import "./GetRestaurants.css";
 export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const restaurantsData  = useSelector((state) => state.restaurants.allRestaurants);
+  const restaurantsData = useSelector((state) => state.restaurants.allRestaurants);
   // const restaurantsData = useSelector((state) => state.restaurants);
   const restaurants = restaurantsData.restaurants;
   const sessionUser = useSelector((state) => state.session.user);
@@ -38,11 +38,11 @@ export default function GetRestaurants({ ownerMode = false }) {
           <div className={`${ownerMode ? "ownerRestaurant-restaurant-img-main-div" : "restaurant-img-main-div"}`} key={restaurant.id}>
             <Link to={`/restaurants/${restaurant.id}`} style={{ textDecoration: "none", color: "var(--black)" }}>
               <div className={`restaurant-box ${ownerMode ? "ownerRestaurant" : ""}`} title={restaurant.name}>
-                <img src={restaurant.image} className={ownerMode ? "ownerRestaurant-img" : "restaurant-img"} alt={restaurant.name} />
+                <img src={restaurant.previmg
+                } className={ownerMode ? "ownerRestaurant-img" : "restaurant-img"} alt={restaurant.name} />
                 <div className="restaurant-info-flex">
                   <p className="p-card-style location-p-tag">{`${restaurant.location}`}</p>
-                  <p className="avgRating-p-tag">★{restaurant.avgRating ? restaurant.avgRating.toFixed(1) : <span className="boldText">New</span>}</p>
-                  <p className="p-style"><span className="span-style">${restaurant.price}</span> per person</p>
+                  <p className="avgRating-p-tag">{restaurant.avgRating ? restaurant.avgRating.toFixed(1) : <span className="boldText">New</span>}</p>
                 </div>
               </div>
             </Link>
