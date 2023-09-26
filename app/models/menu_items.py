@@ -24,7 +24,7 @@ class MenuItem(db.Model, UserMixin):
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Float(10, 2), nullable=False)
     type = db.Column(db.String(50), nullable=False)
-    shopping_cart_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('shopping_carts.id')))
+    shopping_cart_id = db.Column(db.Integer)
 
     restaurant = db.relationship('Restaurant', back_populates='menu_items')
     menu_items_image = db.relationship('MenuItemImg', back_populates='menu_item', uselist=False)

@@ -1,4 +1,4 @@
-from ..models import db, environment, SCHEMA, Restaurant, Menu
+from ..models import db, environment, SCHEMA, Restaurant
 from sqlalchemy.sql import text
 import json
 
@@ -623,11 +623,6 @@ Restaurant(
     )
 
 
-
-
-
-
-
 ]
 
 def seed_restaurants():
@@ -635,9 +630,9 @@ def seed_restaurants():
     for ele in restaurant_list:
         db.session.add(ele)
         db.session.commit()
-        menu = Menu(restaurant_id=ele.id)
-        db.session.add(menu)
-        db.session.commit()
+        # menu = Menu(restaurant_id=ele.id)
+        # db.session.add(menu)
+        # db.session.commit()
 
 
 def undo_restaurants():
