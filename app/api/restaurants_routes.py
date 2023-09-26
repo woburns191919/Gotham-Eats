@@ -4,6 +4,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Restaurant, Review, db
 from sqlalchemy import func, distinct, or_, desc
 from ..forms import RestaurantForm
+import json
 # from ..models.restaurants import
 
 home_restaurants = Blueprint('restaurants', __name__)
@@ -55,7 +56,6 @@ def create_new_restaurant():
   return jsonify(errors=form.errors), 400
 
 
-      # user = User.query.get()
 @home_restaurants.route("/update/<int:id>", methods=["GET", "PUT"])
 def update_restaurant(id):
     """update a restaurant if the user owns the restaurant"""
@@ -74,7 +74,7 @@ def update_restaurant(id):
     if request.method == 'GET':
         return jsonify(restaurant_to_update.to_dict())
     data = request.get_json()
-    # form.csrf_token.data = request.headers.get('X-CSRFToken')
+    
 
     form.name.data = data['name']
     form.streetAddress.data = data['streetAddress']
@@ -102,8 +102,10 @@ def update_restaurant(id):
     else:
         return jsonify(errors=form.errors), 400
 
+
 @home_restaurants.route("/delete/<int:id>")
 def delete_post(id):
+    """delete a restaurant based on restaurant id"""
     restaurant_to_delete = Restaurant.query.get(id)
     print(restaurant_to_delete)
     db.session.delete(restaurant_to_delete)
