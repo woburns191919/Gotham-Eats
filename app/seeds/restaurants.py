@@ -597,7 +597,37 @@ restaurant_list = [
         description="Superhero-inspired snacks for the crime-fighter in you.",
         hours='9-5',
 
+    ),
+    Restaurant(
+        owner_id=12,
+        streetAddress="Cobblepot Lane 11",
+        city="Gotham",
+        state="New Jersey",
+        postalCode="10101",
+        country="United States",
+        name="Penguin's Umbrella Eats",
+        description="Indulge in an array of dishes so good, it's criminal. Dive into villainous flavors and explore the decadent menu inspired by Gotham's master of fowl play.",
+        hours='9-5',
+    ),
+
+Restaurant(
+        owner_id=5,
+        streetAddress="Quinn Square 8",
+        city="Gotham",
+        state="New Jersey",
+        postalCode="10222",
+        country="United States",
+        name="Harley's Hysterical Diner",
+        description="Unleash your inner wild card and savor explosive flavors. Enjoy chaotic culinary delights inspired by Gotham’s Queen of Anarchy in a whimsically themed setting.",
+        hours='9-5',
     )
+
+
+
+
+
+
+
 ]
 
 def seed_restaurants():
