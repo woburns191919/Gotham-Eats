@@ -23,6 +23,8 @@ def get_popular_restaurants():
   print('restaurants**', all_restaurants)
   return all_restaurants
 
+  
+
 @home_restaurants.route("/<int:id>")
 def get_restaurant_by_id(id):
     """returns a single restaurant by the given id provided as a route parameter"""
@@ -33,6 +35,7 @@ def get_restaurant_by_id(id):
 def create_new_restaurant():
   """creates a new restaurant"""
   form = RestaurantForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
 
   data = request.get_json()
   if form.validate_on_submit():
@@ -50,9 +53,9 @@ def create_new_restaurant():
     )
 
     print(new_restaurant)
-    db.session.add(new_restaurant)
+    addded_restaurant = db.session.add(new_restaurant)
     db.session.commit()
-    return jsonify(message = "Successfully created new restaurant"), 201
+    return jsonify(message = "Successfully created new restaurant", id = addded_restaurant.id), 201
   return jsonify(errors=form.errors), 400
 
 
@@ -74,7 +77,7 @@ def update_restaurant(id):
     if request.method == 'GET':
         return jsonify(restaurant_to_update.to_dict())
     data = request.get_json()
-    
+
 
     form.name.data = data['name']
     form.streetAddress.data = data['streetAddress']
