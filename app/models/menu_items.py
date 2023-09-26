@@ -7,6 +7,9 @@ from datetime import datetime
 class MenuItem(db.Model, UserMixin):
     __tablename__ = 'menu_items'
 
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
     restaurant_id = db.Column(db.Integer, db.ForeignKey(
         'restaurants.id'), nullable=False)
@@ -24,8 +27,6 @@ class MenuItem(db.Model, UserMixin):
         "ShoppingCart", back_populates="menu_items")
     menu = db.relationship("Menu", back_populates='menu_items')
 
-    if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
 
     def to_dict(self):
         return {

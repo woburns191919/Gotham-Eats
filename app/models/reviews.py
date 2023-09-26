@@ -7,6 +7,9 @@ from datetime import datetime
 class Review(db.Model, UserMixin):
     __tablename__ = 'reviews'
 
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
     restaurant_id = db.Column(db.Integer, db.ForeignKey(
         'restaurants.id'), nullable=False)
@@ -19,8 +22,6 @@ class Review(db.Model, UserMixin):
     user=db.relationship("User", back_populates="reviews")
     restaurant=db.relationship("Restaurant", back_populates='reviews')
 
-    if environment == "production":
-        __table_args__={'schema': SCHEMA}
 
     def to_dict(self):
       return {

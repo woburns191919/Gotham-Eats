@@ -7,6 +7,9 @@ from datetime import datetime
 class ShoppingCart(db.Model, UserMixin):
     __tablename__ = 'shopping_carts'
 
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
 
 
     id = db.Column(db.Integer, primary_key=True)
@@ -20,8 +23,6 @@ class ShoppingCart(db.Model, UserMixin):
     menu_items = db.relationship("MenuItem", back_populates="shopping_cart")
     user = db.relationship("User", back_populates="shopping_cart")
 
-    if environment == "production":
-       __table_args__ = {'schema': SCHEMA}
 
     def to_dict(self):
       return {

@@ -6,6 +6,8 @@ from datetime import datetime
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
 
     id = db.Column(db.Integer, primary_key=True)
@@ -29,8 +31,7 @@ class User(db.Model, UserMixin):
     reviews = db.relationship("Review", back_populates="user")
     shopping_cart = db.relationship("ShoppingCart", back_populates="user", uselist=False)
 
-    if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+
 
 
     @property
