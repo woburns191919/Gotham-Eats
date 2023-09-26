@@ -22,7 +22,10 @@ class MenuItemImg(db.Model, UserMixin):
     created_at=db.Column(db.DateTime, default=datetime.now())
     updated_at=db.Column(db.DateTime, default=datetime.now())
 
-    menu_item = db.relationship("MenuItem", back_populates='menu_items_image', uselist=False)
+    menu_item = db.relationship("MenuItem", back_populates='menu_items_image', uselist=False, foreign_keys=[menu_item_id])
+
+
+
 
     def to_dict(self):
         return {

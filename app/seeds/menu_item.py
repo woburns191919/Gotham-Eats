@@ -4,22 +4,32 @@ from random import randint, random
 from faker import Faker
 
 
+
+
 filename_entree_list=["buffalo_chicken_sandwich", "chicken_tenders", "fish_tacos", "lasagna", "philly_cheesesteak",  "spaghetti", "chicken_fajita", "fettuccine_alfredo", "gyro", "lobster", "pizza", "steak", "bbq_ribs", "chicken_parmesan", "fish_and_chips", "hamburger", "meatball_sandwich", "shish_kebab"]
+
 
 Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasagna", "Philly Cheesesteak", "Spaghetti", 'Chicken Fajita',"Fettuccine Alfredo", "Gyro", "Lobster", "Pizza", "Steak", "BBQ Ribs", "Chicken Parm", "Fish & Chips", "Hamburger", "Meatball Sandwich", "Shish Kebab"]
 
+
 filename_dessert_list=["blueberry_tart","chocolate_chip_cookie",  "lava_cake", "pumpkin_pie", "carrot_cake",  "chocolate_mousse","milkshake", "strawberry_shortcake", "apple_pie", "cheesecake",  "cupcake", "peach_cobbler", "tiramisu", "banana_split",  "chocolate_brownie",  "flan", "pistachio_gelato",  "vanilla_icecream"]
+
 
 dessert_list=["Blueberry tart","Chocolate Chip Cookie","Lava Cake","Pumpkin pie",'Carrot Cake',"Chocolate Mousse","Milkshake","Strawberry Shortcake",'Apple Pie',"Cheesecake","Cupcake","Peach Cobbler","Tiramisu","Banana Split","Chocolate Brownie","Flan","Pistachio Gelato","Vanilla IceCream"]
 
+
 filename_drink_list=["cappuccino","gotham_red_wine","margarita","redbull","seven_and_seven","sprite","gotham_white_wine","lemonade","martini","root_beer","shirley_temple","Coffee","gotham_beer","long_island_iced_tea","pepsi","rum_and_coke","smoothie"]
 
+
 drink_list=["Cappuccino", "Gotham Red Wine", "Margarita", "Redbull", "Seven and Seven", "Sprite", "Gotham White Wine", "Lemonade", "Martini", "Root Beer", "Shirley Temple", "Coffee", "Gotham Beer", "Long Island Iced Tea", "Pepsi", "Rum and Coke", "Smoothie"]
+
 
 filename_sides_list=["chicken_wings","fried_rice", "green_beans","mozarella_sticks", "roasted_veggies","corn_on_the_cob  fries", "lo_mein", "nachos", "sweet_potato_fries","baked_potato", "creamed_spinach", "garden_salad  mac_and_cheese","onion_rings","tater_tots",
 "breadsticks", "edemame", "garlic_bread  mashed_potatoes",  "roasted_cauliflower"]
 
+
 sides_list=["Chicken Wings", "Fried Rice", "Green Beans", "Mozarella Sticks", "Roasted Veggies", "Corn on the Cob", "Fries", "Lo Mein", "Nachos", "Sweet Potato Fries", "Baked Potato", "Creamed Spinach", "Garden Salad", "Mac and Cheese", "Onion Rings", "Tater Tots", "Breadsticks", "Edemame", "Garlic Bread", "Mashed_Potatoes", "Roasted Cauliflower"]
+
 
 drink_translator={
 "Cappuccino":f"/menu_item_images/drinks/cappuccino/img ({randint(1, 5)}).jpeg",
@@ -40,6 +50,7 @@ drink_translator={
 "Rum and Coke":  f"/menu_item_images/drinks/rum_and_coke/img ({randint(1, 5)}).jpeg",
 "Smoothie": f"/menu_item_images/drinks/smoothie/img ({randint(1, 5)}).jpeg",
 }
+
 
 entree_translator= {
     "Buffalo Chicken Sandwich": f"/menu_item_images/entrees/buffalo_chicken_sandwich/img ({randint(1, 5)}).jpeg",
@@ -62,6 +73,7 @@ entree_translator= {
     "Pizza" : f"/menu_item_images/entrees/pizza/img ({randint(1, 5)}).jpeg"
 }
 
+
 dessert_translator= {
     'Blueberry tart': f"/menu_item_images/desserts/blueberry_tart/img ({randint(1, 5)}).jpeg",
     "Chocolate Chip Cookie": f"/menu_item_images/desserts/blueberry_tart/img ({randint(1, 5)}).jpeg",
@@ -82,6 +94,7 @@ dessert_translator= {
     "Pistachio Gelato": f"/menu_item_images/desserts/pistachio_gelato/img ({randint(1, 5)}).jpeg",
     "Vanilla IceCream": f"/menu_item_images/desserts/vanilla_icecream/img ({randint(1, 5)}).jpeg"
 }
+
 
 sides_translator= {
 "Chicken Wings": f"/menu_item_images/sides/chicken_wings/img ({randint(1, 5)}).jpeg",
@@ -107,6 +120,7 @@ sides_translator= {
 "Roasted Cauliflower": f"/menu_item_images/sides/roasted_cauliflower/img ({randint(1, 5)}).jpeg"
 }
 
+
 villain_adj_dict = {
     "1_penguin": ["scheming", "waddling", "umbrella-toting", "calculating", "icy"],
     "2_riddler": ["enigmatic", "puzzling", "question-asking", "clever", "green-suited"],
@@ -129,13 +143,17 @@ villain_adj_dict = {
     "19_everyone_else": ["mouth-watering", "delightful", "scrumptious", "appetizing", "delectable", "enticing", "irresistible", "tasty", "flavorful", "savoring", "tempting", "yummy", "divine", "palatable" "lip-smacking", "satisfying", "succulent", "indulgent", "inspirational"]
             }
 
+
 keysToVillains=["1_penguin","2_riddler","3_ivy","4_two_face","5_scarecrow","6_catwoman","7_batman","8_joker","9_bane","10_mr_freeze","11_clayface","12_firefly","13_mad_hatter","14_talon","15_zatanna","16_bat_man","17_mayor","18_green_arrow","19_everyone_else"]
+
+
 
 
 def fake_price():
     num1= randint(5,30)
     num2= randint(10,99)
     return f"{num1}.{num2}"
+
 
 #START SEEDER*************************************
 def seed_menu_items():
@@ -146,6 +164,8 @@ def seed_menu_items():
     master_desserts=[]
     master_sides=[]
     master_menu_item_imgs=[]
+
+
 
 
     for i in range(0,50):
@@ -159,6 +179,8 @@ def seed_menu_items():
             our_guy=keysToVillains[18]
 
 
+
+
         curr_adj_list = villain_adj_dict[our_guy]
         all_entrees=[]
         all_desserts=[]
@@ -166,6 +188,7 @@ def seed_menu_items():
         all_sides=[]
         all_menu_item_imgs=[]
         for k in range(0,11):
+
 
             #add ENTREE and picture for it***************************
             currEntree=MenuItem(
@@ -177,12 +200,17 @@ def seed_menu_items():
             type="entree",
             shopping_cart_id=counter,
 
+
         )
+            db.session.add(currEntree)
+            db.session.commit()
             all_menu_item_imgs.append(MenuItemImg(
-                menu_item_id=counter,
+                menu_item_id=currEntree.id,
                 url=entree_translator[entree_name_end],
                 preview= True if k==0 else False
             )),
+
+
 
 
             #add SIDE and picture for it****************************
@@ -193,11 +221,16 @@ def seed_menu_items():
                 price=float(fake_price()),
                 type="side",
                 shopping_cart_id=counter)
+            db.session.add(currSide)
+            db.session.commit()
+
 
             all_menu_item_imgs.append(MenuItemImg(
-                menu_item_id=counter,
+                menu_item_id=currSide.id,
                 url=sides_translator[side_name_end],
                 preview= False))
+
+
 
 
             #add DESSERT and picture for it************************
@@ -207,11 +240,15 @@ def seed_menu_items():
                 name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {dessert_name_end}", description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {dessert_name_end}s",
                 price=float(fake_price()),
                 type="dessert")
+            db.session.add(currDessert)
+            db.session.commit()
+
 
             all_menu_item_imgs.append(MenuItemImg(
-                menu_item_id=counter,
+                menu_item_id=currDessert.id,
                 url=dessert_translator[dessert_name_end],
                 preview= False))
+
 
             #add DRINK and picture for it*********************
             currDrink=MenuItem(
@@ -221,36 +258,24 @@ def seed_menu_items():
                 description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
                 price=float(fake_price()),
                 type="drink")
+            db.session.add(currDrink)
+            db.session.commit()
+
 
             all_menu_item_imgs.append(MenuItemImg(
-                menu_item_id=counter,
+                menu_item_id=currDrink.id,
                 url=drink_translator[drink_name_end],
                 preview= False))
 
 
-            all_entrees.append(currEntree)
-            all_sides.append(currSide)
-            all_desserts.append(currDessert)
-            all_drinks.append(currDrink)
-
-        master_entrees.append(all_entrees)
-        master_sides.append(all_sides)
-        master_desserts.append(all_desserts)
-        master_drinks.append(all_drinks)
         master_menu_item_imgs.append(all_menu_item_imgs)
         counter+=1
 
-    for array1 in master_entrees:
-        db.session.add_all(array1)
-    for array2 in master_sides:
-        db.session.add_all(array2)
-    for array3 in master_drinks:
-        db.session.add_all(array3)
-    for array4 in master_desserts:
-        db.session.add_all(array4)
+
     for array5 in master_menu_item_imgs:
         db.session.add_all(array5)
     db.session.commit()
+
 
 def undo_menu_items():
     if environment == "production":
@@ -258,3 +283,6 @@ def undo_menu_items():
     else:
         db.session.execute(text("DELETE FROM menu_items"))
     db.session.commit()
+
+
+
