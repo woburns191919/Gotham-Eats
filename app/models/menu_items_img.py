@@ -7,6 +7,9 @@ from datetime import datetime
 class MenuItemImg(db.Model, UserMixin):
     __tablename__ = 'menu_item_imgs'
 
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
 
 
 
@@ -17,8 +20,6 @@ class MenuItemImg(db.Model, UserMixin):
     created_at=db.Column(db.DateTime, default=datetime.now())
     updated_at=db.Column(db.DateTime, default=datetime.now())
 
-    if environment == "production":
-         __table_args__ = {'schema': SCHEMA}
 
 
     def to_dict(self):

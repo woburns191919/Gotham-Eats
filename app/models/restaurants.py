@@ -10,6 +10,9 @@ from .reviews import Review
 class Restaurant(db.Model, UserMixin):
   __tablename__ = 'restaurants'
 
+  if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
 
 
   id = db.Column(db.Integer, primary_key=True)
@@ -36,8 +39,6 @@ class Restaurant(db.Model, UserMixin):
   def avg_stars(self):
     return db.session.query(func.avg(Review.stars)).filter(Review.restaurant_id == self.id).scalar()
 
-  if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
 
 
   def to_dict(self):
