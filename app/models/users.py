@@ -9,6 +9,7 @@ class User(db.Model, UserMixin):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
+
     id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(255),nullable=False)
     lastName = db.Column(db.String(255),nullable=False)
@@ -29,6 +30,8 @@ class User(db.Model, UserMixin):
     restaurants = db.relationship("Restaurant", back_populates="user")
     reviews = db.relationship("Review", back_populates="user")
     shopping_cart = db.relationship("ShoppingCart", back_populates="user", uselist=False)
+
+
 
 
     @property
