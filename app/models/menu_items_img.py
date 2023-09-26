@@ -16,13 +16,13 @@ class MenuItemImg(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    menu_item_id = db.Column(db.Integer,  db.ForeignKey(add_prefix_for_prod('menu_items.id')))
+    menu_item_id = db.Column(db.Integer)
     url = db.Column(db.Text,nullable=False)
     preview = db.Column(db.Boolean,nullable=False)
     created_at=db.Column(db.DateTime, default=datetime.now())
     updated_at=db.Column(db.DateTime, default=datetime.now())
 
-    menu_item = db.relationship("MenuItem", back_populates='menu_items_image', uselist=False, foreign_keys=[menu_item_id])
+    menu_item = db.relationship("MenuItem", back_populates='menu_items_image')
 
 
 

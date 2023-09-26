@@ -27,7 +27,7 @@ class MenuItem(db.Model, UserMixin):
     shopping_cart_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('shopping_carts.id')))
 
     restaurant = db.relationship('Restaurant', back_populates='menu_items')
-    menu_items_image = db.relationship('MenuItemImg', back_populates='menu_item', uselist=False, foreign_keys=[menu_item_img_id])
+    menu_items_image = db.relationship('MenuItemImg', back_populates='menu_item', uselist=False)
     shopping_cart = db.relationship("ShoppingCart", back_populates="menu_items")
 
     @property
