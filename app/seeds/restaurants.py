@@ -21,7 +21,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+        previmg="https://w7.pngwing.com/pngs/601/465/png-transparent-hamburger-cheeseburger-fast-food-steak-burger-sandwich-food-recipe-cheeseburger-thumbnail.png"
     ),
 
     Restaurant(
@@ -42,7 +42,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+        previmg="https://w7.pngwing.com/pngs/10/294/png-transparent-potato-fries-french-fries-fast-food-delicatessen-chicken-fingers-buffalo-wing-hd-fries-food-breakfast-eating-thumbnail.png"
     ),
 
     Restaurant(
@@ -63,7 +63,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+        previmg="https://w7.pngwing.com/pngs/999/253/png-transparent-shawarma-fast-food-hamburger-kebab-bacon-kebab-food-recipe-chicken-meat-thumbnail.png"
     ),
 
     Restaurant(
@@ -84,7 +84,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+        previmg="https://w7.pngwing.com/pngs/822/979/png-transparent-hamburger-cheese-sandwich-steak-sandwich-vegetable-sandwich-fast-food-grilled-sandwich-food-recipe-cafe-thumbnail.png"
     ),
 
     Restaurant(

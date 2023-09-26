@@ -1,8 +1,9 @@
 from ..models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
 
+
 user_list=[
-      User(
+    User(
         firstName="Alfred",
         lastName="Pennyworth",
         username='Demo',
@@ -238,3 +239,5 @@ def undo_users():
     else:
         db.session.execute(text("DELETE FROM users"))
     db.session.commit()
+
+
