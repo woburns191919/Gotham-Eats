@@ -36,6 +36,10 @@ class Restaurant(db.Model, UserMixin):
   def avg_stars(self):
     return db.session.query(func.avg(Review.stars)).filter(Review.restaurant_id == self.id).scalar()
 
+  @property
+  def image(self):
+      return db.session.query()
+
   if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
