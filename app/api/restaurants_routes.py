@@ -1,13 +1,14 @@
 from flask import Blueprint, jsonify, request
 import app
-from flask_login import login_required
+from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Restaurant, Review, db
 from sqlalchemy import func, distinct, or_, desc
 from ..forms import RestaurantForm
 # from ..models.restaurants import
 
 home_restaurants = Blueprint('restaurants', __name__)
-
+print("******************current_user: ", current_user.get_id())
+print("******************Restaurant.owner_id: ", Restaurant.query.get(id).owner_id)
 
 @home_restaurants.route("/")
 def get_popular_restaurants():
@@ -53,12 +54,14 @@ def create_new_restaurant():
     return jsonify(message = "Successfully created new restaurant"), 201
   return jsonify(errors=form.errors), 400
 
-@home_restaurants.route("/update/<int:id", methods=["GET", "POST"])
+@home_restaurants.route("/update/<int:id>", methods=["GET", "POST"])
 def update_post(id):
-
+   """update a restaurant if the user owns the restaurant"""
    form = RestaurantForm()
+   restaurant_to_update = Restaurant.query.get(id)
 
-   if form.validate_on_submit():
-      restaurant_to_update = Restaurant.query.get(id)
+
+   if restaurant_to_update.owner_id == current_user.id:
+     if form.validate_on_submit():
+       restaurant_to_update = Restaurant.query.get(id)
       # user = User.query.get()
-      
