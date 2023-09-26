@@ -2,6 +2,7 @@ from ..models import db, environment, SCHEMA, Restaurant, Menu
 from sqlalchemy.sql import text
 import json
 
+
 restaurant_list = [
     Restaurant(
         owner_id=6,
@@ -12,15 +13,7 @@ restaurant_list = [
         country="United States",
         name="Penguin's Icy Diner",
         description="A frosty dining experience with a penguin-theme, known for seafood.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
     ),
 
     Restaurant(
@@ -32,15 +25,7 @@ restaurant_list = [
         country="United States",
         name="Riddler's Riddle Room",
         description="Solve riddles to get your food in this mysterious, enigma-filled diner.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -53,15 +38,7 @@ restaurant_list = [
         country="United States",
         name="Ivy's Greenhouse",
         description="Enjoy a meal surrounded by exotic plants, some of them carnivorous!",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -74,15 +51,7 @@ restaurant_list = [
         country="United States",
         name="Two-Face's Coin Toss Tavern",
         description="Experience the duality, make decisions by a coin toss, and enjoy the thematic drinks and meals!",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -95,15 +64,7 @@ restaurant_list = [
         country="United States",
         name="Scarecrow's Straw Bistro",
         description="A rustic bistro where fear is the main ingredient. Not for the faint-hearted!",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -116,16 +77,8 @@ restaurant_list = [
         country="United States",
         name="Catwoman's Feline Feast",
         description="Elegant and sleek, this restaurant offers gourmet dishes, quick thefts not included.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
-        
+        hours='9-5',
+
     ),
 
     Restaurant(
@@ -137,15 +90,7 @@ restaurant_list = [
         country="United States",
         name="Joker's Juice Bar",
         description="Get ready to have a blast with the colorful and unpredictable beverages!",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -158,15 +103,7 @@ restaurant_list = [
         country="United States",
         name="Mr. Freeze's Chill Lounge",
         description="Cool down with ice-cold beverages and frozen delights in a sub-zero environment.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -179,15 +116,7 @@ restaurant_list = [
         country="United States",
         name="Bane's Buffet",
         description="Feed your strength with a variety of hearty meals. Remember, no pain, no gain!",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -200,15 +129,7 @@ restaurant_list = [
         country="United States",
         name="Clayface's Cafe",
         description="Morph your taste buds with eclectic and ever-changing menu.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -221,15 +142,7 @@ restaurant_list = [
         country="United States",
         name="Firefly's Grill",
         description="Ignite your senses with fiery flavors and smoky delicacies.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -242,15 +155,7 @@ restaurant_list = [
         country="United States",
         name="Mad Hatter's Tea House",
         description="Delve into madness with a bewildering array of teas and enchanting pastries.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        })
+        hours='9-5'
     ),
 
     Restaurant(
@@ -262,15 +167,7 @@ restaurant_list = [
         country="United States",
         name="Talon's Takeout",
         description="Swoop into flavors with quick and stealthy takeout options.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -283,15 +180,7 @@ restaurant_list = [
         country="United States",
         name="Zatanna's Pizzeria",
         description="Experience magical pizza concoctions and enchanting salads.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -304,15 +193,7 @@ restaurant_list = [
         country="United States",
         name="Man-Bat Diner",
         description="Feast on nocturnal delights in a bat-friendly environment.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -325,15 +206,7 @@ restaurant_list = [
         country="United States",
         name="Metropolis Munch",
         description="Indulge in superfoods and Kryptonian cuisine with a cityscape view.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -346,15 +219,7 @@ restaurant_list = [
         country="United States",
         name="Alfred's Gourmet Dining",
         description="Savor exquisite dishes crafted by the legendary butler himself.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -367,15 +232,7 @@ restaurant_list = [
         country="United States",
         name="Fearless Fried Chicken",
         description="Conquer your fears and spice up your life with our fiery fried chicken!",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -388,15 +245,7 @@ restaurant_list = [
         country="United States",
         name="Riddler's Enigma Eats",
         description="Solve culinary conundrums while you dine!",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -408,15 +257,7 @@ restaurant_list = [
         country="United States",
         name="Frosty Delights",
         description="Chill out with Mr. Freeze's frozen treats and icy specialties.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -428,15 +269,7 @@ restaurant_list = [
         country="United States",
         name="Dawes Diner",
         description="Where justice and great food prevail!",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -448,15 +281,7 @@ restaurant_list = [
         country="United States",
         name="Lucius's Techno Bistro",
         description="Cutting-edge cuisine for the tech-savvy heroes.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -468,15 +293,7 @@ restaurant_list = [
         country="United States",
         name="Joker's Ha-Ha Hut",
         description="Laugh and dine at the craziest restaurant in town!",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -488,15 +305,7 @@ restaurant_list = [
         country="United States",
         name="Catwoman's Catnip Cafe",
         description="Purr-fectly delicious dishes for cat lovers.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -508,15 +317,7 @@ restaurant_list = [
         country="United States",
         name="Tim's Batwing Bistro",
         description="A dining experience inspired by the Dark Knight's sidekick.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -528,15 +329,7 @@ restaurant_list = [
         country="United States",
         name="Two-Face's Coin Flip Diner",
         description="Will your meal be good or bad? Leave it to chance!",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -548,15 +341,7 @@ restaurant_list = [
         country="United States",
         name="Penguin's Seafood Soiree",
         description="Dine like royalty with Gotham's shrewdest bird.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -568,15 +353,7 @@ restaurant_list = [
         country="United States",
         name="Oracle's Virtual Cafe",
         description="Sip and byte your way through the digital world.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -589,15 +366,7 @@ restaurant_list = [
         country="United States",
         name="Alfred's Gourmet Mansion",
         description="Fine dining and impeccable service in Wayne Manor.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -609,15 +378,7 @@ restaurant_list = [
         country="United States",
         name="Harley's Circus Grill",
         description="A chaotic dining experience with a touch of madness.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -629,15 +390,7 @@ restaurant_list = [
         country="United States",
         name="Nightwing's Night Bites",
         description="A place for acrobats to dine in style.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -649,15 +402,7 @@ restaurant_list = [
         country="United States",
         name="RedHood's Roastery",
         description="Serving up a blend of justice and great coffee.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -669,15 +414,7 @@ restaurant_list = [
         country="United States",
         name="Damian's Ninja Noodles",
         description="Exquisite noodles crafted by the League of Assassins.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -689,15 +426,7 @@ restaurant_list = [
         country="United States",
         name="Batgirl's Bat Bites",
         description="Fueling vigilantes one bite at a time.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -709,15 +438,7 @@ restaurant_list = [
         country="United States",
         name="Joker's Laugh Lounge",
         description="Where the joke's on you, and the food's on the house.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -729,15 +450,7 @@ restaurant_list = [
         country="United States",
         name="Catwoman's Cat Cafe",
         description="Purr-fectly brewed coffee and cunning pastries.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -749,15 +462,7 @@ restaurant_list = [
         country="United States",
         name="The Riddler's Enigma Eats",
         description="Puzzle your taste buds with enigmatic dishes.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -769,15 +474,7 @@ restaurant_list = [
         country="United States",
         name="Mr. Freeze's Icy Delights",
         description="Chill out with frozen treats and frosty beverages.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "23:00:00"},
-            "Friday": {"open": "09:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "00:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "00:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
 
@@ -790,15 +487,7 @@ restaurant_list = [
         country="United States",
         name="Penguin's Seafood Shack",
         description="Feast on the finest seafood in the city, with a side of underworld charm.",
-        hours=json.dumps({
-            "Monday": {"open": "10:00:00", "close": "22:00:00"},
-            "Tuesday": {"open": "10:00:00", "close": "22:00:00"},
-            "Wednesday": {"open": "10:00:00", "close": "22:00:00"},
-            "Thursday": {"open": "10:00:00", "close": "22:00:00"},
-            "Friday": {"open": "10:00:00", "close": "22:00:00"},
-            "Saturday": {"open": "11:00:00", "close": "23:00:00"},
-            "Sunday": {"open": "11:00:00", "close": "23:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -810,15 +499,7 @@ restaurant_list = [
         country="United States",
         name="Two-Face's Diner",
         description="A coin toss decides your meal's fate: delicious or daring?",
-        hours=json.dumps({
-            "Monday": {"open": "08:00:00", "close": "20:00:00"},
-            "Tuesday": {"open": "08:00:00", "close": "20:00:00"},
-            "Wednesday": {"open": "08:00:00", "close": "20:00:00"},
-            "Thursday": {"open": "08:00:00", "close": "20:00:00"},
-            "Friday": {"open": "08:00:00", "close": "20:00:00"},
-            "Saturday": {"open": "09:00:00", "close": "21:00:00"},
-            "Sunday": {"open": "09:00:00", "close": "21:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -830,15 +511,7 @@ restaurant_list = [
         country="United States",
         name="Scarecrow's Haunted Cafe",
         description="Dine in your deepest fears and darkest nightmares.",
-        hours=json.dumps({
-            "Monday": {"open": "18:00:00", "close": "02:00:00"},
-            "Tuesday": {"open": "18:00:00", "close": "02:00:00"},
-            "Wednesday": {"open": "18:00:00", "close": "02:00:00"},
-            "Thursday": {"open": "18:00:00", "close": "02:00:00"},
-            "Friday": {"open": "18:00:00", "close": "02:00:00"},
-            "Saturday": {"open": "20:00:00", "close": "04:00:00"},
-            "Sunday": {"open": "20:00:00", "close": "04:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -850,15 +523,7 @@ restaurant_list = [
         country="United States",
         name="Rachel's Bistro",
         description="Elegant dining with a touch of Gotham's grace.",
-        hours=json.dumps({
-            "Monday": {"open": "11:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "11:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "11:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "11:00:00", "close": "23:00:00"},
-            "Friday": {"open": "11:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "12:00:00", "close": "24:00:00"},
-            "Sunday": {"open": "12:00:00", "close": "24:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -870,15 +535,7 @@ restaurant_list = [
         country="United States",
         name="Lucius's Tech Cafe",
         description="A tech-savvy dining experience with cutting-edge cuisine.",
-        hours=json.dumps({
-            "Monday": {"open": "09:00:00", "close": "21:00:00"},
-            "Tuesday": {"open": "09:00:00", "close": "21:00:00"},
-            "Wednesday": {"open": "09:00:00", "close": "21:00:00"},
-            "Thursday": {"open": "09:00:00", "close": "21:00:00"},
-            "Friday": {"open": "09:00:00", "close": "21:00:00"},
-            "Saturday": {"open": "10:00:00", "close": "22:00:00"},
-            "Sunday": {"open": "10:00:00", "close": "22:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -890,15 +547,7 @@ restaurant_list = [
         country="United States",
         name="Oracle's Cyber Cafe",
         description="Connect with the digital world while savoring delicious bites.",
-        hours=json.dumps({
-            "Monday": {"open": "08:00:00", "close": "20:00:00"},
-            "Tuesday": {"open": "08:00:00", "close": "20:00:00"},
-            "Wednesday": {"open": "08:00:00", "close": "20:00:00"},
-            "Thursday": {"open": "08:00:00", "close": "20:00:00"},
-            "Friday": {"open": "08:00:00", "close": "20:00:00"},
-            "Saturday": {"open": "09:00:00", "close": "21:00:00"},
-            "Sunday": {"open": "09:00:00", "close": "21:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -910,15 +559,7 @@ restaurant_list = [
         country="United States",
         name="Tim's Comic Cafe",
         description="Comic books, coffee, and delicious treats for every hero.",
-        hours=json.dumps({
-            "Monday": {"open": "10:00:00", "close": "20:00:00"},
-            "Tuesday": {"open": "10:00:00", "close": "20:00:00"},
-            "Wednesday": {"open": "10:00:00", "close": "20:00:00"},
-            "Thursday": {"open": "10:00:00", "close": "20:00:00"},
-            "Friday": {"open": "10:00:00", "close": "20:00:00"},
-            "Saturday": {"open": "11:00:00", "close": "21:00:00"},
-            "Sunday": {"open": "11:00:00", "close": "21:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -930,15 +571,7 @@ restaurant_list = [
         country="United States",
         name="Red Hood's Hideout",
         description="A haven for anti-heroes with a taste for great food and justice.",
-        hours=json.dumps({
-            "Monday": {"open": "12:00:00", "close": "00:00:00"},
-            "Tuesday": {"open": "12:00:00", "close": "00:00:00"},
-            "Wednesday": {"open": "12:00:00", "close": "00:00:00"},
-            "Thursday": {"open": "12:00:00", "close": "00:00:00"},
-            "Friday": {"open": "12:00:00", "close": "00:00:00"},
-            "Saturday": {"open": "14:00:00", "close": "02:00:00"},
-            "Sunday": {"open": "14:00:00", "close": "02:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -950,15 +583,7 @@ restaurant_list = [
         country="United States",
         name="Damian's Gourmet Grub",
         description="Fine dining fit for the youngest heir of Wayne Enterprises.",
-        hours=json.dumps({
-            "Monday": {"open": "19:00:00", "close": "23:00:00"},
-            "Tuesday": {"open": "19:00:00", "close": "23:00:00"},
-            "Wednesday": {"open": "19:00:00", "close": "23:00:00"},
-            "Thursday": {"open": "19:00:00", "close": "23:00:00"},
-            "Friday": {"open": "19:00:00", "close": "23:00:00"},
-            "Saturday": {"open": "20:00:00", "close": "00:00:00"},
-            "Sunday": {"open": "20:00:00", "close": "00:00:00"}
-        }),
+        hours='9-5',
 
     ),
     Restaurant(
@@ -970,15 +595,7 @@ restaurant_list = [
         country="United States",
         name="Batgirl's Bat Bites",
         description="Superhero-inspired snacks for the crime-fighter in you.",
-        hours=json.dumps({
-            "Monday": {"open": "10:00:00", "close": "22:00:00"},
-            "Tuesday": {"open": "10:00:00", "close": "22:00:00"},
-            "Wednesday": {"open": "10:00:00", "close": "22:00:00"},
-            "Thursday": {"open": "10:00:00", "close": "22:00:00"},
-            "Friday": {"open": "10:00:00", "close": "22:00:00"},
-            "Saturday": {"open": "11:00:00", "close": "23:00:00"},
-            "Sunday": {"open": "11:00:00", "close": "23:00:00"}
-        }),
+        hours='9-5',
 
     )
 ]

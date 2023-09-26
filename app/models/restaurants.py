@@ -26,7 +26,7 @@ class Restaurant(db.Model, UserMixin):
     country = db.Column(db.String(50), nullable=False)
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    hours = db.Column(db.Text, nullable=False)
+    hours = db.Column(db.String(50), nullable=False)
 
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now())
