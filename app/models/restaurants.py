@@ -5,6 +5,7 @@ from datetime import datetime
 
 
 class Restaurant(db.Model, UserMixin):
+  
   __tablename__ = 'restaurants'
 
 
