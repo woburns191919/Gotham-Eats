@@ -13,7 +13,7 @@ class Restaurant(db.Model, UserMixin):
 
 
   id = db.Column(db.Integer, primary_key=True)
-  owner_id = db.Column(db.Integer, db.ForeignKey("users.id"),nullable=False)
+  owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
   streetAddress = db.Column(db.String(255),nullable=False)
   city = db.Column(db.String(255), nullable=False)
   state = db.Column(db.String(50), nullable=False)
