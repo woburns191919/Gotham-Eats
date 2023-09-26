@@ -71,6 +71,9 @@ filename_dessert_list=["blueberry_tart","chocolate_chip_cookie",  "lava_cake", "
 dessert_list=["Blueberry tart","Chocolate Chip Cookie","Lava Cake","Pumpkin pie",'Carrot Cake',"Chocolate Mousse","Milkshake","Strawberry Shortcake",'Apple Pie',"Cheesecake","Cupcake","Peach Cobbler","Tiramisu","Banana Split","Chocolate Brownie","Flan","Pistachio Gelato","Vanilla IceCream"]
 filename_drink_list=["cappuccino","gotham_red_wine","margarita","redbull","seven_and_seven","sprite","gotham_white_wine","lemonade","martini","root_beer","shirley_temple","Coffee","gotham_beer","long_island_iced_tea","pepsi","rum_and_coke","smoothie"]
 drink_list=["Cappuccino", "Gotham Red Wine", "Margarita", "Redbull", "Seven and Seven", "Sprite", "Gotham White Wine", "Lemonade", "Martini", "Root Beer", "Shirley Temple", "Coffee", "Gotham Beer", "Long Island Iced Tea", "Pepsi", "Rum and Coke", "Smoothie"]
+filename_sides_list=["chicken_wings","fried_rice", "green_beans","mozarella_sticks", "roasted_veggies","corn_on_the_cob  fries", "lo_mein", "nachos", "sweet_potato_fries","baked_potato", "creamed_spinach", "garden_salad  mac_and_cheese","onion_rings","tater_tots",
+"breadsticks", "edemame", "garlic_bread  mashed_potatoes",  "roasted_cauliflower"]
+sides_list=["Chicken Wings", "Fried Rice", "Green Beans", "Mozarella Sticks", "Roasted Veggies", "Corn on the Cob", "Fries", "Lo Mein", "Nachos", "Sweet Potato Fries", "Baked Potato", "Creamed Spinach", "Garden Salad", "Mac and Cheese", "Onion Rings", "Tater Tots", "Breadsticks", "Edemame", "Garlic Bread", "Mashed_Potatoes", "Roasted Cauliflower"]
 #step 2:   from the entree list picked, get the image url and randomly assign 1-5.  we make an object with key and path values as translator.
 
 
@@ -137,6 +140,30 @@ dessert_translator= {
     "Vanilla IceCream": f"/menu_item_images/desserts/vanilla_icecream/img ({randint(1, 5)}).jpeg"
 }
 
+sides_translator= {
+"Chicken Wings": f"/menu_item_images/sides/chicken_wings/img ({randint(1, 5)}).jpeg",
+"Fried Rice": f"/menu_item_images/sides/fried_rice/img ({randint(1, 5)}).jpeg",
+"Green Beans": f"/menu_item_images/sides/green_beans/img ({randint(1, 5)}).jpeg",
+"Mozarella Sticks": f"/menu_item_images/sides/mozarella_sticks/img ({randint(1, 5)}).jpeg",
+"Roasted Veggies": f"/menu_item_images/sides/roasted_veggies/img ({randint(1, 5)}).jpeg",
+"Corn on the Cob": f"/menu_item_images/sides/corn_on_the_cob/img ({randint(1, 5)}).jpeg",
+"Fries": f"/menu_item_images/sides/fries/img ({randint(1, 5)}).jpeg",
+"Lo Mein": f"/menu_item_images/sides/lo_mein/img ({randint(1, 5)}).jpeg",
+"Nachos": f"/menu_item_images/sides/nachos/img ({randint(1, 5)}).jpeg",
+"Sweet Potato Fries": f"/menu_item_images/sides/sweet_potato_fries/img ({randint(1, 5)}).jpeg",
+"Baked Potato": f"/menu_item_images/sides/baked_potato/img ({randint(1, 5)}).jpeg",
+"Creamed Spinach": f"/menu_item_images/sides/creamed_spinach/img ({randint(1, 5)}).jpeg",
+"Garden Salad": f"/menu_item_images/sides/garden_salad/img ({randint(1, 5)}).jpeg",
+"Mac and Cheese": f"/menu_item_images/sides/mac_and_cheese/img ({randint(1, 5)}).jpeg",
+"Onion Rings": f"/menu_item_images/sides/onion_rings/img ({randint(1, 5)}).jpeg",
+"Tater Tots": f"/menu_item_images/sides/tater_tots/img ({randint(1, 5)}).jpeg",
+"Breadsticks": f"/menu_item_images/sides/breadsticks/img ({randint(1, 5)}).jpeg",
+"Edemame": f"/menu_item_images/sides/edemame/img ({randint(1, 5)}).jpeg",
+"Garlic Bread": f"/menu_item_images/sides/garlic_bread/img ({randint(1, 5)}).jpeg",
+"Mashed_Potatoes": f"/menu_item_images/sides/mashed_potatoes/img ({randint(1, 5)}).jpeg",
+"Roasted Cauliflower": f"/menu_item_images/sides/roasted_cauliflower/img ({randint(1, 5)}).jpeg"
+}
+
 villain_adj_dict = {
     "1_penguin": ["scheming", "waddling", "umbrella-toting", "calculating", "icy"],
     "2_riddler": ["enigmatic", "puzzling", "question-asking", "clever", "green-suited"],
@@ -173,12 +200,11 @@ def fake_price():
     return f"{num1}.{num2}"
 def seed_menu_items():
     counter=1
-
-    our_set= set()
     our_guy=None
     master_entrees=[]
     master_drinks=[]
     master_desserts=[]
+    master_sides=[]
     master_menu_item_imgs=[]
 
 
@@ -186,6 +212,7 @@ def seed_menu_items():
         entree_name_end = Entree_List[randint(0,17)]
         dessert_name_end= dessert_list[randint(0,17)]
         drink_name_end= drink_list[randint(0,16)]
+        side_name_end= sides_list[randint(0,20)]
         if counter<=18:
             our_guy=keysToVillains[counter-1]
         else:
@@ -207,8 +234,11 @@ def seed_menu_items():
         all_entrees=[]
         all_desserts=[]
         all_drinks=[]
+        all_sides=[]
         all_menu_item_imgs=[]
         for k in range(0,11):
+
+            #add ENTREE and picture for it***************************
             currEntree=MenuItem(
             restaurant_id=counter,
             menu_item_img_id=counter,
@@ -227,19 +257,34 @@ def seed_menu_items():
 
             )),
 
+            #add SIDE and picture for it****************************
+            currSide=MenuItem(
+                restaurant_id=counter,
+                menu_item_img_id=counter,
+                name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {side_name_end}", description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]}{dessert_name_end}s",
+                price=float(fake_price()),
+                type="side",
+                shopping_cart_id=counter)
 
+            all_menu_item_imgs.append(MenuItemImg(
+                menu_item_id=counter,
+                url=sides_translator[side_name_end],
+                preview= False))
 
+            #add DESSERT and picture for it************************
             currDessert=MenuItem(
                 restaurant_id=counter,
                 menu_item_img_id=counter,
-                name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {dessert_name_end}", description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {dessert_name_end}s", price=float(fake_price()), type="dessert", picture=dessert_translator[dessert_name_end])
+                name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {dessert_name_end}", description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {dessert_name_end}s",
+                price=float(fake_price()),
+                type="dessert")
+
             all_menu_item_imgs.append(MenuItemImg(
                 menu_item_id=counter,
                 url=dessert_translator[dessert_name_end],
-                preview= False
+                preview= False))
 
-
-            ))
+            #add DRINK and picture for it
             currDrink=MenuItem(
                 restaurant_id=counter,
                 menu_item_img_id=counter,
@@ -247,18 +292,20 @@ def seed_menu_items():
                 description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
                 price=float(fake_price()),
                 type="drink")
+
             all_menu_item_imgs.append(MenuItemImg(
                 menu_item_id=counter,
                 url=drink_translator[drink_name_end],
-                preview= False
+                preview= False))
 
 
-            ))
             all_entrees.append(currEntree)
+            all_sides.append(currSide)
             all_desserts.append(currDessert)
             all_drinks.append(currDrink)
 
         master_entrees.append(all_entrees)
+        master_sides.append(all_sides)
         master_desserts.append(all_desserts)
         master_drinks.append(all_drinks)
         master_menu_item_imgs.append(all_menu_item_imgs)
@@ -266,12 +313,14 @@ def seed_menu_items():
 
     for array1 in master_entrees:
         db.session.add_all(array1)
-    for array2 in master_drinks:
+    for array2 in master_sides:
         db.session.add_all(array2)
-    for array3 in master_desserts:
+    for array3 in master_drinks:
         db.session.add_all(array3)
-    for array4 in master_menu_item_imgs:
+    for array4 in master_desserts:
         db.session.add_all(array4)
+    for array5 in master_menu_item_imgs:
+        db.session.add_all(array5)
     db.session.commit()
 
 
@@ -304,6 +353,9 @@ def seed_menu_items():
 
 
 #************THESE ARE ALL OF THE SIDES THEYH ARE DONE EXCEPT WE missing r17
+    r1_sides_img=[
+
+    ]
     r1_sides = [
         MenuItem(restaurant_id=1, menu_item_img_id=1, name="Bane's Baked Potato", description="Loaded with toppings", price=4.99, type="side", picture="/menu_item_images/sides/baked_potato/img (3).jpeg"),
         MenuItem(restaurant_id=1, menu_item_img_id=1, name="Joker's Breadsticks", description="Twisted and delicious", price=3.99, type="side", picture="/menu_item_images/sides/breadsticks/img (2).jpeg"),
