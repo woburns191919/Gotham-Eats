@@ -36,11 +36,13 @@ def create_new_restaurant():
   if form.validate_on_submit():
     new_restaurant = Restaurant(
       owner_id = data["owner_id"],
+      name = data["name"],
       streetAddress = data["street_address"],
       city = data["city"],
       state = data["state"],
       postalCode = data["postal_code"],
       country = data["country"],
+      description = data["description"],
       hours = data["hours"],
       previmg = data["previmg"]
     )
@@ -50,3 +52,13 @@ def create_new_restaurant():
     db.session.commit()
     return jsonify(message = "Successfully created new restaurant"), 201
   return jsonify(errors=form.errors), 400
+
+@home_restaurants.route("/update/<int:id", methods=["GET", "POST"])
+def update_post(id):
+
+   form = RestaurantForm()
+
+   if form.validate_on_submit():
+      restaurant_to_update = Restaurant.query.get(id)
+      # user = User.query.get()
+      
