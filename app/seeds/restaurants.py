@@ -21,7 +21,6 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="https://w7.pngwing.com/pngs/601/465/png-transparent-hamburger-cheeseburger-fast-food-steak-burger-sandwich-food-recipe-cheeseburger-thumbnail.png"
     ),
 
     Restaurant(
@@ -42,7 +41,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="https://w7.pngwing.com/pngs/10/294/png-transparent-potato-fries-french-fries-fast-food-delicatessen-chicken-fingers-buffalo-wing-hd-fries-food-breakfast-eating-thumbnail.png"
+
     ),
 
     Restaurant(
@@ -63,7 +62,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="https://w7.pngwing.com/pngs/999/253/png-transparent-shawarma-fast-food-hamburger-kebab-bacon-kebab-food-recipe-chicken-meat-thumbnail.png"
+
     ),
 
     Restaurant(
@@ -84,7 +83,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="https://w7.pngwing.com/pngs/822/979/png-transparent-hamburger-cheese-sandwich-steak-sandwich-vegetable-sandwich-fast-food-grilled-sandwich-food-recipe-cafe-thumbnail.png"
+
     ),
 
     Restaurant(
@@ -105,7 +104,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -126,7 +125,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+        
     ),
 
     Restaurant(
@@ -147,7 +146,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -168,7 +167,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -189,7 +188,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -210,7 +209,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -231,7 +230,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -272,7 +271,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -293,7 +292,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -314,7 +313,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -335,7 +334,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -356,7 +355,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -377,7 +376,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -398,7 +397,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=9,
@@ -418,7 +417,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=11,
@@ -438,7 +437,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=12,
@@ -458,7 +457,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=4,
@@ -478,7 +477,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=5,
@@ -498,7 +497,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=14,
@@ -518,7 +517,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=8,
@@ -538,7 +537,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=6,
@@ -558,7 +557,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=13,
@@ -578,7 +577,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
     Restaurant(
@@ -599,7 +598,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=2,
@@ -619,7 +618,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=3,
@@ -639,7 +638,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=15,
@@ -659,7 +658,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=16,
@@ -679,7 +678,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=17,
@@ -699,7 +698,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=4,
@@ -719,7 +718,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=5,
@@ -739,7 +738,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=7,
@@ -759,7 +758,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=9,
@@ -779,7 +778,7 @@ restaurant_list = [
             "Saturday": {"open": "00:00:00", "close": "24:00:00"},
             "Sunday": {"open": "00:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
 
         Restaurant(
@@ -800,7 +799,7 @@ restaurant_list = [
             "Saturday": {"open": "11:00:00", "close": "23:00:00"},
             "Sunday": {"open": "11:00:00", "close": "23:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=8,
@@ -820,7 +819,7 @@ restaurant_list = [
             "Saturday": {"open": "09:00:00", "close": "21:00:00"},
             "Sunday": {"open": "09:00:00", "close": "21:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=10,
@@ -840,7 +839,7 @@ restaurant_list = [
             "Saturday": {"open": "20:00:00", "close": "04:00:00"},
             "Sunday": {"open": "20:00:00", "close": "04:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=11,
@@ -860,7 +859,7 @@ restaurant_list = [
             "Saturday": {"open": "12:00:00", "close": "24:00:00"},
             "Sunday": {"open": "12:00:00", "close": "24:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=12,
@@ -880,7 +879,7 @@ restaurant_list = [
             "Saturday": {"open": "10:00:00", "close": "22:00:00"},
             "Sunday": {"open": "10:00:00", "close": "22:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=13,
@@ -900,7 +899,7 @@ restaurant_list = [
             "Saturday": {"open": "09:00:00", "close": "21:00:00"},
             "Sunday": {"open": "09:00:00", "close": "21:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=14,
@@ -920,7 +919,7 @@ restaurant_list = [
             "Saturday": {"open": "11:00:00", "close": "21:00:00"},
             "Sunday": {"open": "11:00:00", "close": "21:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=15,
@@ -940,7 +939,7 @@ restaurant_list = [
             "Saturday": {"open": "14:00:00", "close": "02:00:00"},
             "Sunday": {"open": "14:00:00", "close": "02:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=16,
@@ -960,7 +959,7 @@ restaurant_list = [
             "Saturday": {"open": "20:00:00", "close": "00:00:00"},
             "Sunday": {"open": "20:00:00", "close": "00:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     ),
     Restaurant(
         owner_id=17,
@@ -980,7 +979,7 @@ restaurant_list = [
             "Saturday": {"open": "11:00:00", "close": "23:00:00"},
             "Sunday": {"open": "11:00:00", "close": "23:00:00"}
         }),
-        previmg="http://www.dog1.jpg/"
+
     )
 ]
 
