@@ -7,6 +7,7 @@ from .reviews import Review
 from .menu_items import MenuItem
 
 class Restaurant(db.Model, UserMixin):
+
     __tablename__ = 'restaurants'
 
     def add_prefix_for_prod(attr):
@@ -16,6 +17,7 @@ class Restaurant(db.Model, UserMixin):
             return attr
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
+
 
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))

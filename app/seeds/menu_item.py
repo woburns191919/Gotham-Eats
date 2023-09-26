@@ -51,7 +51,27 @@ drink_translator={
 "Smoothie": f"/menu_item_images/drinks/smoothie/img ({randint(1, 5)}).jpeg",
 }
 
+drink_translator={
+"Cappuccino":f"/menu_item_images/drinks/cappuccino/img ({randint(1, 5)}).jpeg",
+"Gotham Red Wine": f"/menu_item_images/drinks/gotham_red_wine/img ({randint(1, 5)}).jpeg",
+"Margarita": f"/menu_item_images/drinks/margarita/img ({randint(1, 5)}).jpeg",
+"Redbull": f"/menu_item_images/drinks/redbull/img ({randint(1, 5)}).jpeg",
+"Seven and Seven":  f"/menu_item_images/drinks/seven_and_seven/img ({randint(1, 5)}).jpeg",
+"Sprite": f"/menu_item_images/drinks/sprite/img ({randint(1, 5)}).jpeg",
+"Gotham White Wine": f"/menu_item_images/drinks/gotham_white_wine/img ({randint(1, 5)}).jpeg",
+"Lemonade": f"/menu_item_images/drinks/lemonade/img ({randint(1, 5)}).jpeg",
+"Martini": f"/menu_item_images/drinks/martini/img ({randint(1, 5)}).jpeg",
+"Root Beer": f"/menu_item_images/drinks/root_beer/img ({randint(1, 5)}).jpeg",
+"Shirley Temple":  f"/menu_item_images/drinks/shirley_temple/img ({randint(1, 5)}).jpeg",
+"Coffee":  f"/menu_item_images/drinks/Coffee/img ({randint(1, 5)}).jpeg",
+"Gotham Beer": f"/menu_item_images/drinks/gotham_beer/img ({randint(1, 5)}).jpeg",
+"Long Island Iced Tea":  f"/menu_item_images/drinks/long_island_iced_tea/img ({randint(1, 5)}).jpeg",
+"Pepsi":  f"/menu_item_images/drinks/pepsi/img ({randint(1, 5)}).jpeg",
+"Rum and Coke":  f"/menu_item_images/drinks/rum_and_coke/img ({randint(1, 5)}).jpeg",
+"Smoothie":     f"/menu_item_images/drinks/smoothie/img ({randint(1, 5)}).jpeg",
 
+
+}
 entree_translator= {
     "Buffalo Chicken Sandwich": f"/menu_item_images/entrees/buffalo_chicken_sandwich/img ({randint(1, 5)}).jpeg",
     "Chicken Tenders": f"/menu_item_images/entrees/chicken_tenders/img ({randint(1, 5)}).jpeg",
@@ -96,6 +116,7 @@ dessert_translator= {
 }
 
 
+
 sides_translator= {
 "Chicken Wings": f"/menu_item_images/sides/chicken_wings/img ({randint(1, 5)}).jpeg",
 "Fried Rice": f"/menu_item_images/sides/fried_rice/img ({randint(1, 5)}).jpeg",
@@ -119,6 +140,7 @@ sides_translator= {
 "Mashed_Potatoes": f"/menu_item_images/sides/mashed_potatoes/img ({randint(1, 5)}).jpeg",
 "Roasted Cauliflower": f"/menu_item_images/sides/roasted_cauliflower/img ({randint(1, 5)}).jpeg"
 }
+
 
 
 villain_adj_dict = {
