@@ -10,13 +10,10 @@ from .reviews import Review
 class Restaurant(db.Model, UserMixin):
   __tablename__ = 'restaurants'
 
-  if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
-
 
 
   id = db.Column(db.Integer, primary_key=True)
-  owner_id = db.Column(db.Integer, db.ForeignKey("users.id", use_alter=True, name='fk_owner_id'), nullable=False)
+  owner_id = db.Column(db.Integer, db.ForeignKey("users.id"),nullable=False)
   streetAddress = db.Column(db.String(255),nullable=False)
   city = db.Column(db.String(255), nullable=False)
   state = db.Column(db.String(50), nullable=False)
@@ -39,6 +36,8 @@ class Restaurant(db.Model, UserMixin):
   def avg_stars(self):
     return db.session.query(func.avg(Review.stars)).filter(Review.restaurant_id == self.id).scalar()
 
+  if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
 
   def to_dict(self):
