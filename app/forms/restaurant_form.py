@@ -14,6 +14,7 @@ def is_numeric(form, field):
 
 
 class RestaurantForm(FlaskForm):
+
   name = StringField("Name", validators=[DataRequired()])
   streetAddress = StringField("Street Address", validators=[DataRequired()])
   city = SelectField("City", choices=['Gotham'])
@@ -24,3 +25,7 @@ class RestaurantForm(FlaskForm):
   hours = TextAreaField("Hours", validators=[DataRequired()])
   previmg = StringField("Preview Image", validators=[DataRequired(), URL()])
   submit = SubmitField("Create Restaurant")
+
+
+
+

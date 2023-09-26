@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request,redirect
 import app
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Restaurant, Review, db
@@ -54,43 +54,14 @@ def create_new_restaurant():
     return jsonify(message = "Successfully created new restaurant"), 201
   return jsonify(errors=form.errors), 400
 
-# @home_restaurants.route("/update/<int:id>", methods=["GET", "POST"])
-# def update_post(id):
-#    """update a restaurant if the user owns the restaurant"""
-#    form = RestaurantForm()
-#    restaurant_to_update = Restaurant.query.get(id)
-#    if restaurant_to_update.owner_id == current_user.id:
-#         if form.validate_on_submit():
-#           restaurant_to_update.name = form.name.data
-#           restaurant_to_update.streetAddress = form.streetAddress.data
-#           restaurant_to_update.city = form.city.data
-#           restaurant_to_update.state = form.state.data
-#           restaurant_to_update.postalCode = form.postalCode.data
-#           restaurant_to_update.country = form.country.data
-#           restaurant_to_update.description = form.description.data
-#           restaurant_to_update.hours = form.hours.data
-#           restaurant_to_update.previmg = form.previmg.data
-
-#           db.session.commit()
-#           return jsonify(message="Restaurant updated successfully"), 200
-#         elif form.errors:
-#            return jsonify(errors=form.errors), 400
-#    return jsonify(message="You are not the owner of this restaurant"), 403
-
-
-  #  if restaurant_to_update.owner_id == current_user.id:
-    #  if form.validate_on_submit():
 
       # user = User.query.get()
 @home_restaurants.route("/update/<int:id>", methods=["GET", "PUT"])
-def update_post(id):
+def update_restaurant(id):
     """update a restaurant if the user owns the restaurant"""
 
     restaurant_to_update = Restaurant.query.get_or_404(id)
-    print("current_user.id:", current_user.id)
-    print("restaurant_to_update.owner_id:", restaurant_to_update.owner_id)
 
-    # Check if the user is authenticated and if they are the owner
     if not current_user.is_authenticated:
         return jsonify(message="You need to be logged in"), 401
 
@@ -98,17 +69,43 @@ def update_post(id):
         return jsonify(message="You are not the owner of this restaurant"), 403
 
     form = RestaurantForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if request.method == 'GET':
-        form.name.data = restaurant_to_update.name
-        # ... (populate other fields in the same manner)
+        return jsonify(restaurant_to_update.to_dict())
+    data = request.get_json()
+    # form.csrf_token.data = request.headers.get('X-CSRFToken')
+
+    form.name.data = data['name']
+    form.streetAddress.data = data['streetAddress']
+    form.city.data = data['city']
+    form.state.data = data['state']
+    form.postalCode.data = data['postalCode']
+    form.country.data = data['country']
+    form.description.data = data['description']
+    form.hours.data = data['hours']
+    form.previmg.data = data['previmg']
 
     if form.validate_on_submit():
         restaurant_to_update.name = form.name.data
         restaurant_to_update.streetAddress = form.streetAddress.data
-        # ... (set other attributes in the same manner)
+        restaurant_to_update.city = form.city.data
+        restaurant_to_update.state = form.state.data
+        restaurant_to_update.postalCode = form.postalCode.data
+        restaurant_to_update.country = form.country.data
+        restaurant_to_update.description = form.description.data
+        restaurant_to_update.hours = form.hours.data
+        restaurant_to_update.previmg = form.previmg.data
 
         db.session.commit()
         return jsonify(message="Restaurant updated successfully"), 200
-    elif form.errors:
+    else:
         return jsonify(errors=form.errors), 400
+
+@home_restaurants.route("/delete/<int:id>")
+def delete_post(id):
+    restaurant_to_delete = Restaurant.query.get(id)
+    print(restaurant_to_delete)
+    db.session.delete(restaurant_to_delete)
+    db.session.commit()
+    return redirect("/restaurants")
