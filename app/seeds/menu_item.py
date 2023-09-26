@@ -116,12 +116,6 @@ villain_adj_dict = {
     "19_everyone_else": ["mouth-watering", "delightful", "scrumptious", "appetizing", "delectable", "enticing", "irresistible", "tasty", "flavorful", "savoring", "tempting", "yummy", "divine", "palatable" "lip-smacking", "satisfying", "succulent", "indulgent", "inspirational"]
             }
 
-def fakePrice():
-    az= 5
-    zy=30
-    rand_num = random.uniform(az,zy)
-    return rand_num
-# ouradj=ourobject[counter.string()]
 
 # if counter < 19
 # selected villain =
