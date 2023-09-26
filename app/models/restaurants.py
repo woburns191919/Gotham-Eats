@@ -4,6 +4,7 @@ from flask_login import UserMixin
 from datetime import datetime
 from sqlalchemy import func
 from .reviews import Review
+from .menu_items import MenuItem
 
 
 
@@ -38,7 +39,7 @@ class Restaurant(db.Model, UserMixin):
 
   @property
   def image(self):
-      return db.session.query()
+      return db.session.query(MenuItem.picture).filter(MenuItem.restaurant_id == self.id).scalar()
 
   if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -57,5 +58,6 @@ class Restaurant(db.Model, UserMixin):
           'description': self.description,
           'hours': self.hours,
           'previmg': self.previmg,
-          'avgRating': self.avg_stars
+          'avgRating': self.avg_stars,
+          'image': self.image
       }
