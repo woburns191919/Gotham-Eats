@@ -5,6 +5,7 @@ from datetime import datetime
 from sqlalchemy import func
 from .reviews import Review
 from .menu_items import MenuItem
+from .menu_items_img import MenuItemImg
 
 class Restaurant(db.Model, UserMixin):
 
@@ -42,9 +43,23 @@ class Restaurant(db.Model, UserMixin):
     @property
     def avg_stars(self):
         return db.session.query(func.avg(Review.stars)).filter(Review.restaurant_id == self.id).scalar()
-
-
-
+    @property
+    def get_image(self):
+        menu_item_images = (
+            db.session.query(MenuItemImg)
+            .join(MenuItem, MenuItem.id == MenuItemImg.menu_item_id)
+            .filter(MenuItem.restaurant_id == self.id)
+            .all()
+        )
+        return [
+            {
+                'id': img.id,
+                'menu_item_id': img.menu_item_id,
+                'url': img.url,
+                'preview': img.preview,
+            }
+            for img in menu_item_images
+        ]
 
     def to_dict(self):
         return {
@@ -59,5 +74,5 @@ class Restaurant(db.Model, UserMixin):
             'description': self.description,
             'hours': self.hours,
             'avgRating': self.avg_stars,
-            # 'images': self.images
+            'menu_item_images': self.get_image,
         }

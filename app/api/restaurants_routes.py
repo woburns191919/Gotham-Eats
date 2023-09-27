@@ -8,8 +8,7 @@ import json
 # from ..models.restaurants import
 
 home_restaurants = Blueprint('restaurants', __name__)
-# print("******************current_user: ", current_user.get_id())
-# print("******************Restaurant.owner_id: ", Restaurant.query.get(id).owner_id)
+
 
 @home_restaurants.route("/")
 def get_popular_restaurants():
@@ -74,7 +73,7 @@ def update_restaurant(id):
     if request.method == 'GET':
         return jsonify(restaurant_to_update.to_dict())
     data = request.get_json()
-    
+
 
     form.name.data = data['name']
     form.streetAddress.data = data['streetAddress']

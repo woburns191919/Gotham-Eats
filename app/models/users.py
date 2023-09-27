@@ -9,7 +9,6 @@ class User(db.Model, UserMixin):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-
     id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(255),nullable=False)
     lastName = db.Column(db.String(255),nullable=False)
