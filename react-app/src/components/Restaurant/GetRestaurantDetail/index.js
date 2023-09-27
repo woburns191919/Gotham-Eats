@@ -8,7 +8,9 @@ import "./GetRestaurantDetail.css";
 
 export default function GetRestaurantDetail() {
   const dispatch = useDispatch();
+  const [reloadPage, setReloadPage] = useState(false);
   const { id } = useParams();
+  const [isDelivery, setIsDelivery] = useState(true);
 
 
 
@@ -45,8 +47,40 @@ export default function GetRestaurantDetail() {
           src={`${process.env.PUBLIC_URL}${restaurantsDetailData.menu_item_images[0].url}`} alt="Preview" />
       </div>
       <div className="res-container">
-        <h1>{restaurantsDetailData.name}</h1>
-        <div className="det-ratings">★{restaurantsDetailData.avgRating.toFixed(1)}({restaurantsDetailData.reviews.length} ratings)</div>
+        <h1 className="det-name">{restaurantsDetailData.name}</h1>
+        <div className="det-ratings"><h3>★{restaurantsDetailData.avgRating.toFixed(1)}{" "}({restaurantsDetailData.reviews.length} ratings) · $$ · Read 5-Star Reviews · More Info  </h3>
+
+        </div>
+
+        {/* <OpenModalButton buttonText="More Info" modalComponent={<restaurantsDetailData.description
+        />} /> */}
+        <div className="slider-container">
+          <div className="label-container">
+            <span className={isDelivery ? "active" : ""}>Delivery</span>
+            <span className="time">45min</span>
+          </div>
+          <div className="switch" onClick={() => setIsDelivery(!isDelivery)}>
+            <div className={isDelivery ? "thumb delivery" : "thumb pickup"}></div>
+          </div>
+          <div className="label-container">
+            <span className={!isDelivery ? "active" : ""}>Pickup</span>
+            <span className="time">15min</span>
+          </div>
+        </div>
+        <div className="menu-items">
+          <h2 className="nat-sel">Natural Selection</h2>
+          <div className="imgages-container">
+            {restaurantsDetailData.menu_item_images.slice(1).map((img, index) => (
+              <img className="res-det-photo"
+                key={index}
+                src={`${process.env.PUBLIC_URL}${img.url}`}
+                alt=""
+              />
+              // {restaurantsDetailData.menu_item_images.url}
+            ))}
+          </div>
+
+        </div>
       </div>
     </div>
   )

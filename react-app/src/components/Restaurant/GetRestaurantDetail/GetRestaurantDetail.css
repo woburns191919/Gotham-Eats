@@ -1,0 +1,102 @@
+.Res-Det-Container {
+    background-color: aliceblue;
+    border-radius: 6px;
+    max-width: 1010px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-photo{
+    height: 296px;
+    width: 532px;
+}
+
+.det-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-family: 'BatmanForeverAlternate', sans-serif;
+    text-shadow: 2px 2px #c6c31d;
+    margin-top: 63px;
+}
+
+.slider-container {
+    display: flex;
+    align-self: flex-end;
+    padding: 10px 20px;
+    background-color: #111;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    width: 191px;
+    justify-content: flex-end;
+    margin-left: 763px;
+    margin-bottom: 8px;
+
+}
+
+span {
+    margin: 0 10px;
+    opacity: 0.5;
+    font-weight: bold;
+    color: white;
+    font-size: 12pt;
+}
+
+span.active {
+    opacity: 1;
+}
+
+.label-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time {
+    font-size: 9pt;
+    opacity: 0.8;
+}
+
+.switch {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: #333;
+    border-radius: 15px;
+}
+
+.thumb {
+    position: absolute;
+    top: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    transition: left 0.3s;
+}
+
+.thumb.delivery {
+    left: 2px;
+}
+
+.thumb.pickup {
+    left: 23px;
+}
+
+.nat-sel {
+    color: #111;
+}
+
+.images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* This will ensure that there's even spacing between the four images in a row */
+  }
+
+  .res-det-photo {
+    width: calc(25% - 10px); /* Assuming you want 10px gap between images */
+  }
