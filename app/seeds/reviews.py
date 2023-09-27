@@ -246,10 +246,6 @@ reviews_list = [
 
 
 
-
-
-
-
 def seed_reviews():
     for ele in reviews_list:
         db.session.add(ele)
