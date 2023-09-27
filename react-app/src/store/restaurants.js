@@ -41,8 +41,9 @@ export const thunkGetRestaurantDetail = createAsyncThunk(
         return rejectWithValue(errors);
       }
     } catch (error) {
+      console.error("API Fetch Error: ", error);
       return rejectWithValue(error.message);
-    }
+   }
   }
 );
 

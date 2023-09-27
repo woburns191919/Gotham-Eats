@@ -9,13 +9,17 @@ import LoginFormModal from "./components/LoginFormModal";
 import SignupFormModal from "./components/SignupFormModal";
 import GetRestaurants from "./components/Restaurant/GetRestaurants";
 import Home from "./components/Home"
+import GetRestaurantDetail from "./components/Restaurant/GetRestaurantDetail";
 
 function App() {
   const dispatch = useDispatch();
+
+
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
 
   return (
     <>
@@ -24,6 +28,9 @@ function App() {
         <Switch>
           <Route exact path="/" >
             <Home />
+          </Route>
+          <Route path="/restaurants/:id" >
+            <GetRestaurantDetail />
           </Route>
           <Route path="/restaurants" >
             <GetRestaurants />

@@ -42,6 +42,7 @@ class MenuItem(db.Model, UserMixin):
         return images
 
     def to_dict(self):
+
         return {
             'id': self.id,
             'restaurant_id': self.restaurant_id,
@@ -51,6 +52,5 @@ class MenuItem(db.Model, UserMixin):
             'price': self.price,
             'type': self.type,
             'shopping_cart_id': self.shopping_cart_id,
-            'picture': self.picture
             # 'images': self.images
         }
