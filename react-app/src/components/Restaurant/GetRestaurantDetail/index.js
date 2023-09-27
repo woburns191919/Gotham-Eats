@@ -70,7 +70,7 @@ export default function GetRestaurantDetail() {
         <div className="menu-items">
           <h2 className="nat-sel">Natural Selection</h2>
           <div className="imgages-container">
-            {restaurantsDetailData.menu_item_images.slice(1).map((img, index) => (
+            {restaurantsDetailData.menu_item_images.slice(0).map((img, index) => (
               <img className="res-det-photo"
                 key={index}
                 src={`${process.env.PUBLIC_URL}${img.url}`}
@@ -84,7 +84,7 @@ export default function GetRestaurantDetail() {
         </div>
         <div className="reviews">
           <h2>Reviews</h2>
-          
+
         </div>
       </div>
     </div>
