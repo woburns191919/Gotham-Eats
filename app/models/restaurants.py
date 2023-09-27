@@ -80,5 +80,5 @@ class Restaurant(db.Model, UserMixin):
             'hours': self.hours,
             'avgRating': self.avg_stars,
             'menu_item_images': self.get_image,
-            'reviews' : self.get_reviews
+            'reviews' : [review.to_dict() for review in self.get_reviews]
         }
