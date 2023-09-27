@@ -24,8 +24,8 @@ def seed():
         undo_reviews()
         undo_users()
     seed_users()
-    seed_restaurants()
     seed_reviews()
+    seed_restaurants()
     seed_menu_items()
     # Add other seed functions here
 
