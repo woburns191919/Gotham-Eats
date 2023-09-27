@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { thunkGetAllRestaurants } from "../../../store/restaurants";
-import {}
+import { thunkGetRestaurantsUserOwns } from "../../../store/restaurants";
 import OpenModalButton from "../../OpenModalButton/index";
 
 import "./GetRestaurants.css";
 
 
-let thunkGetRestaurantsUserOwns=7
+
 
 export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
