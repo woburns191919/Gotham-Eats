@@ -14,11 +14,12 @@ home_restaurants = Blueprint('restaurants', __name__)
 @home_restaurants.route("/<int:id>")
 def get_restaurant_by_id(id):
     """returns a single restaurant by the given id provided as a route parameter"""
-    one_restaurant = db.session.query(Restaurant).join(MenuItem, MenuItem.restaurant_id==id).\
-      all()
+    one_restaurant = Restaurant.query.get(id)
+    if not one_restaurant:
+       return jsonify({"error": "Restaurant not found"}), 404
     # detailed_images = db.session.query(Restaurant).join(MenuItem, MenuItem.restaurant_id==id).to_dict()
-    print('***********',one_restaurant[MenuItem])
-    return jsonify(one_restaurant)
+
+    return one_restaurant.to_dict()
 
 @home_restaurants.route("/")
 def get_popular_restaurants():
@@ -39,7 +40,7 @@ def get_popular_restaurants():
 def create_new_restaurant():
   """creates a new restaurant"""
   form = RestaurantForm()
-  form['csrf_token'].data = request.cookies['csrf_token']
+  # form['csrf_token'].data = request.cookies['csrf_token']
 
   data = request.get_json()
   if form.validate_on_submit():
