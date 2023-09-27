@@ -10,7 +10,19 @@ from faker import Faker
 
 
 
+
+
+
+
+
+
+
+
 filename_entree_list=["buffalo_chicken_sandwich", "chicken_tenders", "fish_tacos", "lasagna", "philly_cheesesteak",  "spaghetti", "chicken_fajita", "fettuccine_alfredo", "gyro", "lobster", "pizza", "steak", "bbq_ribs", "chicken_parmesan", "fish_and_chips", "hamburger", "meatball_sandwich", "shish_kebab"]
+
+
+
+
 
 
 
@@ -20,7 +32,15 @@ Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasag
 
 
 
+
+
+
+
 filename_dessert_list=["blueberry_tart","chocolate_chip_cookie",  "lava_cake", "pumpkin_pie", "carrot_cake",  "chocolate_mousse","milkshake", "strawberry_shortcake", "apple_pie", "cheesecake",  "cupcake", "peach_cobbler", "tiramisu", "banana_split",  "chocolate_brownie",  "flan", "pistachio_gelato",  "vanilla_icecream"]
+
+
+
+
 
 
 
@@ -30,12 +50,24 @@ dessert_list=["Blueberry tart","Chocolate Chip Cookie","Lava Cake","Pumpkin pie"
 
 
 
+
+
+
+
 filename_drink_list=["cappuccino","gotham_red_wine","margarita","redbull","seven_and_seven","sprite","gotham_white_wine","lemonade","martini","root_beer","shirley_temple","Coffee","gotham_beer","long_island_iced_tea","pepsi","rum_and_coke","smoothie"]
 
 
 
 
+
+
+
+
 drink_list=["Cappuccino", "Gotham Red Wine", "Margarita", "Redbull", "Seven and Seven", "Sprite", "Gotham White Wine", "Lemonade", "Martini", "Root Beer", "Shirley Temple", "Coffee", "Gotham Beer", "Long Island Iced Tea", "Pepsi", "Rum and Coke", "Smoothie"]
+
+
+
+
 
 
 
@@ -46,7 +78,15 @@ filename_sides_list=["chicken_wings","fried_rice", "green_beans","mozarella_stic
 
 
 
+
+
+
+
 sides_list=["Chicken Wings", "Fried Rice", "Green Beans", "Mozarella Sticks", "Roasted Veggies", "Corn on the Cob", "Fries", "Lo Mein", "Nachos", "Sweet Potato Fries", "Baked Potato", "Creamed Spinach", "Garden Salad", "Mac and Cheese", "Onion Rings", "Tater Tots", "Breadsticks", "Edemame", "Garlic Bread", "Mashed_Potatoes", "Roasted Cauliflower"]
+
+
+
+
 
 
 
@@ -72,6 +112,8 @@ drink_translator={
 }
 
 
+
+
 drink_translator={
 "Cappuccino":f"/assets/menu_item_images/drinks/cappuccino/img_{randint(1, 5)}.jpeg",
 "Gotham Red Wine": f"/assets/menu_item_images/drinks/gotham_red_wine/img_{randint(1, 5)}.jpeg",
@@ -90,6 +132,10 @@ drink_translator={
 "Pepsi":  f"/assets/menu_item_images/drinks/pepsi/img_{randint(1, 5)}.jpeg",
 "Rum and Coke":  f"/assets/menu_item_images/drinks/rum_and_coke/img_{randint(1, 5)}.jpeg",
 "Smoothie":     f"/assets/menu_item_images/drinks/smoothie/img_{randint(1, 5)}.jpeg",
+
+
+
+
 
 
 
@@ -119,6 +165,10 @@ entree_translator= {
 
 
 
+
+
+
+
 dessert_translator= {
     'Blueberry tart': f"/assets/menu_item_images/desserts/blueberry_tart/img_{randint(1, 5)}.jpeg",
     "Chocolate Chip Cookie": f"/assets/menu_item_images/desserts/blueberry_tart/img_{randint(1, 5)}.jpeg",
@@ -139,6 +189,12 @@ dessert_translator= {
     "Pistachio Gelato": f"/assets/menu_item_images/desserts/pistachio_gelato/img_{randint(1, 5)}.jpeg",
     "Vanilla IceCream": f"/assets/menu_item_images/desserts/vanilla_icecream/img_{randint(1, 5)}.jpeg"
 }
+
+
+
+
+
+
 
 
 
@@ -174,6 +230,12 @@ sides_translator= {
 
 
 
+
+
+
+
+
+
 villain_adj_dict = {
     "1_penguin": ["scheming", "waddling", "umbrella-toting", "calculating", "icy"],
     "2_riddler": ["enigmatic", "puzzling", "question-asking", "clever", "green-suited"],
@@ -199,7 +261,19 @@ villain_adj_dict = {
 
 
 
+
+
+
+
 keysToVillains=["1_penguin","2_riddler","3_ivy","4_two_face","5_scarecrow","6_catwoman","7_batman","8_joker","9_bane","10_mr_freeze","11_clayface","12_firefly","13_mad_hatter","14_talon","15_zatanna","16_bat_man","17_mayor","18_green_arrow","19_everyone_else"]
+
+
+
+
+
+
+
+
 
 
 
@@ -216,9 +290,14 @@ def fake_price():
 
 
 
+
+
+
+
 #START SEEDER*************************************
 def seed_menu_items():
-    counter=1
+    restaurant_counter=1
+    menu_item_img_counter=1
     our_guy=None
     master_entrees=[]
     master_drinks=[]
@@ -233,15 +312,31 @@ def seed_menu_items():
 
 
 
+
+
+
+
+
+
+
+
     for i in range(0,50):
         entree_name_end = Entree_List[randint(0,17)]
         dessert_name_end= dessert_list[randint(0,17)]
         drink_name_end= drink_list[randint(0,16)]
         side_name_end= sides_list[randint(0,20)]
-        if counter<=18:
-            our_guy=keysToVillains[counter-1]
+        if restaurant_counter<=18:
+            our_guy=keysToVillains[restaurant_counter-1]
         else:
             our_guy=keysToVillains[18]
+
+
+
+
+
+
+
+
 
 
 
@@ -261,15 +356,23 @@ def seed_menu_items():
 
 
 
+
+
+
+
             #add ENTREE and picture for it***************************
             currEntree=MenuItem(
-            restaurant_id=counter,
-            menu_item_img_id=counter,
+            restaurant_id=restaurant_counter,
+            menu_item_img_id=menu_item_img_counter,
             name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {entree_name_end}",
             description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
             price=float(fake_price()),
             type="entree",
-            shopping_cart_id=counter,
+            shopping_cart_id=restaurant_counter,
+
+
+
+
 
 
 
@@ -277,6 +380,7 @@ def seed_menu_items():
         )
             db.session.add(currEntree)
             db.session.commit()
+            menu_item_img_counter+=1
             all_menu_item_imgs.append(MenuItemImg(
                 menu_item_id=currEntree.id,
                 url=entree_translator[entree_name_end],
@@ -290,16 +394,29 @@ def seed_menu_items():
 
 
 
+
+
+
+
+
+
+
+
             #add SIDE and picture for it****************************
             currSide=MenuItem(
-                restaurant_id=counter,
-                menu_item_img_id=counter,
+                restaurant_id=restaurant_counter,
+                menu_item_img_id=menu_item_img_counter,
                 name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {side_name_end}", description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]}{dessert_name_end}s",
                 price=float(fake_price()),
                 type="side",
-                shopping_cart_id=counter)
+                shopping_cart_id=restaurant_counter)
             db.session.add(currSide)
             db.session.commit()
+            menu_item_img_counter+=1
+
+
+
+
 
 
 
@@ -316,15 +433,28 @@ def seed_menu_items():
 
 
 
+
+
+
+
+
+
+
+
             #add DESSERT and picture for it************************
             currDessert=MenuItem(
-                restaurant_id=counter,
-                menu_item_img_id=counter,
+                restaurant_id=restaurant_counter,
+                menu_item_img_id=menu_item_img_counter,
                 name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {dessert_name_end}", description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {dessert_name_end}s",
                 price=float(fake_price()),
                 type="dessert")
             db.session.add(currDessert)
             db.session.commit()
+            menu_item_img_counter+=1
+
+
+
+
 
 
 
@@ -337,16 +467,25 @@ def seed_menu_items():
 
 
 
+
+
+
+
             #add DRINK and picture for it*********************
             currDrink=MenuItem(
-                restaurant_id=counter,
-                menu_item_img_id=counter,
+                restaurant_id=restaurant_counter,
+                menu_item_img_id=menu_item_img_counter,
                 name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {drink_name_end}",
                 description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
                 price=float(fake_price()),
                 type="drink")
             db.session.add(currDrink)
             db.session.commit()
+            menu_item_img_counter+=1
+
+
+
+
 
 
 
@@ -359,8 +498,16 @@ def seed_menu_items():
 
 
 
+
+
+
+
         master_menu_item_imgs.append(all_menu_item_imgs)
-        counter+=1
+        restaurant_counter+=1
+
+
+
+
 
 
 
@@ -368,6 +515,10 @@ def seed_menu_items():
     for array5 in master_menu_item_imgs:
         db.session.add_all(array5)
     db.session.commit()
+
+
+
+
 
 
 

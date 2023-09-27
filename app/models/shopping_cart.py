@@ -4,7 +4,7 @@ from flask_login import UserMixin
 from datetime import datetime
 
 
-class ShoppingCart(db.Model, UserMixin):
+class ShoppingCart(db.Model):
     __tablename__ = 'shopping_carts'
 
     def add_prefix_for_prod(attr):
