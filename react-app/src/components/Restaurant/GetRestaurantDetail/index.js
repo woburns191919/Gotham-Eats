@@ -48,7 +48,7 @@ export default function GetRestaurantDetail() {
       </div>
       <div className="res-container">
         <h1 className="det-name">{restaurantsDetailData.name}</h1>
-        <div className="det-ratings"><h3>★{restaurantsDetailData.avgRating.toFixed(1)}{" "}({restaurantsDetailData.reviews.length} ratings) · $$ · Read 5-Star Reviews · More Info  </h3>
+        <div className="det-ratings"><h3>★{restaurantsDetailData.avgRating.toFixed(1)}{" "}({restaurantsDetailData.reviews.length} ratings) · $$ · Read Reviews · More Info  </h3>
 
         </div>
 
@@ -76,10 +76,15 @@ export default function GetRestaurantDetail() {
                 src={`${process.env.PUBLIC_URL}${img.url}`}
                 alt=""
               />
+
               // {restaurantsDetailData.menu_item_images.url}
             ))}
           </div>
 
+        </div>
+        <div className="reviews">
+          <h2>Reviews</h2>
+          
         </div>
       </div>
     </div>
