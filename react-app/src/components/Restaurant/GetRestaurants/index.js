@@ -23,7 +23,7 @@ let url
 function findPrev(restaurant){
 
 
-    console.log('individ restaurant',restaurant)
+    
     for (let prevImg of restaurant.menu_item_images){
       if (prevImg.preview){
         return prevImg.url

@@ -51,6 +51,7 @@ class Restaurant(db.Model, UserMixin):
             .filter(MenuItem.restaurant_id == self.id)
             .all()
         )
+
         return [
             {
                 'id': img.id,
@@ -60,6 +61,10 @@ class Restaurant(db.Model, UserMixin):
             }
             for img in menu_item_images
         ]
+
+    @property
+    def get_reviews(self):
+        return db.session.query(Review).filter(Review.restaurant_id == self.id).all()
 
     def to_dict(self):
         return {
@@ -75,4 +80,5 @@ class Restaurant(db.Model, UserMixin):
             'hours': self.hours,
             'avgRating': self.avg_stars,
             'menu_item_images': self.get_image,
+            'reviews' : self.get_reviews
         }
