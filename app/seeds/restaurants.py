@@ -641,5 +641,4 @@ def undo_restaurants():
             f"TRUNCATE table {SCHEMA}.restaurants RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM restaurants"))
-        db.session.execute(text("DELETE FROM menus"))
     db.session.commit()
