@@ -11,14 +11,20 @@ from .api.restaurants_routes import home_restaurants
 from .seeds import seed_commands
 from .config import Config
 
+
 # app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
 
-app = Flask(__name__, static_url_path='/static', static_folder='react-app/menu_item_images')
+
+
+app = Flask(__name__, static_folder='../react-app/src/assets')
 @app.route('/menu_item_images/<path:image_filename>')
 def serve_image(image_filename):
     absolute_path = os.path.join(app.static_folder, image_filename)
     return app.send_static_file(image_filename)
+
+
+
 
 
 
@@ -27,13 +33,18 @@ login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
 
 
+
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
 
 
+
+
 # Tell flask about our seed commands
 app.cli.add_command(seed_commands)
+
 
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
@@ -42,8 +53,13 @@ app.register_blueprint(home_restaurants, url_prefix="/api/restaurants")
 db.init_app(app)
 Migrate(app, db)
 
+
 # Application Security
 CORS(app)
+
+
+
+
 
 
 
@@ -62,6 +78,8 @@ def https_redirect():
             return redirect(url, code=code)
 
 
+
+
 @app.after_request
 def inject_csrf_token(response):
     response.set_cookie(
@@ -74,6 +92,8 @@ def inject_csrf_token(response):
     return response
 
 
+
+
 @app.route("/api/docs")
 def api_help():
     """
@@ -84,6 +104,8 @@ def api_help():
                     app.view_functions[rule.endpoint].__doc__ ]
                     for rule in app.url_map.iter_rules() if rule.endpoint != 'static' }
     return route_list
+
+
 
 
 @app.route('/', defaults={'path': ''})
@@ -99,6 +121,10 @@ def react_root(path):
     return app.send_static_file('index.html')
 
 
+
+
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
+
+
