@@ -17,7 +17,7 @@ restaurant_list = [
     ),
 
     Restaurant(
-        owner_id=7,
+        owner_id=6,
         streetAddress="Enigma Blvd 42",
         city="Gotham",
         state="New Jersey",
@@ -30,7 +30,7 @@ restaurant_list = [
     ),
 
     Restaurant(
-        owner_id=5,
+        owner_id=6,
         streetAddress="Vine St 3",
         city="Gotham",
         state="New Jersey",
@@ -43,7 +43,7 @@ restaurant_list = [
     ),
 
     Restaurant(
-        owner_id=8,
+        owner_id=6,
         streetAddress="Duality Dr 50",
         city="Gotham",
         state="New Jersey",
@@ -56,7 +56,7 @@ restaurant_list = [
     ),
 
     Restaurant(
-        owner_id=10,
+        owner_id=6,
         streetAddress="Fear Farm 13",
         city="Gotham",
         state="New Jersey",
@@ -69,7 +69,7 @@ restaurant_list = [
     ),
 
     Restaurant(
-        owner_id=5,
+        owner_id=6,
         streetAddress="Feline Alley 7",
         city="Gotham",
         state="New Jersey",
@@ -82,7 +82,7 @@ restaurant_list = [
     ),
 
     Restaurant(
-        owner_id=4,
+        owner_id=6,
         streetAddress="Chaos Court 0",
         city="Gotham",
         state="New Jersey",
@@ -95,7 +95,7 @@ restaurant_list = [
     ),
 
     Restaurant(
-        owner_id=9,
+        owner_id=6,
         streetAddress="Subzero St 32",
         city="Gotham",
         state="New Jersey",
@@ -108,7 +108,7 @@ restaurant_list = [
     ),
 
     Restaurant(
-        owner_id=7,
+        owner_id=6,
         streetAddress="Venom Vale 88",
         city="Gotham",
         state="New Jersey",
@@ -121,7 +121,7 @@ restaurant_list = [
     ),
 
     Restaurant(
-        owner_id=9,
+        owner_id=6,
         streetAddress="Mud Mound 25",
         city="Gotham",
         state="New Jersey",

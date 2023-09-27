@@ -26,6 +26,26 @@ export const thunkGetAllRestaurants = createAsyncThunk(
   }
 );
 
+//***************THUNK GET RESTAURANT USER OWNS *******************/
+export const thunkGetRestaurantsUserOwns = createAsyncThunk(
+  'restaurants/fetchAll',
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await fetch('/api/restaurants/manage');
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      } else {
+        const errors = await res.json();
+        return rejectWithValue(errors);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+
 // ***************************thunkGetRestaurantDetail**************************
 
 export const thunkGetRestaurantDetail = createAsyncThunk(

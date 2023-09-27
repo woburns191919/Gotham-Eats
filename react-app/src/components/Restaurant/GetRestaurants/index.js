@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { thunkGetAllRestaurants } from "../../../store/restaurants";
+import {}
 import OpenModalButton from "../../OpenModalButton/index";
+
 import "./GetRestaurants.css";
 
 
-
+let thunkGetRestaurantsUserOwns=7
 
 export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
@@ -17,13 +19,10 @@ export default function GetRestaurants({ ownerMode = false }) {
   console.log('this is restaurants',restaurants)
   const sessionUser = useSelector((state) => state.session.user);
   console.log("restaurants", restaurants);
-let url
+
 
 
 function findPrev(restaurant){
-
-
-    
     for (let prevImg of restaurant.menu_item_images){
       if (prevImg.preview){
         return prevImg.url
@@ -32,9 +31,11 @@ function findPrev(restaurant){
 
 
 }
+
   useEffect(() => {
-    dispatch(thunkGetAllRestaurants());
-  }, [dispatch]);
+    if (ownerMode===false) dispatch(thunkGetAllRestaurants());
+    else if(ownerMode===true) dispatch(thunkGetRestaurantsUserOwns())
+}, [dispatch,ownerMode]);
 
 
   if (!restaurantsData || !restaurantsData.restaurants) return null;

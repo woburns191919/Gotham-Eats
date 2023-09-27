@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request,redirect, url_for
+from flask import Blueprint, jsonify, request,redirect, url_for,abort
 import app
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Restaurant, Review, db, MenuItem
@@ -14,7 +14,7 @@ home_restaurants = Blueprint('restaurants', __name__)
 def get_restaurant_by_id(id):
     """returns a single restaurant and it's reviews by the given id provided as a route parameter"""
 
-    
+
     one_restaurant = Restaurant.query.get(id)
 
 
@@ -183,8 +183,25 @@ def update_restaurant(id):
 @home_restaurants.route("/delete/<int:id>")
 def delete_post(id):
     """delete a restaurant based on restaurant id"""
-    restaurant_to_delete = Restaurant.query.get(id)
-    print(restaurant_to_delete)
-    db.session.delete(restaurant_to_delete)
-    db.session.commit()
-    return redirect("/restaurants")
+    restaurant_to_delete = db.session.query(Restaurant).get(id)
+    if restaurant_to_delete:
+       if restaurant_to_delete.owner_id==current_user.id:
+           db.session.delete(restaurant_to_delete)
+           db.session.commit()
+           return jsonify(message = f"Succesfully deleted restaurant {id}"), 204
+       else:
+          abort(403, description="Forbidden. You are not the owner")
+
+
+    else:
+       abort(404,"This spot doesn't exist")
+
+@home_restaurants.route("/manage")
+def get_my_restaurants():
+   my_restaurants=db.session.query(Restaurant).filter(Restaurant.owner_id==current_user.id).all()
+   if my_restaurants:
+      restaurant_data=[restaurant.to_dict() for restaurant in my_restaurants]
+      print("HEY WE HIT THE MANAGE PAGE. my restaurants looks like this",my_restaurants)
+      return jsonify(restaurants=restaurant_data,message="success"), 200
+   else:
+      abort(404,"You don't  have any spots")
