@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request,redirect
 import app
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Restaurant, Review, db
+from app.models import User, Restaurant, Review, db, MenuItem
 from sqlalchemy import func, distinct, or_, desc
 from ..forms import RestaurantForm
 import json
@@ -10,6 +10,15 @@ import json
 home_restaurants = Blueprint('restaurants', __name__)
 # print("******************current_user: ", current_user.get_id())
 # print("******************Restaurant.owner_id: ", Restaurant.query.get(id).owner_id)
+
+@home_restaurants.route("/<int:id>")
+def get_restaurant_by_id(id):
+    """returns a single restaurant by the given id provided as a route parameter"""
+    one_restaurant = db.session.query(Restaurant).join(MenuItem, MenuItem.restaurant_id==id).\
+      all()
+    # detailed_images = db.session.query(Restaurant).join(MenuItem, MenuItem.restaurant_id==id).to_dict()
+    print('***********',one_restaurant[MenuItem])
+    return jsonify(one_restaurant)
 
 @home_restaurants.route("/")
 def get_popular_restaurants():
@@ -23,13 +32,8 @@ def get_popular_restaurants():
   print('restaurants**', all_restaurants)
   return all_restaurants
 
-  
 
-@home_restaurants.route("/<int:id>")
-def get_restaurant_by_id(id):
-    """returns a single restaurant by the given id provided as a route parameter"""
-    one_restaurant = Restaurant.query.get(id).to_dict()
-    return one_restaurant
+
 
 @home_restaurants.route("/new", methods=["POST"])
 def create_new_restaurant():
