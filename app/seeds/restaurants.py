@@ -638,8 +638,7 @@ def seed_restaurants():
 def undo_restaurants():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.restaurants, {SCHEMA}.menus RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.restaurants RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM restaurants"))
-        db.session.execute(text("DELETE FROM menus"))
     db.session.commit()
