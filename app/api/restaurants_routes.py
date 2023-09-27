@@ -12,13 +12,25 @@ home_restaurants = Blueprint('restaurants', __name__)
 
 @home_restaurants.route("/<int:id>")
 def get_restaurant_by_id(id):
-    """returns a single restaurant by the given id provided as a route parameter"""
+    """returns a single restaurant and it's reviews by the given id provided as a route parameter"""
+
+    
     one_restaurant = Restaurant.query.get(id)
+
+
     if not one_restaurant:
        return jsonify({"error": "Restaurant not found"}), 404
-    # detailed_images = db.session.query(Restaurant).join(MenuItem, MenuItem.restaurant_id==id).to_dict()
 
-    return one_restaurant.to_dict()
+
+    reviews = Review.query.filter_by(restaurant_id=id).all()
+    review_list = [review.to_dict() for review in reviews]
+
+
+    response_data = one_restaurant.to_dict()
+    response_data['reviews'] = review_list
+
+    return jsonify(response_data)
+
 
 @home_restaurants.route("/")
 def get_popular_restaurants():
