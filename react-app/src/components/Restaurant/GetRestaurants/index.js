@@ -39,8 +39,8 @@ export default function GetRestaurants({ ownerMode = false }) {
           <div className={`${ownerMode ? "ownerRestaurant-restaurant-img-main-div" : "restaurant-img-main-div"}`} key={restaurant.id}>
             <Link to={`/restaurants/${restaurant.id}`} style={{ textDecoration: "none", color: "var(--black)" }}>
               <div className={`restaurant-box ${ownerMode ? "ownerRestaurant" : ""}`}>
-                <img src={restaurant.image
-                } className={ownerMode ? "ownerRestaurant-img" : "restaurant-img"} alt="" />
+              <img src={restaurant.menu_item_images[0]?.url} className={ownerMode ? "ownerRestaurant-img" : "restaurant-img"} alt="" />
+
                 <div className="restaurant-info-flex">
                   <p className="res-name">{restaurant.name}({restaurant.streetAddress})</p>
                   <p className="avgRating-p-tag">{restaurant.avgRating ? restaurant.avgRating.toFixed(1) : <span className="boldText">New</span>}</p>

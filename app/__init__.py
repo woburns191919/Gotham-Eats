@@ -11,7 +11,16 @@ from .api.restaurants_routes import home_restaurants
 from .seeds import seed_commands
 from .config import Config
 
-app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+# app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+
+
+app = Flask(__name__, static_url_path='/static', static_folder='react-app/menu_item_images')
+@app.route('/menu_item_images/<path:image_filename>')
+def serve_image(image_filename):
+    absolute_path = os.path.join(app.static_folder, image_filename)
+    return app.send_static_file(image_filename)
+
+
 
 # Setup login manager
 login = LoginManager(app)
@@ -93,5 +102,3 @@ def react_root(path):
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
-
-
