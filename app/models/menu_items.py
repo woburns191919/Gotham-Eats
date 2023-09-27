@@ -30,16 +30,6 @@ class MenuItem(db.Model, UserMixin):
     menu_items_image = db.relationship('MenuItemImg', back_populates='menu_item', uselist=False)
     shopping_cart = db.relationship("ShoppingCart", back_populates="menu_items")
 
-    @property
-    def get_images(self):
-        menu_items = MenuItem.query.filter_by(restaurant_id=self.id).all()
-        menu_item_image_urls = [menu_item.picture for menu_item in menu_items]
-        preview_image = menu_item_image_urls[0] if menu_item_image_urls else None
-        images = {
-            'menu_item_images': menu_item_image_urls,
-            'preview_image': preview_image
-        }
-        return images
 
     def to_dict(self):
 
@@ -52,5 +42,4 @@ class MenuItem(db.Model, UserMixin):
             'price': self.price,
             'type': self.type,
             'shopping_cart_id': self.shopping_cart_id,
-            # 'images': self.images
         }
