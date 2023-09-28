@@ -57,11 +57,13 @@ export default function GetRestaurants({ ownerMode = false }) {
                 </div>
             </Link>
             </div>))}
+            </div>
             {ownerMode  &&(
                 <div className="owner-div update-delete-btns">
                     <button className="owner-btn post-delete-review-btn" onClick={() => history.push(`/restaurants/edit/${restaurants.restaurant.id}`)}>Update</button>
+                    <button className="owner-btn post-delete-review-btn" onClick={() => history.push(`/restaurants/edit/${restaurants.restaurant.id}`)}>Delete</button>
                     {/* <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
                 </div>
             )}
-        </div>
+
    </div>) }
