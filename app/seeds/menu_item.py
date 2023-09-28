@@ -137,7 +137,7 @@ def seed_menu_items():
     master_sides = []
     master_menu_item_imgs = []
 
-    for i in range(0, 50):
+    for i in range(0, 49):
         entree_name_end = entree_names[randint(0, 17)]
         dessert_name_end = dessert_names[randint(0, 17)]
         drink_name_end = drink_names[randint(0, 16)]
