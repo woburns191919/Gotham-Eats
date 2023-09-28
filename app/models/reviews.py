@@ -4,7 +4,7 @@ from flask_login import UserMixin
 from datetime import datetime
 
 
-class Review(db.Model, UserMixin):
+class Review(db.Model):
     __tablename__ = 'reviews'
 
     def add_prefix_for_prod(attr):

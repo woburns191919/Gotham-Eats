@@ -19,7 +19,32 @@ from faker import Faker
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 filename_entree_list=["buffalo_chicken_sandwich", "chicken_tenders", "fish_tacos", "lasagna", "philly_cheesesteak",  "spaghetti", "chicken_fajita", "fettuccine_alfredo", "gyro", "lobster", "pizza", "steak", "bbq_ribs", "chicken_parmesan", "fish_and_chips", "hamburger", "meatball_sandwich", "shish_kebab"]
+
+
+
+
+
+
+
+
 
 
 
@@ -37,7 +62,23 @@ Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasag
 
 
 
+
+
+
+
+
+
+
+
 filename_dessert_list=["blueberry_tart","chocolate_chip_cookie",  "lava_cake", "pumpkin_pie", "carrot_cake",  "chocolate_mousse","milkshake", "strawberry_shortcake", "apple_pie", "cheesecake",  "cupcake", "peach_cobbler", "tiramisu", "banana_split",  "chocolate_brownie",  "flan", "pistachio_gelato",  "vanilla_icecream"]
+
+
+
+
+
+
+
+
 
 
 
@@ -55,6 +96,14 @@ dessert_list=["Blueberry tart","Chocolate Chip Cookie","Lava Cake","Pumpkin pie"
 
 
 
+
+
+
+
+
+
+
+
 filename_drink_list=["cappuccino","gotham_red_wine","margarita","redbull","seven_and_seven","sprite","gotham_white_wine","lemonade","martini","root_beer","shirley_temple","Coffee","gotham_beer","long_island_iced_tea","pepsi","rum_and_coke","smoothie"]
 
 
@@ -64,7 +113,23 @@ filename_drink_list=["cappuccino","gotham_red_wine","margarita","redbull","seven
 
 
 
+
+
+
+
+
+
+
+
 drink_list=["Cappuccino", "Gotham Red Wine", "Margarita", "Redbull", "Seven and Seven", "Sprite", "Gotham White Wine", "Lemonade", "Martini", "Root Beer", "Shirley Temple", "Coffee", "Gotham Beer", "Long Island Iced Tea", "Pepsi", "Rum and Coke", "Smoothie"]
+
+
+
+
+
+
+
+
 
 
 
@@ -83,7 +148,23 @@ filename_sides_list=["chicken_wings","fried_rice", "green_beans","mozarella_stic
 
 
 
+
+
+
+
+
+
+
+
 sides_list=["Chicken Wings", "Fried Rice", "Green Beans", "Mozarella Sticks", "Roasted Veggies", "Corn on the Cob", "Fries", "Lo Mein", "Nachos", "Sweet Potato Fries", "Baked Potato", "Creamed Spinach", "Garden Salad", "Mac and Cheese", "Onion Rings", "Tater Tots", "Breadsticks", "Edemame", "Garlic Bread", "Mashed_Potatoes", "Roasted Cauliflower"]
+
+
+
+
+
+
+
+
 
 
 
@@ -115,6 +196,10 @@ drink_translator={
 
 
 
+
+
+
+
 drink_translator={
 "Cappuccino":f"/assets/menu_item_images/drinks/cappuccino/img_{randint(1, 5)}.jpeg",
 "Gotham Red Wine": f"/assets/menu_item_images/drinks/gotham_red_wine/img_{randint(1, 5)}.jpeg",
@@ -133,6 +218,14 @@ drink_translator={
 "Pepsi":  f"/assets/menu_item_images/drinks/pepsi/img_{randint(1, 5)}.jpeg",
 "Rum and Coke":  f"/assets/menu_item_images/drinks/rum_and_coke/img_{randint(1, 5)}.jpeg",
 "Smoothie":     f"/assets/menu_item_images/drinks/smoothie/img_{randint(1, 5)}.jpeg",
+
+
+
+
+
+
+
+
 
 
 
@@ -170,6 +263,14 @@ entree_translator= {
 
 
 
+
+
+
+
+
+
+
+
 dessert_translator= {
     'Blueberry tart': f"/assets/menu_item_images/desserts/blueberry_tart/img_{randint(1, 5)}.jpeg",
     "Chocolate Chip Cookie": f"/assets/menu_item_images/desserts/blueberry_tart/img_{randint(1, 5)}.jpeg",
@@ -190,6 +291,18 @@ dessert_translator= {
     "Pistachio Gelato": f"/assets/menu_item_images/desserts/pistachio_gelato/img_{randint(1, 5)}.jpeg",
     "Vanilla IceCream": f"/assets/menu_item_images/desserts/vanilla_icecream/img_{randint(1, 5)}.jpeg"
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -237,6 +350,18 @@ sides_translator= {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 villain_adj_dict = {
     "1_Alfred": ["loyal", "wise", "resourceful", "dedicated", "caring", "supportive", "knowledgeable", "discreet", "sophisticated", "dependable"],
     "2_Harley": ["manic", "unpredictable", "energetic", "devoted", "intelligent", "agile", "impulsive", "chaotic", "humorous", "enthusiastic"],
@@ -261,11 +386,34 @@ villain_adj_dict = {
 
 
 
+
+
+
+
 changes=7
 
 
 
+
+
+
 keysToVillains=["1_penguin","2_riddler","3_ivy","4_two_face","5_scarecrow","6_catwoman","7_batman","8_joker","9_bane","10_mr_freeze","11_clayface","12_firefly","13_mad_hatter","14_talon","15_zatanna","16_bat_man","17_mayor","18_green_arrow","19_everyone_else"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -294,6 +442,14 @@ def fake_price():
 
 
 
+
+
+
+
+
+
+
+
 #START SEEDER*************************************
 def seed_menu_items():
     restaurant_counter=1
@@ -304,6 +460,22 @@ def seed_menu_items():
     master_desserts=[]
     master_sides=[]
     master_menu_item_imgs=[]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -371,8 +543,25 @@ def seed_menu_items():
         elif restaurant_counter<=48:
             our_guy="16_DamianWayne"
 
+
         else:
             our_guy="17_CassandraCain"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -404,6 +593,14 @@ def seed_menu_items():
 
 
 
+
+
+
+
+
+
+
+
             #add ENTREE and picture for it***************************
             currEntree=MenuItem(
             restaurant_id=restaurant_counter,
@@ -418,7 +615,10 @@ def seed_menu_items():
             db.session.commit()
 
 
+
+
             menu_item_img_counter+=1
+
 
             changes2=MenuItemImg(
                 menu_item_id=currEntree.id,
@@ -431,11 +631,16 @@ def seed_menu_items():
 
 
 
+
+
+
     #          user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     # menu_item_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("menu_items.id")))
     # quantity = db.Column(db.Integer, nullable=False)
     # created_at=db.Column(db.DateTime, default=datetime.now())
     # updated_at=db.Column(db.DateTime, default=datetime.now())
+
+
 
 
             #add SIDE and picture for it****************************
@@ -451,6 +656,8 @@ def seed_menu_items():
             menu_item_img_counter+=1
 
 
+
+
             changes2=MenuItemImg(
                 menu_item_id=currSide.id,
                 url=sides_translator[side_name_end],
@@ -459,7 +666,11 @@ def seed_menu_items():
             db.session.commit()
 
 
+
+
             currSide.menu_item_img_id=changes2.id
+
+
 
 
             #add DESSERT and picture for it************************
@@ -474,6 +685,8 @@ def seed_menu_items():
             menu_item_img_counter+=1
 
 
+
+
             changes2=MenuItemImg(
                 menu_item_id=currDessert.id,
                 url=dessert_translator[dessert_name_end],
@@ -481,7 +694,10 @@ def seed_menu_items():
             db.session.add(changes2)
             db.session.commit()
 
+
             currDessert.menu_item_img_id=changes2.id
+
+
 
 
             #add DRINK and picture for it*********************
@@ -503,10 +719,19 @@ def seed_menu_items():
 
 
 
+
+
+
+
+
+
+
+
             changes2=MenuItemImg(
                 menu_item_id=currDrink.id,
                 url=drink_translator[drink_name_end],
                 preview= False)
+
 
             db.session.add(changes2)
             db.session.commit()
@@ -514,7 +739,12 @@ def seed_menu_items():
 
 
 
+
+
+
         restaurant_counter+=1
+
+
 
 
 def undo_menu_items():
@@ -523,3 +753,35 @@ def undo_menu_items():
     else:
         db.session.execute(text("DELETE FROM menu_items"))
     db.session.commit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

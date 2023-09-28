@@ -7,8 +7,8 @@ from .reviews import Review
 from .menu_items import MenuItem
 from .menu_items_img import MenuItemImg
 
-class Restaurant(db.Model, UserMixin):
-    
+class Restaurant(db.Model):
+
 
     __tablename__ = 'restaurants'
 
