@@ -57,13 +57,13 @@ export default function GetRestaurants({ ownerMode = false }) {
                 </div>
             </Link>
             </div>))}
-            </div>
-            {ownerMode  &&(
-                <div className="owner-div update-delete-btns">
-                    <button className="owner-btn post-delete-review-btn" onClick={() => history.push(`/restaurants/edit/${restaurants.restaurant.id}`)}>Update</button>
-                    <button className="owner-btn post-delete-review-btn" onClick={() => history.push(`/restaurants/edit/${restaurants.restaurant.id}`)}>Delete</button>
-                    {/* <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
-                </div>
-            )}
 
+            {ownerMode  && restaurants && restaurants.length > 0 && restaurants.map((restaurant) => (
+                <div className="owner-div update-delete-btns">
+                    <button className="owner-btn post-delete-review-btn" onClick={() => history.push(`/restaurants/edit/${restaurant.id}`)}>Update</button>
+                    <button className="owner-btn post-delete-review-btn" onClick={() => history.push(`/restaurants/edit/${restaurant.id}`)}>Delete</button>
+                    {/*LETS GET TH IS UP AND RUNNING BOYS <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
+                </div>
+            ))}
+    </div>
    </div>) }
