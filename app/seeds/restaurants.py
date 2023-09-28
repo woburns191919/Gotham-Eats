@@ -465,7 +465,7 @@ Restaurant(
     name="Dawes Harbor Cafe",
     description="Overlooking the harbor, Rachel's Harbor Cafe serves fresh, seasonal, and sustainable seafood dishes, a nod to her tireless work in protecting Gotham's harbor district.",
     hours='9-5',
-)
+),
 
     Restaurant(
         owner_id=12,

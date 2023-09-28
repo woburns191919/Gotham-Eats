@@ -327,52 +327,52 @@ def seed_menu_items():
         side_name_end= sides_list[randint(0,20)]
         #Alfred
         if restaurant_counter<=13:
-            our_guy=keysToVillains["1_Alfred"]
+            our_guy="1_Alfred"
         #Harley
         elif restaurant_counter<=15:
-            our_guy=keysToVillains["2_Harley"]
+            our_guy="2_Harley"
         #Nightwing
         elif restaurant_counter==16:
-            our_guy=keysToVillains["3_DickGrayson"]
+            our_guy="3_DickGrayson"
             #Joker
         elif restaurant_counter<=19:
-            our_guy=keysToVillains["4_Joker"]
+            our_guy="4_Joker"
             #Catwoman
         elif restaurant_counter<=22:
-            our_guy=keysToVillains["5_Catwoman"]
+            our_guy="5_Catwoman"
         elif restaurant_counter<=25:
-            our_guy=keysToVillains["6_ThePenguin"]
+            our_guy="6_ThePenguin"
             #Riddler
         elif restaurant_counter<=28:
-            our_guy=keysToVillains["7_TheRiddler"]
+            our_guy="7_TheRiddler"
             #Two face
         elif restaurant_counter<=31:
-            our_guy=keysToVillains["8_TwoFace"]
+            our_guy="8_TwoFace"
             #mr freeze
         elif restaurant_counter<=33:
-            our_guy=keysToVillains["9_MrFreeze"]
+            our_guy="9_MrFreeze"
             #scarecrow
         elif restaurant_counter<=35:
-            our_guy=keysToVillains["10_TheScarecrow"]
+            our_guy="10_TheScarecrow"
             #Rachel Dawes
         elif restaurant_counter<=38:
-            our_guy=keysToVillains["11_RachelDawes"]
+            our_guy="11_RachelDawes"
             #Lucious
         elif restaurant_counter<=40:
-            our_guy=keysToVillains["12_LuciusFox"]
+            our_guy="12_LuciusFox"
             #Oracle
         elif restaurant_counter<=42:
-            our_guy=keysToVillains["13_BarbaraGordon"]
+            our_guy="13_BarbaraGordon"
             #Tim
         elif restaurant_counter<=44:
-            our_guy=keysToVillains["14_TimDrake"]
+            our_guy="14_TimDrake"
         elif restaurant_counter<=46:
-            our_guy=keysToVillains["15_JasonTodd"]
+            our_guy="15_JasonTodd"
         elif restaurant_counter<=48:
-            our_guy=keysToVillains["16_DamianWayne"]
+            our_guy="16_DamianWayne"
 
         else:
-            our_guy=keysToVillains["17_CassandraCain"]
+            our_guy="17_CassandraCain"
 
 
 
@@ -479,7 +479,7 @@ def seed_menu_items():
                 url=dessert_translator[dessert_name_end],
                 preview= False)
             db.session.add(changes2)
-            db.session.commit(changes2)
+            db.session.commit()
 
             currDessert.menu_item_img_id=changes2.id
 

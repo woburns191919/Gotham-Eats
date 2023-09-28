@@ -13,20 +13,18 @@ import "./GetRestaurants.css";
 export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  let restaurantData
-  if (ownerMode===false){
-    restaurantData = useSelector((state) => state.restaurants.allRestaurants)}
-  else if (ownerMode===True){
+
+  const restaurantData = useSelector((state) => state.restaurants.allRestaurants)
+  const restaurantDataOwner = useSelector((state)=>state.restaurants.userOwnedRestaurants)
 
 
-  }
- 
+
+
   // const restaurantsData = useSelector((state) => state.restaurants);
-  const restaurants = restaurantsData.restaurants;
-  console.log('this is restaurants',restaurants)
+
+  const restaurants = ownerMode===true? restaurantData.restaurants :restaurantDataOwner.restaurants
   const sessionUser = useSelector((state) => state.session.user);
-  console.log("restaurants", restaurants);
-  userOwnedRestaurants
+
 
 
 function findPrev(restaurant){
@@ -45,7 +43,7 @@ function findPrev(restaurant){
 }, [dispatch,ownerMode]);
 
 
-  if (!restaurantsData || !restaurantsData.restaurants) return null;
+  if (!restaurantData || !restaurantData.restaurants) return null;
 
 
 
