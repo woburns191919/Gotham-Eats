@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory,useParams } from "react-router-dom";
 import { thunkCreateRestaurant, thunkGetRestaurantDetail,thunkUpdateRestaurant } from "../../../store/restaurants";
 
 import TextInput from "../../Inputs/TextInput";
@@ -13,7 +13,8 @@ export default function RestaurantForm({ formType, restaurantId }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
-
+  const ourRestaurant= useSelector((state)=>state.restaurants.singleRestaurant)
+  const [refreshCount, setRefreshCount] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     streetAddress: "",
@@ -25,8 +26,14 @@ export default function RestaurantForm({ formType, restaurantId }) {
     hours: "",
     previmg: "",
   });
+  let {id}=useParams()
+  console.log('AM I GETTING MY restaurant id DAWG?',id)
+  console.log('AM I GETTING MY  USER?',sessionUser.id)//yes to both
+
+  console.log(ourRestaurant)
 
   useEffect(() => {
+
     if (formType === "Edit" && restaurantId) {
       dispatch(thunkGetRestaurantDetail(restaurantId)).then((data) => {
         setFormData({
@@ -42,7 +49,12 @@ export default function RestaurantForm({ formType, restaurantId }) {
         });
       });
     }
-  }, [dispatch, formType, restaurantId]);
+    if (ourRestaurant === undefined && refreshCount < 1) {
+      setRefreshCount((prevCount) => prevCount + 1);
+    }
+  }, [dispatch, formType, restaurantId,refreshCount]);
+
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
