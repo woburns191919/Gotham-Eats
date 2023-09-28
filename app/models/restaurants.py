@@ -9,6 +9,7 @@ from .menu_items_img import MenuItemImg
 
 class Restaurant(db.Model):
 
+
     __tablename__ = 'restaurants'
 
     def add_prefix_for_prod(attr):
@@ -80,5 +81,5 @@ class Restaurant(db.Model):
             'hours': self.hours,
             'avgRating': self.avg_stars,
             'menu_item_images': self.get_image,
-            'reviews' : self.get_reviews
+            'reviews' : [review.to_dict() for review in self.get_reviews]
         }

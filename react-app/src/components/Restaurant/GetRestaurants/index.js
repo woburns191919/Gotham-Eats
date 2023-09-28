@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { thunkGetAllRestaurants } from "../../../store/restaurants";
+import { thunkGetRestaurantsUserOwns } from "../../../store/restaurants";
 import OpenModalButton from "../../OpenModalButton/index";
+
 import "./GetRestaurants.css";
 
 
@@ -11,19 +13,21 @@ import "./GetRestaurants.css";
 export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const restaurantsData = useSelector((state) => state.restaurants.allRestaurants);
+
+  const restaurantData = useSelector((state) => state.restaurants.allRestaurants)
+  const restaurantDataOwner = useSelector((state)=>state.restaurants.userOwnedRestaurants)
+
+
+
+
   // const restaurantsData = useSelector((state) => state.restaurants);
-  const restaurants = restaurantsData.restaurants;
-  console.log('this is restaurants',restaurants)
+
+  const restaurants = ownerMode===true? restaurantData.restaurants :restaurantDataOwner.restaurants
   const sessionUser = useSelector((state) => state.session.user);
-  console.log("restaurants", restaurants);
-let url
+
 
 
 function findPrev(restaurant){
-
-
-    
     for (let prevImg of restaurant.menu_item_images){
       if (prevImg.preview){
         return prevImg.url
@@ -32,12 +36,14 @@ function findPrev(restaurant){
 
 
 }
+
   useEffect(() => {
-    dispatch(thunkGetAllRestaurants());
-  }, [dispatch]);
+    if (ownerMode===false) dispatch(thunkGetAllRestaurants());
+    else if(ownerMode===true) dispatch(thunkGetRestaurantsUserOwns())
+}, [dispatch,ownerMode]);
 
 
-  if (!restaurantsData || !restaurantsData.restaurants) return null;
+  if (!restaurantData || !restaurantData.restaurants) return null;
 
 
 

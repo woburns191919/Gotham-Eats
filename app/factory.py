@@ -15,9 +15,7 @@ def create_app():
 
     from app.api.user_routes import user_routes
     from app.api.auth_routes import auth_routes
-
-    # Import home_restaurants here to avoid circular import
-    from app.api.home_restaurants import home_restaurants
+    from app.api.restaurants_routes import home_restaurants
 
     app.register_blueprint(user_routes, url_prefix='/api/users')
     app.register_blueprint(auth_routes, url_prefix='/api/auth')
