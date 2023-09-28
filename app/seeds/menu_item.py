@@ -198,7 +198,7 @@ def seed_menu_items():
         all_menu_item_imgs = []
 
 
-        for k in range(0, 3):
+        for k in range(0, 11):
 
 
     # Create MenuItemImg First for ENTREE and Commit
