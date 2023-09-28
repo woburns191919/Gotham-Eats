@@ -2,23 +2,22 @@ from datetime import datetime
 
 from flask import Blueprint, jsonify, request, current_app as app
 from flask_login import login_required, current_user
-from app.models import db, Review
+from app.models import db, Review, Restaurant
 import logging
 
-review_restaurants_routes = Blueprint("reviews", __name__)
+ # Import your Review and Restaurant models here
 
+review_restaurants_routes = Blueprint('reviews', __name__)
 
-@review_restaurants_routes.route("/api/restaurants/<int:restaurant_id>/reviews", methods=["GET"])
-def get_reviews_for_restaurant(restaurant_id):
-    try:
+@review_restaurants_routes.route("/restaurant/<int:restaurant_id>/reviews")
+def get_restaurant_reviews(restaurant_id):
+    restaurant = Restaurant.query.get(restaurant_id)
+    if restaurant:
         reviews = Review.query.filter_by(restaurant_id=restaurant_id).all()
-        review_data = [review.to_dict() for review in reviews]
-        return jsonify(reviews=review_data)
-    except Exception as e:
-        # Log the exception with detailed information
-        app.logger.error(f"Error in get_reviews_for_restaurant: {str(e)}")
-        return jsonify(message="An error occurred while processing the request."), 500
-
+        reviews_data = [review.to_dict() for review in reviews]
+        return jsonify({'reviews': reviews_data}), 200
+    else:
+        return jsonify({'error': 'Restaurant not found'}), 404
 
 
 # @review_restaurants_routes.route("/api/restaurants/<int:restaurant_id>/reviews", methods=["POST"])

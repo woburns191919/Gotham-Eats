@@ -30,11 +30,23 @@ class Review(db.Model, UserMixin):
     user=db.relationship("User", back_populates="reviews")
     restaurant=db.relationship("Restaurant", back_populates='reviews')
 
+    # def to_dict(self):
+    #   return {
+    #       'id': self.id,
+    #       'restaurant_id': self.restaurant_id,
+    #       'user_id': self.user_id,
+    #       'review': self.review,
+    #       'stars': self.stars
+    #   }
+
     def to_dict(self):
-      return {
-          'id': self.id,
-          'restaurant_id': self.restaurant_id,
-          'user_id': self.user_id,
-          'review': self.review,
-          'stars': self.stars
-      }
+        return {
+            'id': self.id,
+            'restaurant_id': self.restaurant_id,
+            'user_id': self.user_id,
+            'reviews': [review.to_dict() for review in self.get_reviews],
+            'stars': self.stars,
+            'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            'updated_at': self.updated_at.strftime('%Y-%m-%d %H:%M:%S'),
+        }
+

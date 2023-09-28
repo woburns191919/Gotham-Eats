@@ -32,20 +32,30 @@ def get_restaurant_by_id(id):
     return jsonify(response_data)
 
 
+# @home_restaurants.route("/")
+# def get_popular_restaurants():
+#   """returns a all restaurant order by popularity"""
+#   restaurants = db.session.query(Restaurant).join(Review, Restaurant.id == Review.restaurant_id).\
+#     group_by(Restaurant.id).\
+#     order_by(func.avg(Review.stars).desc()).\
+#     all()
+
+#   all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
+#   print('restaurants**', all_restaurants)
+#   return all_restaurants
+
+
 @home_restaurants.route("/")
 def get_popular_restaurants():
-  """returns a all restaurant order by popularity"""
-  restaurants = db.session.query(Restaurant).join(Review, Restaurant.id == Review.restaurant_id).\
-    group_by(Restaurant.id).\
-    order_by(func.avg(Review.stars).desc()).\
-    all()
+    """returns a all restaurant order by popularity"""
+    restaurants = db.session.query(Restaurant).join(Review, Restaurant.id == Review.restaurant_id)\
+        .group_by(Restaurant.id)\
+        .order_by(func.avg(Review.stars).desc())\
+        .all()
 
-  all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
-  print('restaurants**', all_restaurants)
-  return all_restaurants
-
-
-
+    all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
+    print('restaurants**', all_restaurants)
+    return jsonify(all_restaurants)
 
 @home_restaurants.route("/new")
 def display_restaurant_form():
