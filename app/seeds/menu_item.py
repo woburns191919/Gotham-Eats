@@ -1,7 +1,16 @@
-from ..models import db, MenuItem,MenuItemImg, environment, SCHEMA
+from ..models import db, MenuItem,MenuItemImg,ShoppingCart, environment, SCHEMA
 from sqlalchemy.sql import text
 from random import randint, random
 from faker import Faker
+
+
+
+
+
+
+
+
+
 
 
 
@@ -15,7 +24,15 @@ filename_entree_list=["buffalo_chicken_sandwich", "chicken_tenders", "fish_tacos
 
 
 
+
+
+
+
 Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasagna", "Philly Cheesesteak", "Spaghetti", 'Chicken Fajita',"Fettuccine Alfredo", "Gyro", "Lobster", "Pizza", "Steak", "BBQ Ribs", "Chicken Parm", "Fish & Chips", "Hamburger", "Meatball Sandwich", "Shish Kebab"]
+
+
+
+
 
 
 
@@ -25,7 +42,15 @@ filename_dessert_list=["blueberry_tart","chocolate_chip_cookie",  "lava_cake", "
 
 
 
+
+
+
+
 dessert_list=["Blueberry tart","Chocolate Chip Cookie","Lava Cake","Pumpkin pie",'Carrot Cake',"Chocolate Mousse","Milkshake","Strawberry Shortcake",'Apple Pie',"Cheesecake","Cupcake","Peach Cobbler","Tiramisu","Banana Split","Chocolate Brownie","Flan","Pistachio Gelato","Vanilla IceCream"]
+
+
+
+
 
 
 
@@ -35,7 +60,15 @@ filename_drink_list=["cappuccino","gotham_red_wine","margarita","redbull","seven
 
 
 
+
+
+
+
 drink_list=["Cappuccino", "Gotham Red Wine", "Margarita", "Redbull", "Seven and Seven", "Sprite", "Gotham White Wine", "Lemonade", "Martini", "Root Beer", "Shirley Temple", "Coffee", "Gotham Beer", "Long Island Iced Tea", "Pepsi", "Rum and Coke", "Smoothie"]
+
+
+
+
 
 
 
@@ -46,7 +79,15 @@ filename_sides_list=["chicken_wings","fried_rice", "green_beans","mozarella_stic
 
 
 
+
+
+
+
 sides_list=["Chicken Wings", "Fried Rice", "Green Beans", "Mozarella Sticks", "Roasted Veggies", "Corn on the Cob", "Fries", "Lo Mein", "Nachos", "Sweet Potato Fries", "Baked Potato", "Creamed Spinach", "Garden Salad", "Mac and Cheese", "Onion Rings", "Tater Tots", "Breadsticks", "Edemame", "Garlic Bread", "Mashed_Potatoes", "Roasted Cauliflower"]
+
+
+
+
 
 
 
@@ -72,6 +113,8 @@ drink_translator={
 }
 
 
+
+
 drink_translator={
 "Cappuccino":f"/assets/menu_item_images/drinks/cappuccino/img_{randint(1, 5)}.jpeg",
 "Gotham Red Wine": f"/assets/menu_item_images/drinks/gotham_red_wine/img_{randint(1, 5)}.jpeg",
@@ -90,6 +133,10 @@ drink_translator={
 "Pepsi":  f"/assets/menu_item_images/drinks/pepsi/img_{randint(1, 5)}.jpeg",
 "Rum and Coke":  f"/assets/menu_item_images/drinks/rum_and_coke/img_{randint(1, 5)}.jpeg",
 "Smoothie":     f"/assets/menu_item_images/drinks/smoothie/img_{randint(1, 5)}.jpeg",
+
+
+
+
 
 
 
@@ -119,6 +166,10 @@ entree_translator= {
 
 
 
+
+
+
+
 dessert_translator= {
     'Blueberry tart': f"/assets/menu_item_images/desserts/blueberry_tart/img_{randint(1, 5)}.jpeg",
     "Chocolate Chip Cookie": f"/assets/menu_item_images/desserts/blueberry_tart/img_{randint(1, 5)}.jpeg",
@@ -139,6 +190,12 @@ dessert_translator= {
     "Pistachio Gelato": f"/assets/menu_item_images/desserts/pistachio_gelato/img_{randint(1, 5)}.jpeg",
     "Vanilla IceCream": f"/assets/menu_item_images/desserts/vanilla_icecream/img_{randint(1, 5)}.jpeg"
 }
+
+
+
+
+
+
 
 
 
@@ -174,32 +231,49 @@ sides_translator= {
 
 
 
+
+
+
+
+
+
 villain_adj_dict = {
-    "1_penguin": ["scheming", "waddling", "umbrella-toting", "calculating", "icy"],
-    "2_riddler": ["enigmatic", "puzzling", "question-asking", "clever", "green-suited"],
-    "3_ivy": ["seductive", "poisonous", "nature-loving", "manipulative", "vibrant"],
-    "4_two_face": ["dual-personality", "coin-flipping", "disfigured", "ambivalent", "harvey-dent"],
-    "5_scarecrow": ["fear-inducing", "terrifying", "sinister", "psychological", "straw-hat"],
-    "6_catwoman": ["cat-like", "thief", "feline", "independent", "whip-wielding"],
-    "7_batman": ["mysterious", "vigilante", "cape-wearing", "dark", "justice-seeking"],
-    "8_joker": ["chaotic", "maniacal", "laughter-loving", "twisted", "purple-suited"],
-    "9_bane": ["muscle-bound", "venom-injecting", "intelligent", "merciless", "masked"],
-    "10_mr_freeze": ["cryogenic", "cold-hearted", "ice-obsessed", "tragic", "cryosuit-wearing"],
-    "11_clayface": ["shape-shifting", "malleable", "actor", "melting", "mud-like"],
-    "12_firefly": ["pyromaniac", "fire-starting", "winged", "arsonist", "flame-obsessed"],
-    "13_mad_hatter": ["mad", "hat-wearing", "tea-obsessed", "eccentric", "mind-controlling"],
-    "14_talon": ["lethal", "assassin", "feathered", "loyal", "Court-of-Owls"],
-    "15_zatanna": ["magician", "spell-casting", "charming", "mystical", "top-hat-wearing"],
-    "16_bat_man": ["bat-themed", "wealthy", "genius", "inventor", "gadget-equipped"],
-    "17_mayor": ["politician", "corrupt", "powerful", "manipulative", "Gotham's leader"],
-    "18_green_arrow": ["archer", "vigilante", "emerald-clad", "skilled", "arrow-shooting"],
+    "1_Alfred": ["loyal", "wise", "resourceful", "dedicated", "caring", "supportive", "knowledgeable", "discreet", "sophisticated", "dependable"],
+    "2_Harley": ["manic", "unpredictable", "energetic", "devoted", "intelligent", "agile", "impulsive", "chaotic", "humorous", "enthusiastic"],
+    "3_DickGrayson": ["agile", "resilient", "optimistic", "charismatic", "dedicated", "skilled", "athletic", "intelligent", "compassionate", "courageous"],
+    "4_Joker": ["maniacal", "unpredictable", "intelligent", "cunning", "sadistic", "chaotic", "twisted", "anarchistic", "manipulative", "psychopathic"],
+    "5_Catwoman": ["stealthy", "agile", "mysterious", "seductive", "intelligent", "resourceful", "independent", "adaptive", "calculating", "alluring"],
+    "6_ThePenguin": ["scheming", "sophisticated", "intelligent", "manipulative", "ruthless", "resourceful", "calculating", "ambitious", "cunning", "eccentric"],
+    "7_TheRiddler": ["intelligent", "obsessive", "complex", "enigmatic", "cunning", "manipulative", "calculating", "competitive", "puzzling", "cryptic"],
+    "8_TwoFace": ["conflicted", "unpredictable", "vengeful", "bitter", "dualistic", "ruthless", "decisive", "disturbed", "resilient", "calculating"],
+    "9_MrFreeze": ["cold", "driven", "intelligent", "melancholic", "stoic", "methodical", "isolated", "determined", "compassionate", "tragic"],
+    "10_TheScarecrow": ["fearful", "intelligent", "manipulative", "cunning", "obsessive", "sadistic", "calculating", "chilling", "psychopathic", "menacing"],
+    "11_RachelDawes": ["principled", "compassionate", "determined", "idealistic", "brave", "intelligent", "empathetic", "steadfast", "resilient", "courageous"],
+    "12_LuciusFox": ["ingenious", "resourceful", "intelligent", "pragmatic", "loyal", "wise", "innovative", "ethical", "supportive", "confidential"],
+    "13_BarbaraGordon": ["intelligent", "determined", "resourceful", "brave", "compassionate", "athletic", "inspirational", "adaptive", "analytical", "resilient"],
+    "14_TimDrake": ["deductive", "intelligent", "resourceful", "disciplined", "analytical", "persistent", "adaptive", "strategic", "brave", "motivated"],
+    "15_JasonTodd": ["rebellious", "impulsive", "skilled", "resilient", "vengeful", "intense", "determined", "brave", "conflicted", "aggressive"],
+    "16_DamianWayne": ["disciplined", "confident", "skilled", "arrogant", "brave", "determined", "intelligent", "loyal", "stubborn", "focused"],
+    "17_CassandraCain": ["silent", "observant", "lethal", "agile", "disciplined", "intuitive", "resilient", "adaptive", "compassionate", "fierce"],
     "19_everyone_else": ["mouth-watering", "delightful", "scrumptious", "appetizing", "delectable", "enticing", "irresistible", "tasty", "flavorful", "savoring", "tempting", "yummy", "divine", "palatable" "lip-smacking", "satisfying", "succulent", "indulgent", "inspirational"]
             }
 
 
 
 
+changes=7
+
+
+
 keysToVillains=["1_penguin","2_riddler","3_ivy","4_two_face","5_scarecrow","6_catwoman","7_batman","8_joker","9_bane","10_mr_freeze","11_clayface","12_firefly","13_mad_hatter","14_talon","15_zatanna","16_bat_man","17_mayor","18_green_arrow","19_everyone_else"]
+
+
+
+
+
+
+
+
 
 
 
@@ -216,9 +290,14 @@ def fake_price():
 
 
 
+
+
+
+
 #START SEEDER*************************************
 def seed_menu_items():
-    counter=1
+    restaurant_counter=1
+    menu_item_img_counter=1
     our_guy=None
     master_entrees=[]
     master_drinks=[]
@@ -233,15 +312,75 @@ def seed_menu_items():
 
 
 
+
+
+
+
+
+
+
+
     for i in range(0,50):
         entree_name_end = Entree_List[randint(0,17)]
         dessert_name_end= dessert_list[randint(0,17)]
         drink_name_end= drink_list[randint(0,16)]
         side_name_end= sides_list[randint(0,20)]
-        if counter<=18:
-            our_guy=keysToVillains[counter-1]
+        #Alfred
+        if restaurant_counter<=13:
+            our_guy="1_Alfred"
+        #Harley
+        elif restaurant_counter<=15:
+            our_guy="2_Harley"
+        #Nightwing
+        elif restaurant_counter==16:
+            our_guy="3_DickGrayson"
+            #Joker
+        elif restaurant_counter<=19:
+            our_guy="4_Joker"
+            #Catwoman
+        elif restaurant_counter<=22:
+            our_guy="5_Catwoman"
+        elif restaurant_counter<=25:
+            our_guy="6_ThePenguin"
+            #Riddler
+        elif restaurant_counter<=28:
+            our_guy="7_TheRiddler"
+            #Two face
+        elif restaurant_counter<=31:
+            our_guy="8_TwoFace"
+            #mr freeze
+        elif restaurant_counter<=33:
+            our_guy="9_MrFreeze"
+            #scarecrow
+        elif restaurant_counter<=35:
+            our_guy="10_TheScarecrow"
+            #Rachel Dawes
+        elif restaurant_counter<=38:
+            our_guy="11_RachelDawes"
+            #Lucious
+        elif restaurant_counter<=40:
+            our_guy="12_LuciusFox"
+            #Oracle
+        elif restaurant_counter<=42:
+            our_guy="13_BarbaraGordon"
+            #Tim
+        elif restaurant_counter<=44:
+            our_guy="14_TimDrake"
+        elif restaurant_counter<=46:
+            our_guy="15_JasonTodd"
+        elif restaurant_counter<=48:
+            our_guy="16_DamianWayne"
+
         else:
-            our_guy=keysToVillains[18]
+            our_guy="17_CassandraCain"
+
+
+
+
+
+
+
+
 
 
 
@@ -261,115 +400,121 @@ def seed_menu_items():
 
 
 
+
+
+
+
             #add ENTREE and picture for it***************************
             currEntree=MenuItem(
-            restaurant_id=counter,
-            menu_item_img_id=counter,
+            restaurant_id=restaurant_counter,
+            menu_item_img_id=menu_item_img_counter,
             name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {entree_name_end}",
             description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
             price=float(fake_price()),
             type="entree",
-            shopping_cart_id=counter,
-
-
-
-
+            shopping_cart_id=restaurant_counter
         )
             db.session.add(currEntree)
             db.session.commit()
-            all_menu_item_imgs.append(MenuItemImg(
+
+
+            menu_item_img_counter+=1
+
+            changes2=MenuItemImg(
                 menu_item_id=currEntree.id,
                 url=entree_translator[entree_name_end],
                 preview= True if k==0 else False
-            )),
+            )
+            db.session.add(changes2)
+            currEntree.menu_item_img_id=changes2.id
+            db.session.commit()
 
 
 
-
-
-
+    #          user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    # menu_item_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("menu_items.id")))
+    # quantity = db.Column(db.Integer, nullable=False)
+    # created_at=db.Column(db.DateTime, default=datetime.now())
+    # updated_at=db.Column(db.DateTime, default=datetime.now())
 
 
             #add SIDE and picture for it****************************
             currSide=MenuItem(
-                restaurant_id=counter,
-                menu_item_img_id=counter,
+                restaurant_id=restaurant_counter,
+                menu_item_img_id=menu_item_img_counter,
                 name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {side_name_end}", description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]}{dessert_name_end}s",
                 price=float(fake_price()),
                 type="side",
-                shopping_cart_id=counter)
+                shopping_cart_id=restaurant_counter)
             db.session.add(currSide)
+            db.session.commit()
+            menu_item_img_counter+=1
+
+
+            changes2=MenuItemImg(
+                menu_item_id=currSide.id,
+                url=sides_translator[side_name_end],
+                preview= False)
+            db.session.add(changes2)
             db.session.commit()
 
 
-
-
-            all_menu_item_imgs.append(MenuItemImg(
-                menu_item_id=currSide.id,
-                url=sides_translator[side_name_end],
-                preview= False))
-
-
-
-
-
-
+            currSide.menu_item_img_id=changes2.id
 
 
             #add DESSERT and picture for it************************
             currDessert=MenuItem(
-                restaurant_id=counter,
-                menu_item_img_id=counter,
+                restaurant_id=restaurant_counter,
+                menu_item_img_id=menu_item_img_counter,
                 name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {dessert_name_end}", description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {dessert_name_end}s",
                 price=float(fake_price()),
                 type="dessert")
             db.session.add(currDessert)
             db.session.commit()
+            menu_item_img_counter+=1
 
 
-
-
-            all_menu_item_imgs.append(MenuItemImg(
+            changes2=MenuItemImg(
                 menu_item_id=currDessert.id,
                 url=dessert_translator[dessert_name_end],
-                preview= False))
+                preview= False)
+            db.session.add(changes2)
+            db.session.commit()
 
-
+            currDessert.menu_item_img_id=changes2.id
 
 
             #add DRINK and picture for it*********************
             currDrink=MenuItem(
-                restaurant_id=counter,
-                menu_item_img_id=counter,
+                restaurant_id=restaurant_counter,
+                menu_item_img_id=menu_item_img_counter,
                 name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {drink_name_end}",
                 description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
                 price=float(fake_price()),
                 type="drink")
             db.session.add(currDrink)
             db.session.commit()
+            menu_item_img_counter+=1
 
 
 
 
-            all_menu_item_imgs.append(MenuItemImg(
+
+
+
+
+            changes2=MenuItemImg(
                 menu_item_id=currDrink.id,
                 url=drink_translator[drink_name_end],
-                preview= False))
+                preview= False)
+
+            db.session.add(changes2)
+            db.session.commit()
+            currDrink.menu_item_img_id=changes2.id
 
 
 
-
-        master_menu_item_imgs.append(all_menu_item_imgs)
-        counter+=1
-
-
-
-
-    for array5 in master_menu_item_imgs:
-        db.session.add_all(array5)
-    db.session.commit()
-
-
+        restaurant_counter+=1
 
 
 def undo_menu_items():
