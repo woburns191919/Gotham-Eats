@@ -168,15 +168,21 @@ def delete_post(id):
     db.session.commit()
     return redirect("/restaurants")
 
-@home_restaurants.route("/manage/<int:id>")
-def get_my_restaurants(id):
+@home_restaurants.route("/manage/<int:ownerId>")
+def get_my_restaurants(ownerId):
 
-   my_restaurants=db.session.query(Restaurant).filter(Restaurant.owner_id==id).all()
-   if my_restaurants:
+  print('idHere is like',ownerId)
+  restaurant = Restaurant.query.get(1)  # Replace 1 with the actual id you want to fetch
+  if restaurant:
+    print('THIS IS ONE INSTANCE OF THE RESTAURANT',restaurant.to_dict())
+  my_restaurants=db.session.query(Restaurant).filter(Restaurant.owner_id==ownerId).all()
+  print('*********HITTING MY ROUTE WITH sommething.restaurants',my_restaurants)
+  if my_restaurants:
     restaurant_data=[restaurant.to_dict() for restaurant in my_restaurants]
     all_restaurants = {'restaurants':restaurant_data}
+    print('NOW RESTAURANTS IS LIKE',restaurant_data)
     return jsonify(restaurant_data), 200
-   else:
+  else:
       abort(404,"You don't  have any spots")
 @home_restaurants.route("/")
 def get_popular_restaurants():

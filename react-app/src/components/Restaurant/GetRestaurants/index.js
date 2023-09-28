@@ -11,19 +11,25 @@ export default function GetRestaurants({ ownerMode = false }) {
   const history = useHistory();
   const restaurantsData = useSelector((state) => state.restaurants.allRestaurants);
   const RestaurantsUserOwns = useSelector((state) => state.restaurants.userOwnedRestaurants)
-  const [refresh,setRefresh] = useState(3)
+  const [refreshCount, setRefreshCount] = useState(0);
   const sessionUser = useSelector((state) => state.session.user);
   const {ownerId}=useParams()
 
-  const restaurants = ownerMode ? RestaurantsUserOwns.restaurants : restaurantsData.restaurants
+  const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData.restaurants
   console.log('RESTAURANTS IS******************', restaurants)
 
   useEffect(() => {
-
+    if (restaurants === undefined && refreshCount < 1) {
+        setRefreshCount((prevCount) => prevCount + 1);
+      }
     ownerMode===false?dispatch(thunkGetAllRestaurants()):dispatch(thunkGetRestaurantsUserOwns(ownerId))
 
 
-  }, [dispatch,ownerMode,refresh]);
+  }, [dispatch,ownerMode,refreshCount,ownerId]);
+
+
+  if (ownerMode===true) console.log('***************************************CONGRATS WERE IN OWNER MODE BRO.')
+
   return (
   <div className="main-container">
     {ownerMode && RestaurantsUserOwns.length && (
@@ -51,7 +57,7 @@ export default function GetRestaurants({ ownerMode = false }) {
                 </div>
             </Link>
             </div>))}
-            {ownerMode && restaurants && restaurants.length>0(
+            {ownerMode  &&(
                 <div className="owner-div update-delete-btns">
                     <button className="owner-btn post-delete-review-btn" onClick={() => history.push(`/restaurants/edit/${restaurants.restaurant.id}`)}>Update</button>
                     {/* <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}

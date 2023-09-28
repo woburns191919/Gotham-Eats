@@ -71,7 +71,7 @@ reviews_list = [
 {"restaurant_id":12, "user_id":1,
 "review":"An exquisite fusion of Eastern and Western flavors.", "stars":5},
 {"restaurant_id":12, "user_id":2,
-       "review":"Hee-hee! Their live band was just my kind of crazy!", "stars":5},
+"review":"Hee-hee! Their live band was just my kind of crazy!", "stars":5},
 {"restaurant_id":12, "user_id":3,
 "review":"Perfectly balanced meals. Great for staying in shape.", "stars":4},
 {"restaurant_id":13, "user_id":1,
@@ -1059,8 +1059,7 @@ user_list=[
         postalCode="11414",
         country="United States",
         phone='710-681-2850'),
-
-   User(
+        User(
         firstName="Cassandra",
         lastName="Cain",
         username='Batgirl',

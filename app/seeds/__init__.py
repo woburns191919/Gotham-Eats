@@ -1,7 +1,5 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
-from .restaurants import seed_restaurants, undo_restaurants
-from .reviews import seed_reviews, undo_reviews
 from .menu_item import seed_menu_items, undo_menu_items
 # from .menu_item_images import undo_menu_item_images, seed_menu_item_images
 
@@ -22,10 +20,10 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_menu_items()
         # undo_menu_item_images()
-     
+
         undo_users()
     seed_users()
- 
+
     seed_menu_items()
     # seed_menu_item_images()
     # Add other seed functions here
@@ -35,7 +33,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    
+
     undo_menu_items()
     # undo_menu_item_images()
 
