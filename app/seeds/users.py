@@ -69,8 +69,8 @@ user_list=[
         phone='710-681-2839'),
 
     User(
-        firstName="Demo",
-        lastName="User",
+        firstName="Osward",
+        lastName="Cobblepot",
         username='ThePenguin',
         password="password",
         email='penguin@gotham.com',
