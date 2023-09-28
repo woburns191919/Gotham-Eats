@@ -21,7 +21,8 @@ class MenuItemImg(db.Model):
     created_at=db.Column(db.DateTime, default=datetime.now())
     updated_at=db.Column(db.DateTime, default=datetime.now())
 
-    menu_item = db.relationship("MenuItem", back_populates='menu_items_image')
+    # menu_item = db.relationship("MenuItem", back_populates='menu_items_image')
+    menu_item = db.relationship('MenuItem', back_populates='menu_item_img')
 
 
 

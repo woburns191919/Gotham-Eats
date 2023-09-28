@@ -1,4 +1,6 @@
-from flask import Blueprint, jsonify, request,redirect, url_for,abort
+
+from flask import Blueprint, jsonify, request,redirect, url_for, abort
+
 import app
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Restaurant, Review, db, MenuItem
@@ -32,21 +34,34 @@ def get_restaurant_by_id(id):
     return jsonify(response_data)
 
 
+
+# @home_restaurants.route("/")
+# def get_popular_restaurants():
+#   """returns a all restaurant order by popularity"""
+#   restaurants = db.session.query(Restaurant).join(Review, Restaurant.id == Review.restaurant_id).\
+#     group_by(Restaurant.id).\
+#     order_by(func.avg(Review.stars).desc()).\
+#     all()
+
+
+
+#   all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
+#   print('restaurants**', all_restaurants)
+#   return all_restaurants
+
 @home_restaurants.route("/")
 def get_popular_restaurants():
-  """returns a all restaurant order by popularity"""
-  # restaurants= db.session.query(Restaurant).all()
-  #your queery dont work bros
-  restaurants = db.session.query(Restaurant).join(Review, Restaurant.id == Review.restaurant_id).\
-    group_by(Restaurant.id).\
-    order_by(func.avg(Review.stars).desc()).\
-    all()
-
-  all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
-
-  return all_restaurants
-
-
+    """returns a all restaurant order by popularity"""
+    restaurants = db.session.query(Restaurant).join(Review)\
+        .group_by(Restaurant.id)\
+        .order_by(func.avg(Review.stars).desc())\
+        .all()
+    for restaurant in restaurants:
+      print(restaurant)
+      
+    all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
+    print('restaurants**', all_restaurants)
+    return jsonify(all_restaurants)
 
 
 @home_restaurants.route("/new")
@@ -187,6 +202,7 @@ def delete_post(id):
 
     "RESTAURANTS TESTING"
     """delete a restaurant based on restaurant id"""
+
     restaurant_to_delete = db.session.query(Restaurant).get(id)
     if restaurant_to_delete:
        if restaurant_to_delete.owner_id==current_user.id:
@@ -199,6 +215,7 @@ def delete_post(id):
 
     else:
        abort(404,"This spot doesn't exist")
+
 
 @home_restaurants.route("/manage")
 def get_my_restaurants():
