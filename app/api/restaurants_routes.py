@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request,redirect, url_for
+from flask import Blueprint, jsonify, request,redirect, url_for, abort
 import app
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Restaurant, Review, db, MenuItem
@@ -14,7 +14,7 @@ home_restaurants = Blueprint('restaurants', __name__)
 def get_restaurant_by_id(id):
     """returns a single restaurant and it's reviews by the given id provided as a route parameter"""
 
-    
+
     one_restaurant = Restaurant.query.get(id)
 
 
@@ -188,3 +188,13 @@ def delete_post(id):
     db.session.delete(restaurant_to_delete)
     db.session.commit()
     return redirect("/restaurants")
+
+@home_restaurants.route("/manage")
+def get_my_restaurants():
+   my_restaurants=db.session.query(Restaurant).filter(Restaurant.owner_id==current_user.id).all()
+   if my_restaurants:
+      restaurant_data=[restaurant.to_dict() for restaurant in my_restaurants]
+      print("HEY WE HIT THE MANAGE PAGE. my restaurants looks like this",my_restaurants)
+      return jsonify(restaurants=restaurant_data,message="success"), 200
+   else:
+      abort(404,"You don't  have any spots")

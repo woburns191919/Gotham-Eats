@@ -1,29 +1,8 @@
-from ..models import db, MenuItem,MenuItemImg, environment, SCHEMA
-from random import randint
-from datetime import datetime
+from .models import db, MenuItem, MenuItemImg, environment, SCHEMA, add_prefix_for_prod
+from sqlalchemy.sql import text
+from random import randint, random
 from faker import Faker
-import random
-# from ..menu_item_translators import entree_translator, dessert_translator, drink_translator, sides_translator
-fake = Faker()
-drink_translator={
-"Cappuccino":f"/assets/menu_item_images/drinks/cappuccino/img_{randint(1, 5)}.jpeg",
-"Gotham Red Wine": f"/assets/menu_item_images/drinks/gotham_red_wine/img_{randint(1, 5)}.jpeg",
-"Margarita": f"/assets/menu_item_images/drinks/margarita/img_{randint(1, 5)}.jpeg",
-"Redbull": f"/assets/menu_item_images/drinks/redbull/img_{randint(1, 5)}.jpeg",
-"Seven and Seven":  f"/assets/menu_item_images/drinks/seven_and_seven/img_{randint(1, 5)}.jpeg",
-"Sprite": f"/assets/menu_item_images/drinks/sprite/img_{randint(1, 5)}.jpeg",
-"Gotham White Wine": f"/assets/menu_item_images/drinks/gotham_white_wine/img_{randint(1, 5)}.jpeg",
-"Lemonade": f"/assets/menu_item_images/drinks/lemonade/img_{randint(1, 5)}.jpeg",
-"Martini": f"/assets/menu_item_images/drinks/martini/img_{randint(1, 5)}.jpeg",
-"Root Beer": f"/assets/menu_item_images/drinks/root_beer/img_{randint(1, 5)}.jpeg",
-"Shirley Temple":  f"/assets/menu_item_images/drinks/shirley_temple/img_{randint(1, 5)}.jpeg",
-"Coffee":  f"/assets/menu_item_images/drinks/Coffee/img_{randint(1, 5)}.jpeg",
-"Gotham Beer": f"/assets/menu_item_images/drinks/gotham_beer/img_{randint(1, 5)}.jpeg",
-"Long Island Iced Tea":  f"/assets/menu_item_images/drinks/long_island_iced_tea/img_{randint(1, 5)}.jpeg",
-"Pepsi":  f"/assets/menu_item_images/drinks/pepsi/img_{randint(1, 5)}.jpeg",
-"Rum and Coke":  f"/assets/menu_item_images/drinks/rum_and_coke/img_{randint(1, 5)}.jpeg",
-"Smoothie": f"/assets/menu_item_images/drinks/smoothie/img_{randint(1, 5)}.jpeg",
-}
+
 drink_translator={
 "Cappuccino":f"/assets/menu_item_images/drinks/cappuccino/img_{randint(1, 5)}.jpeg",
 "Gotham Red Wine": f"/assets/menu_item_images/drinks/gotham_red_wine/img_{randint(1, 5)}.jpeg",
@@ -84,6 +63,7 @@ dessert_translator= {
     "Vanilla IceCream": f"/assets/menu_item_images/desserts/vanilla_icecream/img_{randint(1, 5)}.jpeg"
 }
 sides_translator= {
+"Spaghetti": f"/assets/menu_item_images/sides/spaghetti/img_{randint(1, 5)}.jpeg",
 "Chicken Wings": f"/assets/menu_item_images/sides/chicken_wings/img_{randint(1, 5)}.jpeg",
 "Fried Rice": f"/assets/menu_item_images/sides/fried_rice/img_{randint(1, 5)}.jpeg",
 "Green Beans": f"/assets/menu_item_images/sides/green_beans/img_{randint(1, 5)}.jpeg",
@@ -106,103 +86,3 @@ sides_translator= {
 "Mashed_Potatoes": f"/assets/menu_item_images/sides/mashed_potatoes/img_{randint(1, 5)}.jpeg",
 "Roasted Cauliflower": f"/assets/menu_item_images/sides/roasted_cauliflower/img_{randint(1, 5)}.jpeg"
 }
-# ==============================
-
-entree_names = list(entree_translator.keys())
-dessert_names = list(dessert_translator.keys())
-drink_names = list(drink_translator.keys())
-side_names = list(sides_translator.keys())
-
-def seed_menu_items():
-    for restaurant_counter in range(1, 51):
-        entree_name = fake.random_element(elements=entree_names)
-        dessert_name = fake.random_element(elements=dessert_names)
-        drink_name = fake.random_element(elements=drink_names)
-        side_name = fake.random_element(elements=side_names)
-
-
-        # Create MenuItemImg instances
-        entree_img = MenuItemImg(
-            menu_item_id=restaurant_counter,
-            url=entree_translator[entree_name],
-            preview=True,
-        )
-
-        dessert_img = MenuItemImg(
-            menu_item_id=restaurant_counter,
-            url=dessert_translator[dessert_name],
-            preview=True,
-        )
-
-        drink_img = MenuItemImg(
-            menu_item_id=restaurant_counter,
-            url=drink_translator[drink_name],
-            preview=True,
-        )
-
-        side_img = MenuItemImg(
-            menu_item_id=restaurant_counter,
-            url=sides_translator[side_name],
-            preview=True,
-        )
-
-        # Create MenuItem instances
-        entree_item = MenuItem(
-            restaurant_id=restaurant_counter,
-            menu_item_img=entree_img,
-            name=entree_name,
-            description=fake.sentence(),
-            price=fake.random_element(elements=(5.99, 8.99, 10.99)),
-            type="Entree",
-        )
-
-        dessert_item = MenuItem(
-            restaurant_id=restaurant_counter,
-            menu_item_img=dessert_img,
-            name=dessert_name,
-            description=fake.sentence(),
-            price=fake.random_element(elements=(3.99, 4.99, 6.99)),
-            type="Dessert",
-        )
-
-        drink_item = MenuItem(
-            restaurant_id=restaurant_counter,
-            menu_item_img=drink_img,
-            name=drink_name,
-            description=fake.sentence(),
-            price=fake.random_element(elements=(1.99, 2.99, 3.49)),
-            type="Drink",
-        )
-
-        side_item = MenuItem(
-            restaurant_id=restaurant_counter,
-            menu_item_img=side_img,
-            name=side_name,
-            description=fake.sentence(),
-            price=fake.random_element(elements=(2.99, 3.49, 4.99)),
-            type="Side",
-        )
-
-        # Add items to the database
-        db.session.add(entree_img)
-        db.session.add(dessert_img)
-        db.session.add(drink_img)
-        db.session.add(side_img)
-
-        db.session.add(entree_item)
-        db.session.add(dessert_item)
-        db.session.add(drink_item)
-        db.session.add(side_item)
-
-    # Commit the changes to the database
-    db.session.commit()
-
-if __name__ == '__main__':
-    seed_menu_items()
-
-def undo_menu_items():
-    if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.menu_items RESTART IDENTITY CASCADE;")
-    else:
-        db.session.execute(text("DELETE FROM menu_items"))
-    db.session.commit()
