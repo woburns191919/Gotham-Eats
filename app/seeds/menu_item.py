@@ -222,6 +222,8 @@ def seed_menu_items():
         )
             db.session.add(currEntree)
             db.session.commit()
+            changes2.menu_item_img_id=currEntree.id
+            db.session.commit()
 
 
         # Similar process for SIDE
@@ -241,6 +243,8 @@ def seed_menu_items():
             shopping_cart_id=restaurant_counter
         )
             db.session.add(currSide)
+            db.session.commit()
+            changes2.menu_item_img_id=currEntree.id
             db.session.commit()
 
 
@@ -263,6 +267,8 @@ def seed_menu_items():
         )
             db.session.add(currDessert)
             db.session.commit()
+            changes2.menu_item_img_id=currEntree.id
+            db.session.commit()
 
 
         # Similar process for DRINK
@@ -271,6 +277,8 @@ def seed_menu_items():
             preview=False
         )
             db.session.add(changes2)
+            db.session.commit()
+            changes2.menu_item_img_id=currEntree.id
             db.session.commit()
 
 
@@ -283,6 +291,8 @@ def seed_menu_items():
             type="drink"
         )
             db.session.add(currDrink)
+            db.session.commit()
+            changes2.menu_item_img_id=currEntree.id
             db.session.commit()
 
 
