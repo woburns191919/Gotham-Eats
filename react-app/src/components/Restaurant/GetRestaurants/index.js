@@ -6,8 +6,7 @@ import { thunkGetRestaurantsUserOwns } from "../../../store/restaurants";
 import OpenModalButton from "../../OpenModalButton/index";
 
 import "./GetRestaurants.css";
-
-
+let ro
 
 
 export default function GetRestaurants({ ownerMode = false }) {
@@ -15,32 +14,32 @@ export default function GetRestaurants({ ownerMode = false }) {
   const history = useHistory();
 
   const restaurantData = useSelector((state) => state.restaurants.allRestaurants)
-  const restaurantDataOwner = useSelector((state)=>state.restaurants.userOwnedRestaurants)
+  const restaurantDataOwner = useSelector((state) => state.restaurants.userOwnedRestaurants)
 
 
 
 
   // const restaurantsData = useSelector((state) => state.restaurants);
 
-  const restaurants = ownerMode===true? restaurantData.restaurants :restaurantDataOwner.restaurants
+  const restaurants = ownerMode === true ? restaurantData.restaurants : restaurantDataOwner.restaurants
   const sessionUser = useSelector((state) => state.session.user);
 
 
 
-function findPrev(restaurant){
-    for (let prevImg of restaurant.menu_item_images){
-      if (prevImg.preview){
+  function findPrev(restaurant) {
+    for (let prevImg of restaurant.menu_item_images) {
+      if (prevImg.preview) {
         return prevImg.url
       }
     }
 
 
-}
+  }
 
   useEffect(() => {
-    if (ownerMode===false) dispatch(thunkGetAllRestaurants());
-    else if(ownerMode===true) dispatch(thunkGetRestaurantsUserOwns())
-}, [dispatch,ownerMode]);
+    if (ownerMode === false) dispatch(thunkGetAllRestaurants());
+    else if (ownerMode === true) dispatch(thunkGetRestaurantsUserOwns())
+  }, [dispatch, ownerMode]);
 
 
   if (!restaurantData || !restaurantData.restaurants) return null;
@@ -65,14 +64,14 @@ function findPrev(restaurant){
       <div className={`${ownerMode ? "ownerRestaurant-main-container ownerRestaurant-grid-container" : "restaurants-main-container grid-container"}`}>
 
 
-        {restaurants.map((restaurant,index) => (
+        {restaurants.map((restaurant, index) => (
           <div className={`${ownerMode ? "ownerRestaurant-restaurant-img-main-div" : "restaurant-img-main-div"}`} key={restaurant.id}>
             <Link to={`/restaurants/${restaurant.id}`} style={{ textDecoration: "none", color: "var(--black)" }}>
               <div className={`restaurant-box ${ownerMode ? "ownerRestaurant" : ""}`}>
-              <img key={index}
+                <img key={index}
                   src={
                     `${process.env.PUBLIC_URL}${findPrev(restaurant)}`}
-                    className={ownerMode ? "ownerRestaurant-img" : "restaurant-img"} alt="" />
+                  className={ownerMode ? "ownerRestaurant-img" : "restaurant-img"} alt="" />
 
 
 
