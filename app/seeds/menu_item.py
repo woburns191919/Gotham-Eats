@@ -300,7 +300,7 @@ def undo_menu_items():
 # =====================================================================================================
 # =====================================================================================================
 # =====================================================================================================
-
+# 
 # entree_names = list(entree_translator.keys())
 # dessert_names = list(dessert_translator.keys())
 # drink_names = list(drink_translator.keys())
@@ -398,7 +398,7 @@ def undo_menu_items():
 #             price=fake.random_element(elements=(1.99, 2.99, 3.49)),
 #             type="Drink",
 #         )
-# 
+#
 #         side_item = MenuItem(
 #             restaurant_id=restaurant_counter,
 #             menu_item_img=side_img,
