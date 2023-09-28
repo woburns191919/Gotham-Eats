@@ -1,309 +1,309 @@
-// import React, { useState, useEffect } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-// import { useHistory } from "react-router-dom";
-// import { createRestaurantThunk, getRestaurantDetailThunk, updateRestaurantThunk } from "../redux/restaurantSlice"; // Import your thunk action creators
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { thunkCreateRestaurant, thunkGetRestaurantDetail,thunkUpdateRestaurant } from "../../../store/restaurants";
 
-// import TextInput from "../../Inputs/TextInput";
-// import { LabeledInput } from "../../Inputs/LabeledInput";
-// import { LabeledTextarea } from "../../Inputs/LabeledTextarea";
-// import SelectInput from "../../Inputs/SelectInput";
-// import "./RestaurantForm.css";
+import TextInput from "../../Inputs/TextInput";
+import { LabeledInput } from "../../Inputs/LabeledInput";
+import { LabeledTextarea } from "../../Inputs/LabeledTextarea";
+import SelectInput from "../../Inputs/SelectInput";
+import "./RestaurantForm.css";
 
-// export default function RestaurantForm({ formType, restaurantId }) {
-//   const dispatch = useDispatch();
-//   const history = useHistory();
-//   const sessionUser = useSelector((state) => state.session.user);
+export default function RestaurantForm({ formType, restaurantId }) {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const sessionUser = useSelector((state) => state.session.user);
 
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     streetAddress: "",
-//     city: "Gotham",
-//     state: "New York",
-//     postalCode: "",
-//     country: "United States",
-//     description: "",
-//     hours: "",
-//     previmg: "",
-//   });
+  const [formData, setFormData] = useState({
+    name: "",
+    streetAddress: "",
+    city: "Gotham",
+    state: "New York",
+    postalCode: "",
+    country: "United States",
+    description: "",
+    hours: "",
+    previmg: "",
+  });
 
-//   useEffect(() => {
-//     if (formType === "Edit" && restaurantId) {
-//       dispatch(getRestaurantDetailThunk(restaurantId)).then((data) => {
-//         setFormData({
-//           name: data.name,
-//           streetAddress: data.streetAddress,
-//           city: data.city,
-//           state: data.state,
-//           postalCode: data.postalCode,
-//           country: data.country,
-//           description: data.description,
-//           hours: data.hours,
-//           previmg: data.previmg,
-//         });
-//       });
-//     }
-//   }, [dispatch, formType, restaurantId]);
+  useEffect(() => {
+    if (formType === "Edit" && restaurantId) {
+      dispatch(thunkGetRestaurantDetail(restaurantId)).then((data) => {
+        setFormData({
+          name: data.name,
+          streetAddress: data.streetAddress,
+          city: data.city,
+          state: data.state,
+          postalCode: data.postalCode,
+          country: data.country,
+          description: data.description,
+          hours: data.hours,
+          previmg: data.previmg,
+        });
+      });
+    }
+  }, [dispatch, formType, restaurantId]);
 
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({
-//       ...formData,
-//       [name]: value,
-//     });
-//   };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-//     try {
-//       if (formType === "Create") {
-//         const newlyCreateRestaurant = await dispatch(
-//           createRestaurantThunk(formData)
-//         );
-//         if (newlyCreateRestaurant.id) {
-//           history.push(`/restaurants/${newlyCreateRestaurant.id}`);
-//         } else {
+    try {
+      if (formType === "Create") {
+        const newlyCreateRestaurant = await dispatch(
+          thunkCreateRestaurant(formData)
+        );
+        if (newlyCreateRestaurant.id) {
+          history.push(`/restaurants/${newlyCreateRestaurant.id}`);
+        } else {
 
-//           throw new Error("Failed to create restaurant");
-//         }
-//       }
+          throw new Error("Failed to create restaurant");
+        }
+      }
 
-//       if (formType === "Edit") {
-//         const updatedRestaurant = {
-//           ...formData,
-//           id: restaurantId,
-//         };
+      if (formType === "Edit") {
+        const updatedRestaurant = {
+          ...formData,
+          id: restaurantId,
+        };
 
-//         const updatedRestaurantData = await dispatch(
-//           updateRestaurantThunk(updatedRestaurant)
-//         );
+        const updatedRestaurantData = await dispatch(
+          thunkUpdateRestaurant(updatedRestaurant)
+        );
 
-//         if (updatedRestaurantData.id) {
+        if (updatedRestaurantData.id) {
 
-//           history.push(`/restaurants/${updatedRestaurantData.id}`);
-//         } else {
+          history.push(`/restaurants/${updatedRestaurantData.id}`);
+        } else {
 
-//           throw new Error("Failed to update restaurant");
-//         }
-//       }
-//     } catch (error) {
-//       console.error("Error processing the restaurant:", error.message);
-//     }
-//   };
-//     return (
-//       <div className="restaurant-form-container">
-//         <h2>{formType === "edit" ? "Edit Restaurant" : "Create Restaurant"}</h2>
-//         <form onSubmit={handleSubmit}>
+          throw new Error("Failed to update restaurant");
+        }
+      }
+    } catch (error) {
+      console.error("Error processing the restaurant:", error.message);
+    }
+  };
+    return (
+      <div className="restaurant-form-container">
+        <h2>{formType === "Edit" ? "Edit Restaurant" : "Create Restaurant"}</h2>
+        <form onSubmit={handleSubmit}>
 
-//           <TextInput
-//             label="Name"
-//             name="name"
-//             value={formData.name}
-//             onChange={handleInputChange}
-//             required
-//           />
+          <TextInput
+            label="Name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+          />
 
-//           <LabeledInput
-//             label="Street Address"
-//             name="streetAddress"
-//             value={formData.streetAddress}
-//             onChange={handleInputChange}
-//             required
-//           />
+          <LabeledInput
+            label="Street Address"
+            name="streetAddress"
+            value={formData.streetAddress}
+            onChange={handleInputChange}
+            required
+          />
 
-//           <LabeledInput
-//             label="City"
-//             name="city"
-//             value={formData.city}
-//             onChange={handleInputChange}
-//           />
+          <LabeledInput
+            label="City"
+            name="city"
+            value={formData.city}
+            onChange={handleInputChange}
+          />
 
-//           <LabeledInput
-//             label="State"
-//             name="state"
-//             value={formData.state}
-//             onChange={handleInputChange}
-//           />
+          <LabeledInput
+            label="State"
+            name="state"
+            value={formData.state}
+            onChange={handleInputChange}
+          />
 
-//           <TextInput
-//             label="Postal Code"
-//             name="postalCode"
-//             value={formData.postalCode}
-//             onChange={handleInputChange}
-//             required
-//           />
+          <TextInput
+            label="Postal Code"
+            name="postalCode"
+            value={formData.postalCode}
+            onChange={handleInputChange}
+            required
+          />
 
-//           <LabeledInput
-//             label="Country"
-//             name="country"
-//             value={formData.country}
-//             onChange={handleInputChange}
-//           />
+          <LabeledInput
+            label="Country"
+            name="country"
+            value={formData.country}
+            onChange={handleInputChange}
+          />
 
-//           <LabeledTextarea
-//             label="Description"
-//             name="description"
-//             value={formData.description}
-//             onChange={handleInputChange}
-//             required
-//           />
+          <LabeledTextarea
+            label="Description"
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            required
+          />
 
-//           <LabeledTextarea
-//             label="Hours"
-//             name="hours"
-//             value={formData.hours}
-//             onChange={handleInputChange}
-//             required
-//           />
+          <LabeledTextarea
+            label="Hours"
+            name="hours"
+            value={formData.hours}
+            onChange={handleInputChange}
+            required
+          />
 
-//           <TextInput
-//             label="Preview Image"
-//             name="previmg"
-//             value={formData.previmg}
-//             onChange={handleInputChange}
-//             required
-//           />
+          <TextInput
+            label="Preview Image"
+            name="previmg"
+            value={formData.previmg}
+            onChange={handleInputChange}
+            required
+          />
 
-//           <button type="submit">
-//             {formType === "edit" ? "Update Restaurant" : "Create Restaurant"}
-//           </button>
-//         </form>
-//       </div>
-//     );
-//   };
-
-
+          <button type="submit">
+            {formType === "edit" ? "Update Restaurant" : "Create Restaurant"}
+          </button>
+        </form>
+      </div>
+    );
+  };
 
 
-// // import React, { useState } from "react";
-// // import { useDispatch } from "react-redux";
-// // import { useHistory } from "react-router-dom";
-
-// // import TextInput from "../../Inputs/TextInput";
-// // import { LabeledInput } from "../../Inputs/LabeledInput";
-// // import { LabeledTextarea } from "../../Inputs/LabeledTextarea";
-// // import { createRestaurantThunk } from "../../../store/restaurants";
-
-// // import './RestaurantForm.css';
-
-// // export default function RestaurantForm({ formType, restaurantId }) {
-// //   const dispatch = useDispatch();
-// //   const history = useHistory();
 
 
-// //   const [formData, setFormData] = useState({
-// //     name: "",
-// //     streetAddress: "",
-// //     city: "Gotham",
-// //     state: "New York",
-// //     postalCode: "",
-// //     country: "United States",
-// //     description: "",
-// //     hours: "",
-// //     previmg: "",
-// //   });
+// // // import React, { useState } from "react";
+// // // import { useDispatch } from "react-redux";
+// // // import { useHistory } from "react-router-dom";
+
+// // // import TextInput from "../../Inputs/TextInput";
+// // // import { LabeledInput } from "../../Inputs/LabeledInput";
+// // // import { LabeledTextarea } from "../../Inputs/LabeledTextarea";
+// // // import { createRestaurantThunk } from "../../../store/restaurants";
+
+// // // import './RestaurantForm.css';
+
+// // // export default function RestaurantForm({ formType, restaurantId }) {
+// // //   const dispatch = useDispatch();
+// // //   const history = useHistory();
 
 
-// //   const handleInputChange = (e) => {
-// //     const { name, value } = e.target;
-// //     setFormData({
-// //       ...formData,
-// //       [name]: value,
-// //     });
-// //   };
+// // //   const [formData, setFormData] = useState({
+// // //     name: "",
+// // //     streetAddress: "",
+// // //     city: "Gotham",
+// // //     state: "New York",
+// // //     postalCode: "",
+// // //     country: "United States",
+// // //     description: "",
+// // //     hours: "",
+// // //     previmg: "",
+// // //   });
 
 
-// //   const handleSubmit = async (e) => {
-// //     e.preventDefault();
-// //     try {
-// //       const createdRestaurant = await dispatch(createRestaurantThunk(formData));
-// //       console.log("Restaurant created:", createdRestaurant);
-// //       history.push("/");
-// //     } catch (error) {
-
-// //       console.error("Error creating restaurant:", error);
-// //     }
-// //   };
+// // //   const handleInputChange = (e) => {
+// // //     const { name, value } = e.target;
+// // //     setFormData({
+// // //       ...formData,
+// // //       [name]: value,
+// // //     });
+// // //   };
 
 
-//   // return (
-//   //   <div className="restaurant-form-container">
-//   //     <h2>{formType === "edit" ? "Edit Restaurant" : "Create Restaurant"}</h2>
-//   //     <form onSubmit={handleSubmit}>
+// // //   const handleSubmit = async (e) => {
+// // //     e.preventDefault();
+// // //     try {
+// // //       const createdRestaurant = await dispatch(createRestaurantThunk(formData));
+// // //       console.log("Restaurant created:", createdRestaurant);
+// // //       history.push("/");
+// // //     } catch (error) {
 
-//   //       <TextInput
-//   //         label="Name"
-//   //         name="name"
-//   //         value={formData.name}
-//   //         onChange={handleInputChange}
-//   //         required
-//   //       />
+// // //       console.error("Error creating restaurant:", error);
+// // //     }
+// // //   };
 
-//   //       <LabeledInput
-//   //         label="Street Address"
-//   //         name="streetAddress"
-//   //         value={formData.streetAddress}
-//   //         onChange={handleInputChange}
-//   //         required
-//   //       />
 
-//   //       <LabeledInput
-//   //         label="City"
-//   //         name="city"
-//   //         value={formData.city}
-//   //         onChange={handleInputChange}
-//   //       />
+// //   // return (
+// //   //   <div className="restaurant-form-container">
+// //   //     <h2>{formType === "edit" ? "Edit Restaurant" : "Create Restaurant"}</h2>
+// //   //     <form onSubmit={handleSubmit}>
 
-//   //       <LabeledInput
-//   //         label="State"
-//   //         name="state"
-//   //         value={formData.state}
-//   //         onChange={handleInputChange}
-//   //       />
+// //   //       <TextInput
+// //   //         label="Name"
+// //   //         name="name"
+// //   //         value={formData.name}
+// //   //         onChange={handleInputChange}
+// //   //         required
+// //   //       />
 
-//   //       <TextInput
-//   //         label="Postal Code"
-//   //         name="postalCode"
-//   //         value={formData.postalCode}
-//   //         onChange={handleInputChange}
-//   //         required
-//   //       />
+// //   //       <LabeledInput
+// //   //         label="Street Address"
+// //   //         name="streetAddress"
+// //   //         value={formData.streetAddress}
+// //   //         onChange={handleInputChange}
+// //   //         required
+// //   //       />
 
-//   //       <LabeledInput
-//   //         label="Country"
-//   //         name="country"
-//   //         value={formData.country}
-//   //         onChange={handleInputChange}
-//   //       />
+// //   //       <LabeledInput
+// //   //         label="City"
+// //   //         name="city"
+// //   //         value={formData.city}
+// //   //         onChange={handleInputChange}
+// //   //       />
 
-//   //       <LabeledTextarea
-//   //         label="Description"
-//   //         name="description"
-//   //         value={formData.description}
-//   //         onChange={handleInputChange}
-//   //         required
-//   //       />
+// //   //       <LabeledInput
+// //   //         label="State"
+// //   //         name="state"
+// //   //         value={formData.state}
+// //   //         onChange={handleInputChange}
+// //   //       />
 
-//   //       <LabeledTextarea
-//   //         label="Hours"
-//   //         name="hours"
-//   //         value={formData.hours}
-//   //         onChange={handleInputChange}
-//   //         required
-//   //       />
+// //   //       <TextInput
+// //   //         label="Postal Code"
+// //   //         name="postalCode"
+// //   //         value={formData.postalCode}
+// //   //         onChange={handleInputChange}
+// //   //         required
+// //   //       />
 
-//   //       <TextInput
-//   //         label="Preview Image"
-//   //         name="previmg"
-//   //         value={formData.previmg}
-//   //         onChange={handleInputChange}
-//   //         required
-//   //       />
+// //   //       <LabeledInput
+// //   //         label="Country"
+// //   //         name="country"
+// //   //         value={formData.country}
+// //   //         onChange={handleInputChange}
+// //   //       />
 
-//   //       <button type="submit">
-//   //         {formType === "edit" ? "Update Restaurant" : "Create Restaurant"}
-//   //       </button>
-//   //     </form>
-//   //   </div>
-//   // );
-// // }
+// //   //       <LabeledTextarea
+// //   //         label="Description"
+// //   //         name="description"
+// //   //         value={formData.description}
+// //   //         onChange={handleInputChange}
+// //   //         required
+// //   //       />
+
+// //   //       <LabeledTextarea
+// //   //         label="Hours"
+// //   //         name="hours"
+// //   //         value={formData.hours}
+// //   //         onChange={handleInputChange}
+// //   //         required
+// //   //       />
+
+// //   //       <TextInput
+// //   //         label="Preview Image"
+// //   //         name="previmg"
+// //   //         value={formData.previmg}
+// //   //         onChange={handleInputChange}
+// //   //         required
+// //   //       />
+
+// //   //       <button type="submit">
+// //   //         {formType === "edit" ? "Update Restaurant" : "Create Restaurant"}
+// //   //       </button>
+// //   //     </form>
+// //   //   </div>
+// //   // );
+// // // }
