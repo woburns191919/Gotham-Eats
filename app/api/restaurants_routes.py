@@ -44,9 +44,8 @@ def create_new_restaurant():
       country = data["country"],
       description = data["description"],
       hours = data["hours"],
-      previmg = data["previmg"]
     )
-    # print(new_restaurant)
+   
     addded_restaurant = db.session.add(new_restaurant)
     db.session.commit()
     return jsonify(message = "Successfully created new restaurant", id = addded_restaurant.id), 201

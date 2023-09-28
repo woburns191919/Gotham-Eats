@@ -115,6 +115,7 @@ villain_adj_dict = {
 keysToVillains = ["1_penguin", "2_riddler", "3_ivy", "4_two_face", "5_scarecrow", "6_catwoman", "7_batman", "8_joker", "9_bane", "10_mr_freeze",
                   "11_clayface", "12_firefly", "13_mad_hatter", "14_talon", "15_zatanna", "16_bat_man", "17_mayor", "18_green_arrow", "19_everyone_else"]
 
+
 entree_names = list(entree_translator.keys())
 dessert_names = list(dessert_translator.keys())
 drink_names = list(drink_translator.keys())
@@ -196,12 +197,21 @@ def seed_menu_items():
         all_drinks = []
         all_sides = []
         all_menu_item_imgs = []
-        for k in range(0, 11):
 
-            # add ENTREE and picture for it***************************
+        for k in range(0, 2):
+
+            # Create MenuItemImg First for ENTREE and Commit
+            changes2 = MenuItemImg(
+                url=entree_translator[entree_name_end],
+                preview=True if k == 0 else False
+            )
+            db.session.add(changes2)
+            db.session.commit()
+
+        # Now, Create the MenuItem (currEntree) for ENTREE and Link it to the Committed MenuItemImg
             currEntree = MenuItem(
                 restaurant_id=restaurant_counter,
-                menu_item_img_id=menu_item_img_counter,
+                menu_item_img_id=changes2.id,
                 name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {entree_name_end}",
                 description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
                 price=float(fake_price()),
@@ -209,84 +219,66 @@ def seed_menu_items():
                 shopping_cart_id=restaurant_counter
             )
             db.session.add(currEntree)
-
-
-            changes2 = MenuItemImg(
-                menu_item_id=currEntree.id,
-                url=entree_translator[entree_name_end],
-                preview=True if menu_item_img_counter == 1 else False
-            )
-            menu_item_img_counter += 1
-            db.session.add(changes2)
-            currEntree.menu_item_img_id = changes2.id
             db.session.commit()
 
-    # user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
-    # menu_item_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("menu_items.id")))
-    # quantity = db.Column(db.Integer, nullable=False)
-    # created_at=db.Column(db.DateTime, default=datetime.now())
-    # updated_at=db.Column(db.DateTime, default=datetime.now())
-
-            # add SIDE and picture for it****************************
+        # Similar process for SIDE
+            changes2 = MenuItemImg(
+                url=sides_translator[side_name_end],
+                preview=False
+            )
+            db.session.add(changes2)
+            db.session.commit()
             currSide = MenuItem(
                 restaurant_id=restaurant_counter,
-                menu_item_img_id=menu_item_img_counter,
-                name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {side_name_end}", description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]}{dessert_name_end}s",
+                menu_item_img_id=changes2.id,
+                name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {side_name_end}",
+                description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {dessert_name_end}s",
                 price=float(fake_price()),
                 type="side",
-                shopping_cart_id=restaurant_counter)
+                shopping_cart_id=restaurant_counter
+            )
             db.session.add(currSide)
-
-            menu_item_img_counter += 1
-            changes2 = MenuItemImg(
-                menu_item_id=currSide.id,
-                url=sides_translator[side_name_end],
-                preview=False)
-            db.session.add(changes2)
-            currSide.menu_item_img_id = changes2.id
             db.session.commit()
-            # add DESSERT and picture for it************************
+
+        # Similar process for DESSERT
+            changes2 = MenuItemImg(
+                url=dessert_translator[dessert_name_end],
+                preview=False
+            )
+            db.session.add(changes2)
+            db.session.commit()
+
             currDessert = MenuItem(
                 restaurant_id=restaurant_counter,
-                menu_item_img_id=menu_item_img_counter,
-                name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {dessert_name_end}", description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {dessert_name_end}s",
+                menu_item_img_id=changes2.id,
+                name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {dessert_name_end}",
+                description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {dessert_name_end}s",
                 price=float(fake_price()),
-                type="dessert")
+                type="dessert"
+            )
             db.session.add(currDessert)
+            db.session.commit()
 
-            menu_item_img_counter += 1
-
+        # Similar process for DRINK
             changes2 = MenuItemImg(
-                menu_item_id=currDessert.id,
-                url=dessert_translator[dessert_name_end],
-                preview=False)
+                url=drink_translator[drink_name_end],
+                preview=False
+            )
             db.session.add(changes2)
             db.session.commit()
 
-            currDessert.menu_item_img_id = changes2.id
-
-            # add DRINK and picture for it*********************
             currDrink = MenuItem(
                 restaurant_id=restaurant_counter,
-                menu_item_img_id=menu_item_img_counter,
+                menu_item_img_id=changes2.id,
                 name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {drink_name_end}",
                 description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
                 price=float(fake_price()),
-                type="drink")
+                type="drink"
+            )
             db.session.add(currDrink)
-
-            menu_item_img_counter += 1
-
-            changes2 = MenuItemImg(
-                menu_item_id=currDrink.id,
-                url=drink_translator[drink_name_end],
-                preview=False)
-
-            db.session.add(changes2)
-            currDrink.menu_item_img_id = changes2.id
             db.session.commit()
 
-        restaurant_counter += 1
+            restaurant_counter += 1
 
 
 def undo_menu_items():
