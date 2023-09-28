@@ -10,26 +10,6 @@ import json
 home_restaurants = Blueprint('restaurants', __name__)
 
 
-@home_restaurants.route("/<int:id>")
-def get_restaurant_by_id(id):
-    """returns a single restaurant and it's reviews by the given id provided as a route parameter"""
-
-
-    one_restaurant = Restaurant.query.get(id)
-
-
-    if not one_restaurant:
-       return jsonify({"error": "Restaurant not found"}), 404
-
-
-    reviews = Review.query.filter_by(restaurant_id=id).all()
-    review_list = [review.to_dict() for review in reviews]
-
-
-    response_data = one_restaurant.to_dict()
-    response_data['reviews'] = review_list
-
-    return jsonify(response_data)
 
 
 # @home_restaurants.route("/")
@@ -44,17 +24,6 @@ def get_restaurant_by_id(id):
 #   print('restaurants**', all_restaurants)
 #   return all_restaurants
 
-@home_restaurants.route("/")
-def get_popular_restaurants():
-    """returns a all restaurant order by popularity"""
-    restaurants = db.session.query(Restaurant).join(Review)\
-        .group_by(Restaurant.id)\
-        .order_by(func.avg(Review.stars).desc())\
-        .all()
-
-    all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
-
-    return jsonify(all_restaurants)
 
 
 @home_restaurants.route("/new")
@@ -199,12 +168,45 @@ def delete_post(id):
     db.session.commit()
     return redirect("/restaurants")
 
-@home_restaurants.route("/manage")
-def get_my_restaurants():
-   my_restaurants=db.session.query(Restaurant).filter(Restaurant.owner_id==current_user.id).all()
+@home_restaurants.route("/manage/<int:id>")
+def get_my_restaurants(id):
+
+   my_restaurants=db.session.query(Restaurant).filter(Restaurant.owner_id==id).all()
    if my_restaurants:
-      restaurant_data=[restaurant.to_dict() for restaurant in my_restaurants]
-      print("HEY WE HIT THE MANAGE PAGE. my restaurants looks like this",my_restaurants)
-      return jsonify(restaurant_data), 200
+    restaurant_data=[restaurant.to_dict() for restaurant in my_restaurants]
+    all_restaurants = {'restaurants':restaurant_data}
+    return jsonify(restaurant_data), 200
    else:
       abort(404,"You don't  have any spots")
+@home_restaurants.route("/")
+def get_popular_restaurants():
+    """returns a all restaurant order by popularity"""
+    restaurants = db.session.query(Restaurant).join(Review)\
+        .group_by(Restaurant.id)\
+        .order_by(func.avg(Review.stars).desc())\
+        .all()
+
+    all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
+
+    return jsonify(all_restaurants)
+
+@home_restaurants.route("/<int:id>")
+def get_restaurant_by_id(id):
+    """returns a single restaurant and it's reviews by the given id provided as a route parameter"""
+
+
+    one_restaurant = Restaurant.query.get(id)
+
+
+    if not one_restaurant:
+       return jsonify({"error": "Restaurant not found"}), 404
+
+
+    reviews = Review.query.filter_by(restaurant_id=id).all()
+    review_list = [review.to_dict() for review in reviews]
+
+
+    response_data = one_restaurant.to_dict()
+    response_data['reviews'] = review_list
+
+    return jsonify(response_data)

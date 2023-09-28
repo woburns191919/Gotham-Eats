@@ -49,7 +49,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/owner/restaurants">
+          <Route path="/owner/restaurants/:ownerId">
             <GetRestaurants ownerMode={true} />
           </Route>
           <Route>Page Not Found</Route>

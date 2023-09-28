@@ -124,9 +124,9 @@ export const thunkDeleteRestaurant = createAsyncThunk(
 
 export const thunkGetRestaurantsUserOwns = createAsyncThunk(
   'restaurants/getUserOwnedRestaurants',
-  async (_, { rejectWithValue }) => {
+  async (ownerId, { rejectWithValue }) => {
     try {
-      const res = await fetch('/api/restaurants/manage');
+      const res = await fetch(`/api/restaurants/manage/${ownerId}`);
       if (res.ok) {
 
         const data = await res.json();

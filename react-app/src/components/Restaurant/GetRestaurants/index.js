@@ -1,9 +1,10 @@
 import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory, NavLink } from "react-router-dom";
+import { Link, useHistory, NavLink,useParams} from "react-router-dom";
 import { thunkGetAllRestaurants, thunkGetRestaurantsUserOwns } from "../../../store/restaurants";
 import OpenModalButton from "../../OpenModalButton/index";
 import "./GetRestaurants.css";
+
 
 export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
@@ -12,13 +13,14 @@ export default function GetRestaurants({ ownerMode = false }) {
   const RestaurantsUserOwns = useSelector((state) => state.restaurants.userOwnedRestaurants)
   const [refresh,setRefresh] = useState(3)
   const sessionUser = useSelector((state) => state.session.user);
+  const {ownerId}=useParams()
 
   const restaurants = ownerMode ? RestaurantsUserOwns.restaurants : restaurantsData.restaurants
   console.log('RESTAURANTS IS******************', restaurants)
 
   useEffect(() => {
 
-    ownerMode===false?dispatch(thunkGetAllRestaurants()):dispatch(thunkGetRestaurantsUserOwns())
+    ownerMode===false?dispatch(thunkGetAllRestaurants()):dispatch(thunkGetRestaurantsUserOwns(ownerId))
 
 
   }, [dispatch,ownerMode,refresh]);
