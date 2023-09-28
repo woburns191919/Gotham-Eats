@@ -21,11 +21,6 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_menu_items()
-
-        # undo_menu_item_images()
-        undo_restaurants()
-        undo_reviews()
-
         undo_users()
     seed_users()
     seed_menu_items()
