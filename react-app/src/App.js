@@ -10,6 +10,8 @@ import SignupFormModal from "./components/SignupFormModal";
 import GetRestaurants from "./components/Restaurant/GetRestaurants";
 import Home from "./components/Home"
 import GetRestaurantDetail from "./components/Restaurant/GetRestaurantDetail";
+import CreateRestaurantForm from "./components/Restaurant/RestaurantForm/CreateRestaurantForm";
+import EditRestaurantForm from "./components/Restaurant/RestaurantForm/EditRestaurantForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +30,12 @@ function App() {
         <Switch>
           <Route exact path="/" >
             <Home />
+          </Route>
+          <Route path="/restaurants/new" >
+            <CreateRestaurantForm />
+          </Route>
+          <Route path="/restaurants/edit/:id" >
+            <EditRestaurantForm />
           </Route>
           <Route path="/restaurants/:id" >
             <GetRestaurantDetail />

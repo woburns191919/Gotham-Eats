@@ -43,6 +43,7 @@ class Restaurant(db.Model, UserMixin):
     @property
     def avg_stars(self):
         return db.session.query(func.avg(Review.stars)).filter(Review.restaurant_id == self.id).scalar()
+       
     @property
     def get_image(self):
         menu_item_images = (
@@ -65,6 +66,7 @@ class Restaurant(db.Model, UserMixin):
     @property
     def get_reviews(self):
         return db.session.query(Review).filter(Review.restaurant_id == self.id).all()
+
 
     def to_dict(self):
         return {
