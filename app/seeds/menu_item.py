@@ -1,10 +1,11 @@
 
 from sqlalchemy import text
 from ..models import db, MenuItem,MenuItemImg, environment, SCHEMA
-from random import randint
 from datetime import datetime
 from faker import Faker
-import random
+from sqlalchemy.sql import text
+from random import randint, random
+from faker import Faker
 # from ..menu_item_translators import entree_translator, dessert_translator, drink_translator, sides_translator
 fake = Faker()
 drink_translator={
@@ -24,12 +25,10 @@ drink_translator={
 "Long Island Iced Tea":  f"https://flask3.s3.amazonaws.com/menu_item_images/drinks/long_island_iced_tea/img_{randint(1, 5)}.jpeg",
 "Pepsi":  f"https://flask3.s3.amazonaws.com/menu_item_images/drinks/pepsi/img_{randint(1, 5)}.jpeg",
 "Rum and Coke":  f"https://flask3.s3.amazonaws.com/menu_item_images/drinks/rum_and_coke/img_{randint(1, 5)}.jpeg",
-"Smoothie": f"https://flask3.s3.amazonaws.com/menu_item_images/drinks/smoothie/img_{randint(1, 5)}.jpeg",
+"Smoothie": f"https://flask3.s3.amazonaws.com/menu_item_images/drinks/smoothie/img_{randint(1, 5)}.jpeg"
+}
 
-from ..models import db, MenuItem,MenuItemImg,ShoppingCart, environment, SCHEMA
-from sqlalchemy.sql import text
-from random import randint, random
-from faker import Faker
+
 
 
 
@@ -547,4 +546,3 @@ def undo_menu_items():
     else:
         db.session.execute(text("DELETE FROM menu_items"))
     db.session.commit()
-
