@@ -1,10 +1,11 @@
 """empty message
 
-Revision ID: dc0b868ac85d
+Revision ID: e97bce13ae27
 Revises:
-Create Date: 2023-09-27 22:48:26.313508
+Create Date: 2023-09-28 11:25:32.920570
 
 """
+
 from alembic import op
 import sqlalchemy as sa
 
@@ -14,7 +15,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = 'dc0b868ac85d'
+revision = 'e97bce13ae27'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -138,3 +139,4 @@ def downgrade():
     op.drop_table('users')
     op.drop_table('menu_item_imgs')
     # ### end Alembic commands ###
+

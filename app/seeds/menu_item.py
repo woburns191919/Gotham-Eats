@@ -9,33 +9,6 @@ from faker import Faker
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 filename_entree_list=["buffalo_chicken_sandwich", "chicken_tenders", "fish_tacos", "lasagna", "philly_cheesesteak",  "spaghetti", "chicken_fajita", "fettuccine_alfredo", "gyro", "lobster", "pizza", "steak", "bbq_ribs", "chicken_parmesan", "fish_and_chips", "hamburger", "meatball_sandwich", "shish_kebab"]
 
 
@@ -753,35 +726,3 @@ def undo_menu_items():
     else:
         db.session.execute(text("DELETE FROM menu_items"))
     db.session.commit()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
