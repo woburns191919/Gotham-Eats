@@ -90,6 +90,8 @@ sides_translator= {
 }
 
 
+
+
 villain_adj_dict = {
     "1_Alfred": ["loyal", "wise", "resourceful", "dedicated", "caring", "supportive", "knowledgeable", "discreet", "sophisticated", "dependable"],
     "2_Harley": ["manic", "unpredictable", "energetic", "devoted", "intelligent", "agile", "impulsive", "chaotic", "humorous", "enthusiastic"],
@@ -112,17 +114,22 @@ villain_adj_dict = {
 }
 
 
+
+
 keysToVillains=["1_penguin","2_riddler","3_ivy","4_two_face","5_scarecrow","6_catwoman","7_batman","8_joker","9_bane","10_mr_freeze","11_clayface","12_firefly","13_mad_hatter","14_talon","15_zatanna","16_bat_man","17_mayor","18_green_arrow","19_everyone_else"]
+
 
 entree_names = list(entree_translator.keys())
 dessert_names = list(dessert_translator.keys())
 drink_names = list(drink_translator.keys())
 side_names = list(sides_translator.keys())
 
+
 def fake_price():
     num1= randint(5,30)
     num2= randint(10,99)
     return f"{num1}.{num2}"
+
 
 def seed_menu_items():
     restaurant_counter=1
@@ -133,6 +140,7 @@ def seed_menu_items():
     master_desserts=[]
     master_sides=[]
     master_menu_item_imgs=[]
+
 
     for i in range(0,50):
         entree_name_end = entree_names[randint(0,17)]
@@ -187,6 +195,7 @@ def seed_menu_items():
         else:
             our_guy="17_CassandraCain"
 
+
         curr_adj_list = villain_adj_dict[our_guy]
         all_entrees=[]
         all_desserts=[]
@@ -194,6 +203,7 @@ def seed_menu_items():
         all_sides=[]
         all_menu_item_imgs=[]
         for k in range(0,11):
+
 
             #add ENTREE and picture for it***************************
             currEntree=MenuItem(
@@ -208,7 +218,9 @@ def seed_menu_items():
             db.session.add(currEntree)
             db.session.commit()
 
+
             menu_item_img_counter+=1
+
 
             changes2=MenuItemImg(
                 menu_item_id=currEntree.id,
@@ -219,11 +231,13 @@ def seed_menu_items():
             currEntree.menu_item_img_id=changes2.id
             db.session.commit()
 
+
     # user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     # menu_item_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("menu_items.id")))
     # quantity = db.Column(db.Integer, nullable=False)
     # created_at=db.Column(db.DateTime, default=datetime.now())
     # updated_at=db.Column(db.DateTime, default=datetime.now())
+
 
             #add SIDE and picture for it****************************
             currSide=MenuItem(
@@ -254,6 +268,7 @@ def seed_menu_items():
             db.session.commit()
             menu_item_img_counter+=1
 
+
             changes2=MenuItemImg(
                 menu_item_id=currDessert.id,
                 url=dessert_translator[dessert_name_end],
@@ -261,7 +276,10 @@ def seed_menu_items():
             db.session.add(changes2)
             db.session.commit()
 
+
             currDessert.menu_item_img_id=changes2.id
+
+
 
 
             #add DRINK and picture for it*********************
@@ -276,14 +294,17 @@ def seed_menu_items():
             db.session.commit()
             menu_item_img_counter+=1
 
+
             changes2=MenuItemImg(
                 menu_item_id=currDrink.id,
                 url=drink_translator[drink_name_end],
                 preview= False)
 
+
             db.session.add(changes2)
             db.session.commit()
             currDrink.menu_item_img_id=changes2.id
+
 
         restaurant_counter+=1
 def undo_menu_items():
@@ -292,140 +313,3 @@ def undo_menu_items():
     else:
         db.session.execute(text("DELETE FROM menu_items"))
     db.session.commit()
-
-
-
-# =====================================================================================================
-# =====================================================================================================
-# =====================================================================================================
-# =====================================================================================================
-# =====================================================================================================
-# 
-# entree_names = list(entree_translator.keys())
-# dessert_names = list(dessert_translator.keys())
-# drink_names = list(drink_translator.keys())
-# side_names = list(sides_translator.keys())
-
-# # def seed_menu_items():
-# #     for restaurant_counter in range(1, 51):
-# #         entree_name = fake.random_element(elements=entree_names)
-# #         dessert_name = fake.random_element(elements=dessert_names)
-# #         drink_name = fake.random_element(elements=drink_names)
-# #         side_name = fake.random_element(elements=side_names)
-# #         # Create MenuItemImg instances
-# #         entree_img = MenuItemImg(
-# #             menu_item_id=restaurant_counter,
-# #             url=entree_translator[entree_name],
-# #             preview=True,
-# #         )
-
-# #         dessert_img = MenuItemImg(
-# #             menu_item_id=restaurant_counter,
-# #             url=dessert_translator[dessert_name],
-# #             preview=True,
-# #         )
-# #         drink_img = MenuItemImg(
-# #             menu_item_id=restaurant_counter,
-# #             url=drink_translator[drink_name],
-# #             preview=True,
-# #         )
-# #         side_img = MenuItemImg(
-# #             menu_item_id=restaurant_counter,
-# #             url=sides_translator[side_name],
-# #             preview=True,
-# #         )
-# def seed_menu_items():
-
-#     entree_images = [entree_translator[name] for name in entree_names]
-#     dessert_images = [dessert_translator[name] for name in dessert_names]
-#     drink_images = [drink_translator[name] for name in drink_names]
-#     side_images = [sides_translator[name] for name in side_names]
-
-#     for restaurant_counter in range(1, 51):
-#         entree_name = entree_names[randint(0, len(entree_names) - 1)]
-#         dessert_name = dessert_names[randint(0, len(dessert_names) - 1)]
-#         drink_name = drink_names[randint(0, len(drink_names) - 1)]
-#         side_name = side_names[randint(0, len(side_names) - 1)]
-
-#         entree_img = MenuItemImg(
-#             menu_item_id=restaurant_counter,
-#             url=random.choice(entree_images),
-#             preview=True,
-#         )
-
-#         dessert_img = MenuItemImg(
-#             menu_item_id=restaurant_counter,
-#             url=random.choice(dessert_images),
-#             preview=True,
-#         )
-
-#         drink_img = MenuItemImg(
-#             menu_item_id=restaurant_counter,
-#             url=random.choice(drink_images),
-#             preview=True,
-#         )
-
-#         side_img = MenuItemImg(
-#             menu_item_id=restaurant_counter,
-#             url=random.choice(side_images),
-#             preview=True,
-#         )
-
-#         # Create MenuItem instances
-#         entree_item = MenuItem(
-#             restaurant_id=restaurant_counter,
-#             menu_item_img=entree_img,
-#             name=entree_name,
-#             description=fake.sentence(),
-#             price=fake.random_element(elements=(5.99, 8.99, 10.99)),
-#             type="Entree",
-#         )
-
-#         dessert_item = MenuItem(
-#             restaurant_id=restaurant_counter,
-#             menu_item_img=dessert_img,
-#             name=dessert_name,
-#             description=fake.sentence(),
-#             price=fake.random_element(elements=(3.99, 4.99, 6.99)),
-#             type="Dessert",
-#         )
-
-#         drink_item = MenuItem(
-#             restaurant_id=restaurant_counter,
-#             menu_item_img=drink_img,
-#             name=drink_name,
-#             description=fake.sentence(),
-#             price=fake.random_element(elements=(1.99, 2.99, 3.49)),
-#             type="Drink",
-#         )
-#
-#         side_item = MenuItem(
-#             restaurant_id=restaurant_counter,
-#             menu_item_img=side_img,
-#             name=side_name,
-#             description=fake.sentence(),
-#             price=fake.random_element(elements=(2.99, 3.49, 4.99)),
-#             type="Side",
-#         )
-
-#         db.session.add(entree_img)
-#         db.session.add(dessert_img)
-#         db.session.add(drink_img)
-#         db.session.add(side_img)
-
-#         db.session.add(entree_item)
-#         db.session.add(dessert_item)
-#         db.session.add(drink_item)
-#         db.session.add(side_item)
-
-#     db.session.commit()
-
-# if __name__ == '__main__':
-#     seed_menu_items()
-
-# def undo_menu_items():
-#     if environment == "production":
-#         db.session.execute(f"TRUNCATE table {SCHEMA}.menu_items RESTART IDENTITY CASCADE;")
-#     else:
-#         db.session.execute(text("DELETE FROM menu_items"))
-#     db.session.commit()
