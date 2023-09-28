@@ -11,7 +11,9 @@ export const thunkGetAllRestaurantReviews = createAsyncThunk(
         return data.reviews;
       } else {
         const errors = await res.json();
-        return rejectWithValue(errors.message);
+
+        return rejectWithValue(errors.message); 
+
       }
     } catch (error) {
       return rejectWithValue(error.message);

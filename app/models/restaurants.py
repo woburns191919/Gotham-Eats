@@ -38,7 +38,6 @@ class Restaurant(db.Model, UserMixin):
     user = db.relationship("User", back_populates="restaurants")
     reviews = db.relationship("Review", back_populates="restaurant")
     menu_items = db.relationship('MenuItem', back_populates='restaurant')
-
     @property
     def avg_stars(self):
         return db.session.query(func.avg(Review.stars)).filter(Review.restaurant_id == self.id).scalar()
@@ -51,7 +50,6 @@ class Restaurant(db.Model, UserMixin):
             .filter(MenuItem.restaurant_id == self.id)
             .all()
         )
-
         return [
             {
                 'id': img.id,
@@ -61,6 +59,17 @@ class Restaurant(db.Model, UserMixin):
             }
             for img in menu_item_images
         ]
+    @property
+    def preview_image_url(self):
+        preview_image = (
+            db.session.query(MenuItemImg.url)
+            .join(MenuItem, MenuItem.id == MenuItemImg.menu_item_id)
+            .filter(MenuItem.restaurant_id == self.id)
+            .filter(MenuItemImg.preview == True)
+            .first()
+        )
+        return preview_image.url if preview_image else None
+
 
     def to_dict(self):
         return {
@@ -76,7 +85,6 @@ class Restaurant(db.Model, UserMixin):
             'hours': self.hours,
             'avgRating': self.avg_stars,
             'menu_item_images': self.get_image,
-
+            'preview_image_url': self.preview_image_url,
             'reviews': [review.to_dict() for review in self.reviews]
-
         }

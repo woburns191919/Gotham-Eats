@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import * as sessionActions from '../../store/session';
 import { useModal } from '../../context/Modal';
@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faBars } from '@fortawesome/free-solid-svg-icons';
 import OpenModalMenuItem from './OpenModalMenuItem';
 
+
 import './Navigation.css'
 
 function ProfileButton({ user }) {
@@ -18,7 +19,7 @@ function ProfileButton({ user }) {
   const ulRef = useRef();
   const history = useHistory();
   const userInitials = user && `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`;
-
+  const sessionUser = useSelector((state) => state.session.user);
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -28,7 +29,7 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
+      if (ulRef.current && !ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
     };
@@ -84,7 +85,10 @@ function ProfileButton({ user }) {
                     <li className="center-menu center-menu-profile">Your Profile</li>
                   </Link>
                 </ul>
-                <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history.push('/owner/restaurants') }}>Add Restaurants</button></ul>
+
+                <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history.push(`/owner/restaurants/${sessionUser.id}`) }}>Manage Restaurants</button></ul>
+                <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history.push('/restaurants/new') }}>Add Restaurants</button></ul>
+
                 <ul><button onClick={logout} className="buttons center-menu center-menu1">Log Out</button></ul>
               </>
             ) : (

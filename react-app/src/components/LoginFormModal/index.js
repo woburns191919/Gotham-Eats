@@ -48,18 +48,12 @@ function LoginFormModal() {
             required
           />
         </label>
-
-        <button type="submit" onClick={(e)=>{
-          setEmail("penguin@gotham.com");
-          setPassword("password")
-
-        }}>Demo User</button>
         <button type="submit">Log In</button>
-
         <button type="submit" onClick={(e)=>{
           setEmail("penguin@gotham.com");
           setPassword("password")
         }}>Demo User</button>
+
 
 
       </form>
