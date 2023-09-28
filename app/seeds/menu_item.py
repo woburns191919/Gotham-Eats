@@ -196,7 +196,7 @@ def seed_menu_items():
         all_drinks = []
         all_sides = []
         all_menu_item_imgs = []
-        for k in range(0, 11):
+        for k in range(0, 2):
 
             # add ENTREE and picture for it***************************
             currEntree = MenuItem(
