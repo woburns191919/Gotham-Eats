@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 
-class MenuItem(db.Model, UserMixin):
+class MenuItem(db.Model):
     __tablename__ = 'menu_items'
 
     def add_prefix_for_prod(attr):

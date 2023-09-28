@@ -7,7 +7,9 @@ from .reviews import Review
 from .menu_items import MenuItem
 from .menu_items_img import MenuItemImg
 
+
 class Restaurant(db.Model, UserMixin):
+
     __tablename__ = 'restaurants'
 
 
@@ -74,5 +76,7 @@ class Restaurant(db.Model, UserMixin):
             'hours': self.hours,
             'avgRating': self.avg_stars,
             'menu_item_images': self.get_image,
+
             'reviews': [review.to_dict() for review in self.reviews]
+
         }

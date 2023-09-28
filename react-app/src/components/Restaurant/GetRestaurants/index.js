@@ -2,21 +2,29 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { thunkGetAllRestaurants } from "../../../store/restaurants";
+import { thunkGetRestaurantsUserOwns } from "../../../store/restaurants";
 import OpenModalButton from "../../OpenModalButton/index";
+
 import "./GetRestaurants.css";
+
 
 export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const restaurantsData = useSelector((state) => state.restaurants.allRestaurants);
   const restaurants = restaurantsData.restaurants;
   const sessionUser = useSelector((state) => state.session.user);
 
+
   useEffect(() => {
-    dispatch(thunkGetAllRestaurants());
-  }, [dispatch]);
+    if (ownerMode === false) dispatch(thunkGetAllRestaurants());
+    else if (ownerMode === true) dispatch(thunkGetRestaurantsUserOwns())
+  }, [dispatch, ownerMode]);
+
 
   if (!restaurantsData || !restaurantsData.restaurants) return null;
+
 
   return (
     <div className="main-container">
@@ -32,10 +40,12 @@ export default function GetRestaurants({ ownerMode = false }) {
       )}
 
       <div className={`${ownerMode ? "ownerRestaurant-main-container ownerRestaurant-grid-container" : "restaurants-main-container grid-container"}`}>
+
         {restaurants.map((restaurant) => (
           <div className={`${ownerMode ? "ownerRestaurant-restaurant-img-main-div" : "restaurant-img-main-div"}`} key={restaurant.id}>
             <Link to={`/restaurants/${restaurant.id}`} style={{ textDecoration: "none", color: "var(--black)" }}>
               <div className={`restaurant-box ${ownerMode ? "ownerRestaurant" : ""}`}>
+
 
                 <img src={restaurant.menu_item_images.find((img) => img.preview)?.url} className={ownerMode ? "ownerRestaurant-img" : "restaurant-img"} alt="" />
                 <div className="restaurant-info-flex">

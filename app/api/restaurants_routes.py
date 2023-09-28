@@ -1,4 +1,6 @@
+
 from flask import Blueprint, jsonify, request,redirect, url_for, abort
+
 import app
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Restaurant, Review, db, MenuItem
@@ -32,6 +34,7 @@ def get_restaurant_by_id(id):
     return jsonify(response_data)
 
 
+
 # @home_restaurants.route("/")
 # def get_popular_restaurants():
 #   """returns a all restaurant order by popularity"""
@@ -39,6 +42,8 @@ def get_restaurant_by_id(id):
 #     group_by(Restaurant.id).\
 #     order_by(func.avg(Review.stars).desc()).\
 #     all()
+
+
 
 #   all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
 #   print('restaurants**', all_restaurants)
@@ -194,12 +199,23 @@ def update_restaurant(id):
 
 @home_restaurants.route("/delete/<int:id>")
 def delete_post(id):
+
+    "RESTAURANTS TESTING"
     """delete a restaurant based on restaurant id"""
-    restaurant_to_delete = Restaurant.query.get(id)
-    print(restaurant_to_delete)
-    db.session.delete(restaurant_to_delete)
-    db.session.commit()
-    return redirect("/restaurants")
+
+    restaurant_to_delete = db.session.query(Restaurant).get(id)
+    if restaurant_to_delete:
+       if restaurant_to_delete.owner_id==current_user.id:
+           db.session.delete(restaurant_to_delete)
+           db.session.commit()
+           return jsonify(message = f"Succesfully deleted restaurant {id}"), 204
+       else:
+          abort(403, description="Forbidden. You are not the owner")
+
+
+    else:
+       abort(404,"This spot doesn't exist")
+
 
 @home_restaurants.route("/manage")
 def get_my_restaurants():

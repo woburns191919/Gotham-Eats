@@ -6,7 +6,7 @@ from sqlalchemy import func
 from datetime import datetime
 from flask import jsonify
 
-class Review(db.Model, UserMixin):
+class Review(db.Model):
     __tablename__ = 'reviews'
 
 

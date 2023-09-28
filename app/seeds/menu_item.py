@@ -1,3 +1,4 @@
+
 from sqlalchemy import text
 from ..models import db, MenuItem,MenuItemImg, environment, SCHEMA
 from random import randint
@@ -24,6 +25,244 @@ drink_translator={
 "Pepsi":  f"https://flask3.s3.amazonaws.com/menu_item_images/drinks/pepsi/img_{randint(1, 5)}.jpeg",
 "Rum and Coke":  f"https://flask3.s3.amazonaws.com/menu_item_images/drinks/rum_and_coke/img_{randint(1, 5)}.jpeg",
 "Smoothie": f"https://flask3.s3.amazonaws.com/menu_item_images/drinks/smoothie/img_{randint(1, 5)}.jpeg",
+
+from ..models import db, MenuItem,MenuItemImg,ShoppingCart, environment, SCHEMA
+from sqlalchemy.sql import text
+from random import randint, random
+from faker import Faker
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+filename_entree_list=["buffalo_chicken_sandwich", "chicken_tenders", "fish_tacos", "lasagna", "philly_cheesesteak",  "spaghetti", "chicken_fajita", "fettuccine_alfredo", "gyro", "lobster", "pizza", "steak", "bbq_ribs", "chicken_parmesan", "fish_and_chips", "hamburger", "meatball_sandwich", "shish_kebab"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Entree_List=['Buffalo Chicken Sandwich', 'Chicken Tenders', 'Fish Tacos', "Lasagna", "Philly Cheesesteak", "Spaghetti", 'Chicken Fajita',"Fettuccine Alfredo", "Gyro", "Lobster", "Pizza", "Steak", "BBQ Ribs", "Chicken Parm", "Fish & Chips", "Hamburger", "Meatball Sandwich", "Shish Kebab"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+filename_dessert_list=["blueberry_tart","chocolate_chip_cookie",  "lava_cake", "pumpkin_pie", "carrot_cake",  "chocolate_mousse","milkshake", "strawberry_shortcake", "apple_pie", "cheesecake",  "cupcake", "peach_cobbler", "tiramisu", "banana_split",  "chocolate_brownie",  "flan", "pistachio_gelato",  "vanilla_icecream"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dessert_list=["Blueberry tart","Chocolate Chip Cookie","Lava Cake","Pumpkin pie",'Carrot Cake',"Chocolate Mousse","Milkshake","Strawberry Shortcake",'Apple Pie',"Cheesecake","Cupcake","Peach Cobbler","Tiramisu","Banana Split","Chocolate Brownie","Flan","Pistachio Gelato","Vanilla IceCream"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+filename_drink_list=["cappuccino","gotham_red_wine","margarita","redbull","seven_and_seven","sprite","gotham_white_wine","lemonade","martini","root_beer","shirley_temple","Coffee","gotham_beer","long_island_iced_tea","pepsi","rum_and_coke","smoothie"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+drink_list=["Cappuccino", "Gotham Red Wine", "Margarita", "Redbull", "Seven and Seven", "Sprite", "Gotham White Wine", "Lemonade", "Martini", "Root Beer", "Shirley Temple", "Coffee", "Gotham Beer", "Long Island Iced Tea", "Pepsi", "Rum and Coke", "Smoothie"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+filename_sides_list=["chicken_wings","fried_rice", "green_beans","mozarella_sticks", "roasted_veggies","corn_on_the_cob  fries", "lo_mein", "nachos", "sweet_potato_fries","baked_potato", "creamed_spinach", "garden_salad  mac_and_cheese","onion_rings","tater_tots",
+"breadsticks", "edemame", "garlic_bread  mashed_potatoes",  "roasted_cauliflower"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sides_list=["Chicken Wings", "Fried Rice", "Green Beans", "Mozarella Sticks", "Roasted Veggies", "Corn on the Cob", "Fries", "Lo Mein", "Nachos", "Sweet Potato Fries", "Baked Potato", "Creamed Spinach", "Garden Salad", "Mac and Cheese", "Onion Rings", "Tater Tots", "Breadsticks", "Edemame", "Garlic Bread", "Mashed_Potatoes", "Roasted Cauliflower"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+drink_translator={
+"Cappuccino":f"/assets/menu_item_images/drinks/cappuccino/img_{randint(1, 5)}.jpeg",
+"Gotham Red Wine": f"/assets/menu_item_images/drinks/gotham_red_wine/img_{randint(1, 5)}.jpeg",
+"Margarita": f"/assets/menu_item_images/drinks/margarita/img_{randint(1, 5)}.jpeg",
+"Redbull": f"/assets/menu_item_images/drinks/redbull/img_{randint(1, 5)}.jpeg",
+"Seven and Seven":  f"/assets/menu_item_images/drinks/seven_and_seven/img_{randint(1, 5)}.jpeg",
+"Sprite": f"/assets/menu_item_images/drinks/sprite/img_{randint(1, 5)}.jpeg",
+"Gotham White Wine": f"/assets/menu_item_images/drinks/gotham_white_wine/img_{randint(1, 5)}.jpeg",
+"Lemonade": f"/assets/menu_item_images/drinks/lemonade/img_{randint(1, 5)}.jpeg",
+"Martini": f"/assets/menu_item_images/drinks/martini/img_{randint(1, 5)}.jpeg",
+"Root Beer": f"/assets/menu_item_images/drinks/root_beer/img_{randint(1, 5)}.jpeg",
+"Shirley Temple":  f"/assets/menu_item_images/drinks/shirley_temple/img_{randint(1, 5)}.jpeg",
+"Coffee":  f"/assets/menu_item_images/drinks/Coffee/img_{randint(1, 5)}.jpeg",
+"Gotham Beer": f"/assets/menu_item_images/drinks/gotham_beer/img_{randint(1, 5)}.jpeg",
+"Long Island Iced Tea":  f"/assets/menu_item_images/drinks/long_island_iced_tea/img_{randint(1, 5)}.jpeg",
+"Pepsi":  f"/assets/menu_item_images/drinks/pepsi/img_{randint(1, 5)}.jpeg",
+"Rum and Coke":  f"/assets/menu_item_images/drinks/rum_and_coke/img_{randint(1, 5)}.jpeg",
+"Smoothie": f"/assets/menu_item_images/drinks/smoothie/img_{randint(1, 5)}.jpeg",
+}
+
+
+
+
+
+
+
+
+drink_translator={
+"Cappuccino":f"/assets/menu_item_images/drinks/cappuccino/img_{randint(1, 5)}.jpeg",
+"Gotham Red Wine": f"/assets/menu_item_images/drinks/gotham_red_wine/img_{randint(1, 5)}.jpeg",
+"Margarita": f"/assets/menu_item_images/drinks/margarita/img_{randint(1, 5)}.jpeg",
+"Redbull": f"/assets/menu_item_images/drinks/redbull/img_{randint(1, 5)}.jpeg",
+"Seven and Seven":  f"/assets/menu_item_images/drinks/seven_and_seven/img_{randint(1, 5)}.jpeg",
+"Sprite": f"/assets/menu_item_images/drinks/sprite/img_{randint(1, 5)}.jpeg",
+"Gotham White Wine": f"/assets/menu_item_images/drinks/gotham_white_wine/img_{randint(1, 5)}.jpeg",
+"Lemonade": f"/assets/menu_item_images/drinks/lemonade/img_{randint(1, 5)}.jpeg",
+"Martini": f"/assets/menu_item_images/drinks/martini/img_{randint(1, 5)}.jpeg",
+"Root Beer": f"/assets/menu_item_images/drinks/root_beer/img_{randint(1, 5)}.jpeg",
+"Shirley Temple":  f"/assets/menu_item_images/drinks/shirley_temple/img_{randint(1, 5)}.jpeg",
+"Coffee":  f"/assets/menu_item_images/drinks/Coffee/img_{randint(1, 5)}.jpeg",
+"Gotham Beer": f"/assets/menu_item_images/drinks/gotham_beer/img_{randint(1, 5)}.jpeg",
+"Long Island Iced Tea":  f"/assets/menu_item_images/drinks/long_island_iced_tea/img_{randint(1, 5)}.jpeg",
+"Pepsi":  f"/assets/menu_item_images/drinks/pepsi/img_{randint(1, 5)}.jpeg",
+"Rum and Coke":  f"/assets/menu_item_images/drinks/rum_and_coke/img_{randint(1, 5)}.jpeg",
+"Smoothie":     f"/assets/menu_item_images/drinks/smoothie/img_{randint(1, 5)}.jpeg",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 entree_translator= {
     "Buffalo Chicken Sandwich": f"https://flask3.s3.amazonaws.com/menu_item_images/entrees/buffalo_chicken_sandwich/img_{randint(1, 5)}.jpeg",
@@ -45,6 +284,8 @@ entree_translator= {
     "Fish Tacos" : f"https://flask3.s3.amazonaws.com/menu_item_images/entrees/fish_tacos/img_{randint(1, 5)}.jpeg",
     "Pizza" : f"https://flask3.s3.amazonaws.com/menu_item_images/entrees/pizza/img_{randint(1, 5)}.jpeg"
 }
+
+
 dessert_translator= {
     'Blueberry tart': f"https://flask3.s3.amazonaws.com/menu_item_images/desserts/blueberry_tart/img_{randint(1, 5)}.jpeg",
     "Chocolate Chip Cookie": f"https://flask3.s3.amazonaws.com/menu_item_images/desserts/blueberry_tart/img_{randint(1, 5)}.jpeg",
@@ -65,6 +306,8 @@ dessert_translator= {
     "Pistachio Gelato": f"https://flask3.s3.amazonaws.com/menu_item_images/desserts/pistachio_gelato/img_{randint(1, 5)}.jpeg",
     "Vanilla IceCream": f"https://flask3.s3.amazonaws.com/menu_item_images/desserts/vanilla_icecream/img_{randint(1, 5)}.jpeg"
 }
+
+
 sides_translator= {
 "Chicken Wings": f"https://flask3.s3.amazonaws.com/menu_item_images/sides/chicken_wings/img_{randint(1, 5)}.jpeg",
 "Fried Rice": f"https://flask3.s3.amazonaws.com/menu_item_images/sides/fried_rice/img_{randint(1, 5)}.jpeg",
@@ -90,6 +333,7 @@ sides_translator= {
 }
 
 
+
 villain_adj_dict = {
     "1_Alfred": ["loyal", "wise", "resourceful", "dedicated", "caring", "supportive", "knowledgeable", "discreet", "sophisticated", "dependable"],
     "2_Harley": ["manic", "unpredictable", "energetic", "devoted", "intelligent", "agile", "impulsive", "chaotic", "humorous", "enthusiastic"],
@@ -112,6 +356,13 @@ villain_adj_dict = {
 }
 
 
+changes=7
+
+
+
+
+
+
 keysToVillains=["1_penguin","2_riddler","3_ivy","4_two_face","5_scarecrow","6_catwoman","7_batman","8_joker","9_bane","10_mr_freeze","11_clayface","12_firefly","13_mad_hatter","14_talon","15_zatanna","16_bat_man","17_mayor","18_green_arrow","19_everyone_else"]
 
 entree_names = list(entree_translator.keys())
@@ -119,10 +370,27 @@ dessert_names = list(dessert_translator.keys())
 drink_names = list(drink_translator.keys())
 side_names = list(sides_translator.keys())
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def fake_price():
     num1= randint(5,30)
     num2= randint(10,99)
     return f"{num1}.{num2}"
+
 
 def seed_menu_items():
     restaurant_counter=1
@@ -134,11 +402,13 @@ def seed_menu_items():
     master_sides=[]
     master_menu_item_imgs=[]
 
+
     for i in range(0,50):
         entree_name_end = entree_names[randint(0,17)]
         dessert_name_end= dessert_names[randint(0,17)]
         drink_name_end= drink_names[randint(0,16)]
         side_name_end= side_names[randint(0,20)]
+
         #Alfred
         if restaurant_counter<=13:
             our_guy="1_Alfred"
@@ -184,8 +454,10 @@ def seed_menu_items():
             our_guy="15_JasonTodd"
         elif restaurant_counter<=48:
             our_guy="16_DamianWayne"
+
         else:
             our_guy="17_CassandraCain"
+
 
         curr_adj_list = villain_adj_dict[our_guy]
         all_entrees=[]
@@ -194,6 +466,7 @@ def seed_menu_items():
         all_sides=[]
         all_menu_item_imgs=[]
         for k in range(0,11):
+
 
             #add ENTREE and picture for it***************************
             currEntree=MenuItem(
@@ -208,7 +481,9 @@ def seed_menu_items():
             db.session.add(currEntree)
             db.session.commit()
 
+
             menu_item_img_counter+=1
+
 
             changes2=MenuItemImg(
                 menu_item_id=currEntree.id,
@@ -218,6 +493,8 @@ def seed_menu_items():
             db.session.add(changes2)
             currEntree.menu_item_img_id=changes2.id
             db.session.commit()
+
+
 
     # user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     # menu_item_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("menu_items.id")))
@@ -236,13 +513,16 @@ def seed_menu_items():
             db.session.add(currSide)
             db.session.commit()
             menu_item_img_counter+=1
+
             changes2=MenuItemImg(
                 menu_item_id=currSide.id,
                 url=sides_translator[side_name_end],
                 preview= False)
             db.session.add(changes2)
             db.session.commit()
+
             currSide.menu_item_img_id=changes2.id
+
             #add DESSERT and picture for it************************
             currDessert=MenuItem(
                 restaurant_id=restaurant_counter,
@@ -254,15 +534,14 @@ def seed_menu_items():
             db.session.commit()
             menu_item_img_counter+=1
 
+
             changes2=MenuItemImg(
                 menu_item_id=currDessert.id,
                 url=dessert_translator[dessert_name_end],
                 preview= False)
             db.session.add(changes2)
             db.session.commit()
-
             currDessert.menu_item_img_id=changes2.id
-
 
             #add DRINK and picture for it*********************
             currDrink=MenuItem(
@@ -276,16 +555,19 @@ def seed_menu_items():
             db.session.commit()
             menu_item_img_counter+=1
 
+
             changes2=MenuItemImg(
                 menu_item_id=currDrink.id,
                 url=drink_translator[drink_name_end],
                 preview= False)
+
 
             db.session.add(changes2)
             db.session.commit()
             currDrink.menu_item_img_id=changes2.id
 
         restaurant_counter+=1
+
 def undo_menu_items():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.menu_items RESTART IDENTITY CASCADE;")
@@ -294,138 +576,3 @@ def undo_menu_items():
     db.session.commit()
 
 
-
-# =====================================================================================================
-# =====================================================================================================
-# =====================================================================================================
-# =====================================================================================================
-# =====================================================================================================
-
-# entree_names = list(entree_translator.keys())
-# dessert_names = list(dessert_translator.keys())
-# drink_names = list(drink_translator.keys())
-# side_names = list(sides_translator.keys())
-
-# # def seed_menu_items():
-# #     for restaurant_counter in range(1, 51):
-# #         entree_name = fake.random_element(elements=entree_names)
-# #         dessert_name = fake.random_element(elements=dessert_names)
-# #         drink_name = fake.random_element(elements=drink_names)
-# #         side_name = fake.random_element(elements=side_names)
-# #         # Create MenuItemImg instances
-# #         entree_img = MenuItemImg(
-# #             menu_item_id=restaurant_counter,
-# #             url=entree_translator[entree_name],
-# #             preview=True,
-# #         )
-
-# #         dessert_img = MenuItemImg(
-# #             menu_item_id=restaurant_counter,
-# #             url=dessert_translator[dessert_name],
-# #             preview=True,
-# #         )
-# #         drink_img = MenuItemImg(
-# #             menu_item_id=restaurant_counter,
-# #             url=drink_translator[drink_name],
-# #             preview=True,
-# #         )
-# #         side_img = MenuItemImg(
-# #             menu_item_id=restaurant_counter,
-# #             url=sides_translator[side_name],
-# #             preview=True,
-# #         )
-# def seed_menu_items():
-
-#     entree_images = [entree_translator[name] for name in entree_names]
-#     dessert_images = [dessert_translator[name] for name in dessert_names]
-#     drink_images = [drink_translator[name] for name in drink_names]
-#     side_images = [sides_translator[name] for name in side_names]
-
-#     for restaurant_counter in range(1, 51):
-#         entree_name = entree_names[randint(0, len(entree_names) - 1)]
-#         dessert_name = dessert_names[randint(0, len(dessert_names) - 1)]
-#         drink_name = drink_names[randint(0, len(drink_names) - 1)]
-#         side_name = side_names[randint(0, len(side_names) - 1)]
-
-#         entree_img = MenuItemImg(
-#             menu_item_id=restaurant_counter,
-#             url=random.choice(entree_images),
-#             preview=True,
-#         )
-
-#         dessert_img = MenuItemImg(
-#             menu_item_id=restaurant_counter,
-#             url=random.choice(dessert_images),
-#             preview=True,
-#         )
-
-#         drink_img = MenuItemImg(
-#             menu_item_id=restaurant_counter,
-#             url=random.choice(drink_images),
-#             preview=True,
-#         )
-
-#         side_img = MenuItemImg(
-#             menu_item_id=restaurant_counter,
-#             url=random.choice(side_images),
-#             preview=True,
-#         )
-
-#         # Create MenuItem instances
-#         entree_item = MenuItem(
-#             restaurant_id=restaurant_counter,
-#             menu_item_img=entree_img,
-#             name=entree_name,
-#             description=fake.sentence(),
-#             price=fake.random_element(elements=(5.99, 8.99, 10.99)),
-#             type="Entree",
-#         )
-
-#         dessert_item = MenuItem(
-#             restaurant_id=restaurant_counter,
-#             menu_item_img=dessert_img,
-#             name=dessert_name,
-#             description=fake.sentence(),
-#             price=fake.random_element(elements=(3.99, 4.99, 6.99)),
-#             type="Dessert",
-#         )
-
-#         drink_item = MenuItem(
-#             restaurant_id=restaurant_counter,
-#             menu_item_img=drink_img,
-#             name=drink_name,
-#             description=fake.sentence(),
-#             price=fake.random_element(elements=(1.99, 2.99, 3.49)),
-#             type="Drink",
-#         )
-
-#         side_item = MenuItem(
-#             restaurant_id=restaurant_counter,
-#             menu_item_img=side_img,
-#             name=side_name,
-#             description=fake.sentence(),
-#             price=fake.random_element(elements=(2.99, 3.49, 4.99)),
-#             type="Side",
-#         )
-
-#         db.session.add(entree_img)
-#         db.session.add(dessert_img)
-#         db.session.add(drink_img)
-#         db.session.add(side_img)
-
-#         db.session.add(entree_item)
-#         db.session.add(dessert_item)
-#         db.session.add(drink_item)
-#         db.session.add(side_item)
-
-#     db.session.commit()
-
-# if __name__ == '__main__':
-#     seed_menu_items()
-
-# def undo_menu_items():
-#     if environment == "production":
-#         db.session.execute(f"TRUNCATE table {SCHEMA}.menu_items RESTART IDENTITY CASCADE;")
-#     else:
-#         db.session.execute(text("DELETE FROM menu_items"))
-#     db.session.commit()
