@@ -90,6 +90,8 @@ sides_translator = {
 }
 
 
+
+
 villain_adj_dict = {
     "1_Alfred": ["loyal", "wise", "resourceful", "dedicated", "caring", "supportive", "knowledgeable", "discreet", "sophisticated", "dependable"],
     "2_Harley": ["manic", "unpredictable", "energetic", "devoted", "intelligent", "agile", "impulsive", "chaotic", "humorous", "enthusiastic"],
@@ -112,8 +114,11 @@ villain_adj_dict = {
 }
 
 
+
+
 keysToVillains = ["1_penguin", "2_riddler", "3_ivy", "4_two_face", "5_scarecrow", "6_catwoman", "7_batman", "8_joker", "9_bane", "10_mr_freeze",
                   "11_clayface", "12_firefly", "13_mad_hatter", "14_talon", "15_zatanna", "16_bat_man", "17_mayor", "18_green_arrow", "19_everyone_else"]
+
 
 entree_names = list(entree_translator.keys())
 dessert_names = list(dessert_translator.keys())
@@ -121,10 +126,18 @@ drink_names = list(drink_translator.keys())
 side_names = list(sides_translator.keys())
 
 
+
+
+
+
+
+
 def fake_price():
     num1 = randint(5, 30)
     num2 = randint(10, 99)
     return f"{num1}.{num2}"
+
+
 
 
 def seed_menu_items():
@@ -137,11 +150,12 @@ def seed_menu_items():
     master_sides = []
     master_menu_item_imgs = []
 
-    for i in range(0, 49):
-        entree_name_end = entree_names[randint(0, 17)]
-        dessert_name_end = dessert_names[randint(0, 17)]
-        drink_name_end = drink_names[randint(0, 16)]
-        side_name_end = side_names[randint(0, 20)]
+
+    for i in range(0, 48):
+        entree_name_end = entree_names[randint(0, 12)]
+        dessert_name_end = dessert_names[randint(0, 12)]
+        drink_name_end = drink_names[randint(0, 14)]
+        side_name_end = side_names[randint(0, 15)]
         # Alfred
         if restaurant_counter <= 13:
             our_guy = "1_Alfred"
@@ -190,6 +204,7 @@ def seed_menu_items():
         else:
             our_guy = "17_CassandraCain"
 
+
         curr_adj_list = villain_adj_dict[our_guy]
         all_entrees = []
         all_desserts = []
@@ -198,11 +213,17 @@ def seed_menu_items():
         all_menu_item_imgs = []
 
 
-        for k in range(0, 11):
+
+
+        for k in range(0, 3):
+
+
 
 
     # Create MenuItemImg First for ENTREE and Commit
             changes2 = MenuItemImg(
+
+
 
 
             url=entree_translator[entree_name_end],
@@ -210,6 +231,8 @@ def seed_menu_items():
         )
             db.session.add(changes2)
             db.session.commit()
+
+
 
 
         # Now, Create the MenuItem (currEntree) for ENTREE and Link it to the Committed MenuItemImg
@@ -229,12 +252,14 @@ def seed_menu_items():
             db.session.commit()
 
 
+
+
         # Similar process for SIDE
             changes3 = MenuItemImg(
             url=sides_translator[side_name_end],
             preview=False
         )
-            db.session.add(changes2)
+            db.session.add(changes3)
             db.session.commit()
             currSide = MenuItem(
             restaurant_id=restaurant_counter,
@@ -252,6 +277,8 @@ def seed_menu_items():
             db.session.commit()
 
 
+
+
         # Similar process for DESSERT
             changes4 = MenuItemImg(
             url=dessert_translator[dessert_name_end],
@@ -259,6 +286,8 @@ def seed_menu_items():
         )
             db.session.add(changes4)
             db.session.commit()
+
+
 
 
             currDessert = MenuItem(
@@ -276,6 +305,8 @@ def seed_menu_items():
             db.session.commit()
 
 
+
+
         # Similar process for DRINK
             changes5 = MenuItemImg(
             url=drink_translator[drink_name_end],
@@ -283,6 +314,10 @@ def seed_menu_items():
         )
             db.session.add(changes5)
             db.session.commit()
+
+
+
+
 
 
 
@@ -302,7 +337,12 @@ def seed_menu_items():
             db.session.commit()
 
 
+
+
             restaurant_counter += 1
+
+
+
 
 
 
@@ -313,3 +353,6 @@ def undo_menu_items():
     else:
         db.session.execute(text("DELETE FROM menu_items"))
     db.session.commit()
+
+
+
