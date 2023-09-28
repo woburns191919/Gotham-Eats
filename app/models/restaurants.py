@@ -7,10 +7,11 @@ from .reviews import Review
 from .menu_items import MenuItem
 from .menu_items_img import MenuItemImg
 
-class Restaurant(db.Model):
 
+class Restaurant(db.Model, UserMixin):
 
     __tablename__ = 'restaurants'
+
 
     def add_prefix_for_prod(attr):
         if environment == "production":
@@ -19,7 +20,6 @@ class Restaurant(db.Model):
             return attr
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
-
 
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
@@ -39,11 +39,10 @@ class Restaurant(db.Model):
     reviews = db.relationship("Review", back_populates="restaurant")
     menu_items = db.relationship('MenuItem', back_populates='restaurant')
 
-
-
     @property
     def avg_stars(self):
         return db.session.query(func.avg(Review.stars)).filter(Review.restaurant_id == self.id).scalar()
+
     @property
     def get_image(self):
         menu_item_images = (
@@ -63,10 +62,6 @@ class Restaurant(db.Model):
             for img in menu_item_images
         ]
 
-    @property
-    def get_reviews(self):
-        return db.session.query(Review).filter(Review.restaurant_id == self.id).all()
-
     def to_dict(self):
         return {
             'id': self.id,
@@ -81,5 +76,7 @@ class Restaurant(db.Model):
             'hours': self.hours,
             'avgRating': self.avg_stars,
             'menu_item_images': self.get_image,
-            'reviews' : [review.to_dict() for review in self.get_reviews]
+
+            'reviews': [review.to_dict() for review in self.reviews]
+
         }

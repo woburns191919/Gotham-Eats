@@ -27,7 +27,8 @@ class MenuItem(db.Model):
     shopping_cart_id = db.Column(db.Integer)
 
     restaurant = db.relationship('Restaurant', back_populates='menu_items')
-    menu_items_image = db.relationship('MenuItemImg', back_populates='menu_item', uselist=False)
+    # menu_items_image = db.relationship('MenuItemImg', back_populates='menu_item', uselist=False)
+    menu_item_img = db.relationship('MenuItemImg', back_populates='menu_item')
     shopping_cart = db.relationship("ShoppingCart", back_populates="menu_items")
 
 
