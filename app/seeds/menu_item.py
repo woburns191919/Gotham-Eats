@@ -141,7 +141,7 @@ def fake_price():
 
 
 def seed_menu_items():
-    restaurant_counter = 1
+    restaurant_counter = 0
     menu_item_img_counter = 1
     our_guy = None
     master_entrees = []
@@ -149,9 +149,11 @@ def seed_menu_items():
     master_desserts = []
     master_sides = []
     master_menu_item_imgs = []
+    restaurant_counter=0
 
+    for i in range(0, 49):
 
-    for i in range(0, 48):
+        restaurant_counter += 1
         entree_name_end = entree_names[randint(0, 12)]
         dessert_name_end = dessert_names[randint(0, 12)]
         drink_name_end = drink_names[randint(0, 14)]
@@ -339,7 +341,7 @@ def seed_menu_items():
 
 
 
-            restaurant_counter += 1
+
 
 
 
@@ -353,6 +355,3 @@ def undo_menu_items():
     else:
         db.session.execute(text("DELETE FROM menu_items"))
     db.session.commit()
-
-
-
