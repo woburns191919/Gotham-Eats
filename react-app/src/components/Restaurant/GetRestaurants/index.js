@@ -9,14 +9,18 @@ import "./GetRestaurants.css";
 export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const restaurantsData = useSelector((state) => state.restaurants.allRestaurants);
   const RestaurantsUserOwns = useSelector((state) => state.restaurants.userOwnedRestaurants)
   const [refreshCount, setRefreshCount] = useState(0);
+
   const sessionUser = useSelector((state) => state.session.user);
   const {ownerId}=useParams()
 
+
   const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData.restaurants
   console.log('RESTAURANTS IS******************', restaurants)
+
 
   useEffect(() => {
     if (restaurants === undefined && refreshCount < 1) {
@@ -25,7 +29,11 @@ export default function GetRestaurants({ ownerMode = false }) {
     ownerMode===false?dispatch(thunkGetAllRestaurants()):dispatch(thunkGetRestaurantsUserOwns(ownerId))
 
 
+
   }, [dispatch,ownerMode,refreshCount,ownerId]);
+
+
+  if (!restaurantsData || !restaurantsData.restaurants) return null;
 
 
   if (ownerMode===true) console.log('***************************************CONGRATS WERE IN OWNER MODE BRO.')
@@ -54,6 +62,7 @@ export default function GetRestaurants({ ownerMode = false }) {
                         <p className="res-name">{restaurant.name}({restaurant.streetAddress})</p>
                         <p className="avgRating-p-tag">{restaurant.avgRating ? restaurant.avgRating.toFixed(1) : <span className="boldText">New</span>}</p>
                     </div>
+
                 </div>
             </Link>
             </div>))}

@@ -4,8 +4,8 @@ from .users import seed_users, undo_users
 from .menu_item import seed_menu_items, undo_menu_items
 
 
-# from .menu_item_images import undo_menu_item_images, seed_menu_item_images
 
+# from .menu_item_images import undo_menu_item_images, seed_menu_item_images
 
 
 

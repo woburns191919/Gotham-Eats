@@ -85,8 +85,10 @@ function ProfileButton({ user }) {
                     <li className="center-menu center-menu-profile">Your Profile</li>
                   </Link>
                 </ul>
+
                 <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history.push(`/owner/restaurants/${sessionUser.id}`) }}>Manage Restaurants</button></ul>
                 <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history.push('/restaurants/new') }}>Add Restaurants</button></ul>
+
                 <ul><button onClick={logout} className="buttons center-menu center-menu1">Log Out</button></ul>
               </>
             ) : (
