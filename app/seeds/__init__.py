@@ -22,12 +22,10 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_menu_items()
         # undo_menu_item_images()
-        undo_restaurants()
-        undo_reviews()
+     
         undo_users()
     seed_users()
-    seed_restaurants()
-    seed_reviews()
+ 
     seed_menu_items()
     # seed_menu_item_images()
     # Add other seed functions here
@@ -37,8 +35,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    undo_reviews()
-    undo_restaurants()
+    
     undo_menu_items()
     # undo_menu_item_images()
 
