@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { thunkGetAllRestaurants } from "../../../store/restaurants";
+import { thunkGetRestaurantsUserOwns } from "../../../store/restaurants";
 import OpenModalButton from "../../OpenModalButton/index";
 import "./GetRestaurants.css";
 
@@ -9,12 +10,14 @@ export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const restaurantsData = useSelector((state) => state.restaurants.allRestaurants);
-  const restaurants = restaurantsData.restaurants;
+  const restaurantDataOwner = useSelector((state)=>state.restaurants.userOwnedRestaurants)
+  const restaurants=ownerMode===true? restaurantDataOwner.restaurants : restaurantsData.restaurants
   const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(thunkGetAllRestaurants());
-  }, [dispatch]);
+    if (ownerMode===false) dispatch(thunkGetAllRestaurants());
+    else if(ownerMode===true) dispatch(thunkGetRestaurantsUserOwns())
+  }, [dispatch,ownerMode]);
 
   if (!restaurantsData || !restaurantsData.restaurants) return null;
 
@@ -30,7 +33,7 @@ export default function GetRestaurants({ ownerMode = false }) {
           )}
         </div>
       )}
-
+   
       <div className={`${ownerMode ? "ownerRestaurant-main-container ownerRestaurant-grid-container" : "restaurants-main-container grid-container"}`}>
         {restaurants.map((restaurant) => (
           <div className={`${ownerMode ? "ownerRestaurant-restaurant-img-main-div" : "restaurant-img-main-div"}`} key={restaurant.id}>
