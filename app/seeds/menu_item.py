@@ -1,7 +1,9 @@
-from ..models import db, MenuItem,MenuItemImg, environment, SCHEMA
+from ..models import db, MenuItem,MenuItemImg,ShoppingCart, environment, SCHEMA
 from sqlalchemy.sql import text
 from random import randint, random
 from faker import Faker
+
+
 
 
 
@@ -361,24 +363,23 @@ sides_translator= {
 
 
 villain_adj_dict = {
-    "1_penguin": ["scheming", "waddling", "umbrella-toting", "calculating", "icy"],
-    "2_riddler": ["enigmatic", "puzzling", "question-asking", "clever", "green-suited"],
-    "3_ivy": ["seductive", "poisonous", "nature-loving", "manipulative", "vibrant"],
-    "4_two_face": ["dual-personality", "coin-flipping", "disfigured", "ambivalent", "harvey-dent"],
-    "5_scarecrow": ["fear-inducing", "terrifying", "sinister", "psychological", "straw-hat"],
-    "6_catwoman": ["cat-like", "thief", "feline", "independent", "whip-wielding"],
-    "7_batman": ["mysterious", "vigilante", "cape-wearing", "dark", "justice-seeking"],
-    "8_joker": ["chaotic", "maniacal", "laughter-loving", "twisted", "purple-suited"],
-    "9_bane": ["muscle-bound", "venom-injecting", "intelligent", "merciless", "masked"],
-    "10_mr_freeze": ["cryogenic", "cold-hearted", "ice-obsessed", "tragic", "cryosuit-wearing"],
-    "11_clayface": ["shape-shifting", "malleable", "actor", "melting", "mud-like"],
-    "12_firefly": ["pyromaniac", "fire-starting", "winged", "arsonist", "flame-obsessed"],
-    "13_mad_hatter": ["mad", "hat-wearing", "tea-obsessed", "eccentric", "mind-controlling"],
-    "14_talon": ["lethal", "assassin", "feathered", "loyal", "Court-of-Owls"],
-    "15_zatanna": ["magician", "spell-casting", "charming", "mystical", "top-hat-wearing"],
-    "16_bat_man": ["bat-themed", "wealthy", "genius", "inventor", "gadget-equipped"],
-    "17_mayor": ["politician", "corrupt", "powerful", "manipulative", "Gotham's leader"],
-    "18_green_arrow": ["archer", "vigilante", "emerald-clad", "skilled", "arrow-shooting"],
+    "1_Alfred": ["loyal", "wise", "resourceful", "dedicated", "caring", "supportive", "knowledgeable", "discreet", "sophisticated", "dependable"],
+    "2_Harley": ["manic", "unpredictable", "energetic", "devoted", "intelligent", "agile", "impulsive", "chaotic", "humorous", "enthusiastic"],
+    "3_DickGrayson": ["agile", "resilient", "optimistic", "charismatic", "dedicated", "skilled", "athletic", "intelligent", "compassionate", "courageous"],
+    "4_Joker": ["maniacal", "unpredictable", "intelligent", "cunning", "sadistic", "chaotic", "twisted", "anarchistic", "manipulative", "psychopathic"],
+    "5_Catwoman": ["stealthy", "agile", "mysterious", "seductive", "intelligent", "resourceful", "independent", "adaptive", "calculating", "alluring"],
+    "6_ThePenguin": ["scheming", "sophisticated", "intelligent", "manipulative", "ruthless", "resourceful", "calculating", "ambitious", "cunning", "eccentric"],
+    "7_TheRiddler": ["intelligent", "obsessive", "complex", "enigmatic", "cunning", "manipulative", "calculating", "competitive", "puzzling", "cryptic"],
+    "8_TwoFace": ["conflicted", "unpredictable", "vengeful", "bitter", "dualistic", "ruthless", "decisive", "disturbed", "resilient", "calculating"],
+    "9_MrFreeze": ["cold", "driven", "intelligent", "melancholic", "stoic", "methodical", "isolated", "determined", "compassionate", "tragic"],
+    "10_TheScarecrow": ["fearful", "intelligent", "manipulative", "cunning", "obsessive", "sadistic", "calculating", "chilling", "psychopathic", "menacing"],
+    "11_RachelDawes": ["principled", "compassionate", "determined", "idealistic", "brave", "intelligent", "empathetic", "steadfast", "resilient", "courageous"],
+    "12_LuciusFox": ["ingenious", "resourceful", "intelligent", "pragmatic", "loyal", "wise", "innovative", "ethical", "supportive", "confidential"],
+    "13_BarbaraGordon": ["intelligent", "determined", "resourceful", "brave", "compassionate", "athletic", "inspirational", "adaptive", "analytical", "resilient"],
+    "14_TimDrake": ["deductive", "intelligent", "resourceful", "disciplined", "analytical", "persistent", "adaptive", "strategic", "brave", "motivated"],
+    "15_JasonTodd": ["rebellious", "impulsive", "skilled", "resilient", "vengeful", "intense", "determined", "brave", "conflicted", "aggressive"],
+    "16_DamianWayne": ["disciplined", "confident", "skilled", "arrogant", "brave", "determined", "intelligent", "loyal", "stubborn", "focused"],
+    "17_CassandraCain": ["silent", "observant", "lethal", "agile", "disciplined", "intuitive", "resilient", "adaptive", "compassionate", "fierce"],
     "19_everyone_else": ["mouth-watering", "delightful", "scrumptious", "appetizing", "delectable", "enticing", "irresistible", "tasty", "flavorful", "savoring", "tempting", "yummy", "divine", "palatable" "lip-smacking", "satisfying", "succulent", "indulgent", "inspirational"]
             }
 
@@ -496,10 +497,55 @@ def seed_menu_items():
         dessert_name_end= dessert_list[randint(0,17)]
         drink_name_end= drink_list[randint(0,16)]
         side_name_end= sides_list[randint(0,20)]
-        if restaurant_counter<=18:
-            our_guy=keysToVillains[restaurant_counter-1]
+        #Alfred
+        if restaurant_counter<=13:
+            our_guy="1_Alfred"
+        #Harley
+        elif restaurant_counter<=15:
+            our_guy="2_Harley"
+        #Nightwing
+        elif restaurant_counter==16:
+            our_guy="3_DickGrayson"
+            #Joker
+        elif restaurant_counter<=19:
+            our_guy="4_Joker"
+            #Catwoman
+        elif restaurant_counter<=22:
+            our_guy="5_Catwoman"
+        elif restaurant_counter<=25:
+            our_guy="6_ThePenguin"
+            #Riddler
+        elif restaurant_counter<=28:
+            our_guy="7_TheRiddler"
+            #Two face
+        elif restaurant_counter<=31:
+            our_guy="8_TwoFace"
+            #mr freeze
+        elif restaurant_counter<=33:
+            our_guy="9_MrFreeze"
+            #scarecrow
+        elif restaurant_counter<=35:
+            our_guy="10_TheScarecrow"
+            #Rachel Dawes
+        elif restaurant_counter<=38:
+            our_guy="11_RachelDawes"
+            #Lucious
+        elif restaurant_counter<=40:
+            our_guy="12_LuciusFox"
+            #Oracle
+        elif restaurant_counter<=42:
+            our_guy="13_BarbaraGordon"
+            #Tim
+        elif restaurant_counter<=44:
+            our_guy="14_TimDrake"
+        elif restaurant_counter<=46:
+            our_guy="15_JasonTodd"
+        elif restaurant_counter<=48:
+            our_guy="16_DamianWayne"
+
+
         else:
-            our_guy=keysToVillains[18]
+            our_guy="17_CassandraCain"
 
 
 
@@ -582,6 +628,17 @@ def seed_menu_items():
             db.session.add(changes2)
             currEntree.menu_item_img_id=changes2.id
             db.session.commit()
+
+
+
+
+
+
+    #          user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    # menu_item_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("menu_items.id")))
+    # quantity = db.Column(db.Integer, nullable=False)
+    # created_at=db.Column(db.DateTime, default=datetime.now())
+    # updated_at=db.Column(db.DateTime, default=datetime.now())
 
 
 
@@ -684,6 +741,7 @@ def seed_menu_items():
 
 
 
+
         restaurant_counter+=1
 
 
@@ -695,3 +753,35 @@ def undo_menu_items():
     else:
         db.session.execute(text("DELETE FROM menu_items"))
     db.session.commit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
