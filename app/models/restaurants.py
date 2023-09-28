@@ -8,7 +8,7 @@ from .menu_items import MenuItem
 from .menu_items_img import MenuItemImg
 
 class Restaurant(db.Model, UserMixin):
-
+    
 
     __tablename__ = 'restaurants'
 
@@ -52,9 +52,6 @@ class Restaurant(db.Model, UserMixin):
             .filter(MenuItem.restaurant_id == self.id)
             .all()
         )
-    @property
-    def get_all_restaurants(self):
-        
 
         return [
             {

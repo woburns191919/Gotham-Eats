@@ -1,8 +1,10 @@
-from ..models import db, environment, SCHEMA,Review,Restaurant
+from ..models import db, environment, SCHEMA,Restaurant,User
+from app import app
+
+
 
 import json
 
-rest_list=Restaurant.get_image
 
 
 
@@ -248,26 +250,23 @@ reviews_list = [
 {"restaurant_id":50, "user_id":2, "review":"Flip, flop, and hop! Burger nights are the best.", "stars":5},
 {"restaurant_id":50, "user_id":3, "review":"Quick bites that pack a punch. Energizing.", "stars":4},
 ]
-counter1to3=1
-counterto50=1
-master_list=[]
-for ele in reviews_list:
-       master_list.append(Review(restaurant_id=rest_list[counterto50],user_id=ele.user_id,review=ele.review,stars=ele.stars))
-       if counter1to3==3:
-              counterto50 +=1
-              counter1to3=0
 
-
-
-
-
-db.session.add_all(master_list)
-db.session.commit()
-
-def seed_reviews():
-       for ele in reviews_list:
-              db.session.add(ele)
-              db.session.commit()
+with app.app_context():
+              rest_list=db.session.query(Restaurant).all()
+              user_list=db.session.query(User).all()
+              counterto50=1
+              master_list=[]
+              for ele in reviews_list:
+                      master_list.append(Review(restaurant_id=rest_list[counterto50],user_id=ele.user_id,review=ele.review,stars=ele.stars))
+                      if counter1to3==3:
+                              counterto50 +=1
+                              counter1to3=0
+                              db.session.add_all(master_list)
+                              db.session.commit()
+                              def seed_reviews():
+                                      for ele in reviews_list:
+                                              db.session.add(ele)
+                                              db.session.commit()
 
 
 def undo_reviews():
