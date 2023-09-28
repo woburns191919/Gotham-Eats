@@ -6,10 +6,9 @@ from sqlalchemy import func
 from datetime import datetime
 from flask import jsonify
 
-
-
 class Review(db.Model, UserMixin):
     __tablename__ = 'reviews'
+
 
     def add_prefix_for_prod(attr):
         if environment == "production":
@@ -19,6 +18,7 @@ class Review(db.Model, UserMixin):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
+
     id = db.Column(db.Integer, primary_key=True)
     restaurant_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('restaurants.id')))
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
@@ -27,26 +27,22 @@ class Review(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now())
 
+
     user=db.relationship("User", back_populates="reviews")
     restaurant=db.relationship("Restaurant", back_populates='reviews')
 
-    # def to_dict(self):
-    #   return {
-    #       'id': self.id,
-    #       'restaurant_id': self.restaurant_id,
-    #       'user_id': self.user_id,
-    #       'review': self.review,
-    #       'stars': self.stars
-    #   }
-
+    @property
+    def get_review(self):
+        reviews = (
+            db.session.query(Review).all()
+        )
     def to_dict(self):
         return {
             'id': self.id,
             'restaurant_id': self.restaurant_id,
             'user_id': self.user_id,
-            'reviews': [review.to_dict() for review in self.get_reviews],
+            'review': self.review,
             'stars': self.stars,
             'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
             'updated_at': self.updated_at.strftime('%Y-%m-%d %H:%M:%S'),
-        }
-
+            }
