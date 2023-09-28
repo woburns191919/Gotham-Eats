@@ -26,64 +26,6 @@ home_restaurants = Blueprint('restaurants', __name__)
 
 
 
-@home_restaurants.route("/new")
-def display_restaurant_form():
-  """displays restaurant form"""
-  form_html = """
-  <html>
-  <head>
-    <title>Create a Restaurant</title>
-  </head>
-    <body>
-      <h1>Create a New Restaurant</h1>
-      <form method="POST" action="/restaurants/new">
-        <label for="name">Name:</label>
-        <input type="text" required /> <br /><br />
-
-        <label for="streetAddress">Street Address:</label>
-        <input type="text" required /> <br /><br />
-
-        <label for="city">City:</label>
-        <select name="city">
-          <option value="Gotham"></option>
-        </select>
-        <br /><br />
-
-        <label for="state">State:</label>
-        <select name="state">
-          <option value="New York"></option>
-        </select>
-        <br /><br />
-
-        <label for="postalCode">Postal Code:</label>
-        <input type="text" required /> <br /><br />
-
-        <label for="country">Country:</label>
-        <select name="country">
-          <option value="United States"></option>
-        </select>
-        <br /><br />
-
-        <label for="description">Description:</label>
-        <input type="textarea" required /> <br /><br />
-
-        <label for="hours">Hours:</label>
-        <input type="textarea" required /> <br /><br />
-
-        <label for="previmg">Preview Image:</label>
-        <input type="text" required /> <br /><br />
-
-        <label for="submit">Create Restaurant:</label>
-        <input type="text" />
-      </form>
-    </body>
-
-</html>
-  """
-  return form_html
-
-
-
 @home_restaurants.route("/new", methods=["POST"])
 def create_new_restaurant():
   """creates a new restaurant"""
@@ -95,17 +37,16 @@ def create_new_restaurant():
     new_restaurant = Restaurant(
       owner_id = data["owner_id"],
       name = data["name"],
-      streetAddress = data["street_address"],
+      streetAddress = data["streetAddress"],
       city = data["city"],
       state = data["state"],
-      postalCode = data["postal_code"],
+      postalCode = data["postalCode"],
       country = data["country"],
       description = data["description"],
       hours = data["hours"],
       previmg = data["previmg"]
     )
-
-    print(new_restaurant)
+    # print(new_restaurant)
     addded_restaurant = db.session.add(new_restaurant)
     db.session.commit()
     return jsonify(message = "Successfully created new restaurant", id = addded_restaurant.id), 201
@@ -178,6 +119,7 @@ def get_my_restaurants(id):
     return jsonify(restaurant_data), 200
    else:
       abort(404,"You don't  have any spots")
+
 @home_restaurants.route("/")
 def get_popular_restaurants():
     """returns a all restaurant order by popularity"""

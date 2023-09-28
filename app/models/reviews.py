@@ -8,8 +8,6 @@ from flask import jsonify
 
 class Review(db.Model):
     __tablename__ = 'reviews'
-
-
     def add_prefix_for_prod(attr):
         if environment == "production":
             return f"{SCHEMA}.{attr}"
@@ -18,7 +16,6 @@ class Review(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-
     id = db.Column(db.Integer, primary_key=True)
     restaurant_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('restaurants.id')))
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
@@ -26,11 +23,8 @@ class Review(db.Model):
     stars = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now())
-
-
     user=db.relationship("User", back_populates="reviews")
     restaurant=db.relationship("Restaurant", back_populates='reviews')
-
     @property
     def get_review(self):
         reviews = (
