@@ -13,6 +13,7 @@ export const thunkGetAllRestaurants = createAsyncThunk(
       const res = await fetch('/api/restaurants');
       if (res.ok) {
         const data = await res.json();
+        console.log('data********', data)
         return data;
       } else {
         const errors = await res.json();

@@ -181,10 +181,8 @@ def get_my_restaurants(id):
 @home_restaurants.route("/")
 def get_popular_restaurants():
     """returns a all restaurant order by popularity"""
-    restaurants = db.session.query(Restaurant).join(Review)\
-        .group_by(Restaurant.id)\
-        .order_by(func.avg(Review.stars).desc())\
-        .all()
+    restaurants = db.session.query(Restaurant).all()
+    print('restaurants***', restaurants)
 
     all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
 

@@ -210,13 +210,13 @@ def seed_menu_items():
             )
             db.session.add(currEntree)
 
-            menu_item_img_counter += 1
 
             changes2 = MenuItemImg(
                 menu_item_id=currEntree.id,
                 url=entree_translator[entree_name_end],
-                preview=True if k == 0 else False
+                preview=True if menu_item_img_counter == 1 else False
             )
+            menu_item_img_counter += 1
             db.session.add(changes2)
             currEntree.menu_item_img_id = changes2.id
             db.session.commit()
