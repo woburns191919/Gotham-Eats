@@ -273,7 +273,7 @@ def seed_menu_items():
                 price=float(fake_price()),
                 type="drink")
             db.session.add(currDrink)
-            
+
             menu_item_img_counter+=1
 
             changes2=MenuItemImg(
