@@ -51,11 +51,9 @@ def get_popular_restaurants():
         .group_by(Restaurant.id)\
         .order_by(func.avg(Review.stars).desc())\
         .all()
-    for restaurant in restaurants:
-      print(restaurant)
-      
+
     all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
-    print('restaurants**', all_restaurants)
+
     return jsonify(all_restaurants)
 
 
@@ -207,6 +205,6 @@ def get_my_restaurants():
    if my_restaurants:
       restaurant_data=[restaurant.to_dict() for restaurant in my_restaurants]
       print("HEY WE HIT THE MANAGE PAGE. my restaurants looks like this",my_restaurants)
-      return jsonify(restaurants=restaurant_data,message="success"), 200
+      return jsonify(restaurant_data), 200
    else:
       abort(404,"You don't  have any spots")
