@@ -1,7 +1,8 @@
-from ..models import db, MenuItem,MenuItemImg, environment, SCHEMA
+from ..models import db, MenuItem,MenuItemImg,ShoppingCart, environment, SCHEMA
 from sqlalchemy.sql import text
 from random import randint, random
 from faker import Faker
+
 
 
 
@@ -261,7 +262,7 @@ villain_adj_dict = {
 
 
 
-
+changes=7
 
 
 
@@ -368,38 +369,30 @@ def seed_menu_items():
             description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
             price=float(fake_price()),
             type="entree",
-            shopping_cart_id=restaurant_counter,
-
-
-
-
-
-
-
-
+            shopping_cart_id=restaurant_counter
         )
             db.session.add(currEntree)
             db.session.commit()
+
+
             menu_item_img_counter+=1
-            all_menu_item_imgs.append(MenuItemImg(
+
+            changes2=MenuItemImg(
                 menu_item_id=currEntree.id,
                 url=entree_translator[entree_name_end],
                 preview= True if k==0 else False
-            )),
+            )
+            db.session.add(changes2)
+            currEntree.menu_item_img_id=changes2.id
+            db.session.commit()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+    #          user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    # menu_item_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("menu_items.id")))
+    # quantity = db.Column(db.Integer, nullable=False)
+    # created_at=db.Column(db.DateTime, default=datetime.now())
+    # updated_at=db.Column(db.DateTime, default=datetime.now())
 
 
             #add SIDE and picture for it****************************
@@ -415,30 +408,15 @@ def seed_menu_items():
             menu_item_img_counter+=1
 
 
-
-
-
-
-
-
-            all_menu_item_imgs.append(MenuItemImg(
+            changes2=MenuItemImg(
                 menu_item_id=currSide.id,
                 url=sides_translator[side_name_end],
-                preview= False))
+                preview= False)
+            db.session.add(changes2)
+            db.session.commit()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+            currSide.menu_item_img_id=changes2.id
 
 
             #add DESSERT and picture for it************************
@@ -453,22 +431,14 @@ def seed_menu_items():
             menu_item_img_counter+=1
 
 
-
-
-
-
-
-
-            all_menu_item_imgs.append(MenuItemImg(
+            changes2=MenuItemImg(
                 menu_item_id=currDessert.id,
                 url=dessert_translator[dessert_name_end],
-                preview= False))
+                preview= False)
+            db.session.add(changes2)
+            db.session.commit(changes2)
 
-
-
-
-
-
+            currDessert.menu_item_img_id=changes2.id
 
 
             #add DRINK and picture for it*********************
@@ -490,37 +460,18 @@ def seed_menu_items():
 
 
 
-            all_menu_item_imgs.append(MenuItemImg(
+            changes2=MenuItemImg(
                 menu_item_id=currDrink.id,
                 url=drink_translator[drink_name_end],
-                preview= False))
+                preview= False)
+
+            db.session.add(changes2)
+            db.session.commit()
+            currDrink.menu_item_img_id=changes2.id
 
 
 
-
-
-
-
-
-        master_menu_item_imgs.append(all_menu_item_imgs)
         restaurant_counter+=1
-
-
-
-
-
-
-
-
-    for array5 in master_menu_item_imgs:
-        db.session.add_all(array5)
-    db.session.commit()
-
-
-
-
-
-
 
 
 def undo_menu_items():

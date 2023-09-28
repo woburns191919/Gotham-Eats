@@ -69,8 +69,8 @@ user_list=[
         phone='710-681-2839'),
 
     User(
-        firstName="Oswald",
-        lastName="Cobblepot",
+        firstName="Demo",
+        lastName="User",
         username='ThePenguin',
         password="password",
         email='penguin@gotham.com',
@@ -239,5 +239,3 @@ def undo_users():
     else:
         db.session.execute(text("DELETE FROM users"))
     db.session.commit()
-
-

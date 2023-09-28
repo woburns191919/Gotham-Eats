@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .restaurants import seed_restaurants, undo_restaurants
 from .reviews import seed_reviews, undo_reviews
 from .menu_item import seed_menu_items, undo_menu_items
+from ..models import User,Restaurant
 
 from ..models import db, environment, SCHEMA
 

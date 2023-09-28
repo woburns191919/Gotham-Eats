@@ -184,6 +184,8 @@ def update_restaurant(id):
 
 @home_restaurants.route("/delete/<int:id>")
 def delete_post(id):
+
+    "RESTAURANTS TESTING"
     """delete a restaurant based on restaurant id"""
     restaurant_to_delete = db.session.query(Restaurant).get(id)
     if restaurant_to_delete:

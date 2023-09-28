@@ -13,13 +13,20 @@ import "./GetRestaurants.css";
 export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const restaurantsData = useSelector((state) => state.restaurants.allRestaurants);
+  let restaurantData
+  if (ownerMode===false){
+    restaurantData = useSelector((state) => state.restaurants.allRestaurants)}
+  else if (ownerMode===True){
+
+
+  }
+ 
   // const restaurantsData = useSelector((state) => state.restaurants);
   const restaurants = restaurantsData.restaurants;
   console.log('this is restaurants',restaurants)
   const sessionUser = useSelector((state) => state.session.user);
   console.log("restaurants", restaurants);
-
+  userOwnedRestaurants
 
 
 function findPrev(restaurant){

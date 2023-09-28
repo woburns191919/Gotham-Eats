@@ -9,6 +9,7 @@ from .menu_items_img import MenuItemImg
 
 class Restaurant(db.Model, UserMixin):
 
+
     __tablename__ = 'restaurants'
 
     def add_prefix_for_prod(attr):
@@ -51,6 +52,9 @@ class Restaurant(db.Model, UserMixin):
             .filter(MenuItem.restaurant_id == self.id)
             .all()
         )
+    @property
+    def get_all_restaurants(self):
+        
 
         return [
             {
