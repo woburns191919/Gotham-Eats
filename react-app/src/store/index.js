@@ -10,7 +10,7 @@ import reviewReducer from './reviews';
 const rootReducer = combineReducers({
   session,
   // restaurants: restaurantReducer,
-  restaurants: restaurantSlice.reducer,
+  restaurants: restaurantSlice,
   reviews: reviewReducer,
 });
 
