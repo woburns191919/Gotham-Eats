@@ -23,12 +23,12 @@ class Restaurant(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
+    name = db.Column(db.String(255), nullable=False)
     streetAddress = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(50), nullable=False)
     postalCode = db.Column(db.String(50), nullable=False)
     country = db.Column(db.String(50), nullable=False)
-    name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
     hours = db.Column(db.String(50), nullable=False)
 

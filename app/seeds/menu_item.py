@@ -92,6 +92,10 @@ sides_translator = {
 
 
 
+
+
+
+
 villain_adj_dict = {
     "1_Alfred": ["loyal", "wise", "resourceful", "dedicated", "caring", "supportive", "knowledgeable", "discreet", "sophisticated", "dependable"],
     "2_Harley": ["manic", "unpredictable", "energetic", "devoted", "intelligent", "agile", "impulsive", "chaotic", "humorous", "enthusiastic"],
@@ -116,14 +120,28 @@ villain_adj_dict = {
 
 
 
+
+
+
+
 keysToVillains = ["1_penguin", "2_riddler", "3_ivy", "4_two_face", "5_scarecrow", "6_catwoman", "7_batman", "8_joker", "9_bane", "10_mr_freeze",
                   "11_clayface", "12_firefly", "13_mad_hatter", "14_talon", "15_zatanna", "16_bat_man", "17_mayor", "18_green_arrow", "19_everyone_else"]
+
+
 
 
 entree_names = list(entree_translator.keys())
 dessert_names = list(dessert_translator.keys())
 drink_names = list(drink_translator.keys())
 side_names = list(sides_translator.keys())
+
+
+
+
+
+
+
+
 
 
 
@@ -140,6 +158,10 @@ def fake_price():
 
 
 
+
+
+
+
 def seed_menu_items():
     restaurant_counter = 0
     menu_item_img_counter = 1
@@ -151,7 +173,9 @@ def seed_menu_items():
     master_menu_item_imgs = []
     restaurant_counter=0
 
+
     for i in range(0, 49):
+
 
         restaurant_counter += 1
         # Alfred
@@ -203,12 +227,18 @@ def seed_menu_items():
             our_guy = "17_CassandraCain"
 
 
+
+
         curr_adj_list = villain_adj_dict[our_guy]
         all_entrees = []
         all_desserts = []
         all_drinks = []
         all_sides = []
         all_menu_item_imgs = []
+
+
+
+
 
 
 
@@ -222,8 +252,16 @@ def seed_menu_items():
 
 
 
+
+
+
+
     ####create my entree.  chhange variable is 1
             changes1 = MenuItemImg(
+
+
+
+
 
 
 
@@ -233,6 +271,11 @@ def seed_menu_items():
         )
             db.session.add(changes1)
             db.session.commit()
+
+
+
+
+
 
 
 
@@ -252,6 +295,10 @@ def seed_menu_items():
             currEntree.menu_item_img_id=changes1.id
             changes1.menu_item_id=currEntree.id
             db.session.commit()
+
+
+
+
 
 
 
@@ -281,6 +328,10 @@ def seed_menu_items():
 
 
 
+
+
+
+
         # create dessert .  change variable is 3
             changes3 = MenuItemImg(
             url=dessert_translator[dessert_name_end],
@@ -288,6 +339,10 @@ def seed_menu_items():
         )
             db.session.add(changes3)
             db.session.commit()
+
+
+
+
 
 
 
@@ -309,6 +364,9 @@ def seed_menu_items():
 
 
 
+
+
+
         # create my drink.  change variable is 4
             changes4 = MenuItemImg(
             url=drink_translator[drink_name_end],
@@ -316,6 +374,14 @@ def seed_menu_items():
         )
             db.session.add(changes4)
             db.session.commit()
+
+
+
+
+
+
+
+
 
 
 
@@ -349,17 +415,32 @@ def seed_menu_items():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 def undo_menu_items():
     if environment == "production":
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.menu_items RESTART IDENTITY CASCADE;")
 
+
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.menu_item_imgs RESTART IDENTITY CASCADE;")
+
 
     else:
         db.session.execute(text("DELETE FROM menu_items"))
         db.session.execute(text("DELETE FROM menu_item_imgs"))
+
+
 
 
     db.session.commit()

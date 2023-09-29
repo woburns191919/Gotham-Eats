@@ -54,8 +54,6 @@ function LoginFormModal() {
           setPassword("password")
         }}>Demo User</button>
 
-
-
       </form>
     </>
   );

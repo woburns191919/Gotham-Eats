@@ -38,18 +38,6 @@
 
 }
 
-span {
-    margin: 0 10px;
-    opacity: 0.5;
-    font-weight: bold;
-    color: white;
-    font-size: 12pt;
-}
-
-span.active {
-    opacity: 1;
-}
-
 .label-container {
     display: flex;
     flex-direction: column;
