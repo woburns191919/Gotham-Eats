@@ -15,6 +15,7 @@ export default function GetRestaurantDetail() {
 
 
   const restaurantsDetailData = useSelector((state) => state.restaurants?.singleRestaurant);
+  console.log("********************restaurantsDetailData", restaurantsDetailData)
   if (restaurantsDetailData && restaurantsDetailData.menu_item_images && restaurantsDetailData.menu_item_images.length > 0) {
 
   }
@@ -48,7 +49,7 @@ export default function GetRestaurantDetail() {
       </div>
       <div className="res-container">
         <h1 className="det-name">{restaurantsDetailData.name}</h1>
-        <div className="det-ratings"><h3>★{restaurantsDetailData.avgRating?.toFixed(1)}{" "}({restaurantsDetailData.reviews.length} ratings) · $$ · Read Reviews · More Info  </h3>
+        <div className="det-ratings"><h3>★{restaurantsDetailData.avgRating}{" "}({restaurantsDetailData.reviews.length} ratings) · $$ · Read Reviews · More Info  </h3>
 
         </div>
 
