@@ -21,45 +21,95 @@ home_restaurants = Blueprint('restaurants', __name__)
 #     all()
 
 #   all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
-
+#   print('restaurants**', all_restaurants)
 #   return all_restaurants
+
+
+
+@home_restaurants.route("/new")
+def display_restaurant_form():
+  """displays restaurant form"""
+  form_html = """
+  <html>
+  <head>
+    <title>Create a Restaurant</title>
+  </head>
+    <body>
+      <h1>Create a New Restaurant</h1>
+      <form method="POST" action="/restaurants/new">
+        <label for="name">Name:</label>
+        <input type="text" required /> <br /><br />
+
+        <label for="streetAddress">Street Address:</label>
+        <input type="text" required /> <br /><br />
+
+        <label for="city">City:</label>
+        <select name="city">
+          <option value="Gotham"></option>
+        </select>
+        <br /><br />
+
+        <label for="state">State:</label>
+        <select name="state">
+          <option value="New York"></option>
+        </select>
+        <br /><br />
+
+        <label for="postalCode">Postal Code:</label>
+        <input type="text" required /> <br /><br />
+
+        <label for="country">Country:</label>
+        <select name="country">
+          <option value="United States"></option>
+        </select>
+        <br /><br />
+
+        <label for="description">Description:</label>
+        <input type="textarea" required /> <br /><br />
+
+        <label for="hours">Hours:</label>
+        <input type="textarea" required /> <br /><br />
+
+        <label for="previmg">Preview Image:</label>
+        <input type="text" required /> <br /><br />
+
+        <label for="submit">Create Restaurant:</label>
+        <input type="text" />
+      </form>
+    </body>
+
+</html>
+  """
+  return form_html
 
 
 
 @home_restaurants.route("/new", methods=["POST"])
 def create_new_restaurant():
-    """creates a new restaurant"""
-    form = RestaurantForm()
+  """creates a new restaurant"""
+  form = RestaurantForm()
+  # form['csrf_token'].data = request.cookies['csrf_token']
 
-    data = request.get_json()
-    if form.validate_on_submit():
-        new_restaurant = Restaurant(
-            owner_id=data.get("owner_id"),
-            name=data.get("name"),
-            streetAddress=data.get("streetAddress"),
-            city=data.get("city"),
-            state=data.get("state"),
-            postalCode=data.get("postalCode"),
-            country=data.get("country"),
-            description=data.get("description"),
-            hours=data.get("hours"),
-        )
+  data = request.get_json()
+  if form.validate_on_submit():
+    new_restaurant = Restaurant(
+      owner_id = data["owner_id"],
+      name = data["name"],
+      streetAddress = data["street_address"],
+      city = data["city"],
+      state = data["state"],
+      postalCode = data["postal_code"],
+      country = data["country"],
+      description = data["description"],
+      hours = data["hours"],
+      previmg = data["previmg"]
+    )
 
-        db.session.add(new_restaurant)
-        db.session.commit()
-
-        preview_image_url = data.get("preview_image_url")
-
-        if preview_image_url:
-            menu_item = MenuItem.query.filter_by(restaurant_id=new_restaurant.id).first()
-            if menu_item:
-                menu_item.menu_item_img.url = preview_image_url
-                db.session.commit()
-
-        return jsonify(message="Successfully created new restaurant", id=new_restaurant.id), 201
-
-    return jsonify(errors=form.errors), 400
-
+    print(new_restaurant)
+    addded_restaurant = db.session.add(new_restaurant)
+    db.session.commit()
+    return jsonify(message = "Successfully created new restaurant", id = addded_restaurant.id), 201
+  return jsonify(errors=form.errors), 400
 
 
 @home_restaurants.route("/update/<int:id>", methods=["GET", "PUT"])
@@ -113,7 +163,7 @@ def update_restaurant(id):
 def delete_post(id):
     """delete a restaurant based on restaurant id"""
     restaurant_to_delete = Restaurant.query.get(id)
-
+    print(restaurant_to_delete)
     db.session.delete(restaurant_to_delete)
     db.session.commit()
     return redirect("/restaurants")
@@ -128,12 +178,11 @@ def get_my_restaurants(id):
     return jsonify(restaurant_data), 200
    else:
       abort(404,"You don't  have any spots")
-
 @home_restaurants.route("/")
 def get_popular_restaurants():
     """returns a all restaurant order by popularity"""
     restaurants = db.session.query(Restaurant).all()
-   
+    print('restaurants***', restaurants)
 
     all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
 

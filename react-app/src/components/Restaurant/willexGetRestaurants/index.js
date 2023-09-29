@@ -13,6 +13,9 @@ export default function WillexGetRestaurants({ ownerMode = false }) {
 
   const restaurantsData = useSelector((state) => state.restaurants?.allRestaurants);
   const RestaurantsUserOwns = useSelector((state) => state.restaurants?.userOwnedRestaurants)
+  const reviews = useSelector((state) => state.reviews && state.reviews.allReviews)
+  console.log('reviews****', reviews)
+
   const [refreshCount, setRefreshCount] = useState(0);
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -24,12 +27,12 @@ export default function WillexGetRestaurants({ ownerMode = false }) {
 
 
   useEffect(() => {
-    if (restaurants === undefined && refreshCount < 1) {
+    if ((restaurants === undefined || reviews === undefined) && refreshCount < 1) {
       setRefreshCount((prevCount) => prevCount + 1);
     }
-    ownerMode === false ? dispatch(thunkGetAllRestaurants()) : dispatch(thunkGetRestaurantsUserOwns(ownerId))
+    ownerMode === false ? dispatch(thunkGetAllRestaurants()) : dispatch(thunkGetRestaurantsUserOwns(ownerId));
 
-
+    dispatch(thunkGetAllRestaurantReviews())
 
   }, [dispatch, ownerMode, refreshCount, ownerId]);
 

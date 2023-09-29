@@ -5,14 +5,15 @@ export const thunkGetAllRestaurantReviews = createAsyncThunk(
   'reviews/getAllRestaurantReviews',
   async (restaurantId, { rejectWithValue }) => {
     try {
-      const res = await fetch(`/api/restaurants/${restaurantId}/reviews`);
+      const res = await fetch(`/api/restaurants/reviews`);
       if (res.ok) {
         const data = await res.json();
+        console.log('reviews from thunk*****', data.reviews)
         return data.reviews;
       } else {
         const errors = await res.json();
 
-        return rejectWithValue(errors.message); 
+        return rejectWithValue(errors.message);
 
       }
     } catch (error) {

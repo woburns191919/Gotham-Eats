@@ -19,7 +19,7 @@ def get_restaurant_reviews(restaurant_id):
     else:
         return jsonify({'error': 'Restaurant not found'}), 404
 
-@review_restaurants_routes.route("/get-all-reviews")
+@review_restaurants_routes.route("/")
 def get_all_reviews():
     reviews = Review.query.get.all()
     if reviews:
