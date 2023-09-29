@@ -87,8 +87,6 @@ function ProfileButton({ user }) {
                 </ul>
 
                 <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history.push(`/owner/restaurants/${sessionUser.id}`) }}>Manage Restaurants</button></ul>
-                <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history.push('/restaurants/new') }}>Add Restaurants</button></ul>
-
                 <ul><button onClick={logout} className="buttons center-menu center-menu1">Log Out</button></ul>
               </>
             ) : (
@@ -109,7 +107,7 @@ function ProfileButton({ user }) {
                     modalComponent={<SignupFormModal />}
                   />
                 </ul>
-                {<Link clssName="prof-add-res" to="/new">Add your restaurant</Link>}
+                {<Link clssName="prof-add-res" to='/restaurants/new'>Add your restaurant</Link>}
               </>
             )}
           </ul>
