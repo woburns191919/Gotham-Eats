@@ -1,0 +1,129 @@
+.restaurant-form {
+    font-family: 'Arial', sans-serif;
+    background: rgba(10, 10, 10, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+}
+
+.restaurant-form::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    pointer-events: none;
+    animation: shine 10s infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: -200% -200%;
+    }
+}
+
+.input-form  {
+    width: 374px;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #eee;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) inset;
+    padding: 11px;
+}
+
+.input-form-postal{
+    width: 200px;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #eee;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) inset;
+    padding: 11px;
+}
+
+.photo-input{
+width: 200px;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #eee;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) inset;
+    padding: 11px;
+}
+
+.select-form{
+width: 201px;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #eee;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) inset;
+    padding: 11px;
+}
+
+.photo-input{
+    width: 390px;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #eee;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) inset;
+}
+
+.input-form:focus, .photo-input:focus, .select-form:focus, .textarea-form:focus, .input-form-postal:focus {
+    border-color: #00eaff;
+    box-shadow: 0 0 15px rgba(0, 234, 255, 0.5) inset, 0 0 5px rgba(0, 234, 255, 0.5);
+}
+
+.errors {
+    color: #ff5555;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.textarea-form{
+    width: 398px;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #eee;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) inset;
+    padding: 11px;
+    height: 95px;
+}
+
+.form-header-h1{
+font-size: 19pt;
+}
