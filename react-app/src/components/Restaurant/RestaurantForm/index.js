@@ -6,6 +6,7 @@ import {
   thunkGetRestaurantDetail,
   thunkUpdateRestaurant,
 } from "../../../store/restaurants";
+import "./RestaurantForm.css"
 
 export default function RestaurantForm({ formType, restaurantId }) {
   const dispatch = useDispatch();
@@ -67,33 +68,33 @@ export default function RestaurantForm({ formType, restaurantId }) {
     if (postalCode.length !== 5) errors.postalCode = "Zip must be 5 characters";
 
     return errors;
-};
+  };
 
-const handleImages = () => {
-  const imageUrls = [previewImg];
-  const imageExtensionsRegex = /\.(png|jpe?g)$/i;
-  const invalidImages = imageUrls.filter(
-    (url) => url && !imageExtensionsRegex.test(url)
-  );
+  const handleImages = () => {
+    const imageUrls = [previewImg];
+    const imageExtensionsRegex = /\.(png|jpe?g)$/i;
+    const invalidImages = imageUrls.filter(
+      (url) => url && !imageExtensionsRegex.test(url)
+    );
 
-  if (invalidImages.length > 0) {
-    const errorsObj = { ...validationObj };
-    invalidImages.forEach((url, index) => {
-      const fieldName = index === 0 ? "previewImage" : `imageUrl${index + 1}`;
-      errorsObj[fieldName] = "Image URL must end in .png, .jpg, or .jpeg";
-    });
-    setValidationObj(errorsObj);
-    return false;
-  }
+    if (invalidImages.length > 0) {
+      const errorsObj = { ...validationObj };
+      invalidImages.forEach((url, index) => {
+        const fieldName = index === 0 ? "previewImage" : `imageUrl${index + 1}`;
+        errorsObj[fieldName] = "Image URL must end in .png, .jpg, or .jpeg";
+      });
+      setValidationObj(errorsObj);
+      return false;
+    }
 
-  let newRestaurantImage = [];
-  const tempNewRestaurantImage = [
-    { url: previewImg, preview: true },
-  ];
+    let newRestaurantImage = [];
+    const tempNewRestaurantImage = [
+      { url: previewImg, preview: true },
+    ];
 
-  tempNewRestaurantImage.forEach((image) => image.url && newRestaurantImage.push(image));
-  return newRestaurantImage;
-};
+    tempNewRestaurantImage.forEach((image) => image.url && newRestaurantImage.push(image));
+    return newRestaurantImage;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -120,7 +121,7 @@ const handleImages = () => {
       if (formType === "Edit") {
         const updatedRestaurant = { ...initialRestaurant, name, streetAddress, city, state, postalCode, country, description, hours };
         const updatedRestaurantData = await dispatch(thunkUpdateRestaurant(updatedRestaurant));
-        if(updatedRestaurantData) history.push(`/restaurants/${updatedRestaurantData.id}`);
+        if (updatedRestaurantData) history.push(`/restaurants/${updatedRestaurantData.id}`);
         else throw new Error("Failed to update your restaurant");
       }
     } catch (error) {
@@ -211,10 +212,10 @@ const handleImages = () => {
       />
       {validationObj.hours && (<p className="errors">{validationObj.hours}</p>)}
       {formType === "Create" && (
-      <>
-        <input type="url"  onChange={handleInputChange(setPreviewImg,"previewImg")} required />
-        {validationObj.previewImg && (<p className="errors">{validationObj.previewImg}</p>)}
-      </>
+        <>
+          <input type="url" onChange={handleInputChange(setPreviewImg, "previewImg")} required />
+          {validationObj.previewImg && (<p className="errors">{validationObj.previewImg}</p>)}
+        </>
       )}
 
       {/* <input type="file" name="menu_item_images" onChange={setMenuItemImageFiles([...e.target.files])} multiple required /> */}
