@@ -353,9 +353,13 @@ def undo_menu_items():
     if environment == "production":
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.menu_items RESTART IDENTITY CASCADE;")
+
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.menu_item_imgs RESTART IDENTITY CASCADE;")
+
     else:
         db.session.execute(text("DELETE FROM menu_items"))
         db.session.execute(text("DELETE FROM menu_item_imgs"))
+
+
     db.session.commit()
