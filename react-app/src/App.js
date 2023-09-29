@@ -8,10 +8,13 @@ import Navigation from "./components/Navigation";
 import LoginFormModal from "./components/LoginFormModal";
 import SignupFormModal from "./components/SignupFormModal";
 import GetRestaurants from "./components/Restaurant/GetRestaurants";
+import willexGetRestaurants from "./components/Restaurant/GetRestaurants";
 import Home from "./components/Home"
 import GetRestaurantDetail from "./components/Restaurant/GetRestaurantDetail";
+import willexGetRestaurantDetail from "./components/Restaurant/GetRestaurantDetail";
 import CreateRestaurantForm from "./components/Restaurant/RestaurantForm/CreateRestaurantForm";
 import EditRestaurantForm from "./components/Restaurant/RestaurantForm/EditRestaurantForm";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -40,8 +43,15 @@ function App() {
           <Route path="/restaurants/:id" >
             <GetRestaurantDetail />
           </Route>
+          <Route path="/restaurants/willex/:id" >
+            <willexGetRestaurantDetail />
+          </Route>
           <Route path="/restaurants" >
             <GetRestaurants />
+          </Route>
+
+          <Route path="/restaurants/willex" >
+            <willexGetRestaurants />
           </Route>
           <Route path="/login" >
             <LoginFormPage />
