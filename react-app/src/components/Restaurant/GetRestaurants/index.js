@@ -20,7 +20,7 @@ export default function GetRestaurants({ ownerMode = false }) {
 
   const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData?.restaurants
 
-
+  
 
   useEffect(() => {
     if (restaurants === undefined && refreshCount < 1) {

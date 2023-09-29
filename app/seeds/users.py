@@ -127,9 +127,13 @@ reviews_list = [
 {"restaurant_id":21, "user_id":3, "review":"A bit fancy, but the food was top-notch.", "stars":4},
 
 
+
+
 {"restaurant_id":22, "user_id":1, "review":"The chefs truly understand the essence of traditional cooking.", "stars":5},
 {"restaurant_id":22, "user_id":2, "review":"More glitter, please! But the burgers were to die for.", "stars":4},
 {"restaurant_id":22, "user_id":3, "review":"Liked their quick service. Ideal for a quick refuel.", "stars":4},
+
+
 
 
 {"restaurant_id":23, "user_id":1, "review":"A lovely establishment reminiscent of countryside inns.", "stars":4},
@@ -137,9 +141,13 @@ reviews_list = [
 {"restaurant_id":23, "user_id":3, "review":"The outdoor seating is great for people-watching.", "stars":4},
 
 
+
+
 {"restaurant_id":24, "user_id":1, "review":"The seafood selection was exquisite. Very fresh.", "stars":5},
 {"restaurant_id":24, "user_id":2, "review":"I'd prefer more pinks and reds, but the pie! Yum!", "stars":4},
 {"restaurant_id":24, "user_id":3, "review":"Had a hearty meal. Would recommend the steak.", "stars":4},
+
+
 
 
 {"restaurant_id":25, "user_id":1, "review":"The sommelier's choices were impeccable.", "stars":5},
@@ -147,9 +155,13 @@ reviews_list = [
 {"restaurant_id":25, "user_id":3, "review":"Good spot to discuss strategies with the team.", "stars":4},
 
 
+
+
 {"restaurant_id":26, "user_id":1, "review":"The dessert menu took me on a trip down memory lane.", "stars":5},
 {"restaurant_id":26, "user_id":2, "review":"Pop, fizz, and sparkle! Loved their soda selection.", "stars":5},
 {"restaurant_id":26, "user_id":3, "review":"Quick bites perfect for the on-the-go lifestyle.", "stars":4},
+
+
 
 
 {"restaurant_id":27, "user_id":1, "review":"The live piano performance added a touch of class.", "stars":4},
@@ -157,14 +169,20 @@ reviews_list = [
 {"restaurant_id":27, "user_id":3, "review":"A mix of casual and classy. Liked the balance.", "stars":4},
 
 
+
+
 {"restaurant_id":28, "user_id":1, "review":"An ambiance that takes one back to the glory days.", "stars":5},
 {"restaurant_id":28, "user_id":2, "review":"More toys would be fun, but the candy was delish!", "stars":4},
 {"restaurant_id":28, "user_id":3, "review":"The salad bar was diverse and fresh. Kudos!", "stars":4},
 
 
+
+
 {"restaurant_id":29, "user_id":1, "review":"Their fusion dishes are a treat for the taste buds.", "stars":4},
 {"restaurant_id":29, "user_id":2, "review":"Twisty, twirly, fun desserts! More, please!", "stars":5},
 {"restaurant_id":29, "user_id":3, "review":"The lighting set the mood right. And great food to boot.", "stars":4},
+
+
 
 
 {"restaurant_id":30, "user_id":1, "review":"An elegant evening guaranteed. Top-tier service.", "stars":5},
@@ -175,9 +193,13 @@ reviews_list = [
 {"restaurant_id":31, "user_id":3, "review":"Good portion sizes. Fuel up before the mission.", "stars":4},
 
 
+
+
 {"restaurant_id":32, "user_id":1, "review":"The wine pairing was impeccable. A treat for the senses.", "stars":5},
 {"restaurant_id":32, "user_id":2, "review":"Bright lights and fun drinks! My kinda place.", "stars":5},
 {"restaurant_id":32, "user_id":3, "review":"Efficient and quiet. Can strategize while dining.", "stars":4},
+
+
 
 
 {"restaurant_id":33, "user_id":1, "review":"The sushi chef is a master of his craft.", "stars":5},
@@ -185,9 +207,13 @@ reviews_list = [
 {"restaurant_id":33, "user_id":3, "review":"Healthy options, keeps me in top form.", "stars":4},
 
 
+
+
 {"restaurant_id":34, "user_id":1, "review":"The pastries are as delightful as an English morning.", "stars":5},
 {"restaurant_id":34, "user_id":2, "review":"Twirl and spin! Loved the live music and cake.", "stars":5},
 {"restaurant_id":34, "user_id":3, "review":"Quiet nooks to relax and enjoy the brew.", "stars":4},
+
+
 
 
 {"restaurant_id":35, "user_id":1, "review":"The handcrafted cocktails are the highlight.", "stars":5},
@@ -195,9 +221,13 @@ reviews_list = [
 {"restaurant_id":35, "user_id":3, "review":"A great selection of protein dishes. Keeps me going.", "stars":4},
 
 
+
+
 {"restaurant_id":36, "user_id":1, "review":"The truffles here are second to none.", "stars":5},
 {"restaurant_id":36, "user_id":2, "review":"Bouncy and bubbly! Loved the atmosphere.", "stars":4},
 {"restaurant_id":36, "user_id":3, "review":"High-quality ingredients make for a great meal.", "stars":4},
+
+
 
 
 {"restaurant_id":37, "user_id":1, "review":"Every dish tells a story. An epicurean journey.", "stars":5},
@@ -205,14 +235,20 @@ reviews_list = [
 {"restaurant_id":37, "user_id":3, "review":"Plenty of greens and lean meats. Ideal.", "stars":4},
 
 
+
+
 {"restaurant_id":38, "user_id":1, "review":"Their caviar selection is world-class.", "stars":5},
 {"restaurant_id":38, "user_id":2, "review":"Wish there was a slide, but the food made up for it!", "stars":4},
 {"restaurant_id":38, "user_id":3, "review":"A discreet spot with outstanding dishes.", "stars":4},
 
 
+
+
 {"restaurant_id":39, "user_id":1, "review":"The chef's tasting menu was a revelation.", "stars":5},
 {"restaurant_id":39, "user_id":2, "review":"Zap! Pow! Their spicy noodles are electrifying!", "stars":5},
 {"restaurant_id":39, "user_id":3, "review":"The balance of flavors is just right. Keeps the senses sharp.", "stars":4},
+
+
 
 
 {"restaurant_id":40, "user_id":1, "review":"A gastronomic wonderland. Truly a delight.", "stars":5},
@@ -223,9 +259,13 @@ reviews_list = [
 {"restaurant_id":41, "user_id":3, "review":"Nutritious dishes that don't compromise on flavor.", "stars":4},
 
 
+
+
 {"restaurant_id":42, "user_id":1, "review":"The aged cheeses here remind me of the old European charm.", "stars":5},
 {"restaurant_id":42, "user_id":2, "review":"Whee! The pizza spinning show was exhilarating!", "stars":5},
 {"restaurant_id":42, "user_id":3, "review":"Carb-rich menu. Good for an energy boost.", "stars":4},
+
+
 
 
 {"restaurant_id":43, "user_id":1, "review":"The coffee brews are sourced from the finest beans.", "stars":5},
@@ -233,9 +273,13 @@ reviews_list = [
 {"restaurant_id":43, "user_id":3, "review":"A good vantage point and a strong brew. Ideal combination.", "stars":4},
 
 
+
+
 {"restaurant_id":44, "user_id":1, "review":"Their seafood platter is fresh from the ocean.", "stars":5},
 {"restaurant_id":44, "user_id":2, "review":"Splash and dash! Loved the marine-themed night.", "stars":5},
 {"restaurant_id":44, "user_id":3, "review":"High in Omega-3. Perfect for brain and brawn.", "stars":4},
+
+
 
 
 {"restaurant_id":45, "user_id":1, "review":"The sommelier's recommendations were on point.", "stars":5},
@@ -243,9 +287,13 @@ reviews_list = [
 {"restaurant_id":45, "user_id":3, "review":"Balanced meals with a good range of wine. Ideal for a night out.", "stars":4},
 
 
+
+
 {"restaurant_id":46, "user_id":1, "review":"The desserts are both delicate and rich. A fine balance.", "stars":5},
 {"restaurant_id":46, "user_id":2, "review":"Spin, twirl, and dessert whirl! A carnival of sweetness.", "stars":4},
 {"restaurant_id":46, "user_id":3, "review":"Sweet treats that keep the spirits high.", "stars":4},
+
+
 
 
 {"restaurant_id":47, "user_id":1, "review":"The charcuterie board was a symphony of flavors.", "stars":5},
@@ -253,9 +301,13 @@ reviews_list = [
 {"restaurant_id":47, "user_id":3, "review":"Good protein options and easy access. Will return.", "stars":4},
 
 
+
+
 {"restaurant_id":48, "user_id":1, "review":"The vegan options are crafted with care.", "stars":5},
 {"restaurant_id":48, "user_id":2, "review":"Green, clean, and oh so fun! The plant-based menu rocks.", "stars":5},
 {"restaurant_id":48, "user_id":3, "review":"Healthy and delicious. Keeps me agile.", "stars":4},
+
+
 
 
 {"restaurant_id":49, "user_id":1, "review":"The dishes evoke memories of my travels in Asia.", "stars":5},
@@ -263,13 +315,19 @@ reviews_list = [
 {"restaurant_id":49, "user_id":3, "review":"Variety of cuisines. Keeps things interesting.", "stars":4},
 
 
+
+
 {"restaurant_id":50, "user_id":1, "review":"The gourmet burger here is a class apart.", "stars":5},
 {"restaurant_id":50, "user_id":2, "review":"Flip, flop, and hop! Burger nights are the best.", "stars":5},
-{"restaurant_id":50, "user_id":3, "review":"Quick bites that pack a punch. Energizing.", "stars":4},
+{"restaurant_id":50, "user_id":3, "review":"Quick bites that pack a punch. Energizing.", "stars":4}
 ]
 
 
+
+
 restaurant_list = [
+
+
     Restaurant(
         owner_id=1,
         streetAddress="Wayne Manor 1",
@@ -293,29 +351,33 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
-    owner_id=1,
-    streetAddress="Butler Way 3",
-    city="Gotham",
-    state="New Jersey",
-    postalCode="10009",
-    country="United States",
-    name="Alfred's Greenhouse Gourmet",
-    description="Enjoy exquisite dining surrounded by rare and beautifully curated flora!",
-    hours='9-5',
-    ),
+        owner_id=1,
+        streetAddress="Butler Way 3",
+        city="Gotham",
+        state="New Jersey",
+        postalCode="10009",
+        country="United States",
+        name="Alfred's Greenhouse Gourmet",
+        description="Enjoy exquisite dining surrounded by rare and beautifully curated flora!",
+        hours='9-5',
+        ),
     Restaurant(
-    owner_id=1,
-    streetAddress="Servitude Street 88",
-    city="Gotham",
-    state="New Jersey",
-    postalCode="10015",
-    country="United States",
-    name="The Butler's Banquet",
-    description="Indulge in a plethora of hearty and meticulously prepared meals, fit for the Wayne family!",
-    hours='9-5',
-    ),
+        owner_id=1,
+        streetAddress="Servitude Street 88",
+        city="Gotham",
+        state="New Jersey",
+        postalCode="10015",
+        country="United States",
+        name="The Butler's Banquet",
+        description="Indulge in a plethora of hearty and meticulously prepared meals, fit for the Wayne family!",
+        hours='9-5',
+        ),
+
+
 
 
     Restaurant(
@@ -328,7 +390,9 @@ restaurant_list = [
         name="Pennyworth's Posh Café",
         description="Treat your taste buds to Alfred's eclectic and elegant menu, a symphony of flavors!",
         hours='9-5',
-    ),
+        ),
+
+
 
 
     Restaurant(
@@ -341,7 +405,9 @@ restaurant_list = [
         name="Wayne Manor Grills",
         description="Ignite your senses with the smoky and fiery flavors, all prepared under Alfred's watchful eyes.",
         hours='9-5',
-    ),
+        ),
+
+
 
 
     Restaurant(
@@ -354,7 +420,9 @@ restaurant_list = [
         name="Alfred's Afternoon Tea",
         description="Immerse yourself in the rich and bewildering array of teas, accompanied by Alfred's signature pastries.",
         hours='9-5',
-    ),
+        ),
+
+
 
 
     Restaurant(
@@ -367,7 +435,9 @@ restaurant_list = [
         name="Pennyworth's Quick Platter",
         description="Experience the swift and stealthy takeout options, designed for the hurried and the hungry.",
         hours='9-5',
-    ),
+        ),
+
+
 
 
     Restaurant(
@@ -380,7 +450,9 @@ restaurant_list = [
         name="Alfred's Culinary Magic",
         description="Be enchanted by Alfred's magical concoctions of pizza and meticulously crafted salads.",
         hours='9-5',
-    ),
+        ),
+
+
 
 
     Restaurant(
@@ -393,7 +465,9 @@ restaurant_list = [
         name="Pennyworth's Night Bistro",
         description="Delight in nocturnal gourmet in an environment curated by the iconic butler himself.",
         hours='9-5',
-    ),
+        ),
+
+
 
 
     Restaurant(
@@ -406,7 +480,9 @@ restaurant_list = [
         name="Metropolis Manor Munch",
         description="Savor the flavors of meticulously prepared superfoods and cuisine, all curated by Alfred.",
         hours='9-5',
-    ),
+        ),
+
+
 
 
     Restaurant(
@@ -419,7 +495,9 @@ restaurant_list = [
         name="Butler's Brave Bites",
         description="Brace yourself for Alfred's spicy and bold creations, a true conquest of flavors!",
         hours='9-5',
-    ),
+        ),
+
+
 
 
     Restaurant(
@@ -432,7 +510,11 @@ restaurant_list = [
         name="Alfred's Frosty Confections",
         description="Relax with Alfred's specially crafted frozen delights and cool culinary specialties.",
         hours='9-5',
-    ),
+        ),
+
+
+
+
 
 
 
@@ -449,7 +531,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=2,
         streetAddress="Quinn Square 8",
@@ -460,7 +544,13 @@ restaurant_list = [
         name="Harley's Hysterical Diner",
         description="Unleash your inner wild card and savor explosive flavors. Enjoy chaotic culinary delights inspired by Gotham’s Queen of Anarchy in a whimsically themed setting.",
         hours='9-5',
-    ),
+        ),
+
+
+
+
+
+
 
 
 
@@ -479,7 +569,11 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
+
+
 
 
     Restaurant(
@@ -494,7 +588,11 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
+
+
 
 
     Restaurant(
@@ -509,7 +607,11 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
+
+
 
 
     Restaurant(
@@ -524,7 +626,11 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
+
+
 
 
     Restaurant(
@@ -539,7 +645,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=5,
         streetAddress="Feline Alley 12",
@@ -552,7 +660,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=5,
         streetAddress="Feline Alley 4",
@@ -563,7 +673,9 @@ restaurant_list = [
         name="Catwoman's Cat Cafe",
         description="Purr-fectly brewed coffee and cunning pastries.",
         hours='9-5',
-    ),
+        ),
+
+
 
 
     Restaurant(
@@ -578,7 +690,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=6,
         streetAddress="Iceberg Lounge 9",
@@ -591,7 +705,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=6,
         streetAddress="Cobblepot Lane 11",
@@ -602,7 +718,7 @@ restaurant_list = [
         name="Penguin's Umbrella Eats",
         description="Indulge in an array of dishes so good, it's criminal. Dive into villainous flavors and explore the decadent menu inspired by Gotham's master of fowl play.",
         hours='9-5',
-    ),
+        ),
     Restaurant(
         owner_id=7,
         streetAddress="Mystery Street 42",
@@ -615,7 +731,11 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
+
+
 
 
     Restaurant(
@@ -630,7 +750,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=7,
         streetAddress="Enigma Blvd 42",
@@ -643,7 +765,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=8,
         streetAddress="Duality Dr 50",
@@ -656,7 +780,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=8,
         streetAddress="Double-Dealing Drive 5",
@@ -669,7 +795,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=8,
         streetAddress="Two-Face Drive 7",
@@ -682,7 +810,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=9,
         streetAddress="Subzero St 32",
@@ -695,7 +825,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=9,
         streetAddress="Cold Storage 12",
@@ -705,10 +837,9 @@ restaurant_list = [
         country="United States",
         name="Mr. Freeze's Icy Delights",
         description="Chill out with frozen treats and frosty beverages.",
-        hours='9-5',
+        hours='9-5'),
 
 
-    ),
     Restaurant(
         owner_id=10,
         streetAddress="Fear Farm 13",
@@ -721,7 +852,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=10,
         streetAddress="Fear Street 4",
@@ -734,7 +867,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=11,
         streetAddress="Dawes Lane 6",
@@ -747,34 +882,42 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
-    Restaurant(
-    owner_id=11,
-    streetAddress="Dawes Lane 45",
-    city="Gotham",
-    state="New Jersey",
-    postalCode="10028",
-    country="United States",
-    name="Rachel's Justice Bistro",
-    description="A place that honors the spirit of Rachel Dawes, offering a selection of fair, just, and ethically sourced dishes to remind us of the values she stood for.",
-    hours='9-5',
-),
 
 
+        ),
     Restaurant(
-    owner_id=11,
-    streetAddress="Harbor View 22",
-    city="Gotham",
-    state="New Jersey",
-    postalCode="10029",
-    country="United States",
-    name="Dawes Harbor Cafe",
-    description="Overlooking the harbor, Rachel's Harbor Cafe serves fresh, seasonal, and sustainable seafood dishes, a nod to her tireless work in protecting Gotham's harbor district.",
-    hours='9-5',
-),
+        owner_id=11,
+        streetAddress="Dawes Lane 45",
+        city="Gotham",
+        state="New Jersey",
+        postalCode="10028",
+        country="United States",
+        name="Rachel's Justice Bistro",
+        description="A place that honors the spirit of Rachel Dawes, offering a selection of fair, just, and ethically sourced dishes to remind us of the values she stood for.",
+        hours='9-5',
+        ),
+
+
 
 
     Restaurant(
+        owner_id=11,
+        streetAddress="Harbor View 22",
+        city="Gotham",
+        state="New Jersey",
+        postalCode="10029",
+        country="United States",
+        name="Dawes Harbor Cafe",
+        description="Overlooking the harbor, Rachel's Harbor Cafe serves fresh, seasonal, and sustainable seafood dishes, a nod to her tireless work in protecting Gotham's harbor district.",
+        hours='9-5',
+        ),
+
+
+
+
+    Restaurant(
+
+
         owner_id=12,
         streetAddress="Innovation Avenue 21",
         city="Gotham",
@@ -786,7 +929,9 @@ restaurant_list = [
         hours='9-5',
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=12,
         streetAddress="Fox Lane 8",
@@ -796,10 +941,12 @@ restaurant_list = [
         country="United States",
         name="Lucius's Tech Cafe",
         description="A tech-savvy dining experience with cutting-edge cuisine.",
-        hours='9-5',
+        hours='9-5'
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=13,
         streetAddress="Oracle's Insight 9",
@@ -809,10 +956,12 @@ restaurant_list = [
         country="United States",
         name="Oracle's Virtual Cafe",
         description="Sip and byte your way through the digital world.",
-        hours='9-5',
+        hours='9-5'
 
 
-    ),
+
+
+        ),
     Restaurant(
         owner_id=13,
         streetAddress="Oracle Plaza 2",
@@ -822,7 +971,9 @@ restaurant_list = [
         country="United States",
         name="Oracle's Cyber Cafe",
         description="Connect with the digital world while savoring delicious bites.",
-        hours='9-5',
+        hours='9-5'
+
+
 
 
     ),
@@ -835,7 +986,9 @@ restaurant_list = [
         country="United States",
         name="Tim's Batwing Bistro",
         description="A dining experience inspired by the Dark Knight's sidekick.",
-        hours='9-5',
+        hours='9-5'
+
+
 
 
     ),
@@ -848,7 +1001,9 @@ restaurant_list = [
         country="United States",
         name="Tim's Comic Cafe",
         description="Comic books, coffee, and delicious treats for every hero.",
-        hours='9-5',
+        hours='9-5'
+
+
 
 
     ),
@@ -861,7 +1016,9 @@ restaurant_list = [
         country="United States",
         name="RedHood's Roastery",
         description="Serving up a blend of justice and great coffee.",
-        hours='9-5',
+        hours='9-5'
+
+
 
 
     ),
@@ -874,7 +1031,9 @@ restaurant_list = [
         country="United States",
         name="Red Hood's Hideout",
         description="A haven for anti-heroes with a taste for great food and justice.",
-        hours='9-5',
+        hours='9-5'
+
+
 
 
     ),
@@ -887,7 +1046,9 @@ restaurant_list = [
         country="United States",
         name="Damian's Ninja Noodles",
         description="Exquisite noodles crafted by the League of Assassins.",
-        hours='9-5',
+        hours='9-5'
+
+
 
 
     ),
@@ -900,7 +1061,9 @@ restaurant_list = [
         country="United States",
         name="Damian's Gourmet Grub",
         description="Fine dining fit for the youngest heir of Wayne Enterprises.",
-        hours='9-5',
+        hours='9-5'
+
+
 
 
     ),
@@ -913,7 +1076,9 @@ restaurant_list = [
         country="United States",
         name="Batgirl's Bat Bites",
         description="Fueling vigilantes one bite at a time.",
-        hours='9-5',
+        hours='9-5'
+
+
 
 
     ),
@@ -926,7 +1091,9 @@ restaurant_list = [
         country="United States",
         name="Batgirl's Diner",
         description="Superhero-inspired snacks for the crime-fighter in you.",
-        hours='9-5',
+        hours='9-5'
+
+
 
 
     ),
@@ -934,7 +1101,13 @@ restaurant_list = [
 
 
 
+
+
+
+
 ]
+
+
 
 
 user_list=[
@@ -952,6 +1125,8 @@ user_list=[
         phone='710-681-2835'),
 
 
+
+
     User(
         firstName="Harleen",
         lastName="Quinzel",
@@ -964,6 +1139,8 @@ user_list=[
         postalCode="10101",
         country="United States",
         phone='710-681-2836'),
+
+
 
 
     User(
@@ -980,6 +1157,8 @@ user_list=[
         phone='710-681-2837'),
 
 
+
+
     User(
         firstName="Joker",
         lastName="Unknown",
@@ -992,6 +1171,8 @@ user_list=[
         postalCode="10102",
         country="United States",
         phone='710-681-2838'),
+
+
 
 
     User(
@@ -1008,6 +1189,8 @@ user_list=[
         phone='710-681-2839'),
 
 
+
+
     User(
         firstName="Osward",
         lastName="Cobblepot",
@@ -1020,6 +1203,8 @@ user_list=[
         postalCode="10404",
         country="United States",
         phone='710-681-2840'),
+
+
 
 
     User(
@@ -1036,6 +1221,8 @@ user_list=[
         phone='710-681-2841'),
 
 
+
+
     User(
         firstName="Harvey",
         lastName="Dent",
@@ -1048,6 +1235,8 @@ user_list=[
         postalCode="10606",
         country="United States",
         phone='710-681-2842'),
+
+
 
 
     User(
@@ -1064,6 +1253,8 @@ user_list=[
         phone='710-681-2843'),
 
 
+
+
     User(
         firstName="Jonathan",
         lastName="Crane",
@@ -1076,6 +1267,8 @@ user_list=[
         postalCode="10808",
         country="United States",
         phone='710-681-2844'),
+
+
 
 
     User(
@@ -1092,6 +1285,8 @@ user_list=[
         phone='710-681-2845'),
 
 
+
+
     User(
         firstName="Lucius",
         lastName="Fox",
@@ -1104,6 +1299,8 @@ user_list=[
         postalCode="11010",
         country="United States",
         phone='710-681-2846'),
+
+
 
 
     User(
@@ -1120,6 +1317,8 @@ user_list=[
         phone='710-681-2847'),
 
 
+
+
     User(
         firstName="Tim",
         lastName="Drake",
@@ -1132,6 +1331,8 @@ user_list=[
         postalCode="11212",
         country="United States",
         phone='710-681-2848'),
+
+
 
 
     User(
@@ -1148,6 +1349,8 @@ user_list=[
         phone='710-681-2849'),
 
 
+
+
     User(
         firstName="Damian",
         lastName="Wayne",
@@ -1162,7 +1365,9 @@ user_list=[
         phone='710-681-2850'),
 
 
-   User(
+
+
+    User(
         firstName="Cassandra",
         lastName="Cain",
         username='Batgirl',
@@ -1176,88 +1381,127 @@ user_list=[
         phone='710-681-2851')
 ]
 def seed_users():
+    new_user_list=[]
+
+
+
+
 
 
 
 
     for ele in user_list:
         db.session.add(ele)
-    db.session.commit()
+        db.session.commit()
+        new_user_list.append(ele)
+
+
     restaurant_counter=1
     our_owner_id=0
     for ele in restaurant_list:
         if restaurant_counter<=13:
-            our_owner_id=user_list[0].id
+            our_owner_id=new_user_list[0].id
+
+
         #Harley
         elif restaurant_counter<=15:
-            our_owner_id=user_list[1].id
+            our_owner_id=new_user_list[1].id
         #Nightwing
         elif restaurant_counter==16:
-            our_owner_id=user_list[2].id
+            our_owner_id=new_user_list[2].id
             #Joker
         elif restaurant_counter<=19:
-            our_owner_id=user_list[3].id
+            our_owner_id=new_user_list[3].id
             #Catwoman
         elif restaurant_counter<=22:
-            our_owner_id=user_list[4].id
+            our_owner_id=new_user_list[4].id
         elif restaurant_counter<=25:
-            our_owner_id=user_list[5].id
+            our_owner_id=new_user_list[5].id
             #Riddler
         elif restaurant_counter<=28:
-            our_owner_id=user_list[6].id
+            our_owner_id=new_user_list[6].id
             #Two face
         elif restaurant_counter<=31:
-            our_owner_id=user_list[7].id
+            our_owner_id=new_user_list[7].id
             #mr freeze
         elif restaurant_counter<=33:
-            our_owner_id=user_list[8].id
+            our_owner_id=new_user_list[8].id
             #scarecrow
         elif restaurant_counter<=35:
-            our_owner_id=user_list[9].id
+            our_owner_id=new_user_list[9].id
             #Rachel Dawes
         elif restaurant_counter<=38:
-            our_owner_id=user_list[10].id
+            our_owner_id=new_user_list[10].id
             #Lucious
         elif restaurant_counter<=40:
-            our_owner_id=user_list[11].id
+            our_owner_id=new_user_list[11].id
             #Oracle
         elif restaurant_counter<=42:
-            our_owner_id=user_list[12].id
+            our_owner_id=new_user_list[12].id
             #Tim
         elif restaurant_counter<=44:
-            our_owner_id=user_list[13].id
+            our_owner_id=new_user_list[13].id
         elif restaurant_counter<=46:
-            our_owner_id=user_list[14].id
+            our_owner_id=new_user_list[14].id
         elif restaurant_counter<=48:
-            our_owner_id=user_list[15].id
+            our_owner_id=new_user_list[15].id
+
+
 
 
         else:
-            our_owner_id=user_list[16].id
+            our_owner_id=new_user_list[16].id
+
+
 
 
         ele.owner_id=our_owner_id
+        restaurant_counter+=1
         db.session.add(ele)
     db.session.commit()
     counterTo3=0
     counterTo50=0
     add_all_reviews=[]
-    for ele in reviews_list:
-        if counterTo3==3:
-            counterTo3=0
-            counterTo50+=1
+    owner_fallback_id=4
+    for index,ele in enumerate(reviews_list):
+        counterTo50 = index // 3
+        counterTo3 = index % 3
+
+
         ele["restaurant_id"]=restaurant_list[counterTo50].id
 
 
-        ele["user_id"]=user_list[counterTo3].id if restaurant_list[counterTo50].owner_id!=user_list[counterTo3].id else 4
+        if restaurant_list[counterTo50].owner_id == user_list[counterTo3].id:
+            ele["user_id"]=user_list[counterTo3].id if restaurant_list[counterTo50].owner_id!=user_list[counterTo3].id else 4
+        else:
+            ele["user_id"] = user_list[counterTo3].id
+
+
         newReview=Review(restaurant_id=ele["restaurant_id"],
                          user_id=ele["user_id"],
                          review=ele["review"],
-                         stars=ele["stars"]
-                         )
+                         stars=ele["stars"])
         add_all_reviews.append(newReview)
     db.session.add_all(add_all_reviews)
     db.session.commit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1286,10 +1530,17 @@ def undo_users():
             f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
 
 
+
+
     else:
         db.session.execute(text("DELETE FROM reviews"))
         db.session.execute(text("DELETE FROM restaurants"))
         db.session.execute(text("DELETE FROM users"))
 
 
+
+
     db.session.commit()
+
+
+
