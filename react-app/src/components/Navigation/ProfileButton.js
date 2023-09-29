@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import * as sessionActions from '../../store/session';
 import { useModal } from '../../context/Modal';
@@ -84,13 +84,13 @@ function ProfileButton({ user }) {
                     <FontAwesomeIcon icon={faUserCircle} style={{ marginRight: '8px' }} />
                     <li className="center-menu center-menu-profile">Your Profile</li>
                   </Link>
+
+                  <li className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history.push(`/owner/restaurants/${sessionUser.id}`) }}>Manage Restaurants</button></li>
+                  <li className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history.push('/restaurants/new') }}>Add your Restaurant</button></li>
+
+
+                  <li><button onClick={logout} className="buttons center-menu center-menu1">Log Out</button></li>
                 </ul>
-
-                {/* <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history.push(`/owner/restaurants/${sessionUser.id}`) }}>Manage Restaurants</button></ul> */}
-                <ul className="center-menu"><button className="Manage-spot-button center-menu1" onClick={(e) => { closeMenu(); history.push('/restaurants/new') }}>Add your Restaurant</button></ul>
-
-
-                <ul><button onClick={logout} className="buttons center-menu center-menu1">Log Out</button></ul>
               </>
             ) : (
               <>
