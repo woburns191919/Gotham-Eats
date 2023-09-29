@@ -38,7 +38,6 @@ class Restaurant(db.Model, UserMixin):
     user = db.relationship("User", back_populates="restaurants")
     reviews = db.relationship("Review", back_populates="restaurant")
     menu_items = db.relationship('MenuItem', back_populates='restaurant')
-
     @property
     def avg_stars(self):
         return db.session.query(func.avg(Review.stars)).filter(Review.restaurant_id == self.id).scalar()
