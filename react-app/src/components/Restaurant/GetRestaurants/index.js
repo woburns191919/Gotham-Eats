@@ -20,7 +20,7 @@ export default function GetRestaurants({ ownerMode = false }) {
 
   const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData?.restaurants
 
-  
+
 
   useEffect(() => {
     if (restaurants === undefined && refreshCount < 1) {
@@ -62,7 +62,7 @@ export default function GetRestaurants({ ownerMode = false }) {
                   <p className="res-name">{restaurant.name}({restaurant.streetAddress})</p>
                   <p className="avgRating-p-tag">
                     {/* {restaurant.avgRating && restaurant.avgRating ? restaurant.avgRating?.toFixed(1) : <span className="boldText">New</span>} */}
-                  {(restaurant.avgRating !== null && restaurant.avgRating !== undefined) ? restaurant.avgRating.toFixed(1) : <span className="boldText">New</span>}</p>
+                    {(restaurant.avgRating !== null && restaurant.avgRating !== undefined) ? restaurant.avgRating : <span className="boldText">New</span>}</p>
                 </div>
 
               </div>
