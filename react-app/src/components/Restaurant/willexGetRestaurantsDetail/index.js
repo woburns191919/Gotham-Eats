@@ -86,7 +86,22 @@ export default function WillexGetRestaurantDetail() {
         </div>
         <div className="reviews">
           <h2>Reviews</h2>
+            <ul className='reviewsList'>
+            {restaurantsDetailData.map((review)=>
+            <li>
 
+              {review.review}
+              {review.updated_at}
+              {users_Array.filter((user)=>user.userId===review.id)}
+            </li>
+
+
+            )}
+
+
+
+
+            </ul>
         </div>
       </div>
     </div>

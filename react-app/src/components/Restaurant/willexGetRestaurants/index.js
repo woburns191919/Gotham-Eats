@@ -14,7 +14,7 @@ export default function WillexGetRestaurants({ ownerMode = false }) {
   const restaurantsData = useSelector((state) => state.restaurants?.allRestaurants);
   const RestaurantsUserOwns = useSelector((state) => state.restaurants?.userOwnedRestaurants)
   const reviews = useSelector((state) => state.reviews && state.reviews.allReviews)
-  console.log('reviews****', reviews)
+
 
   const [refreshCount, setRefreshCount] = useState(0);
 
@@ -34,7 +34,7 @@ export default function WillexGetRestaurants({ ownerMode = false }) {
 
     dispatch(thunkGetAllRestaurantReviews())
 
-  }, [dispatch, ownerMode, refreshCount, ownerId]);
+  }, [dispatch, ownerMode, refreshCount, ownerId,restaurants,reviews]);
 
 
   if (!restaurantsData || !restaurantsData.restaurants) return null;

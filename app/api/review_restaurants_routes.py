@@ -21,12 +21,14 @@ def get_restaurant_reviews(restaurant_id):
 
 @review_restaurants_routes.route("/")
 def get_all_reviews():
-    reviews = Review.query.get.all()
+    reviews = db.session.query(Review).all()
     if reviews:
         reviews_data = [review.to_dict() for review in reviews]
         return jsonify({'reviews': reviews_data}), 200
     else:
         return jsonify({'error': 'Reviews not found'}), 404
+
+
 
 
 # @review_restaurants_routes.route("/api/restaurants/<int:restaurant_id>/reviews", methods=["POST"])
