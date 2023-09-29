@@ -7,7 +7,7 @@ import OpenModalButton from "../../OpenModalButton/index";
 import "./GetRestaurants.css";
 
 
-export default function willexGetRestaurants({ ownerMode = false }) {
+export default function WillexGetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -40,7 +40,9 @@ export default function willexGetRestaurants({ ownerMode = false }) {
   if (ownerMode === true) console.log('***************************************CONGRATS WERE IN OWNER MODE BRO.')
 
   return (
+
     <div className="main-container">
+      <h1>WE ARE IN WILLEX</h1>
       {ownerMode && RestaurantsUserOwns.length && (
         <div className="owner-div manage-create-a-new-restaurant">
           <h2 className="manage-restaurants-h1-tag">Manage Your Restaurants</h2>

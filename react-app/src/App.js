@@ -8,10 +8,10 @@ import Navigation from "./components/Navigation";
 import LoginFormModal from "./components/LoginFormModal";
 import SignupFormModal from "./components/SignupFormModal";
 import GetRestaurants from "./components/Restaurant/GetRestaurants";
-import willexGetRestaurants from "./components/Restaurant/GetRestaurants";
+import WillexGetRestaurants from "./components/Restaurant/willexGetRestaurants";
 import Home from "./components/Home"
 import GetRestaurantDetail from "./components/Restaurant/GetRestaurantDetail";
-import willexGetRestaurantDetail from "./components/Restaurant/GetRestaurantDetail";
+import WillexGetRestaurantDetail from "./components/Restaurant/willexGetRestaurantsDetail";
 import CreateRestaurantForm from "./components/Restaurant/RestaurantForm/CreateRestaurantForm";
 import EditRestaurantForm from "./components/Restaurant/RestaurantForm/EditRestaurantForm";
 
@@ -40,18 +40,20 @@ function App() {
           <Route path="/restaurants/edit/:id" >
             <EditRestaurantForm />
           </Route>
+          {/* <Route path="/restaurants/:id/willex" >
+            <>
+          </Route> */}
           <Route path="/restaurants/:id" >
-            <GetRestaurantDetail />
-          </Route>
-          <Route path="/restaurants/willex/:id" >
-            <willexGetRestaurantDetail />
-          </Route>
-          <Route path="/restaurants" >
-            <GetRestaurants />
+            <WillexGetRestaurantDetail />
           </Route>
 
-          <Route path="/restaurants/willex" >
-            <willexGetRestaurants />
+          <Route path="/restaurants" >
+          <WillexGetRestaurants />
+          {/* <Route path="/restaurants" >
+            <GetRestaurants />
+            </Route> */}
+
+
           </Route>
           <Route path="/login" >
             <LoginFormPage />

@@ -6,7 +6,7 @@ import OpenModalButton from "../../OpenModalButton";
 
 import "./GetRestaurantDetail.css";
 
-export default function willexGetRestaurantDetail() {
+export default function WillexGetRestaurantDetail() {
   const dispatch = useDispatch();
   const [reloadPage, setReloadPage] = useState(false);
   const { id } = useParams();
@@ -43,6 +43,7 @@ export default function willexGetRestaurantDetail() {
 
   return (
     <div className="Res-Det-Container">
+      <h1>WE ARE IN WILLEX</h1>
       <div className="top-photo">
         <img
           src={`${process.env.PUBLIC_URL}${restaurantsDetailData.menu_item_images[0].url}`} alt="Preview" />
