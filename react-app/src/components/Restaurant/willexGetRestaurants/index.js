@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, NavLink, useParams } from "react-router-dom";
 import { thunkGetAllRestaurants, thunkGetRestaurantsUserOwns } from "../../../store/restaurants";
+import { thunkGetAllRestaurantReviews } from "../../../store/reviews";
 import OpenModalButton from "../../OpenModalButton/index";
 import "./GetRestaurants.css";
 
