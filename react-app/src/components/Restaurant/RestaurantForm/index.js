@@ -28,8 +28,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
     previmg: "",
   });
   let {id}=useParams()
-  console.log('AM I GETTING MY restaurant id DAWG?',id)
-  console.log('AM I GETTING MY  USER?',sessionUser.id)//yes to both
+
 
   console.log(ourRestaurant)
 
@@ -320,4 +319,3 @@ export default function RestaurantForm({ formType, restaurantId }) {
 // //   //   </div>
 // //   // );
 // // // }
-
