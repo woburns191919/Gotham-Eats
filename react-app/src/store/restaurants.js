@@ -13,7 +13,7 @@ export const thunkGetAllRestaurants = createAsyncThunk(
       const res = await fetch('/api/restaurants');
       if (res.ok) {
         const data = await res.json();
-        console.log('data********', data)
+
         return data;
       } else {
         const errors = await res.json();
@@ -32,7 +32,7 @@ export const thunkGetRestaurantDetail = createAsyncThunk(
   async (restaurantId, { rejectWithValue }) => {
     try {
       const res = await fetch(`/api/restaurants/${restaurantId}`);
-      console.log("Fetching details for restaurant ID:", restaurantId);
+
       if (res.ok) {
         const restaurant = await res.json();
         return restaurant;
@@ -62,7 +62,7 @@ export const thunkCreateRestaurant = createAsyncThunk(
 
       if (res.ok) {
         const createdRestaurant = await res.json();
-        console.log('**********Created Restaurant:', createdRestaurant);
+     
         // return createdRestaurant;
       } else {
         try {

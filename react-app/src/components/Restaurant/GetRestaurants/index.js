@@ -10,16 +10,16 @@ export default function GetRestaurants({ ownerMode = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const restaurantsData = useSelector((state) => state.restaurants.allRestaurants);
-  const RestaurantsUserOwns = useSelector((state) => state.restaurants.userOwnedRestaurants)
+  const restaurantsData = useSelector((state) => state.restaurants?.allRestaurants);
+  const RestaurantsUserOwns = useSelector((state) => state.restaurants?.userOwnedRestaurants)
   const [refreshCount, setRefreshCount] = useState(0);
 
   const sessionUser = useSelector((state) => state.session.user);
   const {ownerId}=useParams()
 
 
-  const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData.restaurants
-  console.log('RESTAURANTS IS******************', restaurants)
+  const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData?.restaurants
+  
 
 
   useEffect(() => {

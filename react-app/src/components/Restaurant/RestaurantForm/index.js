@@ -114,14 +114,14 @@ export default function RestaurantForm({ formType, restaurantId }) {
     try {
 
       if (formType === "Create") {
-        console.log('restaurantData before dispatch:', restaurant);
+
         const newlyCreateRestaurant = await dispatch(thunkCreateRestaurant(restaurant))
                                                 .unwrap()
                                                 .then((payload) => console.log('Success:', payload))
                                                 .catch((error) => console.error('Error:', error));
-        console.log('restaurantData after dispatch:', restaurant);
+
         // const newlyCreateRestaurant = await dispatch(thunkCreateRestaurant(restaurant))
-        // console.log("*********************newlyCreateRestaurant: ", newlyCreateRestaurant.id);
+       
 
       //   if (newlyCreateRestaurant && newlyCreateRestaurant.id) {
       //     const newRestaurant = await dispatch(thunkGetRestaurantDetail(newlyCreateRestaurant.id));

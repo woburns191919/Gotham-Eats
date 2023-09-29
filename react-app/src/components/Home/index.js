@@ -7,9 +7,9 @@ export default function Home() {
 
     function handleDirectionChange(event) {
         const selectedDirection = event.target.value;
-        console.log(`Selected direction: ${selectedDirection}`);
+      
 
-        
+
         if (['west', 'east', 'north', 'south'].includes(selectedDirection)) {
             history.push('/restaurants');
         }

@@ -16,7 +16,7 @@ export default function GetRestaurantDetail() {
 
   const restaurantsDetailData = useSelector((state) => state.restaurants.singleRestaurant);
   if (restaurantsDetailData && restaurantsDetailData.menu_item_images && restaurantsDetailData.menu_item_images.length > 0) {
-    // console.log("Num Reviews ********", restaurantsDetailData.)
+  
   }
 
   function findPrev(restaurant) {

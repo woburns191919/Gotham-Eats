@@ -17,7 +17,7 @@ export function DeleteRestaurant({restaurantId}) {
   const dispatch = useDispatch()
 
 
-  console.log(restaurantsData)
+
 
 
 

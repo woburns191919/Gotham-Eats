@@ -21,7 +21,7 @@ home_restaurants = Blueprint('restaurants', __name__)
 #     all()
 
 #   all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
-#   print('restaurants**', all_restaurants)
+
 #   return all_restaurants
 
 
@@ -113,7 +113,7 @@ def update_restaurant(id):
 def delete_post(id):
     """delete a restaurant based on restaurant id"""
     restaurant_to_delete = Restaurant.query.get(id)
-    print(restaurant_to_delete)
+
     db.session.delete(restaurant_to_delete)
     db.session.commit()
     return redirect("/restaurants")
@@ -133,7 +133,7 @@ def get_my_restaurants(id):
 def get_popular_restaurants():
     """returns a all restaurant order by popularity"""
     restaurants = db.session.query(Restaurant).all()
-    print('restaurants***', restaurants)
+   
 
     all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
 
