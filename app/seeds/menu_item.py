@@ -154,10 +154,6 @@ def seed_menu_items():
     for i in range(0, 49):
 
         restaurant_counter += 1
-        entree_name_end = entree_names[randint(0, 12)]
-        dessert_name_end = dessert_names[randint(0, 12)]
-        drink_name_end = drink_names[randint(0, 14)]
-        side_name_end = side_names[randint(0, 15)]
         # Alfred
         if restaurant_counter <= 13:
             our_guy = "1_Alfred"
@@ -218,12 +214,16 @@ def seed_menu_items():
 
 
         for k in range(0, 3):
+            entree_name_end = entree_names[randint(0, 12)]
+            dessert_name_end = dessert_names[randint(0, 12)]
+            drink_name_end = drink_names[randint(0, 14)]
+            side_name_end = side_names[randint(0, 15)]
 
 
 
 
-    # Create MenuItemImg First for ENTREE and Commit
-            changes2 = MenuItemImg(
+    ####create my entree.  chhange variable is 1
+            changes1 = MenuItemImg(
 
 
 
@@ -231,16 +231,16 @@ def seed_menu_items():
             url=entree_translator[entree_name_end],
             preview=True if k == 0 else False
         )
-            db.session.add(changes2)
+            db.session.add(changes1)
             db.session.commit()
 
 
 
 
-        # Now, Create the MenuItem (currEntree) for ENTREE and Link it to the Committed MenuItemImg
+
             currEntree = MenuItem(
             restaurant_id=restaurant_counter,
-            menu_item_img_id=changes2.id,
+            menu_item_img_id=changes1.id,
             name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {entree_name_end}",
             description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
             price=float(fake_price()),
@@ -249,19 +249,19 @@ def seed_menu_items():
         )
             db.session.add(currEntree)
             db.session.commit()
-            currEntree.menu_item_img_id=changes2.id
-            changes2.menu_item_id=currEntree.id
+            currEntree.menu_item_img_id=changes1.id
+            changes1.menu_item_id=currEntree.id
             db.session.commit()
 
 
 
 
-        # Similar process for SIDE
-            changes3 = MenuItemImg(
+        # create my side.   change variable is 2
+            changes2 = MenuItemImg(
             url=sides_translator[side_name_end],
             preview=False
         )
-            db.session.add(changes3)
+            db.session.add(changes2)
             db.session.commit()
             currSide = MenuItem(
             restaurant_id=restaurant_counter,
@@ -274,19 +274,19 @@ def seed_menu_items():
         )
             db.session.add(currSide)
             db.session.commit()
-            currSide.menu_item_img_id=changes3.id
-            changes3.menu_item_id=currSide.id
+            currSide.menu_item_img_id=changes2.id
+            changes2.menu_item_id=currSide.id
             db.session.commit()
 
 
 
 
-        # Similar process for DESSERT
-            changes4 = MenuItemImg(
+        # create dessert .  change variable is 3
+            changes3 = MenuItemImg(
             url=dessert_translator[dessert_name_end],
             preview=False
         )
-            db.session.add(changes4)
+            db.session.add(changes3)
             db.session.commit()
 
 
@@ -294,27 +294,27 @@ def seed_menu_items():
 
             currDessert = MenuItem(
             restaurant_id=restaurant_counter,
-            menu_item_img_id=changes4.id,
+            menu_item_img_id=changes3.id,
             name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {dessert_name_end}",
             description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {dessert_name_end}s",
             price=float(fake_price()),
-            type="dessert"
+            type="dessert",
+            shopping_cart_id=restaurant_counter
         )
             db.session.add(currDessert)
             db.session.commit()
-            currDessert.menu_item_img_id=changes4.id
-            changes4.menu_item_id=currDessert.id
+            currDessert.menu_item_img_id=changes3.id
+            changes3.menu_item_id=currDessert.id
             db.session.commit()
 
 
 
-
-        # Similar process for DRINK
-            changes5 = MenuItemImg(
+        # create my drink.  change variable is 4
+            changes4 = MenuItemImg(
             url=drink_translator[drink_name_end],
             preview=False
         )
-            db.session.add(changes5)
+            db.session.add(changes4)
             db.session.commit()
 
 
@@ -326,16 +326,17 @@ def seed_menu_items():
 
             currDrink = MenuItem(
             restaurant_id=restaurant_counter,
-            menu_item_img_id=changes5.id,
+            menu_item_img_id=changes4.id,
             name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {drink_name_end}",
             description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
             price=float(fake_price()),
-            type="drink"
+            type="drink",
+            shopping_cart_id=restaurant_counter
         )
             db.session.add(currDrink)
             db.session.commit()
-            currDrink.menu_item_img_id=changes5.id
-            changes5.menu_item_id=currDrink.id
+            currDrink.menu_item_img_id=changes4.id
+            changes4.menu_item_id=currDrink.id
             db.session.commit()
 
 
@@ -352,6 +353,9 @@ def undo_menu_items():
     if environment == "production":
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.menu_items RESTART IDENTITY CASCADE;")
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.menu_item_imgs RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM menu_items"))
+        db.session.execute(text("DELETE FROM menu_item_imgs"))
     db.session.commit()
