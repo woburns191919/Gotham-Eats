@@ -32,6 +32,7 @@ export const thunkGetRestaurantDetail = createAsyncThunk(
   async (restaurantId, { rejectWithValue }) => {
     try {
       const res = await fetch(`/api/restaurants/${restaurantId}`);
+      console.log("Fetching details for restaurant ID:", restaurantId);
       if (res.ok) {
         const restaurant = await res.json();
         return restaurant;
@@ -51,7 +52,7 @@ export const thunkCreateRestaurant = createAsyncThunk(
   'restaurants/create',
   async (restaurantData, { rejectWithValue }) => {
     try {
-      const res = await fetch('/api/restaurants', {
+      const res = await fetch('/api/restaurants/new', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,16 +62,28 @@ export const thunkCreateRestaurant = createAsyncThunk(
 
       if (res.ok) {
         const createdRestaurant = await res.json();
-        return createdRestaurant;
+        console.log('**********Created Restaurant:', createdRestaurant);
+        // return createdRestaurant;
       } else {
-        const errors = await res.json();
-        return rejectWithValue(errors);
+        try {
+          const errors = await res.json();
+          return rejectWithValue(errors);
+        } catch (e) {
+          console.error('Error response not JSON:', e);
+          const text = await res.text();
+          console.error('Error response as text:', text);
+          return rejectWithValue(e.message);
+        }
       }
     } catch (error) {
+      console.error('Network or other error:', error);
       return rejectWithValue(error.message);
     }
   }
 );
+
+
+
 
 // ***************************thunkUpdateRestaurant**************************
 

@@ -28,28 +28,38 @@ home_restaurants = Blueprint('restaurants', __name__)
 
 @home_restaurants.route("/new", methods=["POST"])
 def create_new_restaurant():
-  """creates a new restaurant"""
-  form = RestaurantForm()
-  # form['csrf_token'].data = request.cookies['csrf_token']
+    """creates a new restaurant"""
+    form = RestaurantForm()
 
-  data = request.get_json()
-  if form.validate_on_submit():
-    new_restaurant = Restaurant(
-      owner_id = data["owner_id"],
-      name = data["name"],
-      streetAddress = data["streetAddress"],
-      city = data["city"],
-      state = data["state"],
-      postalCode = data["postalCode"],
-      country = data["country"],
-      description = data["description"],
-      hours = data["hours"],
-    )
-   
-    addded_restaurant = db.session.add(new_restaurant)
-    db.session.commit()
-    return jsonify(message = "Successfully created new restaurant", id = addded_restaurant.id), 201
-  return jsonify(errors=form.errors), 400
+    data = request.get_json()
+    if form.validate_on_submit():
+        new_restaurant = Restaurant(
+            owner_id=data.get("owner_id"),
+            name=data.get("name"),
+            streetAddress=data.get("streetAddress"),
+            city=data.get("city"),
+            state=data.get("state"),
+            postalCode=data.get("postalCode"),
+            country=data.get("country"),
+            description=data.get("description"),
+            hours=data.get("hours"),
+        )
+
+        db.session.add(new_restaurant)
+        db.session.commit()
+
+        preview_image_url = data.get("preview_image_url")
+
+        if preview_image_url:
+            menu_item = MenuItem.query.filter_by(restaurant_id=new_restaurant.id).first()
+            if menu_item:
+                menu_item.menu_item_img.url = preview_image_url
+                db.session.commit()
+
+        return jsonify(message="Successfully created new restaurant", id=new_restaurant.id), 201
+
+    return jsonify(errors=form.errors), 400
+
 
 
 @home_restaurants.route("/update/<int:id>", methods=["GET", "PUT"])

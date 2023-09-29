@@ -106,17 +106,32 @@ export default function RestaurantForm({ formType, restaurantId }) {
       setValidationObj(errorsObj);
       return;
     }
-    const newRestaurantImage = handleImages();
-    if (!newRestaurantImage) return;
+    // const newRestaurantImage = handleImages();
+    // if (!newRestaurantImage) return;
 
-    const restaurant = { name, streetAddress, city, state, postalCode, country, description, hours };
+    // const restaurant = { name, streetAddress, city, state, postalCode, country, description, hours, newRestaurantImage };
+    const restaurant = { name, streetAddress, city, state, postalCode, country, description, hours, preview_image_url: previewImg, };
     try {
 
       if (formType === "Create") {
-        const newlyCreateRestaurant = await dispatch(thunkCreateRestaurant(restaurant, newRestaurantImage, sessionUser));
-        const newRestaurant = await dispatch(thunkGetRestaurantDetail(newlyCreateRestaurant.id));
-        if (newRestaurant) history.push(`/restaurants/${newRestaurant.id}`);
-        else throw new Error("Failed to create a new restaurant");
+        console.log('restaurantData before dispatch:', restaurant);
+        const newlyCreateRestaurant = await dispatch(thunkCreateRestaurant(restaurant))
+                                                .unwrap()
+                                                .then((payload) => console.log('Success:', payload))
+                                                .catch((error) => console.error('Error:', error));
+        console.log('restaurantData after dispatch:', restaurant);
+        // const newlyCreateRestaurant = await dispatch(thunkCreateRestaurant(restaurant))
+        // console.log("*********************newlyCreateRestaurant: ", newlyCreateRestaurant.id);
+
+      //   if (newlyCreateRestaurant && newlyCreateRestaurant.id) {
+      //     const newRestaurant = await dispatch(thunkGetRestaurantDetail(newlyCreateRestaurant.id));
+      //     if (newRestaurant) history.push(`/restaurants/${newRestaurant.id}`);
+      //     else throw new Error("Failed to create a new restaurant");
+      // }
+
+        // const newRestaurant = await dispatch(thunkGetRestaurantDetail(newlyCreateRestaurant.id));
+        // if (newRestaurant) history.push(`/restaurants/${newRestaurant.id}`);
+        // else throw new Error("Failed to create a new restaurant");
       }
       if (formType === "Edit") {
         const updatedRestaurant = { ...initialRestaurant, name, streetAddress, city, state, postalCode, country, description, hours };
