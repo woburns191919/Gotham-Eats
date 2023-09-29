@@ -314,7 +314,7 @@ def seed_menu_items():
             restaurant_id=restaurant_counter,
             menu_item_img_id=changes2.id,
             name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {side_name_end}",
-            description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {dessert_name_end}s",
+            description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {side_name_end}s",
             price=float(fake_price()),
             type="side",
             shopping_cart_id=restaurant_counter
@@ -394,7 +394,7 @@ def seed_menu_items():
             restaurant_id=restaurant_counter,
             menu_item_img_id=changes4.id,
             name=f"{curr_adj_list[randint(0, len(curr_adj_list)-1)]} {drink_name_end}",
-            description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {entree_name_end}s",
+            description=f"{villain_adj_dict['19_everyone_else'][randint(0, 17)]} {drink_name_end}s",
             price=float(fake_price()),
             type="drink",
             shopping_cart_id=restaurant_counter
