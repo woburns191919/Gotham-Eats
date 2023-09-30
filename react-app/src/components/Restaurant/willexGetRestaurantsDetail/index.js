@@ -73,7 +73,7 @@ export default function WillexGetRestaurantDetail() {
 
   useEffect(() => {
     dispatch(thunkGetMenuItemsDeets(id))
-  }, [dispatch])
+  }, [dispatch,id])
 
 
   if (
@@ -86,6 +86,7 @@ export default function WillexGetRestaurantDetail() {
 
   console.log("DRinks ********", drinks)
   return (
+    <>
     <div className="Res-Det-Container">
       <h1>WE ARE IN WILLEX</h1>
       <div className="top-photo">
@@ -181,5 +182,6 @@ export default function WillexGetRestaurantDetail() {
           </ul>
         </div>
       </div>
-    </div >)
+    </div >
+    </>)
 }

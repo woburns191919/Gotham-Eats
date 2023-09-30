@@ -15,25 +15,26 @@ export default function GetRestaurants({ ownerMode = false }) {
   const [refreshCount, setRefreshCount] = useState(0);
 
   const sessionUser = useSelector((state) => state.session.user);
-  const { ownerId } = useParams()
+  const { id } = useParams()
 
-
+  console.log('GETTING USER ID',id)
   const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData?.restaurants
 
-
+  const thunk = ownerMode ? thunkGetRestaurantsUserOwns(id) : thunkGetAllRestaurants();
+  dispatch(thunk);
 
   useEffect(() => {
-    if (restaurants === undefined && refreshCount < 1) {
+    if (restaurants == null && refreshCount < 3) {
       setRefreshCount((prevCount) => prevCount + 1);
-    }
-    ownerMode === false ? dispatch(thunkGetAllRestaurants()) : dispatch(thunkGetRestaurantsUserOwns(ownerId))
+  }
+    ownerMode === false ? dispatch(thunkGetAllRestaurants()) : dispatch(thunkGetRestaurantsUserOwns(id))
 
 
 
-  }, [dispatch, ownerMode, refreshCount, ownerId]);
+  }, [dispatch, refreshCount, id,restaurants]);
 
 
-  if (!restaurantsData || !restaurantsData.restaurants) return null;
+
 
 
   if (ownerMode === true) console.log('***************************************CONGRATS WERE IN OWNER MODE BRO.')

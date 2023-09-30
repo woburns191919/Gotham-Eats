@@ -37,7 +37,7 @@ function ProfileButton({ user }) {
     document.addEventListener('click', closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+  }, [showMenu,sessionUser]);
 
   const closeMenu = () => setShowMenu(false);
 
@@ -48,7 +48,7 @@ function ProfileButton({ user }) {
     history.push('/');
   };
 
-
+  console.log('am i getting user id in here',sessionUser)
   const ulClassName = "profile-dropdown";
 
   return (

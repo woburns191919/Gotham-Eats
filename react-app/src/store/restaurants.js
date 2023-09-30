@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+//oldschool definitions types
 
-
+//******************************oldschool actions*********** */
 
 // ************************************************
 //                   ****Thunks****
 // ************************************************
 
 // ***************************thunkGetAllRestaurants**************************
-
 export const thunkGetAllRestaurants = createAsyncThunk(
   'restaurants/getAll',
   async (_, { rejectWithValue }) => {
@@ -15,7 +15,6 @@ export const thunkGetAllRestaurants = createAsyncThunk(
       const res = await fetch('/api/restaurants');
       if (res.ok) {
         const data = await res.json();
-
         return data;
       } else {
         const errors = await res.json();
@@ -26,6 +25,17 @@ export const thunkGetAllRestaurants = createAsyncThunk(
     }
   }
 );
+export const thunkGetRestaurantsUserOwns = (id) => async (dispatch) => {
+  try {
+    const res = await fetch(`/api/restaurants/manage/${id}`);
+    if (res.ok) {
+      const users_rests = await res.json();
+      dispatch(restaurantSlice.actions.loadRestsCurrentUser({users_rests: users_rests}));
+    }
+  } catch (error) {
+    console.log('STILL GOT WORK TO DO', error);
+  }
+};
 //**************************thunkGetMenuItemsDeets********** */
 export const thunkGetMenuItemsDeets = createAsyncThunk(
   'restaurants/MenuItemDeets',
@@ -156,24 +166,7 @@ export const thunkDeleteRestaurant = createAsyncThunk(
 
 // ***************************thunkGetRestaurantsUserOwns**************************
 
-export const thunkGetRestaurantsUserOwns = createAsyncThunk(
-  'restaurants/getUserOwnedRestaurants',
-  async (ownerId, { rejectWithValue }) => {
-    try {
-      const res = await fetch(`/api/restaurants/manage/${ownerId}`);
-      if (res.ok) {
 
-        const data = await res.json();
-        return data;
-      } else {
-        const errors = await res.json();
-        return rejectWithValue(errors);
-      }
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
 
 // ************************************************
 //                   ****Reducer****
@@ -187,6 +180,9 @@ const restaurantSlice = createSlice({
   reducers: {
     actionSetAllRestaurants: (state, action) => {
       state.allRestaurants = action.payload;
+    },
+    loadRestsCurrentUser: (state,action)=>{
+      state.userOwnedRestaurants=action.payload.users_rests;
     },
     actionSetSingleRestaurant: (state, action) => {
       state.singleRestaurant = action.payload;
@@ -238,6 +234,7 @@ const restaurantSlice = createSlice({
           state.userOwnedRestaurants.splice(deletedRestaurantIndex, 1);
         }
       })
+
       .addCase(thunkGetMenuItemsDeets.fulfilled, (state, action) => {
         state.RestaurantMenu = action.payload;
       })

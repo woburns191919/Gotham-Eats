@@ -5,85 +5,8 @@ from app.models import User, Restaurant, Review, db, MenuItem,MenuItemImg
 from sqlalchemy import func, distinct, or_, desc
 from ..forms import RestaurantForm
 import json
-# from ..models.restaurants import
-
 home_restaurants = Blueprint('restaurants', __name__)
 
-
-
-
-# @home_restaurants.route("/")
-# def get_popular_restaurants():
-#   """returns a all restaurant order by popularity"""
-#   restaurants = db.session.query(Restaurant).join(Review, Restaurant.id == Review.restaurant_id).\
-#     group_by(Restaurant.id).\
-#     order_by(func.avg(Review.stars).desc()).\
-#     all()
-
-#   all_restaurants = {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
-#   print('restaurants**', all_restaurants)
-#   return all_restaurants
-
-
-
-@home_restaurants.route("/new")
-def display_restaurant_form():
-  """displays restaurant form"""
-  form_html = """
-  <html>
-  <head>
-    <title>Create a Restaurant</title>
-  </head>
-    <body>
-      <h1>Create a New Restaurant</h1>
-      <form method="POST" action="/restaurants/new">
-        <label for="name">Name:</label>
-        <input type="text" required /> <br /><br />
-
-        <label for="streetAddress">Street Address:</label>
-        <input type="text" required /> <br /><br />
-
-        <label for="city">City:</label>
-        <select name="city">
-          <option value="Gotham"></option>
-        </select>
-        <br /><br />
-
-        <label for="state">State:</label>
-        <select name="state">
-          <option value="New York"></option>
-        </select>
-        <br /><br />
-
-        <label for="postalCode">Postal Code:</label>
-        <input type="text" required /> <br /><br />
-
-        <label for="country">Country:</label>
-        <select name="country">
-          <option value="United States"></option>
-        </select>
-        <br /><br />
-
-        <label for="description">Description:</label>
-        <input type="textarea" required /> <br /><br />
-
-        <label for="hours">Hours:</label>
-        <input type="textarea" required /> <br /><br />
-
-        <label for="previmg">Preview Image:</label>
-        <input type="text" required /> <br /><br />
-
-        <label for="submit">Create Restaurant:</label>
-        <input type="text" />
-      </form>
-    </body>
-
-</html>
-  """
-  return form_html
-
-
-"""creates a new restaurant"""
 @home_restaurants.route("/new", methods=["POST"])
 def create_new_restaurant():
 
@@ -169,13 +92,15 @@ def delete_post(id):
     return redirect("/restaurants")
 
 @home_restaurants.route("/manage/<int:id>")
+
 def get_my_restaurants(id):
-    my_restaurants=db.session.query(Restaurant).filter(Restaurant.owner_id==id).all()
-    if my_restaurants:
+  print('at least inside my rourte ********')
+  my_restaurants= db.session.query(Restaurant).filter(Restaurant.owner_id==current_user.id).all()
+  if my_restaurants:
         restaurant_data=[restaurant.to_dict() for restaurant in my_restaurants]
         all_restaurants = {'restaurants':restaurant_data}
         return jsonify(restaurant_data), 200
-    else:
+  else:
         abort(404,"You don't  have any spots")
 ##ALEX WORKED HERE.  I DO THIS SO MERGES EASIER##
 @home_restaurants.route("/getMenuItemDeets/<int:id>")

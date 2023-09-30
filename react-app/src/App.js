@@ -61,7 +61,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/owner/restaurants/:ownerId">
+          <Route path="/owner/restaurants/:id">
             <GetRestaurants ownerMode={true} />
           </Route>
           <Route>Page Not Found</Route>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, NavLink, useParams } from "react-router-dom";
-import { thunkGetAllRestaurants, thunkGetRestaurantsUserOwns } from "../../../store/restaurants";
+import restaurants, { thunkGetAllRestaurants, thunkGetRestaurantsUserOwns } from "../../../store/restaurants";
 import { thunkGetAllRestaurantReviews } from "../../../store/reviews";
 import OpenModalButton from "../../OpenModalButton/index";
 import "./GetRestaurants.css";
@@ -12,36 +12,41 @@ export default function WillexGetRestaurants({ ownerMode = false }) {
   const history = useHistory();
 
   const restaurantsData = useSelector((state) => state.restaurants?.allRestaurants);
-  const RestaurantsUserOwns = useSelector((state) => state.restaurants?.userOwnedRestaurants)
-  const reviews = useSelector((state) => state.reviews && state.reviews.allReviews)
+  const RestaurantsUserOwns = useSelector((state) => state.restaurants?.RestaurantsUserOwns)
+  // const reviews = useSelector((state) => state.reviews && state.reviews.allReviews)
 
 
   const [refreshCount, setRefreshCount] = useState(0);
 
   const sessionUser = useSelector((state) => state.session.user);
-  const { ownerId } = useParams()
+
 
 
   const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData?.restaurants
-
-
+  const fetchData2= async(id) =>{
+    let goal=await dispatch(thunkGetRestaurantsUserOwns(sessionUser.id));
+    return goal
+}
 
   useEffect(() => {
-    ownerMode === false ? dispatch(thunkGetAllRestaurants()) : dispatch(thunkGetRestaurantsUserOwns(ownerId));
-    dispatch(thunkGetAllRestaurantReviews());
-}, [dispatch, ownerMode, ownerId]);
+
+  if (!restaurants){
+  ownerMode === false ? dispatch(thunkGetAllRestaurants()) : fetchData2(sessionUser.id)}
+  // if (!reviews){
+  // dispatch(thunkGetAllRestaurantReviews())}
+
+}, [dispatch,sessionUser,restaurants,ownerMode]);
 
 useEffect(() => {
-    if ((restaurants === undefined || reviews === undefined) && refreshCount < 1) {
+    if ((restaurants === undefined ) && refreshCount < 1) {
         setRefreshCount((prevCount) => prevCount + 1);
     }
-}, [refreshCount, restaurants, reviews]);
+}, [refreshCount, restaurants]);
 
 
-  if (!restaurantsData || !restaurantsData.restaurants) return null;
 
 
-  if (ownerMode === true) 
+
 
   return (
 
@@ -60,7 +65,7 @@ useEffect(() => {
 
 
       <div className={`${ownerMode ? "ownerRestaurant-main-container ownerRestaurant-grid-container" : "restaurants-main-container grid-container"}`}>
-        {restaurants && restaurants.length > 0 && restaurants.map((restaurant) => (
+        {restaurants && restaurants?.length > 0 && restaurants.map((restaurant) => (
           <div className={`${ownerMode ? "ownerRestaurant-restaurant-img-main-div" : "restaurant-img-main-div"}`} key={restaurant.id}>
             <Link to={`/restaurants/${restaurant.id}`} style={{ textDecoration: "none", color: "var(--black)" }}>
               <div className={`restaurant-box ${ownerMode ? "ownerRestaurant" : ""}`}>
@@ -74,7 +79,8 @@ useEffect(() => {
 
               </div>
             </Link>
-          </div>))}
+          </div>
+          ))}
 
         {ownerMode && restaurants && restaurants.length > 0 && restaurants.map((restaurant) => (
           <div className="owner-div update-delete-btns">
