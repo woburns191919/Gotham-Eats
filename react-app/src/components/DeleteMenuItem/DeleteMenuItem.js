@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkDeleteMenuItem } from "../../store/"
+import { thunkDeleteMenuItem } from "../../store/menuItem"
 import { thunkGetRestaurantsUserOwns } from "../../store/restaurants";
 
 export default function DeleteMenuItem({ menuItemId }) {
