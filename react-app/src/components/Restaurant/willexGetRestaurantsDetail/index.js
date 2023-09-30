@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetRestaurantDetail } from "../../../store/restaurants";
 import OpenModalButton from "../../OpenModalButton";
+import { thunkgetAllUsers } from "../../../store/session";
 
 import "./GetRestaurantDetail.css";
 
@@ -13,8 +14,18 @@ export default function WillexGetRestaurantDetail() {
   const [isDelivery, setIsDelivery] = useState(true);
 
 
+  const users = Object.values(
+    useSelector((state) => (state.session.allUsers ? state.session.allUsers : []))
+  );
+
 
   const restaurantsDetailData = useSelector((state) => state.restaurants?.singleRestaurant);
+
+  console.log('use selector users', users)
+
+
+
+
   console.log("********************restaurantsDetailData", restaurantsDetailData)
   if (restaurantsDetailData && restaurantsDetailData.menu_item_images && restaurantsDetailData.menu_item_images.length > 0) {
 
@@ -31,6 +42,11 @@ export default function WillexGetRestaurantDetail() {
   useEffect(() => {
     dispatch(thunkGetRestaurantDetail(id));
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(thunkgetAllUsers())
+  }, [dispatch])
+
 
   if (
     !restaurantsDetailData ||
@@ -87,12 +103,14 @@ export default function WillexGetRestaurantDetail() {
         <div className="reviews">
           <h2>Reviews</h2>
             <ul className='reviewsList'>
-            {restaurantsDetailData.map((review)=>
+              {console.log('data type of restaurant detail',restaurantsDetailData)}
+            {restaurantsDetailData.reviews?.map((review)=>
             <li>
 
               {review.review}
               {review.updated_at}
-              {users_Array.filter((user)=>user.userId===review.id)}
+              {users && users.find(user => user.id === review.user_id)}
+              {console.log('users********', users)}
             </li>
 
 
