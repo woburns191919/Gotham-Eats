@@ -10,7 +10,7 @@ import SignupFormModal from "./components/SignupFormModal";
 import GetRestaurants from "./components/Restaurant/GetRestaurants";
 import WillexGetRestaurants from "./components/Restaurant/willexGetRestaurants";
 import Home from "./components/Home"
-import GetRestaurantDetail from "./components/Restaurant/GetRestaurantDetail";
+
 import WillexGetRestaurantDetail from "./components/Restaurant/willexGetRestaurantsDetail";
 import CreateRestaurantForm from "./components/Restaurant/RestaurantForm/CreateRestaurantForm";
 import EditRestaurantForm from "./components/Restaurant/RestaurantForm/EditRestaurantForm";

@@ -15,26 +15,25 @@ export default function GetRestaurants({ ownerMode = false }) {
   const [refreshCount, setRefreshCount] = useState(0);
 
   const sessionUser = useSelector((state) => state.session.user);
-  const { id } = useParams()
+  const { ownerId } = useParams()
 
-  console.log('GETTING USER ID',id)
+
   const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData?.restaurants
 
-  const thunk = ownerMode ? thunkGetRestaurantsUserOwns(id) : thunkGetAllRestaurants();
-  dispatch(thunk);
+
 
   useEffect(() => {
-    if (restaurants == null && refreshCount < 3) {
+    if (restaurants === undefined && refreshCount < 1) {
       setRefreshCount((prevCount) => prevCount + 1);
-  }
-    ownerMode === false ? dispatch(thunkGetAllRestaurants()) : dispatch(thunkGetRestaurantsUserOwns(id))
+    }
+    ownerMode === false ? dispatch(thunkGetAllRestaurants()) : dispatch(thunkGetRestaurantsUserOwns(ownerId))
 
 
 
-  }, [dispatch, refreshCount, id,restaurants]);
+  }, [dispatch, ownerMode, refreshCount, ownerId]);
 
 
-
+  if (!restaurantsData || !restaurantsData.restaurants) return null;
 
 
   if (ownerMode === true) console.log('***************************************CONGRATS WERE IN OWNER MODE BRO.')
@@ -63,7 +62,7 @@ export default function GetRestaurants({ ownerMode = false }) {
                   <p className="res-name">{restaurant.name}({restaurant.streetAddress})</p>
                   <p className="avgRating-p-tag">
                     {/* {restaurant.avgRating && restaurant.avgRating ? restaurant.avgRating?.toFixed(1) : <span className="boldText">New</span>} */}
-                    {(restaurant.avgRating !== null && restaurant.avgRating !== undefined) ? restaurant.avgRating : <span className="boldText">New</span>}</p>
+                    {(restaurant.avgRating !== null && restaurant.avgRating !== undefined) ? restaurant.avgRating.toFixed(1) : <span className="boldText">New</span>}</p>
                 </div>
 
               </div>

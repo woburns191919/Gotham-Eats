@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms import StringField, IntegerField, SelectField, SubmitField
+from wtforms.validators import DataRequired, Email, ValidationError, Length
 from app.models import User
 
 
@@ -17,11 +17,23 @@ def username_exists(form, field):
     username = field.data
     user = User.query.filter(User.username == username).first()
     if user:
-        raise ValidationError('Username is already in use.')
+        raise ValidationError('username is already in use.')
+
+def is_numeric(form, field):
+
+    if not field.data.isdigit():
+        raise ValidationError("This field must contain only numbers.")
 
 
 class SignUpForm(FlaskForm):
-    username = StringField(
-        'username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired(), user_exists])
+    firstName = StringField('firstName', validators=[DataRequired()])
+    lastName = StringField('lastName', validators=[DataRequired()])
+    username = StringField('username', validators=[ username_exists])
     password = StringField('password', validators=[DataRequired()])
+    email = StringField('email', validators=[DataRequired(), user_exists])
+    streetAddress = StringField('streetAddress', validators=[DataRequired()])
+    city = StringField("City")
+    state = StringField("State")
+    postalCode = StringField("Postal Code")
+    country = StringField("Country")
+    phone = StringField('phone', validators=[DataRequired()])
