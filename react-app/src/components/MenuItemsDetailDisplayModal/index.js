@@ -1,19 +1,25 @@
 import React from 'react';
 import { useModal } from '../../context/Modal';
-import "./ProfileModal.css"
 
-function MenuItemsDetails({ menuItems,type }) {
+
+async function MenuItemsDetailsModal({ MenuDeetz }) {
     const { closeModal } = useModal();
 
-    
     return (
         <div className="profile-modal">
-            <h2>User Profile</h2>
-            <p>Username: {user.username}</p>
-            <p>Email: {user.email}</p>
-            <button onClick={closeModal}>Close</button>
+         <div className="imgages-container">
+            {MenuDeetz.map((ele, index) => (
+              <img className="res-det-photo"
+                key={index}
+                src={`${ele.url}`}
+                alt={`${ele.name}`}
+              />
+
+              // {restaurantsDetailData.menu_item_images.url}
+            ))}
+          </div>
         </div>
     );
   }
 
-  export default ProfileModal;
+  export default MenuItemsDetailsModal;

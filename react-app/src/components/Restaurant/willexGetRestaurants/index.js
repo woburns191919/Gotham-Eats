@@ -27,14 +27,15 @@ export default function WillexGetRestaurants({ ownerMode = false }) {
 
 
   useEffect(() => {
-    if ((restaurants === undefined || reviews === undefined) && refreshCount < 1) {
-      setRefreshCount((prevCount) => prevCount + 1);
-    }
     ownerMode === false ? dispatch(thunkGetAllRestaurants()) : dispatch(thunkGetRestaurantsUserOwns(ownerId));
+    dispatch(thunkGetAllRestaurantReviews());
+}, [dispatch, ownerMode, ownerId]);
 
-    dispatch(thunkGetAllRestaurantReviews())
-
-  }, [dispatch, ownerMode, refreshCount, ownerId,restaurants,reviews]);
+useEffect(() => {
+    if ((restaurants === undefined || reviews === undefined) && refreshCount < 1) {
+        setRefreshCount((prevCount) => prevCount + 1);
+    }
+}, [refreshCount, restaurants, reviews]);
 
 
   if (!restaurantsData || !restaurantsData.restaurants) return null;

@@ -1,29 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkGetRestaurantDetail } from "../../../store/restaurants";
+import { thunkGetMenuItemsDeets, thunkGetRestaurantDetail } from "../../../store/restaurants";
 import OpenModalButton from "../../OpenModalButton";
 import { thunkgetAllUsers } from "../../../store/session";
 
-import "./GetRestaurantDetail.css";
+import "./WillexGetRestaurantDetail.css";
+import MenuItemsDetailsModal from "../../MenuItemsDetailDisplayModal";
 
 export default function WillexGetRestaurantDetail() {
   const dispatch = useDispatch();
   const [reloadPage, setReloadPage] = useState(false);
   const { id } = useParams();
   const [isDelivery, setIsDelivery] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [refreshCount, setRefreshCount] = useState(0);
 
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
 
   const users = Object.values(
     useSelector((state) => (state.session.allUsers ? state.session.allUsers : []))
   );
+
+  const menuDeets= useSelector((state)=>(state.restaurants?.RestaurantMenu))
 
 
   const restaurantsDetailData = useSelector((state) => state.restaurants?.singleRestaurant);
 
   console.log('use selector users', users)
 
-
+  let drinks= menuDeets?.drinks
+  let entrees= menuDeets?.entrees
+  let sides= menuDeets?.sides
+  let desserts= menuDeets?.desserts
 
 
   console.log("********************restaurantsDetailData", restaurantsDetailData)
@@ -39,20 +55,26 @@ export default function WillexGetRestaurantDetail() {
     }
   }
 
-  useEffect(() => {
-    dispatch(thunkGetRestaurantDetail(id));
-  }, [dispatch]);
+
 
   useEffect(() => {
+
+    dispatch(thunkGetRestaurantDetail(id));
     dispatch(thunkgetAllUsers())
-  }, [dispatch])
+    dispatch(thunkGetMenuItemsDeets(id))
+    setReloadPage(false)
+  }, [dispatch,id,reloadPage]);
+
+
 
 
   if (
     !restaurantsDetailData ||
     !restaurantsDetailData.menu_item_images ||
-    restaurantsDetailData.menu_item_images.length === 0
+    restaurantsDetailData.menu_item_images.length === 0 ||
+    !menuDeets
   ) {
+    setReloadPage(true)
     return null;
   }
 
@@ -87,6 +109,39 @@ export default function WillexGetRestaurantDetail() {
         </div>
         <div className="menu-items">
           <h2 className="nat-sel">Natural Selection</h2>
+          <div>
+          <OpenModalButton
+            buttonText="All drinks"
+            modalComponent={
+              <MenuItemsDetailsModal MenuDeetz={drinks} onClose={handleModalClose} />
+            }
+            onClick={handleModalOpen}
+          />
+          <OpenModalButton
+            buttonText="All Entrees"
+            modalComponent={
+              <MenuItemsDetailsModal MenuDeetz={entrees} onClose={handleModalClose} />
+            }
+            onClick={handleModalOpen}
+          />
+          <OpenModalButton
+            buttonText="All Desserts"
+            modalComponent={
+              <MenuItemsDetailsModal MenuDeetz={desserts} onClose={handleModalClose} />
+            }
+            onClick={handleModalOpen}
+          />
+          <OpenModalButton
+            buttonText="All Sides"
+            modalComponent={
+              <MenuItemsDetailsModal MenuDeetz={sides} onClose={handleModalClose}  />
+            }
+            onClick={handleModalOpen}
+          />
+
+
+          </div>
+
           <div className="imgages-container">
             {restaurantsDetailData.menu_item_images.slice(0).map((img, index) => (
               <img className="res-det-photo"
@@ -122,6 +177,5 @@ export default function WillexGetRestaurantDetail() {
             </ul>
         </div>
       </div>
-    </div>
-  )
+    </div>)
 }

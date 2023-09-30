@@ -1,12 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-//constants
-const GET_MENU_ITEMS_DETAILS = "restaurants/get_details_bro";
 
-//oldschool actions
-const Get_Deets_Separate_Type_1restaurant = (MenuItemsAndImages) => ({
-	type: GET_MENU_ITEMS_DETAILS,
-	payload: MenuItemsAndImages,
-});
+
 
 // ************************************************
 //                   ****Thunks****
@@ -18,7 +12,7 @@ export const thunkGetAllRestaurants = createAsyncThunk(
   'restaurants/getAll',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch('/api/restaurants/getMenuItemDeets');
+      const res = await fetch('/api/restaurants');
       if (res.ok) {
         const data = await res.json();
 
@@ -40,7 +34,7 @@ export const thunkGetMenuItemsDeets = createAsyncThunk(
       const res = await fetch(`/api/restaurants/getMenuItemDeets/${rest_id}`);
       if (res.ok) {
         const allMenuItems = await res.json();
-        return allMenuItems;
+        return allMenuItems
       } else {
         const errors = await res.json();
         return rejectWithValue(errors);
@@ -185,7 +179,7 @@ export const thunkGetRestaurantsUserOwns = createAsyncThunk(
 //                   ****Reducer****
 // ************************************************
 
-const initialState = { allRestaurants: {}, singleRestaurant: {}, userOwnedRestaurants: [] };
+const initialState = { allRestaurants: {}, singleRestaurant: {}, userOwnedRestaurants: [], RestaurantMenu: {} };
 
 const restaurantSlice = createSlice({
   name: 'restaurants',
@@ -216,6 +210,9 @@ const restaurantSlice = createSlice({
         state.userOwnedRestaurants.splice(deletedRestaurantIndex, 1);
       }
     },
+    actionSetMenuRestaurant: (state, action) => {
+      state.RestaurantMenu = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -231,9 +228,6 @@ const restaurantSlice = createSlice({
       .addCase(thunkUpdateRestaurant.fulfilled, (state, action) => {
         state.singleRestaurant = action.payload;
       })
-      // .addCase(thunkDeleteRestaurant.fulfilled, (state, action) => {
-      //   delete state.allRestaurants[action.payload];
-      // })
       .addCase(thunkDeleteRestaurant.fulfilled, (state, action) => {
         const deletedRestaurantId = action.payload;
         const deletedRestaurantIndex = state.userOwnedRestaurants.findIndex(
@@ -244,11 +238,23 @@ const restaurantSlice = createSlice({
           state.userOwnedRestaurants.splice(deletedRestaurantIndex, 1);
         }
       })
-      .addCase(thunkGetRestaurantsUserOwns.fulfilled, (state, action) => {
-        state.userOwnedRestaurants = action.payload;
+      .addCase(thunkGetMenuItemsDeets.fulfilled, (state, action) => {
+        state.RestaurantMenu = action.payload;
+      })
+      .addCase(thunkGetMenuItemsDeets.rejected, (state, action) => {
+        console.error('Fetching menu items failed', action.error);
       });
   },
 });
+
+
+
+
+
+
+
+
+
 
 export const {
   actionSetAllRestaurants,
@@ -257,6 +263,7 @@ export const {
   actionSetCreatedRestaurant,
   actionSetUpdatedRestaurant,
   actionSetDeletedRestaurant,
+  actionSetMenuRestaurant
 } = restaurantSlice.actions;
 
 export default restaurantSlice.reducer;
