@@ -55,26 +55,29 @@ export default function WillexGetRestaurantDetail() {
     }
   }
 
-
+  if (!menuDeets){
+    setRefreshCount(refreshCount+1)
+  }
 
   useEffect(() => {
 
     dispatch(thunkGetRestaurantDetail(id));
+  }, [dispatch,id,refreshCount]);
+
+  useEffect(() => {
     dispatch(thunkgetAllUsers())
+  }, [dispatch])
+
+  useEffect(() => {
     dispatch(thunkGetMenuItemsDeets(id))
-    setReloadPage(false)
-  }, [dispatch,id,reloadPage]);
-
-
+  }, [dispatch])
 
 
   if (
     !restaurantsDetailData ||
     !restaurantsDetailData.menu_item_images ||
-    restaurantsDetailData.menu_item_images.length === 0 ||
-    !menuDeets
+    restaurantsDetailData.menu_item_images.length === 0
   ) {
-    setReloadPage(true)
     return null;
   }
 
