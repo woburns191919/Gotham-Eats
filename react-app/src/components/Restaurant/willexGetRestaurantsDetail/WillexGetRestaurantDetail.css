@@ -31,7 +31,7 @@
     border-radius: 20px;
     color: white;
     cursor: pointer;
-    width: 191px;
+    width: 150px;
     justify-content: flex-end;
     margin-left: 763px;
     margin-bottom: 8px;
@@ -85,7 +85,7 @@
   }
 
   .res-det-photo {
-    width: calc(25% - 10px);
+    width: 204px;
     height: 150px;
     margin-right: 5px;
     margin-bottom: 10px;
@@ -98,3 +98,68 @@
   .res-det-photo:nth-child(4n) {
     margin-right: 0;
   }
+
+  .mod-bttn {
+    color:#111
+  }
+
+  .reviews {
+    padding: 20px;
+    background-color: #f6f6f6;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reviewsList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.reviewsList li {
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+    position: relative;
+}
+
+.reviewsList li:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.reviewText {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+}
+
+.reviewDate {
+    font-size: 12px;
+    color: #888;
+    margin-top: 10px;
+    display: block;
+}
+
+.reviewUser {
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #333;
+}
+
+h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-family: 'BatmanForeverAlternate', sans-serif;
+    text-shadow: 2px 2px rgb(255, 247, 164);
+}

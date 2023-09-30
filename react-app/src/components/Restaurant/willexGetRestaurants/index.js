@@ -41,7 +41,7 @@ useEffect(() => {
   if (!restaurantsData || !restaurantsData.restaurants) return null;
 
 
-  if (ownerMode === true) console.log('***************************************CONGRATS WERE IN OWNER MODE BRO.')
+  if (ownerMode === true) 
 
   return (
 

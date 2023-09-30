@@ -15,6 +15,7 @@ export default function WillexGetRestaurantDetail() {
   const [isDelivery, setIsDelivery] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [refreshCount, setRefreshCount] = useState(0);
+  const MAX_RETRIES = 3;
 
   const handleModalOpen = () => {
     setIsModalOpen(true);
@@ -29,20 +30,22 @@ export default function WillexGetRestaurantDetail() {
     useSelector((state) => (state.session.allUsers ? state.session.allUsers : []))
   );
 
-  const menuDeets= useSelector((state)=>(state.restaurants?.RestaurantMenu))
+  const menuDeetz = useSelector((state) => (state.restaurants?.RestaurantMenu))
 
 
   const restaurantsDetailData = useSelector((state) => state.restaurants?.singleRestaurant);
 
-  console.log('use selector users', users)
+  console.log("Menudeetz ********", menuDeetz)
 
-  let drinks= menuDeets?.drinks
-  let entrees= menuDeets?.entrees
-  let sides= menuDeets?.sides
-  let desserts= menuDeets?.desserts
+  let drinks = menuDeetz?.drink || [];
+  let entrees = menuDeetz?.entree || [];
+  let sides = menuDeetz?.side || [];
+  let desserts = menuDeetz?.dessert || [];
+
+  const allMenuItems = [...drinks, ...entrees, ...desserts, ...sides];
 
 
-  console.log("********************restaurantsDetailData", restaurantsDetailData)
+
   if (restaurantsDetailData && restaurantsDetailData.menu_item_images && restaurantsDetailData.menu_item_images.length > 0) {
 
   }
@@ -55,14 +58,14 @@ export default function WillexGetRestaurantDetail() {
     }
   }
 
-  if (!menuDeets){
-    setRefreshCount(refreshCount+1)
+  if (!menuDeetz && refreshCount < MAX_RETRIES) {
+    setRefreshCount(prev => prev + 1);
   }
 
   useEffect(() => {
 
     dispatch(thunkGetRestaurantDetail(id));
-  }, [dispatch,id,refreshCount]);
+  }, [dispatch, id, refreshCount]);
 
   useEffect(() => {
     dispatch(thunkgetAllUsers())
@@ -81,7 +84,7 @@ export default function WillexGetRestaurantDetail() {
     return null;
   }
 
-
+  console.log("DRinks ********", drinks)
   return (
     <div className="Res-Det-Container">
       <h1>WE ARE IN WILLEX</h1>
@@ -112,73 +115,71 @@ export default function WillexGetRestaurantDetail() {
         </div>
         <div className="menu-items">
           <h2 className="nat-sel">Natural Selection</h2>
-          <div>
-          <OpenModalButton
-            buttonText="All drinks"
-            modalComponent={
-              <MenuItemsDetailsModal MenuDeetz={drinks} onClose={handleModalClose} />
-            }
-            onClick={handleModalOpen}
-          />
-          <OpenModalButton
-            buttonText="All Entrees"
-            modalComponent={
-              <MenuItemsDetailsModal MenuDeetz={entrees} onClose={handleModalClose} />
-            }
-            onClick={handleModalOpen}
-          />
-          <OpenModalButton
-            buttonText="All Desserts"
-            modalComponent={
-              <MenuItemsDetailsModal MenuDeetz={desserts} onClose={handleModalClose} />
-            }
-            onClick={handleModalOpen}
-          />
-          <OpenModalButton
-            buttonText="All Sides"
-            modalComponent={
-              <MenuItemsDetailsModal MenuDeetz={sides} onClose={handleModalClose}  />
-            }
-            onClick={handleModalOpen}
-          />
+          <div className="mod-bbtn">
+            <OpenModalButton
+              buttonText="All drinks"
+              className="mod-bttn"
+              modalComponent={
+                <MenuItemsDetailsModal MenuDeetz={drinks} onClose={handleModalClose} />
+              }
+              onClick={handleModalOpen}
+            />
+            <OpenModalButton
+              buttonText="All Entrees"
+              className="mod-bttn"
+              modalComponent={
+                <MenuItemsDetailsModal MenuDeetz={entrees} onClose={handleModalClose} />
+              }
+              onClick={handleModalOpen}
+            />
+            <OpenModalButton
+              buttonText="All Desserts"
+              className="mod-bttn"
+              modalComponent={
+                <MenuItemsDetailsModal MenuDeetz={desserts} onClose={handleModalClose} />
+              }
+              onClick={handleModalOpen}
+            />
+            <OpenModalButton
+              buttonText="All Sides"
+              className="mod-bttn"
+              modalComponent={
+                <MenuItemsDetailsModal MenuDeetz={sides} onClose={handleModalClose} />
+              }
+              onClick={handleModalOpen}
+            />
 
 
           </div>
 
           <div className="imgages-container">
-            {restaurantsDetailData.menu_item_images.slice(0).map((img, index) => (
-              <img className="res-det-photo"
-                key={index}
-                src={`${process.env.PUBLIC_URL}${img.url}`}
-                alt=""
-              />
-
-              // {restaurantsDetailData.menu_item_images.url}
+            {allMenuItems.map((item, index) => (
+              <div className="menu-item-wrapper" key={index}>
+                <img
+                  className="res-det-photo"
+                  src={item.url}
+                  alt={item.name}
+                />
+                <div className="menu-item-name">{item.name}</div>
+                <div className="menu-item-price">${parseFloat(item.price).toFixed(2)}</div>
+              </div>
             ))}
           </div>
 
+
         </div>
         <div className="reviews">
-          <h2>Reviews</h2>
-            <ul className='reviewsList'>
-              {console.log('data type of restaurant detail',restaurantsDetailData)}
-            {restaurantsDetailData.reviews?.map((review)=>
-            <li>
-
-              {review.review}
-              {review.updated_at}
-              {users && users.find(user => user.id === review.user_id)}
-              {console.log('users********', users)}
-            </li>
-
-
+          <h4 className="review-name">Reviews</h4>
+          <ul className='reviewsList'>
+            {restaurantsDetailData.reviews?.map((review) =>
+              <li key={review.id}>
+                <span className="reviewText">{review.review}</span>
+                <span className="reviewDate">{new Date(review.updated_at).toLocaleDateString()}</span>
+                {users && <span className="reviewUser">{users.find(user => user.id === review.user_id)?.username}</span>}
+              </li>
             )}
-
-
-
-
-            </ul>
+          </ul>
         </div>
       </div>
-    </div>)
+    </div >)
 }

@@ -1,25 +1,28 @@
 import React from 'react';
 import { useModal } from '../../context/Modal';
+import "./menuItemsDetail.css"
 
 
-async function MenuItemsDetailsModal({ MenuDeetz }) {
-    const { closeModal } = useModal();
+function MenuItemsDetailsModal({ MenuDeetz }) {
+  const { closeModal } = useModal();
 
-    return (
-        <div className="profile-modal">
-         <div className="imgages-container">
-            {MenuDeetz.map((ele, index) => (
-              <img className="res-det-photo"
-                key={index}
-                src={`${ele.url}`}
-                alt={`${ele.name}`}
-              />
-
-              // {restaurantsDetailData.menu_item_images.url}
-            ))}
+  return (
+    <div className="profile-modal">
+      <div className="imgages-container">
+        {MenuDeetz.map((ele, index) => (
+          <div key={index} className="menu-item-wrapper">
+            <img className="res-det-photo-mod"
+              src={`${ele.url}`}
+              alt={`${ele.name}`}
+            />
+            <div className="menu-item-name">{ele.name}</div>
+            <div className="menu-item-price">${parseFloat(ele.price).toFixed(2)}</div>
           </div>
-        </div>
-    );
-  }
+        ))}
+      </div>
+    </div>
+  );
+}
 
-  export default MenuItemsDetailsModal;
+
+export default MenuItemsDetailsModal;
