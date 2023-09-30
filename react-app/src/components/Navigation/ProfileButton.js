@@ -110,7 +110,7 @@ function ProfileButton({ user }) {
                     modalComponent={<SignupFormModal />}
                   />
                 </ul>
-                {<Link clssName="prof-add-res" to='/restaurants/new'>Add your Restaurant</Link>}
+                {<Link className="prof-add-res" to='/restaurants/new'>Add your Restaurant</Link>}
               </>
             )}
           </ul>

@@ -48,8 +48,8 @@ function App() {
           </Route>
 
           <Route path="/restaurants" >
-          <WillexGetRestaurants />
-          {/* <Route path="/restaurants" >
+            <GetRestaurants />
+            {/* <Route path="/restaurants" >
             <GetRestaurants />
             </Route> */}
 

@@ -24,7 +24,7 @@ export default function WillexGetRestaurants({ ownerMode = false }) {
 
   const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData?.restaurants
   const fetchData2= async(id) =>{
-    let goal=await dispatch(thunkGetRestaurantsUserOwns(sessionUser.id));
+    let goal= await dispatch(thunkGetRestaurantsUserOwns(sessionUser.id));
     return goal
 }
 
