@@ -1,4 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+//constants
+const GET_MENU_ITEMS_DETAILS = "restaurants/get_details_bro";
+
+//oldschool actions
+const Get_Deets_Separate_Type_1restaurant = (MenuItemsAndImages) => ({
+	type: GET_MENU_ITEMS_DETAILS,
+	payload: MenuItemsAndImages,
+});
 
 // ************************************************
 //                   ****Thunks****
@@ -10,11 +18,29 @@ export const thunkGetAllRestaurants = createAsyncThunk(
   'restaurants/getAll',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch('/api/restaurants');
+      const res = await fetch('/api/restaurants/getMenuItemDeets');
       if (res.ok) {
         const data = await res.json();
 
         return data;
+      } else {
+        const errors = await res.json();
+        return rejectWithValue(errors);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+//**************************thunkGetMenuItemsDeets********** */
+export const thunkGetMenuItemsDeets = createAsyncThunk(
+  'restaurants/MenuItemDeets',
+  async (rest_id, { rejectWithValue }) => {
+    try {
+      const res = await fetch(`/api/restaurants/getMenuItemDeets/${rest_id}`);
+      if (res.ok) {
+        const allMenuItems = await res.json();
+        return allMenuItems;
       } else {
         const errors = await res.json();
         return rejectWithValue(errors);
@@ -62,7 +88,7 @@ export const thunkCreateRestaurant = createAsyncThunk(
 
       if (res.ok) {
         const createdRestaurant = await res.json();
-     
+
         // return createdRestaurant;
       } else {
         try {

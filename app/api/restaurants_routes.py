@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request,redirect, url_for, abort
 import app
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Restaurant, Review, db, MenuItem
+from app.models import User, Restaurant, Review, db, MenuItem,MenuItemImg
 from sqlalchemy import func, distinct, or_, desc
 from ..forms import RestaurantForm
 import json
@@ -83,33 +83,33 @@ def display_restaurant_form():
   return form_html
 
 
-
+"""creates a new restaurant"""
 @home_restaurants.route("/new", methods=["POST"])
 def create_new_restaurant():
-  """creates a new restaurant"""
-  form = RestaurantForm()
+
+    form = RestaurantForm()
   # form['csrf_token'].data = request.cookies['csrf_token']
 
-  data = request.get_json()
-  if form.validate_on_submit():
-    new_restaurant = Restaurant(
-      owner_id = data["owner_id"],
-      name = data["name"],
-      streetAddress = data["street_address"],
-      city = data["city"],
-      state = data["state"],
-      postalCode = data["postal_code"],
-      country = data["country"],
-      description = data["description"],
-      hours = data["hours"],
-      previmg = data["previmg"]
+    data = request.get_json()
+    if form.validate_on_submit():
+        new_restaurant = Restaurant(
+        owner_id = data["owner_id"],
+        name = data["name"],
+        streetAddress = data["street_address"],
+        city = data["city"],
+        state = data["state"],
+        postalCode = data["postal_code"],
+        country = data["country"],
+        description = data["description"],
+        hours = data["hours"],
+        previmg = data["previmg"]
     )
 
     print(new_restaurant)
     addded_restaurant = db.session.add(new_restaurant)
     db.session.commit()
     return jsonify(message = "Successfully created new restaurant", id = addded_restaurant.id), 201
-  return jsonify(errors=form.errors), 400
+    return jsonify(errors=form.errors), 400
 
 
 @home_restaurants.route("/update/<int:id>", methods=["GET", "PUT"])
@@ -170,14 +170,36 @@ def delete_post(id):
 
 @home_restaurants.route("/manage/<int:id>")
 def get_my_restaurants(id):
+    my_restaurants=db.session.query(Restaurant).filter(Restaurant.owner_id==id).all()
+    if my_restaurants:
+        restaurant_data=[restaurant.to_dict() for restaurant in my_restaurants]
+        all_restaurants = {'restaurants':restaurant_data}
+        return jsonify(restaurant_data), 200
+    else:
+        abort(404,"You don't  have any spots")
+##ALEX WORKED HERE.  I DO THIS SO MERGES EASIER##
+@home_restaurants.route("/getMenuItemDeets/<int:id>")
+def Get_menu_item_deets(id):
+    the_deets = db.session.query(MenuItem, MenuItemImg).join(MenuItemImg, MenuItem.menu_item_img_id == MenuItemImg.id).filter(MenuItem.restaurant_id == id).all()
 
-   my_restaurants=db.session.query(Restaurant).filter(Restaurant.owner_id==id).all()
-   if my_restaurants:
-    restaurant_data=[restaurant.to_dict() for restaurant in my_restaurants]
-    all_restaurants = {'restaurants':restaurant_data}
-    return jsonify(restaurant_data), 200
-   else:
-      abort(404,"You don't  have any spots")
+    organized_deets = {
+        "entree": [],
+        "drink": [],
+        "dessert": [],
+        "side": []
+    }
+
+    for menu_item, menu_item_img in the_deets:
+        menu_item_dict = menu_item.to_dict()
+        menu_item_dict["url"] = menu_item_img.url
+        menu_item_dict["preview"] = menu_item_img.preview
+
+        organized_deets[menu_item_dict["type"]].append(menu_item_dict)
+
+    return jsonify(organized_deets)
+
+##END ALEX WORK##
+
 @home_restaurants.route("/")
 def get_popular_restaurants():
     """returns a all restaurant order by popularity"""
@@ -197,7 +219,7 @@ def get_restaurant_by_id(id):
 
 
     if not one_restaurant:
-       return jsonify({"error": "Restaurant not found"}), 404
+        return jsonify({"error": "Restaurant not found"}), 404
 
 
     reviews = Review.query.filter_by(restaurant_id=id).all()
