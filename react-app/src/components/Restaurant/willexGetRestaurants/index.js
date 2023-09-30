@@ -28,20 +28,15 @@ export default function WillexGetRestaurants({ ownerMode = false }) {
     return goal
 }
 
-  useEffect(() => {
-
-  if (!restaurants){
-  ownerMode === false ? dispatch(thunkGetAllRestaurants()) : fetchData2(sessionUser.id)}
-  // if (!reviews){
-  // dispatch(thunkGetAllRestaurantReviews())}
-
-}, [dispatch,sessionUser,restaurants,ownerMode]);
-
 useEffect(() => {
-    if ((restaurants === undefined ) && refreshCount < 1) {
-        setRefreshCount((prevCount) => prevCount + 1);
-    }
-}, [refreshCount, restaurants]);
+  if (!sessionUser?.id) return;
+  if (!restaurants) {
+      if (!RestaurantsUserOwns) dispatch(thunkGetRestaurantsUserOwns(sessionUser.id));
+  } else {
+    if (!restaurantsData?.restaurants) dispatch(thunkGetAllRestaurants());
+
+  }
+}, [ sessionUser?.id, ownerMode, RestaurantsUserOwns, restaurantsData?.restaurants]);
 
 
 
