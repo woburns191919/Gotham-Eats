@@ -8,10 +8,13 @@ import Navigation from "./components/Navigation";
 import LoginFormModal from "./components/LoginFormModal";
 import SignupFormModal from "./components/SignupFormModal";
 import GetRestaurants from "./components/Restaurant/GetRestaurants";
+import WillexGetRestaurants from "./components/Restaurant/willexGetRestaurants";
 import Home from "./components/Home"
-import GetRestaurantDetail from "./components/Restaurant/GetRestaurantDetail";
+
+import WillexGetRestaurantDetail from "./components/Restaurant/willexGetRestaurantsDetail";
 import CreateRestaurantForm from "./components/Restaurant/RestaurantForm/CreateRestaurantForm";
 import EditRestaurantForm from "./components/Restaurant/RestaurantForm/EditRestaurantForm";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -37,11 +40,20 @@ function App() {
           <Route path="/restaurants/edit/:id" >
             <EditRestaurantForm />
           </Route>
+          {/* <Route path="/restaurants/:id/willex" >
+            <>
+          </Route> */}
           <Route path="/restaurants/:id" >
-            <GetRestaurantDetail />
+            <WillexGetRestaurantDetail />
           </Route>
+
           <Route path="/restaurants" >
             <GetRestaurants />
+            {/* <Route path="/restaurants" >
+            <GetRestaurants />
+            </Route> */}
+
+
           </Route>
           <Route path="/login" >
             <LoginFormPage />
@@ -49,7 +61,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/owner/restaurants/:ownerId">
+          <Route path="/owner/restaurants/:id">
             <GetRestaurants ownerMode={true} />
           </Route>
           <Route>Page Not Found</Route>

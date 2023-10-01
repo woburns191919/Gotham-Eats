@@ -17,15 +17,32 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-
-@auth_routes.route('/')
-def authenticate():
+@auth_routes.route('/signup', methods=['POST'])
+def sign_up():
     """
-    Authenticates a user.
+    Creates a new user and logs them in
     """
-    if current_user.is_authenticated:
-        return current_user.to_dict()
-    return {'errors': ['Unauthorized']}
+    form = SignUpForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        user = User(
+            firstName = form.data['firstName'],
+            lastName = form.data['lastName'],
+            username = form.data['username'],
+            password = form.data['password'],
+            email = form.data['email'],
+            streetAddress = form.data['streetAddress'],
+            city = form.data['city'],
+            state = form.data['state'],
+            postalCode = form.data['postalCode'],
+            country = form.data['country'],
+            phone = form.data['phone'],
+        )
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        return user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @auth_routes.route('/login', methods=['POST'])
@@ -53,25 +70,6 @@ def logout():
     logout_user()
     return {'message': 'User logged out'}
 
-
-@auth_routes.route('/signup', methods=['POST'])
-def sign_up():
-    """
-    Creates a new user and logs them in
-    """
-    form = SignUpForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        user = User(
-            username=form.data['username'],
-            email=form.data['email'],
-            password=form.data['password']
-        )
-        db.session.add(user)
-        db.session.commit()
-        login_user(user)
-        return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @auth_routes.route('/unauthorized')

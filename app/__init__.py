@@ -7,6 +7,7 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.menu_items_routes import menu_items
 from .api.restaurants_routes import home_restaurants
 
 from .api.review_restaurants_routes import review_restaurants_routes
@@ -32,6 +33,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(home_restaurants, url_prefix="/api/restaurants")
 # app.register_blueprint(review_routes, url_prefix="/api//restaurants/reviews")
 app.register_blueprint(review_restaurants_routes, url_prefix="/api/restaurants/reviews")
+app.register_blueprint(menu_items, url_prefix='/api/restaurants/<int:restaurant_id>/menu_items')
 
 db.init_app(app)
 Migrate(app, db)

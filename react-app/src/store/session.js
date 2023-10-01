@@ -1,17 +1,24 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const GET_ALL_USERS = "session/GET_ALL_USERS"
 
 const setUser = (user) => ({
 	type: SET_USER,
 	payload: user,
 });
 
-const removeUser = () => ({
+const removeUser = (id) => ({
 	type: REMOVE_USER,
+	payload: id
 });
 
-const initialState = { user: null };
+const getAllUsers = (users) => ({
+	type: GET_ALL_USERS,
+	payload: users
+})
+
+const initialState = { user: null, allUsers: [] };
 
 export const authenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/", {
@@ -25,7 +32,7 @@ export const authenticate = () => async (dispatch) => {
 			return;
 		}
 
-		dispatch(setUser(data));
+
 	}
 };
 
@@ -67,30 +74,71 @@ export const logout = () => async (dispatch) => {
 	}
 };
 
-export const signUp = (username, email, password) => async (dispatch) => {
-	const response = await fetch("/api/auth/signup", {
-		method: "POST",
+
+
+
+
+export const signUp = (firstName,
+	lastName,
+	email,
+	username,
+	streetAddress,
+	city,
+	state,
+	postalCode,
+	country,
+	phone,
+	password,) => async (dispatch) => {
+			const response = await fetch("/api/auth/signup", {
+					method: "POST",
+					headers: {
+							"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+							firstName,
+							lastName,
+							username,
+							password,
+							email,
+							streetAddress,
+							city,
+							state,
+							postalCode,
+							country,
+							phone,
+					}),
+			});
+
+			if (response.ok) {
+					const data = await response.json();
+					dispatch(setUser(data));
+					return null;
+			} else if (response.status < 500) {
+					const data = await response.json();
+					if (data.errors) {
+							return data.errors;
+					}
+			} else {
+					return ["An error occurred. Please try again."];
+			}
+	};
+
+
+
+
+export const thunkgetAllUsers = () => async (dispatch) => {
+	const response = await fetch("/api/users", {
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({
-			username,
-			email,
-			password,
-		}),
 	});
-
 	if (response.ok) {
 		const data = await response.json();
-		dispatch(setUser(data));
-		return null;
-	} else if (response.status < 500) {
-		const data = await response.json();
+		console.log('thunk data*****', data)
+		dispatch(getAllUsers(data));
 		if (data.errors) {
-			return data.errors;
+			return;
 		}
-	} else {
-		return ["An error occurred. Please try again."];
 	}
 };
 
@@ -100,6 +148,10 @@ export default function reducer(state = initialState, action) {
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
+		case GET_ALL_USERS:
+			const newState = {...state, allUsers: []}
+			newState.allUsers = action.payload
+			return newState;
 		default:
 			return state;
 	}
