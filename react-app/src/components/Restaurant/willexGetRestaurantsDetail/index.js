@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkGetMenuItemsDeets, thunkGetRestaurantDetail, thunkGetRestaurantsUserOwns } from "../../../store/restaurants";
+// import { thunkgetAllUsers } from "../../../store/session";
+
 import OpenModalButton from "../../OpenModalButton";
-import { thunkgetAllUsers } from "../../../store/session";
+
 import DeleteMenuItem from "../../DeleteMenuItem/DeleteMenuItem";
 
 import "./WillexGetRestaurantDetail.css";
 import MenuItemsDetailsModal from "../../MenuItemsDetailDisplayModal";
 
-export default function WillexGetRestaurantDetail({ ownerMode = false }) {
+export default function WillexGetRestaurantDetail() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [reloadPage, setReloadPage] = useState(false);
-  const { id } = useParams();
   const [isDelivery, setIsDelivery] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [refreshCount, setRefreshCount] = useState(0);
-  const MAX_RETRIES = 3;
 
-  const RestaurantsUserOwns = useSelector((state) => state.restaurants?.RestaurantsUserOwns)
+
+
   const sessionUser = useSelector((state) => state.session.user);
   const handleModalOpen = () => {
     setIsModalOpen(true);
@@ -30,15 +28,56 @@ export default function WillexGetRestaurantDetail({ ownerMode = false }) {
     setIsModalOpen(false);
   };
 
+  const history = useHistory();
+  const { id } = useParams()
+  const [restaurantsDetailData, setRestaurants] = useState([]);
+  const [menuDeetz, setMenuDeetz] = useState([])
+  const [restId, setRestId] = useState(id)
+
   const users = Object.values(
     useSelector((state) => (state.session.allUsers ? state.session.allUsers : []))
   );
 
-  const menuDeetz = useSelector((state) => (state.restaurants?.RestaurantMenu))
+  const fetchRestaurants = async () => {
+    const res = await fetch(`/api/restaurants/${restId}`);
+    if (res.ok) {
+      const data = await res.json();
+      // setRestaurants(data)
+      // console.log('data from fetch***', data)
+      return data;
+    } else {
+      console.error("Failed to fetch");
+      return [];
+    }
+  };
 
+  const fetchMenuItemDeets = async () => {
+    // console.log('rest id****', restId)
+    const res = await fetch(`/api/restaurants/getMenuItemDeets/${id}`);
+    // console.log('res from deets*****', res)
+    if (res.ok) {
+      const data = await res.json();
+      setMenuDeetz(data)
+      // console.log('data from fetch***', data)
+      return data;
+    } else {
+      console.error("Failed to fetch");
+      return [];
+    }
+  };
 
-  const restaurantsDetailData = useSelector((state) => state.restaurants?.singleRestaurant);
+  useEffect(() => {
+    (async function () {
+      const restaurantData = await fetchRestaurants();
+      setRestaurants(restaurantData);
+    })();
+  }, []);
 
+  useEffect(() => {
+    if (restId) {
+      fetchMenuItemDeets(menuDeetz);
+    }
+  }, []);
 
   let drinks = menuDeetz?.drink || [];
   let entrees = menuDeetz?.entree || [];
@@ -46,42 +85,6 @@ export default function WillexGetRestaurantDetail({ ownerMode = false }) {
   let desserts = menuDeetz?.dessert || [];
 
   const allMenuItems = [...drinks, ...entrees, ...desserts, ...sides];
-
-
-
-  if (restaurantsDetailData && restaurantsDetailData.menu_item_images && restaurantsDetailData.menu_item_images.length > 0) {
-
-  }
-
-
-  function findPrev(restaurant) {
-    for (let prevImg of restaurant.menu_item_images) {
-      if (prevImg.preview) {
-        return prevImg.url
-      }
-    }
-  }
-
-  if (!menuDeetz && refreshCount < MAX_RETRIES) {
-    setRefreshCount(prev => prev + 1);
-  }
-
-  useEffect(() => {
-    if (ownerMode) {
-      dispatch(thunkGetRestaurantsUserOwns())
-    } else
-      dispatch(thunkGetRestaurantDetail(id));
-  }, [dispatch, id, refreshCount, ownerMode]);
-
-  useEffect(() => {
-    dispatch(thunkgetAllUsers())
-  }, [dispatch])
-
-  useEffect(() => {
-    dispatch(thunkGetMenuItemsDeets(id))
-  }, [dispatch, id])
-
-
   if (
     !restaurantsDetailData ||
     !restaurantsDetailData.menu_item_images ||
@@ -96,7 +99,7 @@ export default function WillexGetRestaurantDetail({ ownerMode = false }) {
       <div className="Res-Det-Container">
         <h1>WE ARE IN WILLEX</h1>
 
-        {restaurantsDetailData.owner_id === sessionUser.id && <h2>we did it </h2>}
+        {restaurantsDetailData?.owner_id === sessionUser?.id && <h2>we did it </h2>}
         <div className="top-photo">
           <img
             src={`${process.env.PUBLIC_URL}${restaurantsDetailData.menu_item_images[0].url}`} alt="Preview" />
@@ -171,7 +174,7 @@ export default function WillexGetRestaurantDetail({ ownerMode = false }) {
                   />
                   <div className="menu-item-name">{item.name}</div>
                   <div className="menu-item-price">${parseFloat(item.price).toFixed(2)}</div>
-                  {restaurantsDetailData.owner_id === sessionUser.id && <div className="delete-menu-item">
+                  {restaurantsDetailData?.owner_id === sessionUser?.id && <div className="delete-menu-item">
                     <button onClick={(e) => { history.push("/") }}>Update</button>
                     <OpenModalButton className="delete-it" buttonText="Delete" modalComponent={<DeleteMenuItem menuItemId={item.id} />} />
                   </div>}

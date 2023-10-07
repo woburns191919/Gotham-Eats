@@ -138,9 +138,10 @@ def get_popular_restaurants():
 @home_restaurants.route("/<int:id>")
 def get_restaurant_by_id(id):
     """returns a single restaurant and it's reviews by the given id provided as a route parameter"""
-
+    print('id from backend****', id)
 
     one_restaurant = Restaurant.query.get(id)
+    print('one restaurant from backend', one_restaurant)
 
 
     if not one_restaurant:
