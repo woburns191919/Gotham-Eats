@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useParams } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
@@ -18,6 +19,8 @@ import EditRestaurantForm from "./components/Restaurant/RestaurantForm/EditResta
 
 function App() {
   const dispatch = useDispatch();
+  const { restaurantId } = useParams();
+  console.log('restaurant id from component', restaurantId)
 
 
   const [isLoaded, setIsLoaded] = useState(false);
@@ -43,7 +46,7 @@ function App() {
           {/* <Route path="/restaurants/:id/willex" >
             <>
           </Route> */}
-          <Route path="/restaurants/:id" >
+          <Route exact path="/restaurants/:id" >
             <WillexGetRestaurantDetail />
           </Route>
 
