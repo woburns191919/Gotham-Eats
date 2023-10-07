@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { thunkgetAllUsers } from "../../../store/session";
+import { thunkgetAllUsers } from "../../../store/session";
 
 import OpenModalButton from "../../OpenModalButton";
 
@@ -14,36 +14,36 @@ export default function WillexGetRestaurantDetail() {
   const dispatch = useDispatch();
   const [reloadPage, setReloadPage] = useState(false);
   const [isDelivery, setIsDelivery] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const sessionUser = useSelector((state) => state.session.user);
   const handleModalOpen = () => {
     setIsModalOpen(true);
   };
 
-
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
 
   const history = useHistory();
-  const { id } = useParams()
+  const { id } = useParams();
   const [restaurantsDetailData, setRestaurants] = useState([]);
-  const [menuDeetz, setMenuDeetz] = useState([])
-  const [restId, setRestId] = useState(id)
+  const [menuDeetz, setMenuDeetz] = useState([]);
+  const [restId, setRestId] = useState(id);
 
   const users = Object.values(
-    useSelector((state) => (state.session.allUsers ? state.session.allUsers : []))
+    useSelector((state) =>
+      state.session.allUsers ? state.session.allUsers : []
+    )
   );
+
+  console.log("users***", users);
 
   const fetchRestaurants = async () => {
     const res = await fetch(`/api/restaurants/${restId}`);
     if (res.ok) {
       const data = await res.json();
-      // setRestaurants(data)
-      // console.log('data from fetch***', data)
+
       return data;
     } else {
       console.error("Failed to fetch");
@@ -52,13 +52,12 @@ export default function WillexGetRestaurantDetail() {
   };
 
   const fetchMenuItemDeets = async () => {
-    // console.log('rest id****', restId)
     const res = await fetch(`/api/restaurants/getMenuItemDeets/${id}`);
-    // console.log('res from deets*****', res)
+
     if (res.ok) {
       const data = await res.json();
-      setMenuDeetz(data)
-      // console.log('data from fetch***', data)
+      setMenuDeetz(data);
+
       return data;
     } else {
       console.error("Failed to fetch");
@@ -79,6 +78,10 @@ export default function WillexGetRestaurantDetail() {
     }
   }, []);
 
+  useEffect(() => {
+    dispatch(thunkgetAllUsers());
+  }, [dispatch]);
+
   let drinks = menuDeetz?.drink || [];
   let entrees = menuDeetz?.entree || [];
   let sides = menuDeetz?.side || [];
@@ -93,32 +96,41 @@ export default function WillexGetRestaurantDetail() {
     return null;
   }
 
-
   return (
     <>
       <div className="Res-Det-Container">
         <h1>WE ARE IN WILLEX</h1>
 
-        {restaurantsDetailData?.owner_id === sessionUser?.id && <h2>we did it </h2>}
+        {restaurantsDetailData?.owner_id === sessionUser?.id && (
+          <h2>we did it </h2>
+        )}
         <div className="top-photo">
           <img
-            src={`${process.env.PUBLIC_URL}${restaurantsDetailData.menu_item_images[0].url}`} alt="Preview" />
+            src={`${process.env.PUBLIC_URL}${restaurantsDetailData.menu_item_images[0].url}`}
+            alt="Preview"
+          />
         </div>
         <div className="res-container">
           <h1 className="det-name">{restaurantsDetailData.name}</h1>
-          <div className="det-ratings"><h3>★{restaurantsDetailData.avgRating}{" "}({restaurantsDetailData.reviews.length} ratings) · $$ · Read Reviews · More Info  </h3>
-
+          <div className="det-ratings">
+            <h3>
+              ★{restaurantsDetailData.avgRating} (
+              {restaurantsDetailData.reviews.length} ratings) · $$ · Read
+              Reviews · More Info{" "}
+            </h3>
           </div>
 
-          {/* <OpenModalButton buttonText="More Info" modalComponent={<restaurantsDetailData.description
-        />} /> */}
+          { <OpenModalButton buttonText="More Info" modalComponent={<restaurantsDetailData.description
+        />} /> }
           <div className="slider-container">
             <div className="label-container">
               <span className={isDelivery ? "active" : ""}>Delivery</span>
               <span className="time">45min</span>
             </div>
             <div className="switch" onClick={() => setIsDelivery(!isDelivery)}>
-              <div className={isDelivery ? "thumb delivery" : "thumb pickup"}></div>
+              <div
+                className={isDelivery ? "thumb delivery" : "thumb pickup"}
+              ></div>
             </div>
             <div className="label-container">
               <span className={!isDelivery ? "active" : ""}>Pickup</span>
@@ -132,7 +144,10 @@ export default function WillexGetRestaurantDetail() {
                 buttonText="All drinks"
                 className="mod-bttn"
                 modalComponent={
-                  <MenuItemsDetailsModal MenuDeetz={drinks} onClose={handleModalClose} />
+                  <MenuItemsDetailsModal
+                    MenuDeetz={drinks}
+                    onClose={handleModalClose}
+                  />
                 }
                 onClick={handleModalOpen}
               />
@@ -140,7 +155,10 @@ export default function WillexGetRestaurantDetail() {
                 buttonText="All Entrees"
                 className="mod-bttn"
                 modalComponent={
-                  <MenuItemsDetailsModal MenuDeetz={entrees} onClose={handleModalClose} />
+                  <MenuItemsDetailsModal
+                    MenuDeetz={entrees}
+                    onClose={handleModalClose}
+                  />
                 }
                 onClick={handleModalOpen}
               />
@@ -148,7 +166,10 @@ export default function WillexGetRestaurantDetail() {
                 buttonText="All Desserts"
                 className="mod-bttn"
                 modalComponent={
-                  <MenuItemsDetailsModal MenuDeetz={desserts} onClose={handleModalClose} />
+                  <MenuItemsDetailsModal
+                    MenuDeetz={desserts}
+                    onClose={handleModalClose}
+                  />
                 }
                 onClick={handleModalOpen}
               />
@@ -156,12 +177,13 @@ export default function WillexGetRestaurantDetail() {
                 buttonText="All Sides"
                 className="mod-bttn"
                 modalComponent={
-                  <MenuItemsDetailsModal MenuDeetz={sides} onClose={handleModalClose} />
+                  <MenuItemsDetailsModal
+                    MenuDeetz={sides}
+                    onClose={handleModalClose}
+                  />
                 }
                 onClick={handleModalOpen}
               />
-
-
             </div>
 
             <div className="imgages-container">
@@ -173,30 +195,52 @@ export default function WillexGetRestaurantDetail() {
                     alt={item.name}
                   />
                   <div className="menu-item-name">{item.name}</div>
-                  <div className="menu-item-price">${parseFloat(item.price).toFixed(2)}</div>
-                  {restaurantsDetailData?.owner_id === sessionUser?.id && <div className="delete-menu-item">
-                    <button onClick={(e) => { history.push("/") }}>Update</button>
-                    <OpenModalButton className="delete-it" buttonText="Delete" modalComponent={<DeleteMenuItem menuItemId={item.id} />} />
-                  </div>}
+                  <div className="menu-item-price">
+                    ${parseFloat(item.price).toFixed(2)}
+                  </div>
+                  {restaurantsDetailData?.owner_id === sessionUser?.id && (
+                    <div className="delete-menu-item">
+                      <button
+                        onClick={(e) => {
+                          history.push("/");
+                        }}
+                      >
+                        Update
+                      </button>
+                      <OpenModalButton
+                        className="delete-it"
+                        buttonText="Delete"
+                        modalComponent={<DeleteMenuItem menuItemId={item.id} />}
+                      />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
-
-
           </div>
           <div className="reviews">
             <h4 className="review-name">Reviews</h4>
-            <ul className='reviewsList'>
-              {restaurantsDetailData.reviews?.map((review) =>
+            <ul className="reviewsList">
+              {restaurantsDetailData.reviews?.map((review) => (
                 <li key={review.id}>
                   <span className="reviewText">{review.review}</span>
-                  <span className="reviewDate">{new Date(review.updated_at).toLocaleDateString()}</span>
-                  {users && <span className="reviewUser">{users.find(user => user.id === review.user_id)?.username}</span>}
+                  <span className="reviewDate">
+                    {new Date(review.updated_at).toLocaleDateString()}
+                  </span>
+                  {users && (
+                    <span className="reviewUser">
+                      {
+                        users.find((user) => user.id === review.user_id)
+                          ?.username
+                      }
+                    </span>
+                  )}
                 </li>
-              )}
+              ))}
             </ul>
           </div>
         </div>
-      </div >
-    </>)
+      </div>
+    </>
+  );
 }
