@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, NavLink } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
 import "./GetRestaurants.css";
 
 
 export default function AllRestaurantComponent({ ownerMode = false }) {
   const history = useHistory();
   const [restaurants, setRestaurants] = useState();
+  const [currentUser, setCurrentUser] = useState(null)
+  // const [filteredRestaurants, setFilteredRestaurants] = useState(null)
+
+  // const sessionUser = useSelector((state) => state.session.user);
+  // console.log('logged in user', sessionUser)
 
   const fetchRestaurants = async () => {
     const res = await fetch("/api/restaurants");
@@ -17,12 +23,34 @@ export default function AllRestaurantComponent({ ownerMode = false }) {
       return [];
     }
   };
+  const fetchCurrentUser = async () => {
+    const res = await fetch("/api/auth/current_user");
+    if (res.ok) {
+      const data = await res.json();
+      console.log('user data?', data)
+      return data
+    } else {
+      console.error("Failed to fetch user");
+      return [];
+    }
+  };
+fetchCurrentUser()
+
   useEffect(() => {
    (async function () {
       const restaurantData = await fetchRestaurants();
       setRestaurants(restaurantData);
     }())
   }, []);
+
+  // useEffect(() => {
+  //   if (ownerMode && owner_id) {
+  //     const ownedRestaurants = restaurants.filter(
+  //       (restaurant) => restaurant.owner_id === owner_id
+  //     )
+  //     setRestaurants(ownedRestaurants)
+  //   }
+  // }, [ownerMode, owner_id, restaurants])
 
   if (ownerMode === true)
     console.log(

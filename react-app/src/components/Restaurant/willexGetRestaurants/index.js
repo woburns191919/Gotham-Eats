@@ -8,8 +8,40 @@ import "./GetRestaurants.css";
 
 
 export default function WillexGetRestaurants({ ownerMode = false }) {
-  const dispatch = useDispatch();
+
   const history = useHistory();
+  const [restaurants, setRestaurants] = useState();
+
+  const sessionUser = useSelector((state) => state.session.user);
+  console.log('logged in user', sessionUser)
+
+  const fetchRestaurants = async () => {
+    const res = await fetch("/api/restaurants");
+    if (res.ok) {
+      const data = await res.json();
+      return data.restaurants;
+    } else {
+      console.error("Failed to fetch");
+      return [];
+    }
+  };
+
+  useEffect(() => {
+    (async function () {
+       const restaurantData = await fetchRestaurants();
+       setRestaurants(restaurantData);
+     }())
+   }, []);
+
+
+
+
+
+
+
+
+  const dispatch = useDispatch();
+
 
   const restaurantsData = useSelector((state) => state.restaurants?.allRestaurants);
   const RestaurantsUserOwns = useSelector((state) => state.restaurants?.RestaurantsUserOwns)
@@ -18,25 +50,24 @@ export default function WillexGetRestaurants({ ownerMode = false }) {
 
   const [refreshCount, setRefreshCount] = useState(0);
 
-  const sessionUser = useSelector((state) => state.session.user);
 
 
 
-  const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData?.restaurants
-  const fetchData2= async(id) =>{
-    let goal= await dispatch(thunkGetRestaurantsUserOwns(sessionUser.id));
-    return goal
-}
+//   const restaurants = ownerMode ? RestaurantsUserOwns : restaurantsData?.restaurants
+//   const fetchData2= async(id) =>{
+//     let goal= await dispatch(thunkGetRestaurantsUserOwns(sessionUser.id));
+//     return goal
+// }
 
-useEffect(() => {
-  if (!sessionUser?.id) return;
-  if (!restaurants) {
-      if (!RestaurantsUserOwns) dispatch(thunkGetRestaurantsUserOwns(sessionUser.id));
-  } else {
-    if (!restaurantsData?.restaurants) dispatch(thunkGetAllRestaurants());
+// useEffect(() => {
+//   if (!sessionUser?.id) return;
+//   if (!restaurants) {
+//       if (!RestaurantsUserOwns) dispatch(thunkGetRestaurantsUserOwns(sessionUser.id));
+//   } else {
+//     if (!restaurantsData?.restaurants) dispatch(thunkGetAllRestaurants());
 
-  }
-}, [ sessionUser?.id, ownerMode, RestaurantsUserOwns, restaurantsData?.restaurants]);
+//   }
+// }, [ sessionUser?.id, ownerMode, RestaurantsUserOwns, restaurantsData?.restaurants]);
 
 
 
@@ -77,10 +108,11 @@ useEffect(() => {
           </div>
           ))}
 
-        {ownerMode && restaurants && restaurants.length > 0 && restaurants.map((restaurant) => (
-          <div className="owner-div update-delete-btns">
+        {ownerMode && restaurants && restaurants.length > 0 && restaurants.map((restaurant, i) => (
+          <div key={i} className="owner-div update-delete-btns">
             <button className="owner-btn post-delete-review-btn" onClick={() => history.push(`/restaurants/edit/${restaurant.id}`)}>Update</button>
             <button className="owner-btn post-delete-review-btn" onClick={() => history.push(`/restaurants/edit/${restaurant.id}`)}>Delete</button>
+            {console.log('owner mode', ownerMode)}
             {/*LETS GET TH IS UP AND RUNNING BOYS <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
           </div>
         ))}
