@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, NavLink } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
 import "./GetRestaurants.css";
-
 
 export default function AllRestaurantComponent({ ownerMode = false }) {
   const history = useHistory();
   const [restaurants, setRestaurants] = useState();
-  const [currentUser, setCurrentUser] = useState(null)
-  // const [filteredRestaurants, setFilteredRestaurants] = useState(null)
-
-  // const sessionUser = useSelector((state) => state.session.user);
-  // console.log('logged in user', sessionUser)
+  const [currentUser, setCurrentUser] = useState(null);
+  const [filteredRestaurants, setFilteredRestaurants] = useState(null);
 
   const fetchRestaurants = async () => {
     const res = await fetch("/api/restaurants");
@@ -27,35 +22,33 @@ export default function AllRestaurantComponent({ ownerMode = false }) {
     const res = await fetch("/api/auth/current_user");
     if (res.ok) {
       const data = await res.json();
-      console.log('user data?', data)
-      return data
+      return data;
     } else {
       console.error("Failed to fetch user");
       return [];
     }
   };
-fetchCurrentUser()
 
   useEffect(() => {
-   (async function () {
+    (async function () {
       const restaurantData = await fetchRestaurants();
       setRestaurants(restaurantData);
-    }())
+    })();
   }, []);
 
-  // useEffect(() => {
-  //   if (ownerMode && owner_id) {
-  //     const ownedRestaurants = restaurants.filter(
-  //       (restaurant) => restaurant.owner_id === owner_id
-  //     )
-  //     setRestaurants(ownedRestaurants)
-  //   }
-  // }, [ownerMode, owner_id, restaurants])
+  useEffect(() => {
+    (async function () {
+      const currentUserData = await fetchCurrentUser();
+      setCurrentUser(currentUserData);
+    })();
+  }, []);
 
-  if (ownerMode === true)
-    console.log(
-      "***************************************CONGRATS WERE IN OWNER MODE BRO."
+  useEffect(() => {
+    const ownedRestaurants = restaurants?.filter(
+      (restaurant) => restaurant?.owner_id === currentUser?.id
     );
+    setFilteredRestaurants(ownedRestaurants);
+  }, [currentUser, restaurants]);
 
   return (
     <div className="main-container">
@@ -84,14 +77,14 @@ fetchCurrentUser()
       >
         {restaurants &&
           restaurants.length > 0 &&
-          restaurants.map((restaurant) => (
+          filteredRestaurants?.map((restaurant, i) => (
             <div
+              key={restaurant.id}
               className={`${
                 ownerMode
                   ? "ownerRestaurant-restaurant-img-main-div"
                   : "restaurant-img-main-div"
               }`}
-              key={restaurant.id}
             >
               <Link
                 to={`/restaurants/${restaurant.id}`}
@@ -112,7 +105,27 @@ fetchCurrentUser()
                     }
                     alt=""
                   />
-                  <div className="restaurant-info-flex">
+                  <div className="owner-div update-delete-btns">
+                    <button
+                      className="owner-btn post-delete-review-btn"
+                      onClick={() =>
+                        history.push(`/restaurants/edit/${restaurant.id}`)
+                      }
+                    >
+                      Update
+                    </button>
+                    <button
+                      className="owner-btn post-delete-review-btn"
+                      onClick={() =>
+                        history.push(`/restaurants/edit/${restaurant.id}`)
+                      }
+                    >
+                      Delete
+                    </button>
+                    {/*LETS GET TH IS UP AND RUNNING BOYS <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
+                  </div>
+
+                  <div key={i} className="restaurant-info-flex">
                     <p className="res-name">
                       {restaurant.name}({restaurant.streetAddress})
                     </p>
@@ -128,31 +141,6 @@ fetchCurrentUser()
                   </div>
                 </div>
               </Link>
-            </div>
-          ))}
-
-        {ownerMode &&
-          restaurants &&
-          restaurants.length > 0 &&
-          restaurants.map((restaurant) => (
-            <div className="owner-div update-delete-btns">
-              <button
-                className="owner-btn post-delete-review-btn"
-                onClick={() =>
-                  history.push(`/restaurants/edit/${restaurant.id}`)
-                }
-              >
-                Update
-              </button>
-              <button
-                className="owner-btn post-delete-review-btn"
-                onClick={() =>
-                  history.push(`/restaurants/edit/${restaurant.id}`)
-                }
-              >
-                Delete
-              </button>
-              {/*LETS GET TH IS UP AND RUNNING BOYS <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
             </div>
           ))}
       </div>
