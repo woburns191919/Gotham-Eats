@@ -20,7 +20,7 @@ def validation_errors_to_error_messages(validation_errors):
 @auth_routes.route('/current_user')
 def get_current_user():
     if current_user.is_authenticated:
-        return jsonify(current_user.to_dict())  
+        return jsonify(current_user.to_dict())
     return jsonify(message="User not logged in"), 401
 
 @auth_routes.route('/signup', methods=['POST'])

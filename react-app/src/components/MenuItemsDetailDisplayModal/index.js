@@ -1,10 +1,10 @@
 import React from 'react';
-import { useModal } from '../../context/Modal';
+// import { useModal } from '../../context/Modal';
 import "./menuItemsDetail.css"
 
 
 function MenuItemsDetailsModal({ MenuDeetz }) {
-  const { closeModal } = useModal();
+  // const { closeModal } = useModal();
 
   return (
     <div className="profile-modal">

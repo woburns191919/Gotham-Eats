@@ -6,59 +6,52 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import LoginFormModal from "./components/LoginFormModal";
-import SignupFormModal from "./components/SignupFormModal";
+// import LoginFormModal from "./components/LoginFormModal";
+// import SignupFormModal from "./components/SignupFormModal";
 import GetRestaurants from "./components/Restaurant/GetRestaurants";
-import WillexGetRestaurants from "./components/Restaurant/willexGetRestaurants";
-import Home from "./components/Home"
+import RestaurantDetail from "./components/Restaurant/RestaurantDetail";
 
-import WillexGetRestaurantDetail from "./components/Restaurant/willexGetRestaurantsDetail";
+import Home from "./components/Home";
+
+
 import CreateRestaurantForm from "./components/Restaurant/RestaurantForm/CreateRestaurantForm";
 import EditRestaurantForm from "./components/Restaurant/RestaurantForm/EditRestaurantForm";
-
 
 function App() {
   const dispatch = useDispatch();
   const { restaurantId } = useParams();
-  console.log('restaurant id from component', restaurantId)
-
+  console.log("restaurant id from component", restaurantId);
 
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-
   return (
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/" >
+          <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/restaurants/new" >
+          <Route path="/restaurants/new">
             <CreateRestaurantForm />
           </Route>
-          <Route path="/restaurants/edit/:id" >
+          <Route path="/restaurants/edit/:id">
             <EditRestaurantForm />
           </Route>
-          {/* <Route path="/restaurants/:id/willex" >
-            <>
-          </Route> */}
-          <Route exact path="/restaurants/:id" >
-            <WillexGetRestaurantDetail />
+          <Route exact path="/restaurants/:id">
+            <RestaurantDetail />
           </Route>
 
-          <Route path="/restaurants" >
+          <Route path="/restaurants">
             <GetRestaurants />
             {/* <Route path="/restaurants" >
             <GetRestaurants />
             </Route> */}
-
-
           </Route>
-          <Route path="/login" >
+          <Route path="/login">
             <LoginFormPage />
           </Route>
           <Route path="/signup">

@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {
-  thunkCreateRestaurant,
-  thunkGetRestaurantDetail,
-  thunkUpdateRestaurant,
-} from "../../../store/restaurants";
-import "./RestaurantForm.css"
+import "./RestaurantForm.css";
 
 export default function RestaurantForm({ formType, restaurantId }) {
-  const dispatch = useDispatch();
   const history = useHistory();
-  // const [menuItemImageFiles, setMenuItemImageFiles] = useState([]);
-  // const [previewImageFile, setPreviewImageFile] = useState(null);
+  const [restaurant, setRestaurant] = useState();
+  const [currentUser, setCurrentUser] = useState(null);
+  const [restId, setRestId] = useState(restaurantId);
+  const [filteredRestaurants, setFilteredRestaurants] = useState(null);
+
+  const dispatch = useDispatch();
+
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("Gotham");
   const [state, setState] = useState("New York");
@@ -28,23 +27,6 @@ export default function RestaurantForm({ formType, restaurantId }) {
 
   const sessionUser = useSelector((stateid) => stateid.session.user);
 
-
-  useEffect(() => {
-    if (formType === "Edit" && restaurantId) {
-      dispatch(thunkGetRestaurantDetail(restaurantId)).then((data) => {
-        setName(data.name);
-        setStreetAddress(data.streetAddress);
-        setCity(data.city);
-        setState(data.state);
-        setPostalCode(data.postalCode);
-        setCountry(data.country);
-        setDescription(data.description);
-        setHours(data.hours);
-
-        setInitialRestaurant(data);
-      });
-    }
-  }, [dispatch, formType, restaurantId]);
 
   const clearValidationError = (validationField) => {
     setValidationObj((prev) => {
@@ -70,31 +52,16 @@ export default function RestaurantForm({ formType, restaurantId }) {
     return errors;
   };
 
-  const handleImages = () => {
-    const imageUrls = [previewImg];
-    const imageExtensionsRegex = /\.(png|jpe?g)$/i;
-    const invalidImages = imageUrls.filter(
-      (url) => url && !imageExtensionsRegex.test(url)
-    );
 
-    if (invalidImages.length > 0) {
-      const errorsObj = { ...validationObj };
-      invalidImages.forEach((url, index) => {
-        const fieldName = index === 0 ? "previewImage" : `imageUrl${index + 1}`;
-        errorsObj[fieldName] = "Image URL must end in .png, .jpg, or .jpeg";
-      });
-      setValidationObj(errorsObj);
-      return false;
-    }
 
-    let newRestaurantImage = [];
-    const tempNewRestaurantImage = [
-      { url: previewImg, preview: true },
-    ];
 
-    tempNewRestaurantImage.forEach((image) => image.url && newRestaurantImage.push(image));
-    return newRestaurantImage;
-  };
+  // useEffect(() => {
+  //   (async function () {
+  //     const restaurantData = await fetchRestaurants();
+  //     setRestaurant(restaurantData);
+  //   })();
+  // }, []);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -106,139 +73,156 @@ export default function RestaurantForm({ formType, restaurantId }) {
       setValidationObj(errorsObj);
       return;
     }
-    // const newRestaurantImage = handleImages();
-    // if (!newRestaurantImage) return;
 
-    // const restaurant = { name, streetAddress, city, state, postalCode, country, description, hours, newRestaurantImage };
-    const restaurant = { name, streetAddress, city, state, postalCode, country, description, hours, preview_image_url: previewImg, };
-    try {
 
-      if (formType === "Create") {
 
-        const newlyCreateRestaurant = await dispatch(thunkCreateRestaurant(restaurant))
-                                                .unwrap()
-                                                .then((payload) => console.log('Success:', payload))
-                                                .catch((error) => console.error('Error:', error));
+    console.log('user id???', sessionUser.id)
+    const restaurantData = {
+      owner_id: sessionUser.id,
+      name,
+      street_address: streetAddress,
+      city,
+      state,
+      postal_code: postalCode,
+      country,
+      description,
+      hours,
+      preview_image_url: previewImg
+    };
 
-        // const newlyCreateRestaurant = await dispatch(thunkCreateRestaurant(restaurant))
-       
+      const res = await fetch(`/api/restaurants/new`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(restaurantData),
+      });
+      console.log('data?', restaurantData)
+      if (res.ok) {
+        const data = await res.json();
+        console.log('data from post', data)
 
-      //   if (newlyCreateRestaurant && newlyCreateRestaurant.id) {
-      //     const newRestaurant = await dispatch(thunkGetRestaurantDetail(newlyCreateRestaurant.id));
-      //     if (newRestaurant) history.push(`/restaurants/${newRestaurant.id}`);
-      //     else throw new Error("Failed to create a new restaurant");
-      // }
-
-        // const newRestaurant = await dispatch(thunkGetRestaurantDetail(newlyCreateRestaurant.id));
-        // if (newRestaurant) history.push(`/restaurants/${newRestaurant.id}`);
-        // else throw new Error("Failed to create a new restaurant");
+        return data;
+      } else {
+        console.error("Failed to fetch");
+        return [];
       }
-      if (formType === "Edit") {
-        const updatedRestaurant = { ...initialRestaurant, name, streetAddress, city, state, postalCode, country, description, hours };
-        const updatedRestaurantData = await dispatch(thunkUpdateRestaurant(updatedRestaurant));
-        if (updatedRestaurantData) history.push(`/restaurants/${updatedRestaurantData.id}`);
-        else throw new Error("Failed to update your restaurant");
-      }
-    } catch (error) {
-      console.error("Error processing the restaurant:", error.message);
-    }
+  }
+
+
+    return (
+      <form onSubmit={handleSubmit} className="restaurant-form">
+        <h1 className="form-header-h1">
+          {formType === "Create"
+            ? "Create a Restaurant"
+            : "Update your Restaurant"}
+        </h1>
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleInputChange(setName, "name")}
+          placeholder="Name"
+          className="input-form"
+          required
+        />
+        {validationObj.name && <p className="errors">{validationObj.name}</p>}
+        <input
+          type="text"
+          name="streetAddress"
+          value={streetAddress}
+          onChange={handleInputChange(setStreetAddress, "streetAddress")}
+          placeholder="Street Address"
+          className="input-form"
+          required
+        />
+        {validationObj.streetAddress && (
+          <p className="errors">{validationObj.streetAddress}</p>
+        )}
+        <select
+          type="text"
+          name="city"
+          value={city}
+          onChange={handleInputChange(setCity, "city")}
+          className="select-form"
+          required
+        >
+          <option value="Gotham">Gotham</option>
+        </select>
+
+        <select
+          type="text"
+          name="state"
+          value={state}
+          onChange={handleInputChange(setState, "state")}
+          className="select-form"
+          required
+        >
+          <option value="New York">New York</option>
+        </select>
+        <input
+          type="text"
+          name="postalCode"
+          value={postalCode}
+          onChange={handleInputChange(setPostalCode, "postalCode")}
+          placeholder="Postal Code"
+          className="input-form-postal"
+          required
+        />
+        {validationObj.postalCode && (
+          <p className="errors">{validationObj.postalCode}</p>
+        )}
+        <select
+          type="text"
+          name="country"
+          value={country}
+          onChange={handleInputChange(setCountry, "country")}
+          className="select-form"
+          required
+        >
+          <option value="United States">United States</option>
+        </select>
+        <textarea
+          name="description"
+          value={description}
+          onChange={handleInputChange(setDescription, "description")}
+          placeholder="Description"
+          className="textarea-form"
+          required
+        />
+        {validationObj.description && (
+          <p className="errors">{validationObj.description}</p>
+        )}
+        <textarea
+          name="hours"
+          value={hours}
+          onChange={handleInputChange(setHours, "hours")}
+          placeholder="Hours"
+          className="textarea-form"
+          required
+        />
+        {validationObj.hours && <p className="errors">{validationObj.hours}</p>}
+        {formType === "Create" && (
+          <>
+            <input
+              type="url"
+              className="photo-input"
+              placeholder="Show Off Your Dish With a Photo URL"
+              onChange={handleInputChange(setPreviewImg, "previewImg")}
+              required
+            />
+            {validationObj.previewImg && (
+              <p className="errors">{validationObj.previewImg}</p>
+            )}
+          </>
+        )}
+        <button
+          type="submit"
+          className="bttn-submit"
+          disabled={Object.keys(validationObj).length > 0}
+        >
+          {formType === "Create" ? "Create Restaurant" : "Update Restaurant"}
+        </button>
+      </form>
+    );
   };
-
-
-  return (
-    <form onSubmit={handleSubmit} className="restaurant-form">
-      <h1 className="form-header-h1">
-        {formType === "Create" ? "Create a Restaurant" : "Update your Restaurant"}
-      </h1>
-      <input
-        type="text"
-        name="name"
-        value={name}
-        onChange={handleInputChange(setName, "name")}
-        placeholder="Name"
-        className="input-form"
-        required
-      />
-      {validationObj.name && <p className="errors">{validationObj.name}</p>}
-      <input
-        type="text"
-        name="streetAddress"
-        value={streetAddress}
-        onChange={handleInputChange(setStreetAddress, "streetAddress")}
-        placeholder="Street Address"
-        className="input-form"
-        required
-      />
-      {validationObj.streetAddress && (<p className="errors">{validationObj.streetAddress}</p>)}
-      <select
-        type="text"
-        name="city"
-        value={city}
-        onChange={handleInputChange(setCity, "city")}
-        className="select-form"
-        required
-      >
-        <option value="Gotham">Gotham</option>
-      </select>
-
-      <select
-        type="text"
-        name="state"
-        value={state}
-        onChange={handleInputChange(setState, "state")}
-        className="select-form"
-        required
-      >
-        <option value="New York">New York</option>
-      </select>
-      <input
-        type="text"
-        name="postalCode"
-        value={postalCode}
-        onChange={handleInputChange(setPostalCode, "postalCode")}
-        placeholder="Postal Code"
-        className="input-form-postal"
-        required
-      />
-      {validationObj.postalCode && (<p className="errors">{validationObj.postalCode}</p>)}
-      <select
-        type="text"
-        name="country"
-        value={country}
-        onChange={handleInputChange(setCountry, "country")}
-        className="select-form"
-        required
-      >
-        <option value="United States">United States</option>
-      </select>
-      <textarea
-        name="description"
-        value={description}
-        onChange={handleInputChange(setDescription, "description")}
-        placeholder="Description"
-        className="textarea-form"
-        required
-      />
-      {validationObj.description && (<p className="errors">{validationObj.description}</p>)}
-      <textarea
-        name="hours"
-        value={hours}
-        onChange={handleInputChange(setHours, "hours")}
-        placeholder="Hours"
-        className="textarea-form"
-        required
-      />
-      {validationObj.hours && (<p className="errors">{validationObj.hours}</p>)}
-      {formType === "Create" && (
-        <>
-          <input type="url" className="photo-input" placeholder="Show Off Your Dish With a Photo URL" onChange={handleInputChange(setPreviewImg, "previewImg")} required />
-          {validationObj.previewImg && (<p className="errors">{validationObj.previewImg}</p>)}
-        </>
-      )}
-
-      {/* <input type="file" name="menu_item_images" onChange={setMenuItemImageFiles([...e.target.files])} multiple required /> */}
-      {/* <input type="file" name="preview_image" onChange={setPreviewImageFile(e.target.files[0])} required /> */}
-      <button type="submit" className="bttn-submit" disabled={Object.keys(validationObj).length > 0}>{formType === "Create" ? "Create Restaurant" : "Update Restaurant"}</button>
-    </form>
-  );
-}

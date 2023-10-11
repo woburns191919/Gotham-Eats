@@ -75,74 +75,116 @@ export default function AllRestaurantComponent({ ownerMode = false }) {
             : "restaurants-main-container grid-container"
         }`}
       >
-        {restaurants &&
-          restaurants.length > 0 &&
-          filteredRestaurants?.map((restaurant, i) => (
-            <div
-              key={restaurant.id}
-              className={`${
-                ownerMode
-                  ? "ownerRestaurant-restaurant-img-main-div"
-                  : "restaurant-img-main-div"
-              }`}
-            >
-              <Link
-                to={`/restaurants/${restaurant.id}`}
-                style={{ textDecoration: "none", color: "var(--black)" }}
+        {ownerMode
+          ? filteredRestaurants?.map((restaurant, i) => (
+              <div
+                key={restaurant.id}
+                className="ownerRestaurant-restaurant-img-main-div"
               >
-                <div
-                  className={`restaurant-box ${
-                    ownerMode ? "ownerRestaurant" : ""
-                  }`}
+                <Link
+                  to={`/restaurants/${restaurant.id}`}
+                  style={{ textDecoration: "none", color: "var(--black)" }}
                 >
-                  <img
-                    src={
-                      restaurant.menu_item_images.find((img) => img.preview)
-                        ?.url || "7"
-                    }
-                    className={
-                      ownerMode ? "ownerRestaurant-img" : "restaurant-img"
-                    }
-                    alt=""
-                  />
-                  <div className="owner-div update-delete-btns">
-                    <button
-                      className="owner-btn post-delete-review-btn"
-                      onClick={() =>
-                        history.push(`/restaurants/edit/${restaurant.id}`)
+                  <div className="ownerRestaurant">
+                    <img
+                      src={
+                        restaurant.menu_item_images.find((img) => img.preview)
+                          ?.url || "7"
                       }
-                    >
-                      Update
-                    </button>
-                    <button
-                      className="owner-btn post-delete-review-btn"
-                      onClick={() =>
-                        history.push(`/restaurants/edit/${restaurant.id}`)
-                      }
-                    >
-                      Delete
-                    </button>
-                    {/*LETS GET TH IS UP AND RUNNING BOYS <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
-                  </div>
+                      className="ownerRestaurant-img"
+                      alt=""
+                    />
+                    <div className="owner-div update-delete-btns">
+                      <button
+                        className="owner-btn post-delete-review-btn"
+                        onClick={() =>
+                          history.push(`/restaurants/edit/${restaurant.id}`)
+                        }
+                      >
+                        Update
+                      </button>
+                      <button
+                        className="owner-btn post-delete-review-btn"
+                        onClick={() =>
+                          history.push(`/restaurants/edit/${restaurant.id}`)
+                        }
+                      >
+                        Delete
+                      </button>
+                      {/*LETS GET TH IS UP AND RUNNING BOYS <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
+                    </div>
 
-                  <div key={i} className="restaurant-info-flex">
-                    <p className="res-name">
-                      {restaurant.name}({restaurant.streetAddress})
-                    </p>
-                    <p className="avgRating-p-tag">
-                      {/* {restaurant.avgRating && restaurant.avgRating ? restaurant.avgRating?.toFixed(1) : <span className="boldText">New</span>} */}
-                      {restaurant.avgRating !== null &&
-                      restaurant.avgRating !== undefined ? (
-                        restaurant.avgRating.toFixed(1)
-                      ) : (
-                        <span className="boldText">New</span>
-                      )}
-                    </p>
+                    <div key={i} className="restaurant-info-flex">
+                      <p className="res-name">
+                        {restaurant.name}({restaurant.streetAddress})
+                      </p>
+                      <p className="avgRating-p-tag">
+                        {/* {restaurant.avgRating && restaurant.avgRating ? restaurant.avgRating?.toFixed(1) : <span className="boldText">New</span>} */}
+                        {restaurant.avgRating !== null &&
+                        restaurant.avgRating !== undefined ? (
+                          restaurant.avgRating.toFixed(1)
+                        ) : (
+                          <span className="boldText">New</span>
+                        )}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </div>
-          ))}
+                </Link>
+              </div>
+            ))
+          : restaurants?.map((restaurant, i) => (
+              <div key={restaurant.id} className="restaurant-img-main-div">
+                <Link
+                  to={`/restaurants/${restaurant.id}`}
+                  style={{ textDecoration: "none", color: "var(--black)" }}
+                >
+                  <div className="restaurant-box">
+                    <img
+                      src={
+                        restaurant.menu_item_images.find((img) => img.preview)
+                          ?.url || "7"
+                      }
+                      className="restaurant-img"
+                      alt=""
+                    />
+                    <div className="owner-div update-delete-btns">
+                      <button
+                        className="owner-btn post-delete-review-btn"
+                        onClick={() =>
+                          history.push(`/restaurants/edit/${restaurant.id}`)
+                        }
+                      >
+                        Update
+                      </button>
+                      <button
+                        className="owner-btn post-delete-review-btn"
+                        onClick={() =>
+                          history.push(`/restaurants/edit/${restaurant.id}`)
+                        }
+                      >
+                        Delete
+                      </button>
+                      {/*LETS GET TH IS UP AND RUNNING BOYS <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
+                    </div>
+
+                    <div key={i} className="restaurant-info-flex">
+                      <p className="res-name">
+                        {restaurant.name}({restaurant.streetAddress})
+                      </p>
+                      <p className="avgRating-p-tag">
+                        {/* {restaurant.avgRating && restaurant.avgRating ? restaurant.avgRating?.toFixed(1) : <span className="boldText">New</span>} */}
+                        {restaurant.avgRating !== null &&
+                        restaurant.avgRating !== undefined ? (
+                          restaurant.avgRating.toFixed(1)
+                        ) : (
+                          <span className="boldText">New</span>
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
       </div>
     </div>
   );

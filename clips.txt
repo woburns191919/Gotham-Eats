@@ -24,3 +24,10 @@ from owner button map
               {/*LETS GET TH IS UP AND RUNNING BOYS <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
             </div>
           ))}
+
+
+
+
+http://localhost:3000/owner/restaurants
+
+==where we go after creating restaurants

@@ -31,6 +31,7 @@ class Restaurant(db.Model, UserMixin):
     country = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text, nullable=False)
     hours = db.Column(db.String(50), nullable=False)
+    previmg = db.Column(db.Text)
 
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now())
@@ -81,7 +82,7 @@ class Restaurant(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'owner_id': self.owner_id,
+            # 'owner_id': self.owner_id,
             'streetAddress': self.streetAddress,
             'city': self.city,
             'state': self.state,
