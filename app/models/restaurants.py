@@ -93,7 +93,7 @@ class Restaurant(db.Model, UserMixin):
             'hours': self.hours,
             'avgRating': self.avg_stars,
             'menu_item_images': self.get_image,
-            'preview_image_url': self.preview_image_url,
+            'preview_image_url': self.previmg,
             'reviews': [review.to_dict() for review in self.reviews],
             'menu_items': [menu_item.to_dict() for menu_item in self.get_menu_items]
         }

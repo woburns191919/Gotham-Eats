@@ -89,7 +89,7 @@ export default function AllRestaurantComponent({
                     <img
                       src={
                         restaurant.menu_item_images.find((img) => img.preview)
-                          ?.url || previewImgUrl
+                          ?.url || restaurant.preview_image_url
                       }
                       className="ownerRestaurant-img"
                       alt=""
@@ -133,41 +133,33 @@ export default function AllRestaurantComponent({
               </div>
             ))
           : restaurants?.map((restaurant, i) => (
-              <div key={restaurant.id} className="restaurant-img-main-div">
-                <Link
-                  to={`/restaurants/${restaurant.id}`}
-                  style={{ textDecoration: "none", color: "var(--black)" }}
-                >
-                  <div
-                    className={`restaurant-box ${
-                      ownerMode ? "ownerRestaurant" : ""
-                    }`}
-                  >
-                    <img src={previewImgUrl} />
-                    {console.log("image?", previewImgUrl)}
-
-                    {/* className="restaurant-img"
-                      alt=""
-                    /> */}
-                    <div className="owner-div update-delete-btns">
-                      <button
-                        className="owner-btn post-delete-review-btn"
-                        onClick={() =>
-                          history.push(`/restaurants/edit/${restaurant.id}`)
-                        }
-                      >
-                        Update
-                      </button>
-                      <button
-                        className="owner-btn post-delete-review-btn"
-                        onClick={() =>
-                          history.push(`/restaurants/edit/${restaurant.id}`)
-                        }
-                      >
-                        Delete
-                      </button>
-                      {/*LETS GET TH IS UP AND RUNNING BOYS <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
-                    </div>
+            <div
+            className={`${
+              ownerMode
+                ? "ownerRestaurant-restaurant-img-main-div"
+                : "restaurant-img-main-div"
+            }`}
+            key={restaurant.id}
+          >
+            <Link
+              to={`/restaurants/${restaurant.id}`}
+              style={{ textDecoration: "none", color: "var(--black)" }}
+            >
+              <div
+                className={`restaurant-box ${
+                  ownerMode ? "ownerRestaurant" : ""
+                }`}
+              >
+                <img
+                  src={
+                    restaurant.menu_item_images.find((img) => img.preview)
+                      ?.url || restaurant.preview_image_url
+                  }
+                  className={
+                    ownerMode ? "ownerRestaurant-img" : "restaurant-img"
+                  }
+                  alt=""
+                />
 
                     <div key={i} className="restaurant-info-flex">
                       <p className="res-name">
