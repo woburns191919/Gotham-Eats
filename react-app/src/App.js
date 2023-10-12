@@ -20,7 +20,8 @@ import EditRestaurantForm from "./components/Restaurant/RestaurantForm/EditResta
 function App() {
   const dispatch = useDispatch();
   const { restaurantId } = useParams();
-  console.log("restaurant id from component", restaurantId);
+  const [previewImg, setPreviewImg] = useState("");
+
 
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -36,7 +37,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/restaurants/new">
-            <CreateRestaurantForm />
+            <CreateRestaurantForm setPreviewImg={setPreviewImg}/>
           </Route>
           <Route path="/restaurants/edit/:id">
             <EditRestaurantForm />
@@ -46,7 +47,7 @@ function App() {
           </Route>
 
           <Route path="/restaurants">
-            <GetRestaurants />
+            <GetRestaurants previewImg={previewImg}/>
             {/* <Route path="/restaurants" >
             <GetRestaurants />
             </Route> */}

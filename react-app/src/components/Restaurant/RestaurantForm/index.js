@@ -10,6 +10,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
   const [restId, setRestId] = useState(restaurantId);
   const [filteredRestaurants, setFilteredRestaurants] = useState(null);
 
+
   const dispatch = useDispatch();
 
   const [streetAddress, setStreetAddress] = useState("");
@@ -37,7 +38,9 @@ export default function RestaurantForm({ formType, restaurantId }) {
   };
 
   const handleInputChange = (setterFunction, validationField) => (e) => {
-    setterFunction(e.target.value);
+    const url = e.target.value;
+    console.log('URL:', url);
+    setterFunction(url);
     clearValidationError(validationField);
   };
 
@@ -76,7 +79,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
 
 
 
-    console.log('user id???', sessionUser.id)
+
     const restaurantData = {
       owner_id: sessionUser.id,
       name,

@@ -82,7 +82,7 @@ class Restaurant(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            # 'owner_id': self.owner_id,
+            'owner_id': self.owner_id,
             'streetAddress': self.streetAddress,
             'city': self.city,
             'state': self.state,
@@ -94,6 +94,6 @@ class Restaurant(db.Model, UserMixin):
             'avgRating': self.avg_stars,
             'menu_item_images': self.get_image,
             'preview_image_url': self.preview_image_url,
-            'reviews': [review.to_dict() for review in self.reviews]
-            # 'menu_items': [menu_item.to_dict() for menu_item in self.get_menu_items]
+            'reviews': [review.to_dict() for review in self.reviews],
+            'menu_items': [menu_item.to_dict() for menu_item in self.get_menu_items]
         }

@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import "./GetRestaurants.css";
 
-export default function AllRestaurantComponent({ ownerMode = false }) {
+export default function AllRestaurantComponent({
+  ownerMode = false,
+  previewImg,
+}) {
   const history = useHistory();
   const [restaurants, setRestaurants] = useState();
   const [currentUser, setCurrentUser] = useState(null);
@@ -47,6 +50,7 @@ export default function AllRestaurantComponent({ ownerMode = false }) {
     const ownedRestaurants = restaurants?.filter(
       (restaurant) => restaurant?.owner_id === currentUser?.id
     );
+    // console.log('restaurant data from fetch', ownedRestaurants)
     setFilteredRestaurants(ownedRestaurants);
   }, [currentUser, restaurants]);
 
@@ -68,19 +72,14 @@ export default function AllRestaurantComponent({ ownerMode = false }) {
         </div>
       )}
 
-      <div
-        className={`${
-          ownerMode
-            ? "ownerRestaurant-main-container ownerRestaurant-grid-container"
-            : "restaurants-main-container grid-container"
-        }`}
-      >
+      <div className="ownerRestaurant-main-container ownerRestaurant-grid-container">
         {ownerMode
           ? filteredRestaurants?.map((restaurant, i) => (
               <div
                 key={restaurant.id}
                 className="ownerRestaurant-restaurant-img-main-div"
               >
+                {console.log("restaurant id", restaurant)}
                 <Link
                   to={`/restaurants/${restaurant.id}`}
                   style={{ textDecoration: "none", color: "var(--black)" }}
@@ -89,7 +88,7 @@ export default function AllRestaurantComponent({ ownerMode = false }) {
                     <img
                       src={
                         restaurant.menu_item_images.find((img) => img.preview)
-                          ?.url || "7"
+                          ?.url || previewImg
                       }
                       className="ownerRestaurant-img"
                       alt=""
@@ -138,15 +137,18 @@ export default function AllRestaurantComponent({ ownerMode = false }) {
                   to={`/restaurants/${restaurant.id}`}
                   style={{ textDecoration: "none", color: "var(--black)" }}
                 >
-                  <div className="restaurant-box">
+                  <div
+                    className={`restaurant-box ${
+                      ownerMode ? "ownerRestaurant" : ""
+                    }`}
+                  >
                     <img
-                      src={
-                        restaurant.menu_item_images.find((img) => img.preview)
-                          ?.url || "7"
-                      }
-                      className="restaurant-img"
+                      src = {previewImg} />
+                      {console.log('image?', previewImg)}
+
+                      {/* className="restaurant-img"
                       alt=""
-                    />
+                    /> */}
                     <div className="owner-div update-delete-btns">
                       <button
                         className="owner-btn post-delete-review-btn"
