@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import "./GetRestaurants.css";
-
+import DeleteRestaurant from "../DeleteRestaurant";
+import OpenModalButton from "../../OpenModalButton"
 
 export default function AllRestaurantComponent({
   ownerMode = false,
@@ -103,15 +104,16 @@ export default function AllRestaurantComponent({
                       >
                         Update
                       </button>
-                      <button
+                      {/* <button
                         className="owner-btn post-delete-review-btn"
                         onClick={() =>
                           history.push(`/restaurants/edit/${restaurant.id}`)
                         }
                       >
                         Delete
-                      </button>
-                      {/*LETS GET TH IS UP AND RUNNING BOYS <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
+                      </button> */}
+                 <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} /> }
+                 />
                     </div>
 
                     <div key={i} className="restaurant-info-flex">
