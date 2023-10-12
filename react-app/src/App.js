@@ -20,7 +20,7 @@ import EditRestaurantForm from "./components/Restaurant/RestaurantForm/EditResta
 function App() {
   const dispatch = useDispatch();
   const { restaurantId } = useParams();
-  const [previewImg, setPreviewImg] = useState("");
+  const [previewImgUrl, setPreviewImgUrl] = useState("");
 
 
   const [isLoaded, setIsLoaded] = useState(false);
@@ -37,7 +37,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/restaurants/new">
-            <CreateRestaurantForm setPreviewImg={setPreviewImg}/>
+            <CreateRestaurantForm previewImgUrl={previewImgUrl}/>
           </Route>
           <Route path="/restaurants/edit/:id">
             <EditRestaurantForm />
@@ -47,7 +47,7 @@ function App() {
           </Route>
 
           <Route path="/restaurants">
-            <GetRestaurants previewImg={previewImg}/>
+            <GetRestaurants previewImgUrl={previewImgUrl}/>
             {/* <Route path="/restaurants" >
             <GetRestaurants />
             </Route> */}

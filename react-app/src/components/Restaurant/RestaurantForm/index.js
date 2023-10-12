@@ -21,7 +21,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [hours, setHours] = useState("");
-  const [previewImg, setPreviewImg] = useState("");
+  const [previewImgUrl, setPreviewImgUrl] = useState("");
 
   const [validationObj, setValidationObj] = useState({});
   const [initialRestaurant, setInitialRestaurant] = useState({});
@@ -68,14 +68,14 @@ export default function RestaurantForm({ formType, restaurantId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let errorsObj = validateCommonFields();
-    if (formType === "Create" && !previewImg)
-      errorsObj.previewImg = "Preview Image is required";
+    // let errorsObj = validateCommonFields();
+    // if (formType === "Create" && !previewImgUrl)
+    //   errorsObj.previewImgUrl = "Preview Image is required";
 
-    if (Object.keys(errorsObj).length) {
-      setValidationObj(errorsObj);
-      return;
-    }
+    // if (Object.keys(errorsObj).length) {
+    //   setValidationObj(errorsObj);
+    //   return;
+    // }
 
 
 
@@ -90,7 +90,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
       country,
       description,
       hours,
-      preview_image_url: previewImg
+      preview_image_url: previewImgUrl
     };
 
       const res = await fetch(`/api/restaurants/new`, {
@@ -100,10 +100,10 @@ export default function RestaurantForm({ formType, restaurantId }) {
         },
         body: JSON.stringify(restaurantData),
       });
-      console.log('data?', restaurantData)
+
       if (res.ok) {
         const data = await res.json();
-        console.log('data from post', data)
+        history.push("/restaurants")
 
         return data;
       } else {
@@ -127,7 +127,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
           onChange={handleInputChange(setName, "name")}
           placeholder="Name"
           className="input-form"
-          required
+          // required
         />
         {validationObj.name && <p className="errors">{validationObj.name}</p>}
         <input
@@ -137,7 +137,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
           onChange={handleInputChange(setStreetAddress, "streetAddress")}
           placeholder="Street Address"
           className="input-form"
-          required
+          // required
         />
         {validationObj.streetAddress && (
           <p className="errors">{validationObj.streetAddress}</p>
@@ -148,7 +148,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
           value={city}
           onChange={handleInputChange(setCity, "city")}
           className="select-form"
-          required
+          // required
         >
           <option value="Gotham">Gotham</option>
         </select>
@@ -159,7 +159,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
           value={state}
           onChange={handleInputChange(setState, "state")}
           className="select-form"
-          required
+          // required
         >
           <option value="New York">New York</option>
         </select>
@@ -170,7 +170,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
           onChange={handleInputChange(setPostalCode, "postalCode")}
           placeholder="Postal Code"
           className="input-form-postal"
-          required
+          // required
         />
         {validationObj.postalCode && (
           <p className="errors">{validationObj.postalCode}</p>
@@ -181,7 +181,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
           value={country}
           onChange={handleInputChange(setCountry, "country")}
           className="select-form"
-          required
+          // required
         >
           <option value="United States">United States</option>
         </select>
@@ -191,7 +191,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
           onChange={handleInputChange(setDescription, "description")}
           placeholder="Description"
           className="textarea-form"
-          required
+          // required
         />
         {validationObj.description && (
           <p className="errors">{validationObj.description}</p>
@@ -202,30 +202,34 @@ export default function RestaurantForm({ formType, restaurantId }) {
           onChange={handleInputChange(setHours, "hours")}
           placeholder="Hours"
           className="textarea-form"
-          required
+          // required
         />
         {validationObj.hours && <p className="errors">{validationObj.hours}</p>}
         {formType === "Create" && (
           <>
             <input
               type="url"
+              value={previewImgUrl}
               className="photo-input"
               placeholder="Show Off Your Dish With a Photo URL"
-              onChange={handleInputChange(setPreviewImg, "previewImg")}
+              onChange={(e) => setPreviewImgUrl(e.target.value)}
               required
             />
-            {validationObj.previewImg && (
+            {/* {validationObj.previewImg && (
               <p className="errors">{validationObj.previewImg}</p>
-            )}
+            )} */}
           </>
         )}
         <button
           type="submit"
           className="bttn-submit"
-          disabled={Object.keys(validationObj).length > 0}
+          // disabled={Object.keys(validationObj).length > 0}
+
         >
           {formType === "Create" ? "Create Restaurant" : "Update Restaurant"}
         </button>
+        <img
+        src={previewImgUrl} />
       </form>
     );
   };

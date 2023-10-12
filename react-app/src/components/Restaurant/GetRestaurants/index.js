@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import "./GetRestaurants.css";
 
+
 export default function AllRestaurantComponent({
   ownerMode = false,
-  previewImg,
+  previewImgUrl,
 }) {
   const history = useHistory();
   const [restaurants, setRestaurants] = useState();
@@ -88,7 +89,7 @@ export default function AllRestaurantComponent({
                     <img
                       src={
                         restaurant.menu_item_images.find((img) => img.preview)
-                          ?.url || previewImg
+                          ?.url || previewImgUrl
                       }
                       className="ownerRestaurant-img"
                       alt=""
@@ -142,11 +143,10 @@ export default function AllRestaurantComponent({
                       ownerMode ? "ownerRestaurant" : ""
                     }`}
                   >
-                    <img
-                      src = {previewImg} />
-                      {console.log('image?', previewImg)}
+                    <img src={previewImgUrl} />
+                    {console.log("image?", previewImgUrl)}
 
-                      {/* className="restaurant-img"
+                    {/* className="restaurant-img"
                       alt=""
                     /> */}
                     <div className="owner-div update-delete-btns">
