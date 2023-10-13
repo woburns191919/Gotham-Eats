@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import "./GetRestaurants.css";
 import DeleteRestaurant from "../DeleteRestaurant";
-import OpenModalButton from "../../OpenModalButton"
+import OpenModalButton from "../../OpenModalButton";
 
 export default function AllRestaurantComponent({
   ownerMode = false,
@@ -31,6 +31,15 @@ export default function AllRestaurantComponent({
     } else {
       console.error("Failed to fetch user");
       return [];
+    }
+  };
+
+  const deleteRestaurant = async (restaurantId) => {
+    const res = await fetch(`/api/restaurants/${restaurantId}`, {
+      method: "DELETE",
+    });
+    if (res.ok) {
+      console.log("successfully deleted");
     }
   };
 
@@ -104,16 +113,25 @@ export default function AllRestaurantComponent({
                       >
                         Update
                       </button>
-                      {/* <button
+                      <button
                         className="owner-btn post-delete-review-btn"
-                        onClick={() =>
-                          history.push(`/restaurants/edit/${restaurant.id}`)
-                        }
+                        onClick={async () => {
+                          const confirmDelete = window.confirm(
+                            "Are you sure you want to delete this restaurant?"
+                          );
+                          if (confirmDelete) {
+                            await deleteRestaurant(restaurant.id);
+                            // You can either update the state or refresh the page here
+                            // For updating the state, you can refetch the restaurant data
+                            const updatedRestaurants = await fetchRestaurants();
+                            setRestaurants(updatedRestaurants);
+                          }
+                        }}
                       >
                         Delete
-                      </button> */}
-                 <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} /> }
-                 />
+                      </button>
+
+                      {/* <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} /> } */}
                     </div>
 
                     <div key={i} className="restaurant-info-flex">
@@ -135,33 +153,33 @@ export default function AllRestaurantComponent({
               </div>
             ))
           : restaurants?.map((restaurant, i) => (
-            <div
-            className={`${
-              ownerMode
-                ? "ownerRestaurant-restaurant-img-main-div"
-                : "restaurant-img-main-div"
-            }`}
-            key={restaurant.id}
-          >
-            <Link
-              to={`/restaurants/${restaurant.id}`}
-              style={{ textDecoration: "none", color: "var(--black)" }}
-            >
               <div
-                className={`restaurant-box ${
-                  ownerMode ? "ownerRestaurant" : ""
+                className={`${
+                  ownerMode
+                    ? "ownerRestaurant-restaurant-img-main-div"
+                    : "restaurant-img-main-div"
                 }`}
+                key={restaurant.id}
               >
-                <img
-                  src={
-                    restaurant.menu_item_images.find((img) => img.preview)
-                      ?.url || restaurant.preview_image_url
-                  }
-                  className={
-                    ownerMode ? "ownerRestaurant-img" : "restaurant-img"
-                  }
-                  alt=""
-                />
+                <Link
+                  to={`/restaurants/${restaurant.id}`}
+                  style={{ textDecoration: "none", color: "var(--black)" }}
+                >
+                  <div
+                    className={`restaurant-box ${
+                      ownerMode ? "ownerRestaurant" : ""
+                    }`}
+                  >
+                    <img
+                      src={
+                        restaurant.menu_item_images.find((img) => img.preview)
+                          ?.url || restaurant.preview_image_url
+                      }
+                      className={
+                        ownerMode ? "ownerRestaurant-img" : "restaurant-img"
+                      }
+                      alt=""
+                    />
 
                     <div key={i} className="restaurant-info-flex">
                       <p className="res-name">
