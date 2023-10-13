@@ -7,12 +7,12 @@ import OpenModalButton from "../../OpenModalButton";
 
 import DeleteMenuItem from "../../DeleteMenuItem/DeleteMenuItem";
 
-import "./WillexGetRestaurantDetail.css";
+import "./RestaurantDetail.css";
 import MenuItemsDetailsModal from "../../MenuItemsDetailDisplayModal";
 
-export default function WillexGetRestaurantDetail() {
+export default function RestaurantDetail() {
   const dispatch = useDispatch();
-  const [reloadPage, setReloadPage] = useState(false);
+  // const [reloadPage, setReloadPage] = useState(false);
   const [isDelivery, setIsDelivery] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -36,8 +36,6 @@ export default function WillexGetRestaurantDetail() {
       state.session.allUsers ? state.session.allUsers : []
     )
   );
-
-  console.log("users***", users);
 
   const fetchRestaurants = async () => {
     const res = await fetch(`/api/restaurants/${restId}`);
@@ -99,7 +97,7 @@ export default function WillexGetRestaurantDetail() {
   return (
     <>
       <div className="Res-Det-Container">
-        <h1>WE ARE IN WILLEX</h1>
+
 
         {restaurantsDetailData?.owner_id === sessionUser?.id && (
           <h2>we did it </h2>

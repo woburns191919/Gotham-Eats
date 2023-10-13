@@ -11,28 +11,32 @@ home_restaurants = Blueprint('restaurants', __name__)
 def create_new_restaurant():
 
     form = RestaurantForm()
-  # form['csrf_token'].data = request.cookies['csrf_token']
+    # form['csrf_token'].data = request.cookies['csrf_token']
+
 
     data = request.get_json()
-    if form.validate_on_submit():
-        new_restaurant = Restaurant(
-        owner_id = data["owner_id"],
-        name = data["name"],
-        streetAddress = data["street_address"],
-        city = data["city"],
-        state = data["state"],
-        postalCode = data["postal_code"],
-        country = data["country"],
-        description = data["description"],
-        hours = data["hours"],
-        previmg = data["previmg"]
-    )
+    if data is None:
+        return jsonify({"error": "Invalid JSON data in the request"}), 400
 
-    print(new_restaurant)
-    addded_restaurant = db.session.add(new_restaurant)
+
+    # if form.validate_on_submit():
+    new_restaurant = Restaurant(
+    owner_id = current_user.id,
+    name = data["name"],
+    streetAddress = data["street_address"],
+    city = data["city"],
+    state = data["state"],
+    postalCode = data["postal_code"],
+    country = data["country"],
+    description = data["description"],
+    hours = data["hours"],
+    previmg = data["preview_image_url"]
+)
+    print('new restaurant', new_restaurant)
+    db.session.add(new_restaurant)
     db.session.commit()
-    return jsonify(message = "Successfully created new restaurant", id = addded_restaurant.id), 201
-    return jsonify(errors=form.errors), 400
+    return jsonify(message = "Successfully created new restaurant"), 201
+# return jsonify(errors=form.errors), 400
 
 
 @home_restaurants.route("/update/<int:id>", methods=["GET", "PUT"])
@@ -63,7 +67,7 @@ def update_restaurant(id):
     form.country.data = data['country']
     form.description.data = data['description']
     form.hours.data = data['hours']
-    form.previmg.data = data['previmg']
+    form.previmg.data = data['preview_image_url']
 
     if form.validate_on_submit():
         restaurant_to_update.name = form.name.data

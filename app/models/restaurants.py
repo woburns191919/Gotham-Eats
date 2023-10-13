@@ -31,6 +31,7 @@ class Restaurant(db.Model, UserMixin):
     country = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text, nullable=False)
     hours = db.Column(db.String(50), nullable=False)
+    previmg = db.Column(db.Text)
 
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now())
@@ -92,7 +93,7 @@ class Restaurant(db.Model, UserMixin):
             'hours': self.hours,
             'avgRating': self.avg_stars,
             'menu_item_images': self.get_image,
-            'preview_image_url': self.preview_image_url,
-            'reviews': [review.to_dict() for review in self.reviews]
-            # 'menu_items': [menu_item.to_dict() for menu_item in self.get_menu_items]
+            'preview_image_url': self.previmg,
+            'reviews': [review.to_dict() for review in self.reviews],
+            'menu_items': [menu_item.to_dict() for menu_item in self.get_menu_items]
         }

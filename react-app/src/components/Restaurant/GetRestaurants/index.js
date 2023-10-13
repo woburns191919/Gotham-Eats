@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import "./GetRestaurants.css";
+import DeleteRestaurant from "../DeleteRestaurant";
+import OpenModalButton from "../../OpenModalButton";
 
-
-export default function AllRestaurantComponent({ ownerMode = false }) {
+export default function AllRestaurantComponent({
+  ownerMode = false,
+  previewImgUrl,
+}) {
   const history = useHistory();
   const [restaurants, setRestaurants] = useState();
+  const [currentUser, setCurrentUser] = useState(null);
+  const [filteredRestaurants, setFilteredRestaurants] = useState(null);
 
   const fetchRestaurants = async () => {
     const res = await fetch("/api/restaurants");
@@ -17,17 +23,47 @@ export default function AllRestaurantComponent({ ownerMode = false }) {
       return [];
     }
   };
+  const fetchCurrentUser = async () => {
+    const res = await fetch("/api/auth/current_user");
+    if (res.ok) {
+      const data = await res.json();
+      return data;
+    } else {
+      console.error("Failed to fetch user");
+      return [];
+    }
+  };
+
+  const deleteRestaurant = async (restaurantId) => {
+    const res = await fetch(`/api/restaurants/${restaurantId}`, {
+      method: "DELETE",
+    });
+    if (res.ok) {
+      console.log("successfully deleted");
+    }
+  };
+
   useEffect(() => {
-   (async function () {
+    (async function () {
       const restaurantData = await fetchRestaurants();
       setRestaurants(restaurantData);
-    }())
+    })();
   }, []);
 
-  if (ownerMode === true)
-    console.log(
-      "***************************************CONGRATS WERE IN OWNER MODE BRO."
+  useEffect(() => {
+    (async function () {
+      const currentUserData = await fetchCurrentUser();
+      setCurrentUser(currentUserData);
+    })();
+  }, []);
+
+  useEffect(() => {
+    const ownedRestaurants = restaurants?.filter(
+      (restaurant) => restaurant?.owner_id === currentUser?.id
     );
+    // console.log('restaurant data from fetch', ownedRestaurants)
+    setFilteredRestaurants(ownedRestaurants);
+  }, [currentUser, restaurants]);
 
   return (
     <div className="main-container">
@@ -47,86 +83,122 @@ export default function AllRestaurantComponent({ ownerMode = false }) {
         </div>
       )}
 
-      <div
-        className={`${
-          ownerMode
-            ? "ownerRestaurant-main-container ownerRestaurant-grid-container"
-            : "restaurants-main-container grid-container"
-        }`}
-      >
-        {restaurants &&
-          restaurants.length > 0 &&
-          restaurants.map((restaurant) => (
-            <div
-              className={`${
-                ownerMode
-                  ? "ownerRestaurant-restaurant-img-main-div"
-                  : "restaurant-img-main-div"
-              }`}
-              key={restaurant.id}
-            >
-              <Link
-                to={`/restaurants/${restaurant.id}`}
-                style={{ textDecoration: "none", color: "var(--black)" }}
+      <div className="ownerRestaurant-main-container ownerRestaurant-grid-container">
+        {ownerMode
+          ? filteredRestaurants?.map((restaurant, i) => (
+              <div
+                key={restaurant.id}
+                className="ownerRestaurant-restaurant-img-main-div"
               >
-                <div
-                  className={`restaurant-box ${
-                    ownerMode ? "ownerRestaurant" : ""
-                  }`}
+                {console.log("restaurant id", restaurant)}
+                <Link
+                  to={`/restaurants/${restaurant.id}`}
+                  style={{ textDecoration: "none", color: "var(--black)" }}
                 >
-                  <img
-                    src={
-                      restaurant.menu_item_images.find((img) => img.preview)
-                        ?.url || "7"
-                    }
-                    className={
-                      ownerMode ? "ownerRestaurant-img" : "restaurant-img"
-                    }
-                    alt=""
-                  />
-                  <div className="restaurant-info-flex">
-                    <p className="res-name">
-                      {restaurant.name}({restaurant.streetAddress})
-                    </p>
-                    <p className="avgRating-p-tag">
-                      {/* {restaurant.avgRating && restaurant.avgRating ? restaurant.avgRating?.toFixed(1) : <span className="boldText">New</span>} */}
-                      {restaurant.avgRating !== null &&
-                      restaurant.avgRating !== undefined ? (
-                        restaurant.avgRating.toFixed(1)
-                      ) : (
-                        <span className="boldText">New</span>
-                      )}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}
+                  <div className="ownerRestaurant">
+                    <img
+                      src={
+                        restaurant.menu_item_images.find((img) => img.preview)
+                          ?.url || restaurant.preview_image_url
+                      }
+                      className="ownerRestaurant-img"
+                      alt=""
+                    />
+                    <div className="owner-div update-delete-btns">
+                      <button
+                        className="owner-btn post-delete-review-btn"
+                        onClick={() =>
+                          history.push(`/restaurants/edit/${restaurant.id}`)
+                        }
+                      >
+                        Update
+                      </button>
+                      <button
+                        className="owner-btn post-delete-review-btn"
+                        onClick={async () => {
+                          const confirmDelete = window.confirm(
+                            "Are you sure you want to delete this restaurant?"
+                          );
+                          if (confirmDelete) {
+                            await deleteRestaurant(restaurant.id);
+                            // You can either update the state or refresh the page here
+                            // For updating the state, you can refetch the restaurant data
+                            const updatedRestaurants = await fetchRestaurants();
+                            setRestaurants(updatedRestaurants);
+                          }
+                        }}
+                      >
+                        Delete
+                      </button>
 
-        {ownerMode &&
-          restaurants &&
-          restaurants.length > 0 &&
-          restaurants.map((restaurant) => (
-            <div className="owner-div update-delete-btns">
-              <button
-                className="owner-btn post-delete-review-btn"
-                onClick={() =>
-                  history.push(`/restaurants/edit/${restaurant.id}`)
-                }
+                      {/* <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} /> } */}
+                    </div>
+
+                    <div key={i} className="restaurant-info-flex">
+                      <p className="res-name">
+                        {restaurant.name}({restaurant.streetAddress})
+                      </p>
+                      <p className="avgRating-p-tag">
+                        {/* {restaurant.avgRating && restaurant.avgRating ? restaurant.avgRating?.toFixed(1) : <span className="boldText">New</span>} */}
+                        {restaurant.avgRating !== null &&
+                        restaurant.avgRating !== undefined ? (
+                          restaurant.avgRating.toFixed(1)
+                        ) : (
+                          <span className="boldText">New</span>
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))
+          : restaurants?.map((restaurant, i) => (
+              <div
+                className={`${
+                  ownerMode
+                    ? "ownerRestaurant-restaurant-img-main-div"
+                    : "restaurant-img-main-div"
+                }`}
+                key={restaurant.id}
               >
-                Update
-              </button>
-              <button
-                className="owner-btn post-delete-review-btn"
-                onClick={() =>
-                  history.push(`/restaurants/edit/${restaurant.id}`)
-                }
-              >
-                Delete
-              </button>
-              {/*LETS GET TH IS UP AND RUNNING BOYS <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} />} /> */}
-            </div>
-          ))}
+                <Link
+                  to={`/restaurants/${restaurant.id}`}
+                  style={{ textDecoration: "none", color: "var(--black)" }}
+                >
+                  <div
+                    className={`restaurant-box ${
+                      ownerMode ? "ownerRestaurant" : ""
+                    }`}
+                  >
+                    <img
+                      src={
+                        restaurant.menu_item_images.find((img) => img.preview)
+                          ?.url || restaurant.preview_image_url
+                      }
+                      className={
+                        ownerMode ? "ownerRestaurant-img" : "restaurant-img"
+                      }
+                      alt=""
+                    />
+
+                    <div key={i} className="restaurant-info-flex">
+                      <p className="res-name">
+                        {restaurant.name}({restaurant.streetAddress})
+                      </p>
+                      <p className="avgRating-p-tag">
+                        {/* {restaurant.avgRating && restaurant.avgRating ? restaurant.avgRating?.toFixed(1) : <span className="boldText">New</span>} */}
+                        {restaurant.avgRating !== null &&
+                        restaurant.avgRating !== undefined ? (
+                          restaurant.avgRating.toFixed(1)
+                        ) : (
+                          <span className="boldText">New</span>
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
       </div>
     </div>
   );
