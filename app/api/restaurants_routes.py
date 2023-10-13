@@ -90,7 +90,7 @@ def update_restaurant(id):
 def delete_post(id):
     """delete a restaurant based on restaurant id"""
     restaurant_to_delete = Restaurant.query.get(id)
-    print(restaurant_to_delete)
+    print('deleted restaurant', restaurant_to_delete)
     db.session.delete(restaurant_to_delete)
     db.session.commit()
     return redirect("/restaurants")

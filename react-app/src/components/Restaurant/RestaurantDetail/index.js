@@ -27,7 +27,7 @@ export default function RestaurantDetail() {
 
   const history = useHistory();
   const { id } = useParams();
-  const [restaurantsDetailData, setRestaurants] = useState([]);
+  const [restaurantsDetailData, setRestaurantsDetailData] = useState([]);
   const [menuDeetz, setMenuDeetz] = useState([]);
   const [restId, setRestId] = useState(id);
 
@@ -37,7 +37,7 @@ export default function RestaurantDetail() {
     )
   );
 
-  const fetchRestaurants = async () => {
+  const fetchRestaurant = async () => {
     const res = await fetch(`/api/restaurants/${restId}`);
     if (res.ok) {
       const data = await res.json();
@@ -65,8 +65,8 @@ export default function RestaurantDetail() {
 
   useEffect(() => {
     (async function () {
-      const restaurantData = await fetchRestaurants();
-      setRestaurants(restaurantData);
+      const restaurantData = await fetchRestaurant();
+      setRestaurantsDetailData(restaurantData);
     })();
   }, []);
 

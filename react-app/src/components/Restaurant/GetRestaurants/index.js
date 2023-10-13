@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory, NavLink } from "react-router-dom";
+import { Link, useHistory, NavLink, useParams } from "react-router-dom";
 import "./GetRestaurants.css";
 import DeleteRestaurant from "../DeleteRestaurant";
 import OpenModalButton from "../../OpenModalButton";
@@ -9,11 +9,15 @@ export default function AllRestaurantComponent({
   previewImgUrl,
 }) {
   const history = useHistory();
-  const [restaurants, setRestaurants] = useState();
+  const { id } = useParams();
+  const [allRestaurants, setAllRestaurants] = useState();
   const [currentUser, setCurrentUser] = useState(null);
   const [filteredRestaurants, setFilteredRestaurants] = useState(null);
+  const [restId, setRestId] = useState(id);
+  const [singleRestaurant, setSingleRestaurant] = useState(id);
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  const fetchRestaurants = async () => {
+  const fetchAllRestaurants = async () => {
     const res = await fetch("/api/restaurants");
     if (res.ok) {
       const data = await res.json();
@@ -34,36 +38,71 @@ export default function AllRestaurantComponent({
     }
   };
 
-  const deleteRestaurant = async (restaurantId) => {
-    const res = await fetch(`/api/restaurants/${restaurantId}`, {
-      method: "DELETE",
-    });
+  const fetchSingleRestaurant = async () => {
+    const res = await fetch(`/api/restaurants/${restId}`);
     if (res.ok) {
-      console.log("successfully deleted");
+      const data = await res.json();
+
+      return data;
+    } else {
+      console.error("Failed to fetch");
+      return [];
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { // all restaurants
     (async function () {
-      const restaurantData = await fetchRestaurants();
-      setRestaurants(restaurantData);
+      const allRestaurantData = await fetchAllRestaurants();
+      setAllRestaurants(allRestaurantData);
     })();
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { // for current user
     (async function () {
       const currentUserData = await fetchCurrentUser();
       setCurrentUser(currentUserData);
     })();
   }, []);
 
+  useEffect(() => { //single restaurant detail
+    (async function () {
+      const singleRestaurantData = await fetchSingleRestaurant();
+      setSingleRestaurant(singleRestaurant);
+    })();
+  }, []);
+
+
   useEffect(() => {
-    const ownedRestaurants = restaurants?.filter(
+    const ownedRestaurants = allRestaurants && allRestaurants?.filter( //manage restaurants
       (restaurant) => restaurant?.owner_id === currentUser?.id
     );
     // console.log('restaurant data from fetch', ownedRestaurants)
     setFilteredRestaurants(ownedRestaurants);
-  }, [currentUser, restaurants]);
+  }, [currentUser, allRestaurants]);
+
+
+  const handleDelete = async () => {
+    try {
+      setIsDeleting(true);
+
+      const response = await fetch(`/api/restaurants/delete/${restId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+
+        setAllRestaurants((prevRestaurants) =>
+          prevRestaurants.filter((restaurant) => restaurant.id !== restId)
+        );
+
+        history.push("/restaurants");
+      } else {
+        console.error("Failed to delete restaurant.");
+      }
+    } catch (error) {
+      console.error("Failed to delete restaurant: ", error);
+    }
+  };
 
   return (
     <div className="main-container">
@@ -115,18 +154,8 @@ export default function AllRestaurantComponent({
                       </button>
                       <button
                         className="owner-btn post-delete-review-btn"
-                        onClick={async () => {
-                          const confirmDelete = window.confirm(
-                            "Are you sure you want to delete this restaurant?"
-                          );
-                          if (confirmDelete) {
-                            await deleteRestaurant(restaurant.id);
-                            // You can either update the state or refresh the page here
-                            // For updating the state, you can refetch the restaurant data
-                            const updatedRestaurants = await fetchRestaurants();
-                            setRestaurants(updatedRestaurants);
-                          }
-                        }}
+                        onClick={handleDelete}
+
                       >
                         Delete
                       </button>
@@ -152,7 +181,7 @@ export default function AllRestaurantComponent({
                 </Link>
               </div>
             ))
-          : restaurants?.map((restaurant, i) => (
+          : allRestaurants?.map((restaurant, i) => (
               <div
                 className={`${
                   ownerMode
