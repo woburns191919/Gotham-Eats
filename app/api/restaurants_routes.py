@@ -85,12 +85,15 @@ def update_restaurant(id):
     else:
         return jsonify(errors=form.errors), 400
 
-
-@home_restaurants.route("/delete/<int:id>")
+@home_restaurants.route("/delete/<int:id>", methods=["DELETE"])
 def delete_post(id):
-    """delete a restaurant based on restaurant id"""
+    print("ID:", id)
     restaurant_to_delete = Restaurant.query.get(id)
-    print('deleted restaurant', restaurant_to_delete)
+    print("Restaurant to delete:", restaurant_to_delete) 
+
+    if restaurant_to_delete is None:
+        return jsonify({"error": "Restaurant not found"}), 404
+
     db.session.delete(restaurant_to_delete)
     db.session.commit()
     return redirect("/restaurants")
