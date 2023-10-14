@@ -7,6 +7,19 @@ from ..forms import RestaurantForm
 import json
 home_restaurants = Blueprint('restaurants', __name__)
 
+@home_restaurants.route("/delete/<int:id>", methods=["DELETE"])
+def delete_post(id):
+    print("ID:", id)
+    restaurant_to_delete = Restaurant.query.get(id)
+    print("Restaurant to delete:", restaurant_to_delete)
+
+    if restaurant_to_delete is None:
+        return jsonify({"error": "Restaurant not found"}), 404
+
+    db.session.delete(restaurant_to_delete)
+    db.session.commit()
+    return redirect("/restaurants")
+
 @home_restaurants.route("/new", methods=["POST"])
 def create_new_restaurant():
 
@@ -85,18 +98,7 @@ def update_restaurant(id):
     else:
         return jsonify(errors=form.errors), 400
 
-@home_restaurants.route("/delete/<int:id>", methods=["DELETE"])
-def delete_post(id):
-    print("ID:", id)
-    restaurant_to_delete = Restaurant.query.get(id)
-    print("Restaurant to delete:", restaurant_to_delete) 
 
-    if restaurant_to_delete is None:
-        return jsonify({"error": "Restaurant not found"}), 404
-
-    db.session.delete(restaurant_to_delete)
-    db.session.commit()
-    return redirect("/restaurants")
 
 @home_restaurants.route("/manage/<int:id>")
 

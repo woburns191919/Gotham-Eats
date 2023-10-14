@@ -82,10 +82,11 @@ export default function AllRestaurantComponent({
 
 
   const handleDelete = async () => {
+
     try {
       setIsDeleting(true);
 
-      const response = await fetch(`/api/restaurants/delete/${restId}`, {
+      const response = await fetch(`/api/restaurants/${restId}`, {
         method: "DELETE",
       });
 
