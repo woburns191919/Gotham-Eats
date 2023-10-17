@@ -37,10 +37,10 @@ http://localhost:3000/owner/restaurants
 
 
 
-react-app/src/assets/menu_item_images/desserts
+https://flask3.s3.amazonaws.com/menu_item_images/desserts
 
-react-app/src/assets/menu_item_images/drinks
+https://flask3.s3.amazonaws.com/menu_item_images/drinks
 
-react-app/src/assets/menu_item_images/entrees
+https://flask3.s3.amazonaws.com/menu_item_images/entrees
 
-react-app/src/assets/menu_item_images/sides
+https://flask3.s3.amazonaws.com/menu_item_images/sides
