@@ -4,7 +4,7 @@ import "./GetRestaurants.css";
 import DeleteRestaurant from "../DeleteRestaurant";
 import OpenModalButton from "../../OpenModalButton";
 
-export default function GetRestaurants({ ownerMode = false, restId }) {
+export default function GetRestaurants({ ownerMode = false }) {
   const history = useHistory();
   const { id } = useParams();
   const [allRestaurants, setAllRestaurants] = useState();
@@ -97,7 +97,7 @@ export default function GetRestaurants({ ownerMode = false, restId }) {
         setAllRestaurants((prevRestaurants) =>
           prevRestaurants.filter((restaurant) => restaurant.id !== restId)
         );
-        history.push("/restaurants");
+        history.push(`/owner/restaurants/${currentUser.id}`);
        } else {
 
         console.error("Failed to delete restaurant. Status:", response.status);

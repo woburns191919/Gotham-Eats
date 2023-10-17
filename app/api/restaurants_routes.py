@@ -18,7 +18,7 @@ def delete_post(id):
 
     db.session.delete(restaurant_to_delete)
     db.session.commit()
-    return redirect("/restaurants")
+    return jsonify(message = "delete success")
 
 @home_restaurants.route("/new", methods=["POST"])
 def create_new_restaurant():
