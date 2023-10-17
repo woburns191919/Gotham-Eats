@@ -4,18 +4,15 @@ import "./GetRestaurants.css";
 import DeleteRestaurant from "../DeleteRestaurant";
 import OpenModalButton from "../../OpenModalButton";
 
-export default function AllRestaurantComponent({
-  ownerMode = false,
-  previewImgUrl,
-}) {
+export default function GetRestaurants({ ownerMode = false, restId }) {
   const history = useHistory();
   const { id } = useParams();
   const [allRestaurants, setAllRestaurants] = useState();
   const [currentUser, setCurrentUser] = useState(null);
   const [filteredRestaurants, setFilteredRestaurants] = useState(null);
-  const [restId, setRestId] = useState(id);
+  // const [restId, setRestId] = useState(id);
   const [singleRestaurant, setSingleRestaurant] = useState(id);
-  const [isDeleting, setIsDeleting] = useState(false);
+  // const [isDeleting, setIsDeleting] = useState(false);
 
   const fetchAllRestaurants = async () => {
     const res = await fetch("/api/restaurants");
@@ -39,7 +36,7 @@ export default function AllRestaurantComponent({
   };
 
   const fetchSingleRestaurant = async () => {
-    const res = await fetch(`/api/restaurants/${restId}`);
+    const res = await fetch(`/api/restaurants/${id}`);
     if (res.ok) {
       const data = await res.json();
 
@@ -50,43 +47,48 @@ export default function AllRestaurantComponent({
     }
   };
 
-  useEffect(() => { // all restaurants
+  useEffect(() => {
+    // all restaurants
     (async function () {
       const allRestaurantData = await fetchAllRestaurants();
       setAllRestaurants(allRestaurantData);
     })();
   }, []);
 
-  useEffect(() => { // for current user
+  useEffect(() => {
+    // for current user
     (async function () {
       const currentUserData = await fetchCurrentUser();
       setCurrentUser(currentUserData);
     })();
   }, []);
 
-  useEffect(() => { //single restaurant detail
+  useEffect(() => {
+    //single restaurant detail
     (async function () {
       const singleRestaurantData = await fetchSingleRestaurant();
       setSingleRestaurant(singleRestaurant);
     })();
   }, []);
 
-
   useEffect(() => {
-    const ownedRestaurants = allRestaurants && allRestaurants?.filter( //manage restaurants
-      (restaurant) => restaurant?.owner_id === currentUser?.id
-    );
+    const ownedRestaurants =
+      allRestaurants &&
+      allRestaurants?.filter(
+        //manage restaurants
+        (restaurant) => restaurant?.owner_id === currentUser?.id
+      );
     // console.log('restaurant data from fetch', ownedRestaurants)
     setFilteredRestaurants(ownedRestaurants);
   }, [currentUser, allRestaurants]);
 
-
-  const handleDelete = async () => {
+  const handleDelete = async (restId) => {
+    console.log("id from handle delete", restId);
 
     try {
-      setIsDeleting(true);
+      // setIsDeleting(true);
 
-      const response = await fetch(`/api/restaurants/${restId}`, {
+      const response = await fetch(`/api/restaurants/delete/${restId}`, {
         method: "DELETE",
       });
 
@@ -95,10 +97,12 @@ export default function AllRestaurantComponent({
         setAllRestaurants((prevRestaurants) =>
           prevRestaurants.filter((restaurant) => restaurant.id !== restId)
         );
-
         history.push("/restaurants");
-      } else {
-        console.error("Failed to delete restaurant.");
+       } else {
+
+        console.error("Failed to delete restaurant. Status:", response.status);
+        const errorData = await response.json();
+        console.error("Error data:", errorData);
       }
     } catch (error) {
       console.error("Failed to delete restaurant: ", error);
@@ -130,7 +134,7 @@ export default function AllRestaurantComponent({
                 key={restaurant.id}
                 className="ownerRestaurant-restaurant-img-main-div"
               >
-                {console.log("restaurant id", restaurant)}
+                {/* {console.log("restaurant id", restaurant)} */}
                 <Link
                   to={`/restaurants/${restaurant.id}`}
                   style={{ textDecoration: "none", color: "var(--black)" }}
@@ -155,8 +159,7 @@ export default function AllRestaurantComponent({
                       </button>
                       <button
                         className="owner-btn post-delete-review-btn"
-                        onClick={handleDelete}
-
+                        onClick={() => handleDelete(restaurant.id)}
                       >
                         Delete
                       </button>
