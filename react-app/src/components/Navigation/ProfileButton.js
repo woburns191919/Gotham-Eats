@@ -48,7 +48,7 @@ function ProfileButton({ user }) {
     history.push('/');
   };
 
-  console.log('am i getting user id in here',sessionUser)
+  // console.log('am i getting user id in here',sessionUser)
   const ulClassName = "profile-dropdown";
 
   return (

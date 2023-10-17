@@ -134,7 +134,7 @@ export const thunkgetAllUsers = () => async (dispatch) => {
 	});
 	if (response.ok) {
 		const data = await response.json();
-		console.log('thunk data*****', data)
+		// console.log('thunk data*****', data)
 		dispatch(getAllUsers(data));
 		if (data.errors) {
 			return;
