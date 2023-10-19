@@ -48,6 +48,19 @@
   text-shadow: 2px 2px black;
 }
 
+.center-menu1{
+  font-family: 'BatmanForeverAlternate', sans-serif;
+  text-shadow: 2px 2px rgb(133 32 32);
+  font-size: 13pt;
+}
+
+.center-menu2{
+  font-family: 'BatmanForeverAlternate', sans-serif;
+  text-shadow: 2px 2px rgb(255, 255, 255);
+  font-size: 9pt;
+  font-size: 8pt;
+}
+
 .login-btn,
 .signup-btn,
 .cart-btn {
@@ -83,6 +96,7 @@
   width: 180px;
   transform: translateX(-100%);
   transition: transform 0.3s ease-out;
+  background-color: #ffc73a;
 }
 
 .profile-dropdown.hidden {
@@ -105,7 +119,7 @@
 
 .profile-dropdown button:hover {
   background-color: #349684;
-  width:150px;
+  width:174px;
 }
 
 .profile-dropdown.show {
@@ -215,7 +229,7 @@
   right: -74px;
   display: none;
   z-index: 1000;
-  width: 180px;
+  width: 190px;
   border-radius: 5px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 5px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid rgb(221, 221, 221);
