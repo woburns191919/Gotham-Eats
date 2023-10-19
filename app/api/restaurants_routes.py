@@ -52,7 +52,7 @@ def create_new_restaurant():
 # return jsonify(errors=form.errors), 400
 
 
-@home_restaurants.route("/update/<int:id>", methods=["GET", "PUT"])
+@home_restaurants.route("/edit/<int:id>", methods=["GET", "PUT"])
 def update_restaurant(id):
     """update a restaurant if the user owns the restaurant"""
 
@@ -65,38 +65,38 @@ def update_restaurant(id):
         return jsonify(message="You are not the owner of this restaurant"), 403
 
     form = RestaurantForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
+    # form['csrf_token'].data = request.cookies['csrf_token']
 
     if request.method == 'GET':
         return jsonify(restaurant_to_update.to_dict())
-    data = request.get_json()
+    elif request.method == 'PUT':
+        data = request.get_json()
+        print('data keys***', data.keys())
+        form.name.data = data['name']
+        form.streetAddress.data = data['street_address']
+        form.city.data = data['city']
+        form.state.data = data['state']
+        form.postalCode.data = data['postal_code']
+        form.country.data = data['country']
+        form.description.data = data['description']
+        form.hours.data = data['hours']
+   
+
+    # if form.validate_on_submit():
+    restaurant_to_update.name = form.name.data
+    restaurant_to_update.streetAddress = form.streetAddress.data
+    restaurant_to_update.city = form.city.data
+    restaurant_to_update.state = form.state.data
+    restaurant_to_update.postalCode = form.postalCode.data
+    restaurant_to_update.country = form.country.data
+    restaurant_to_update.description = form.description.data
+    restaurant_to_update.hours = form.hours.data
 
 
-    form.name.data = data['name']
-    form.streetAddress.data = data['streetAddress']
-    form.city.data = data['city']
-    form.state.data = data['state']
-    form.postalCode.data = data['postalCode']
-    form.country.data = data['country']
-    form.description.data = data['description']
-    form.hours.data = data['hours']
-    form.previmg.data = data['preview_image_url']
-
-    if form.validate_on_submit():
-        restaurant_to_update.name = form.name.data
-        restaurant_to_update.streetAddress = form.streetAddress.data
-        restaurant_to_update.city = form.city.data
-        restaurant_to_update.state = form.state.data
-        restaurant_to_update.postalCode = form.postalCode.data
-        restaurant_to_update.country = form.country.data
-        restaurant_to_update.description = form.description.data
-        restaurant_to_update.hours = form.hours.data
-        restaurant_to_update.previmg = form.previmg.data
-
-        db.session.commit()
-        return jsonify(message="Restaurant updated successfully"), 200
-    else:
-        return jsonify(errors=form.errors), 400
+    db.session.commit()
+    return jsonify(message="Restaurant updated successfully"), 200
+    # else:
+# return jsonify(errors=form.errors), 400
 
 
 

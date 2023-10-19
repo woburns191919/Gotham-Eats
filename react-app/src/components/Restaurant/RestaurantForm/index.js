@@ -28,14 +28,18 @@ export default function RestaurantForm({ formType }) {
   const sessionUser = useSelector((state) => state.session.user);
 
   const fetchRestaurant = async () => {
-    const res = await fetch(`/api/restaurants/${restaurantId}`);
-    if (res.ok) {
-      const data = await res.json();
-      console.log('Fetched restaurant data:', data);
-      return data;
-    } else {
-      console.error("Failed to fetch");
-      return [];
+    try {
+      const res = await fetch(`/api/restaurants/${restaurantId}`);
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      } else {
+        console.error('Failed to fetch restaurant data:', res.status);
+        return null;
+      }
+    } catch (error) {
+      console.error('Error in fetchRestaurant:', error);
+      return null;
     }
   };
 
@@ -44,32 +48,32 @@ export default function RestaurantForm({ formType }) {
       try {
         if (formType === "Edit" && restaurantId) {
           const res = await fetchRestaurant();
-          if (res.ok) {
-            const data = await res.json();
-            console.log('Fetched restaurant details:', data);
-            setName(data.name);
-            setStreetAddress(data.street_address);
-            setCity(data.city);
-            setState(data.state);
-            setPostalCode(data.postal_code);
-            setCountry(data.country);
-            setDescription(data.description);
-            setHours(data.hours);
-            setPreviewImgUrl(data.preview_image_url);
-            setInitialRestaurant(data);
+          if (res) {
+            setName(res.name);
+            setStreetAddress(res.streetAddress);
+            setCity(res.city);
+            setState(res.state);
+            setPostalCode(res.postalCode);
+            setCountry(res.country);
+            setDescription(res.description);
+            setHours(res.hours);
+            setPreviewImgUrl(res.previmg);
+            setInitialRestaurant(res);
           } else {
             console.error("Failed to fetch restaurant data.");
           }
         }
       } catch (error) {
-        console.error("Error fetching restaurant data:", error.message);
+        console.error("Error fetching restaurant data:", error);
       }
     };
 
     fetchData();
   }, [formType, restaurantId]);
 
+
   const fetchHandleRestaurant = async (restaurantId, restaurantData) => {
+
     if (formType === "Edit") {
       try {
         const res = await fetch(`/api/restaurants/edit/${restaurantId}`, {
@@ -249,7 +253,7 @@ export default function RestaurantForm({ formType }) {
       >
         {formType === "Create" ? "Create Restaurant" : "Update Restaurant"}
       </button>
-      <img src={previewImgUrl} alt="Preview" />
+
     </form>
   );
 }
