@@ -10,9 +10,6 @@ export default function GetRestaurants({ ownerMode = false }) {
   const [allRestaurants, setAllRestaurants] = useState();
   const [currentUser, setCurrentUser] = useState(null);
   const [filteredRestaurants, setFilteredRestaurants] = useState(null);
-  // const [restId, setRestId] = useState(id);
-  const [singleRestaurant, setSingleRestaurant] = useState(id);
-  // const [isDeleting, setIsDeleting] = useState(false);
 
   const fetchAllRestaurants = async () => {
     const res = await fetch("/api/restaurants");
@@ -24,6 +21,7 @@ export default function GetRestaurants({ ownerMode = false }) {
       return [];
     }
   };
+
   const fetchCurrentUser = async () => {
     const res = await fetch("/api/auth/current_user");
     if (res.ok) {
@@ -35,20 +33,8 @@ export default function GetRestaurants({ ownerMode = false }) {
     }
   };
 
-  const fetchSingleRestaurant = async () => {
-    const res = await fetch(`/api/restaurants/${id}`);
-    if (res.ok) {
-      const data = await res.json();
-
-      return data;
-    } else {
-      console.error("Failed to fetch");
-      return [];
-    }
-  };
-
   useEffect(() => {
-    // all restaurants
+    // Fetch all restaurants
     (async function () {
       const allRestaurantData = await fetchAllRestaurants();
       setAllRestaurants(allRestaurantData);
@@ -56,7 +42,7 @@ export default function GetRestaurants({ ownerMode = false }) {
   }, []);
 
   useEffect(() => {
-    // for current user
+    // Fetch current user
     (async function () {
       const currentUserData = await fetchCurrentUser();
       setCurrentUser(currentUserData);
@@ -64,42 +50,24 @@ export default function GetRestaurants({ ownerMode = false }) {
   }, []);
 
   useEffect(() => {
-    //single restaurant detail
-    (async function () {
-      const singleRestaurantData = await fetchSingleRestaurant();
-      setSingleRestaurant(singleRestaurant);
-    })();
-  }, []);
-
-  useEffect(() => {
     const ownedRestaurants =
       allRestaurants &&
       allRestaurants?.filter(
-        //manage restaurants
         (restaurant) => restaurant?.owner_id === currentUser?.id
       );
-    // console.log('restaurant data from fetch', ownedRestaurants)
+
     setFilteredRestaurants(ownedRestaurants);
   }, [currentUser, allRestaurants]);
 
   const handleDelete = async (restId) => {
-    console.log("id from handle delete", restId);
-
     try {
-      // setIsDeleting(true);
-
       const response = await fetch(`/api/restaurants/delete/${restId}`, {
         method: "DELETE",
       });
 
       if (response.ok) {
-
-        setAllRestaurants((prevRestaurants) =>
-          prevRestaurants.filter((restaurant) => restaurant.id !== restId)
-        );
         history.push(`/owner/restaurants/${currentUser.id}`);
-       } else {
-
+      } else {
         console.error("Failed to delete restaurant. Status:", response.status);
         const errorData = await response.json();
         console.error("Error data:", errorData);
@@ -134,7 +102,6 @@ export default function GetRestaurants({ ownerMode = false }) {
                 key={restaurant.id}
                 className="ownerRestaurant-restaurant-img-main-div"
               >
-                {/* {console.log("restaurant id", restaurant)} */}
                 <Link
                   to={`/restaurants/${restaurant.id}`}
                   style={{ textDecoration: "none", color: "var(--black)" }}
@@ -149,36 +116,31 @@ export default function GetRestaurants({ ownerMode = false }) {
                       alt=""
                     />
                     <div className="owner-div update-delete-btns">
-                      <button
-                        className="owner-btn post-delete-review-btn"
-                        onClick={() =>
-                          history.push(`/restaurants/edit/${restaurant.id}`)
-                        }
+                      <Link
+                        to={`/restaurants/edit/${restaurant.id}`}
+                        style={{ textDecoration: "none", color: "var(--black)" }}
                       >
-                        Update
-                      </button>
+                        <button className="owner-btn post-delete-review-btn">
+                          Update
+                        </button>
+                      </Link>
                       <button
                         className="owner-btn post-delete-review-btn"
                         onClick={() => handleDelete(restaurant.id)}
                       >
                         Delete
                       </button>
-
-                      {/* <OpenModalButton buttonText="Delete" modalComponent={<DeleteRestaurant restaurantId={restaurant.id} /> } */}
                     </div>
 
                     <div key={i} className="restaurant-info-flex">
                       <p className="res-name">
-                        {restaurant.name}({restaurant.streetAddress})
+                        {restaurant.name} ({restaurant.streetAddress})
                       </p>
                       <p className="avgRating-p-tag">
-                        {/* {restaurant.avgRating && restaurant.avgRating ? restaurant.avgRating?.toFixed(1) : <span className="boldText">New</span>} */}
                         {restaurant.avgRating !== null &&
-                        restaurant.avgRating !== undefined ? (
-                          restaurant.avgRating.toFixed(1)
-                        ) : (
-                          <span className="boldText">New</span>
-                        )}
+                        restaurant.avgRating !== undefined
+                          ? restaurant.avgRating.toFixed(1)
+                          : <span className="boldText">New</span>}
                       </p>
                     </div>
                   </div>
@@ -216,16 +178,13 @@ export default function GetRestaurants({ ownerMode = false }) {
 
                     <div key={i} className="restaurant-info-flex">
                       <p className="res-name">
-                        {restaurant.name}({restaurant.streetAddress})
+                        {restaurant.name} ({restaurant.streetAddress})
                       </p>
                       <p className="avgRating-p-tag">
-                        {/* {restaurant.avgRating && restaurant.avgRating ? restaurant.avgRating?.toFixed(1) : <span className="boldText">New</span>} */}
                         {restaurant.avgRating !== null &&
-                        restaurant.avgRating !== undefined ? (
-                          restaurant.avgRating.toFixed(1)
-                        ) : (
-                          <span className="boldText">New</span>
-                        )}
+                        restaurant.avgRating !== undefined
+                          ? restaurant.avgRating.toFixed(1)
+                          : <span className="boldText">New</span>}
                       </p>
                     </div>
                   </div>
