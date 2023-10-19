@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "./RestaurantForm.css";
 
-export default function RestaurantForm({ formType, restaurantId }) {
+export default function RestaurantForm({ formType }) {
   const history = useHistory();
+  const { restaurantId } = useParams();
   const [restaurant, setRestaurant] = useState();
   const [currentUser, setCurrentUser] = useState(null);
-  const [restId, setRestId] = useState(restaurantId);
   const [filteredRestaurants, setFilteredRestaurants] = useState(null);
 
   const dispatch = useDispatch();
@@ -25,34 +25,51 @@ export default function RestaurantForm({ formType, restaurantId }) {
   const [validationObj, setValidationObj] = useState({});
   const [initialRestaurant, setInitialRestaurant] = useState({});
 
-  const sessionUser = useSelector((stateid) => stateid.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
 
-  const fetchHandleRestaurant = async (restaurantId, restaurantData) => {
-    if (formType === "Edit") {
+  const fetchRestaurant = async () => {
+    const res = await fetch(`/api/restaurants/${restaurantId}`);
+    if (res.ok) {
+      const data = await res.json();
+      console.log('Fetched restaurant data:', data);
+      return data;
+    } else {
+      console.error("Failed to fetch");
+      return [];
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        const res = await fetch(`/api/restaurants/edit/${restaurantId}`);
-        if (res.ok) {
-          const data = await res.json();
-
-          setStreetAddress(data.street_address);
-          setCity(data.city);
-          setState(data.state);
-          setPostalCode(data.postal_code);
-          setCountry(data.country);
-          setName(data.name);
-          setDescription(data.description);
-          setHours(data.hours);
-          setPreviewImgUrl(data.preview_image_url);
-
-          setInitialRestaurant(data);
-        } else {
-          console.error("Failed to fetch restaurant data.");
+        if (formType === "Edit" && restaurantId) {
+          const res = await fetchRestaurant();
+          if (res.ok) {
+            const data = await res.json();
+            console.log('Fetched restaurant details:', data);
+            setName(data.name);
+            setStreetAddress(data.street_address);
+            setCity(data.city);
+            setState(data.state);
+            setPostalCode(data.postal_code);
+            setCountry(data.country);
+            setDescription(data.description);
+            setHours(data.hours);
+            setPreviewImgUrl(data.preview_image_url);
+            setInitialRestaurant(data);
+          } else {
+            console.error("Failed to fetch restaurant data.");
+          }
         }
       } catch (error) {
         console.error("Error fetching restaurant data:", error.message);
       }
-    }
+    };
 
+    fetchData();
+  }, [formType, restaurantId]);
+
+  const fetchHandleRestaurant = async (restaurantId, restaurantData) => {
     if (formType === "Edit") {
       try {
         const res = await fetch(`/api/restaurants/edit/${restaurantId}`, {
@@ -83,7 +100,6 @@ export default function RestaurantForm({ formType, restaurantId }) {
       if (res.ok) {
         const data = await res.json();
         history.push("/restaurants");
-
         return data;
       } else {
         console.error("Failed to fetch");
@@ -91,22 +107,6 @@ export default function RestaurantForm({ formType, restaurantId }) {
       }
     }
   };
-
-  useEffect(() => {
-    if (formType === "Edit" && restaurantId) {
-      fetchHandleRestaurant(restaurantId).then((data) => {
-        setName(data.name);
-        setStreetAddress(data.streetAddress);
-        setCity(data.city);
-        setState(data.state);
-        setPostalCode(data.postalCode);
-        setCountry(data.country);
-        setDescription(data.description);
-        setHours(data.hours);
-        setInitialRestaurant(data);
-      });
-    }
-  }, [dispatch, formType, restaurantId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -138,9 +138,9 @@ export default function RestaurantForm({ formType, restaurantId }) {
   };
 
   const handleInputChange = (setterFunction, validationField) => (e) => {
-    const url = e.target.value;
-    console.log("URL:", url);
-    setterFunction(url);
+    const value = e.target.value;
+    console.log(`Setting ${validationField} to:`, value);
+    setterFunction(value);
     clearValidationError(validationField);
   };
 
@@ -249,7 +249,7 @@ export default function RestaurantForm({ formType, restaurantId }) {
       >
         {formType === "Create" ? "Create Restaurant" : "Update Restaurant"}
       </button>
-      <img src={previewImgUrl} />
+      <img src={previewImgUrl} alt="Preview" />
     </form>
   );
 }

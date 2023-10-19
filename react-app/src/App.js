@@ -39,8 +39,8 @@ function App() {
           <Route path="/restaurants/new">
             <CreateRestaurantForm previewImgUrl={previewImgUrl} />
           </Route>
-          <Route path="/restaurants/edit/:id">
-            <EditRestaurantForm />
+          <Route path="/restaurants/edit/:restaurantId">
+            <EditRestaurantForm formType="Edit"/>
           </Route>
           <Route exact path="/restaurants/:id">
             <RestaurantDetail />
