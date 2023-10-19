@@ -37,10 +37,10 @@ function App() {
             <Home />
           </Route>
           <Route path="/restaurants/new">
-            <CreateRestaurantForm previewImgUrl={previewImgUrl}/>
+            <CreateRestaurantForm previewImgUrl={previewImgUrl} />
           </Route>
-          <Route path="/restaurants/edit/:id">
-            <EditRestaurantForm />
+          <Route path="/restaurants/edit/:restaurantId">
+            <EditRestaurantForm formType="Edit"/>
           </Route>
           <Route exact path="/restaurants/:id">
             <RestaurantDetail />
@@ -48,9 +48,6 @@ function App() {
 
           <Route path="/restaurants">
             <GetRestaurants previewImgUrl={previewImgUrl}/>
-            {/* <Route path="/restaurants" >
-            <GetRestaurants />
-            </Route> */}
           </Route>
           <Route path="/login">
             <LoginFormPage />
