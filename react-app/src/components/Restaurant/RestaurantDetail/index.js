@@ -11,6 +11,7 @@ import "./RestaurantDetail.css";
 import MenuItemsDetailsModal from "../../MenuItemsDetailDisplayModal";
 
 export default function RestaurantDetail() {
+  console.log(' details component mounting???')
   const dispatch = useDispatch();
   // const [reloadPage, setReloadPage] = useState(false);
   const [isDelivery, setIsDelivery] = useState(true);
