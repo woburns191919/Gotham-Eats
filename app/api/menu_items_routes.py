@@ -11,7 +11,7 @@ import json
 menu_items = Blueprint('menu_items', __name__)
 
 
-@menu_items.route('/new', methods=['POST'])
+@menu_items.route('/', methods=['POST'])
 def create_menu_item(restaurant_id):
     form = MenuItemForm()
     data = request.get_json()
@@ -23,21 +23,21 @@ def create_menu_item(restaurant_id):
     form.type.data = data.get('type')
 
 
-    if form.validate():
-        new_menu_item = MenuItem(
-            restaurant_id=restaurant_id,
-            name=form.name.data,
-            description=form.description.data,
-            price=form.price.data,
-            type=form.type.data
-        )
+    # if form.validate():
+    new_menu_item = MenuItem(
+        restaurant_id=restaurant_id,
+        name=form.name.data,
+        description=form.description.data,
+        price=form.price.data,
+        type=form.type.data
+    )
 
 
-        db.session.add(new_menu_item)
-        db.session.commit()
-        return jsonify(message="Successfully created new menu item", id=new_menu_item.id), 201
-    else:
-        return jsonify(errors=form.errors), 400
+    db.session.add(new_menu_item)
+    db.session.commit()
+    return jsonify(message="Successfully created new menu item", id=new_menu_item.id), 201
+    # else:
+    #     return jsonify(errors=form.errors), 400
 
 
 

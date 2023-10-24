@@ -38,6 +38,7 @@ export default function RestaurantDetail() {
 
   const fetchRestaurant = async () => {
     const res = await fetch(`/api/restaurants/${restId}`);
+    console.log('restaurant id from details', restId)
     if (res.ok) {
       const data = await res.json();
       return data;
