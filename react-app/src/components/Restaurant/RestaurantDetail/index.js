@@ -8,7 +8,7 @@ import DeleteMenuItem from "../../DeleteMenuItem/DeleteMenuItem";
 import "./RestaurantDetail.css";
 import MenuItemsDetailsModal from "../../MenuItemsDetailDisplayModal";
 
-export default function RestaurantDetail() {
+export default function RestaurantDetail({ menuItemData }) {
   console.log('details component mount?')
   const dispatch = useDispatch();
   const [isDelivery, setIsDelivery] = useState(true);
@@ -78,6 +78,12 @@ export default function RestaurantDetail() {
     dispatch(thunkgetAllUsers());
   }, [dispatch]);
 
+  useEffect(() => {
+
+    console.log('menu item data:', menuItemData);
+  }, [menuItemData]);
+
+
   let drinks = menuDeetz?.drink || [];
   let entrees = menuDeetz?.entree || [];
   let sides = menuDeetz?.side || [];
@@ -91,7 +97,7 @@ export default function RestaurantDetail() {
   ) {
     return null;
   }
-
+  console.log('restaurants detaail data', restaurantsDetailData)
   return (
     <div className="Res-Det-Container">
       <div className="top-photo">
