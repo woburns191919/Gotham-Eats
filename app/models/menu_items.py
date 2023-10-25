@@ -24,6 +24,7 @@ class MenuItem(db.Model):
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Float(10, 2), nullable=False)
     type = db.Column(db.String(50), nullable=False)
+    itm_img_url = db.Column(db.Text)
     shopping_cart_id = db.Column(db.Integer)
 
     restaurant = db.relationship('Restaurant', back_populates='menu_items')
@@ -42,5 +43,6 @@ class MenuItem(db.Model):
             'description': self.description,
             'price': self.price,
             'type': self.type,
+            'itm_img_url': self.itm_img_url,
             'shopping_cart_id': self.shopping_cart_id,
         }

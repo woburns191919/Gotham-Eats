@@ -14,7 +14,7 @@ def create_menu_item(restaurant_id):
             description=data.get('description'),
             price=data.get('price'),
             type=data.get('type'),
-            menu_item_img_id=573
+            itm_img_url=data.get("itm_img_url")
         )
 
         db.session.add(new_menu_item)
@@ -29,6 +29,6 @@ def create_menu_item(restaurant_id):
             db.session.add(new_menu_item_img)
             db.session.commit()
 
-        return jsonify(message="Successfully created new menu item", id=new_menu_item.id), 201
+        return jsonify(message="Successfully created a new menu item", id=new_menu_item.id), 201
     except Exception as e:
         return jsonify(error=str(e)), 500

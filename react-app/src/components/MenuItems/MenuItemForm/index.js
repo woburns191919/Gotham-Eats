@@ -20,7 +20,7 @@ export default function MenuItemForm() {
       description,
       price,
       type,
-      url: imageUrl,
+      itm_img_url: imageUrl
     //   menu_item_img_id: menuItemImageId
     };
 
@@ -90,15 +90,6 @@ export default function MenuItemForm() {
           onChange={(e) => setImageUrl(e.target.value)}
         />
       </label>
-
-      {/* <label>
-        Menu Item Image ID:
-        <input
-          type="number"
-          value={menuItemImageId}
-          onChange={(e) => setMenuItemImageId(e.target.value)}
-        />
-      </label> */}
 
       <button type="submit">Create Menu Item</button>
       <img src={imageUrl} />
