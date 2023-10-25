@@ -21,7 +21,6 @@ margin-top: 102px;
 
 }
 
-
 .restaurant-img-main-div,
 .ownerRestaurant-restaurant-img-main-div {
 flex: 0 0 calc(33.33% - 20px);
@@ -95,26 +94,41 @@ margin: 10px;
   color: white;
   font-weight: normal;
   margin-right: 10px;
+  display:flex;
+  /* flex-direction:column; */
 }
 
 .owner-div update-delete-btns button:hover {
   cursor: pointer;
+
 }
 
 .res-name{
 word-wrap: break-word;
 overflow-wrap: break-word;
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+margin-top: 2px;
+margin-bottom: -30px;
+color: white;
+max-width:210px;
+}
+.res-name-all{
+word-wrap: break-word;
+overflow-wrap: break-word;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+margin-top: 2px;
+margin-bottom: -30px;
+color: rgb(83, 75, 75);
+max-width:210px;
 }
 
-.restaurant-img,
-.ownerRestaurant-restaurant-img {
+.restaurant-img {
 width: 156px;
 height: 99px;
 border-radius: 8px;
 }
 
-/* 
-.ownerRestaurant-restaurant-img-main-div {
-  border: 4px solid red
-} */
+.ownerRestaurant-img {
+  width: 193px;
+  border-radius: 16px;
+}

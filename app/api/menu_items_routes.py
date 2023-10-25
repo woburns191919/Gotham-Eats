@@ -3,7 +3,7 @@ from app.models import db, MenuItem, MenuItemImg
 
 menu_items = Blueprint('menu_items', __name__)
 
-@menu_items.route('/restaurants/<int:restaurant_id>/menu_items', methods=['POST'])
+@menu_items.route('/', methods=['POST'])
 def create_menu_item(restaurant_id):
     try:
         data = request.get_json()
@@ -13,7 +13,8 @@ def create_menu_item(restaurant_id):
             name=data.get('name'),
             description=data.get('description'),
             price=data.get('price'),
-            type=data.get('type')
+            type=data.get('type'),
+            menu_item_img_id=573
         )
 
         db.session.add(new_menu_item)

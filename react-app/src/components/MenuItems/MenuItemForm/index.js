@@ -21,7 +21,7 @@ export default function MenuItemForm() {
       price,
       type,
       url: imageUrl,
-      menu_item_img_id: menuItemImageId
+    //   menu_item_img_id: menuItemImageId
     };
 
     try {
