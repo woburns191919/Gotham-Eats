@@ -35,7 +35,7 @@ export default function MenuItemForm() {
 
       if (res.ok) {
         const data = await res.json();
-        console.log('data handle submit', data);
+        console.log('data handle submit****', data);
         history.push(`/restaurants/${restId}`);
       } else {
         console.error("Failed to create menu item");
@@ -91,14 +91,14 @@ export default function MenuItemForm() {
         />
       </label>
 
-      <label>
+      {/* <label>
         Menu Item Image ID:
         <input
           type="number"
           value={menuItemImageId}
           onChange={(e) => setMenuItemImageId(e.target.value)}
         />
-      </label>
+      </label> */}
 
       <button type="submit">Create Menu Item</button>
       <img src={imageUrl} />

@@ -91,27 +91,27 @@ export default function RestaurantDetail({ menuItemData }) {
 
   const allMenuItems = [...drinks, ...entrees, ...desserts, ...sides];
   if (
-    !restaurantsDetailData ||
-    !restaurantsDetailData.menu_item_images ||
-    restaurantsDetailData.menu_item_images.length === 0
+    !restaurantsDetailData
+    // !restaurantsDetailData.menu_item_images ||
+    // restaurantsDetailData.menu_item_images.length === 0
   ) {
     return null;
   }
   console.log('restaurants detaail data', restaurantsDetailData)
   return (
     <div className="Res-Det-Container">
-      <div className="top-photo">
+      {/* <div className="top-photo">
         <img
           src={`${process.env.PUBLIC_URL}${restaurantsDetailData.menu_item_images[0].url}`}
           alt="Preview"
         />
-      </div>
+      </div> */}
       <div className="res-container">
-        <h1 className="det-name">{restaurantsDetailData.name}</h1>
+        <h1 className="det-name">{restaurantsDetailData?.name}</h1>
         <div className="det-ratings">
           <h3>
             ★{restaurantsDetailData.avgRating} (
-            {restaurantsDetailData.reviews.length} ratings) · $$ · Read
+            {restaurantsDetailData?.reviews?.length} ratings) · $$ · Read
             Reviews · More Info{" "}
           </h3>
         </div>
@@ -187,6 +187,7 @@ export default function RestaurantDetail({ menuItemData }) {
           <div className="imgages-container">
             {allMenuItems.map((item, index) => (
               <div className="menu-item-wrapper" key={index}>
+                {/* {restaurantsDetailData.name} */}
                 <img
                   className="res-det-photo"
                   src={item.url}
