@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory, NavLink } from "react-router-dom";
+import { useParams, useHistory, NavLink, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkgetAllUsers } from "../../../store/session";
 import CreateMenuItemForm from "../../MenuItemsDetailDisplayModal";
@@ -63,6 +63,27 @@ export default function RestaurantDetail() {
       return [];
     }
   };
+
+  const handleDelete = async (itemId) => {
+    try {
+      const response = await fetch(`/api/restaurants/${id}/menu_items/${itemId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+
+        window.location.reload();
+      } else {
+        console.error("Failed to delete menu item. Status:", response.status);
+        const errorData = await response.json();
+        console.error("Error data:", errorData);
+      }
+    } catch (error) {
+      console.error("Failed to delete menu item: ", error);
+    }
+  };
+
+
 
   useEffect(() => {
     (async function () {
@@ -213,18 +234,21 @@ export default function RestaurantDetail() {
                 </div>
                 {restaurantsDetailData?.owner_id === sessionUser?.id && (
                   <div className="delete-menu-item">
-                    <button
-                      onClick={(e) => {
-                        history.push("/");
-                      }}
+                    <button className="delete-it"
+                      onClick={() => handleDelete(item.id)}
                     >
+                      Delete
+                    </button>
+                  <div className="delete-menu-item">
+                    <Link
+                    to={`/api/restaurants/${id}/menu_items/edit/${item.id}`}
+                    style={{ textDecoration: "none", color: "var(--black)" }}
+                    >
+                    <button className="delete-it">
                       Update
                     </button>
-                    <OpenModalButton
-                      className="delete-it"
-                      buttonText="Delete"
-                      modalComponent={<DeleteMenuItem menuItemId={item.id} />}
-                    />
+                      </Link>
+                  </div>
                   </div>
                 )}
               </div>
@@ -247,25 +271,18 @@ export default function RestaurantDetail() {
                 </div>
                 {restaurantsDetailData?.owner_id === sessionUser?.id && (
                   <div className="delete-menu-item">
-                    <button
-                      onClick={(e) => {
-                        history.push("/");
-                      }}
-                    >
-                      Update
-                    </button>
-                    <OpenModalButton
-                      className="delete-it"
-                      buttonText="Delete"
-                      modalComponent={<DeleteMenuItem menuItemId={item.id} />}
-                    />
-                  </div>
+                  <button className="delete-it"
+                    onClick={() => handleDelete(item.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
                 )}
               </div>
             ))}
           </div>
 
-          <div className="create-new-restaurant-owner">
+          {sessionUser && <div className="create-new-restaurant-owner">
             <NavLink
               className="reviews"
               to={`/restaurants/${restId}/menu_items/new`}
@@ -274,6 +291,7 @@ export default function RestaurantDetail() {
               Add a Menu Item
             </NavLink>
           </div>
+                    }
         </div>
 
         <div className="reviews">

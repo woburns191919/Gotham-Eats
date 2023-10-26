@@ -36,3 +36,21 @@ def create_menu_item(restaurant_id):
         return jsonify(message="Successfully created a new menu item", id=new_menu_item.id), 201
     except Exception as e:
         return jsonify(error=str(e)), 500
+
+@menu_items.route('/<int:menu_item_id>', methods=['DELETE'])
+def delete_menu_item(restaurant_id, menu_item_id):
+    try:
+
+        menu_item = MenuItem.query.get(menu_item_id)
+
+        if menu_item:
+            if menu_item.restaurant_id == restaurant_id:
+                db.session.delete(menu_item)
+                db.session.commit()
+                return jsonify(message="Menu item deleted successfully"), 200
+            else:
+                return jsonify(error="Menu item does not belong to the specified restaurant"), 403
+        else:
+            return jsonify(error="Menu item not found"), 404
+    except Exception as e:
+        return jsonify(error=str(e)), 500
