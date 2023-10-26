@@ -9,11 +9,14 @@ import "./RestaurantDetail.css";
 import MenuItemsDetailsModal from "../../MenuItemsDetailDisplayModal";
 
 export default function RestaurantDetail({ menuItemData }) {
-  console.log('details component mount?')
+  console.log("details component mount?");
   const dispatch = useDispatch();
   const [isDelivery, setIsDelivery] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [reloadPage, setReloadPage] = useState(false);
+  const [itmImgUrl, setItmImgUrl] = useState(null);
+  const [awsArray, setAwsArray] = useState(null);
+
 
   const sessionUser = useSelector((state) => state.session.user);
   const handleModalOpen = () => {
@@ -25,7 +28,7 @@ export default function RestaurantDetail({ menuItemData }) {
   };
 
   const history = useHistory();
-  const [restaurantsDetailData, setRestaurantsDetailData] = useState([]);
+  const [restaurantsDetailData, setRestaurantsDetailData] = useState(null);
   const [menuDeetz, setMenuDeetz] = useState([]);
   const { id } = useParams();
   const [restId, setRestId] = useState(id);
@@ -38,7 +41,7 @@ export default function RestaurantDetail({ menuItemData }) {
 
   const fetchRestaurant = async () => {
     const res = await fetch(`/api/restaurants/${restId}`);
-    console.log('restaurant id from details', restId)
+    console.log("restaurant id from details", restId);
     if (res.ok) {
       const data = await res.json();
       return data;
@@ -66,7 +69,7 @@ export default function RestaurantDetail({ menuItemData }) {
       const restaurantData = await fetchRestaurant();
       setRestaurantsDetailData(restaurantData);
     })();
-  }, []);
+  }, [restId]);
 
   useEffect(() => {
     if (restId) {
@@ -79,10 +82,24 @@ export default function RestaurantDetail({ menuItemData }) {
   }, [dispatch]);
 
   useEffect(() => {
+    const userImages = restaurantsDetailData?.menu_items?.filter(
+      (item) => item.itm_img_url
+    );
+    setItmImgUrl(userImages);
+  }, [restaurantsDetailData]);
 
-    console.log('menu item data:', menuItemData);
-  }, [menuItemData]);
+  // useEffect(() => {
+  //   allMenuItems.push(
+  //     restaurantsDetailData
+  //   );
+  //   setAwsArray(restaurantsDetailData);
+  // }, []);
 
+  // useEffect(() => {
+  //   console.log("menu item data:", menuItemData);
+  // }, [menuItemData]);
+
+  console.log('huge array', restaurantsDetailData?.menu_items)
 
   let drinks = menuDeetz?.drink || [];
   let entrees = menuDeetz?.entree || [];
@@ -90,22 +107,23 @@ export default function RestaurantDetail({ menuItemData }) {
   let desserts = menuDeetz?.dessert || [];
 
   const allMenuItems = [...drinks, ...entrees, ...desserts, ...sides];
-  if (
-    !restaurantsDetailData
-    // !restaurantsDetailData.menu_item_images ||
-    // restaurantsDetailData.menu_item_images.length === 0
-  ) {
+
+  if (!restaurantsDetailData) {
     return null;
   }
-  console.log('restaurants detaail data', restaurantsDetailData)
+  // console.log("user input detail data??", itmImgUrl);
+
+  // console.log(
+  //   "restaurant detail find imgurl?",
+  //   restaurantsDetailData.menu_items?.find((item) => item.itm_img_url)
+  // );
+
+  console.log("all menu items aray", allMenuItems);
+
+  // console.log('new array??', awsArray)
+
   return (
     <div className="Res-Det-Container">
-      {/* <div className="top-photo">
-        <img
-          src={`${process.env.PUBLIC_URL}${restaurantsDetailData.menu_item_images[0].url}`}
-          alt="Preview"
-        />
-      </div> */}
       <div className="res-container">
         <h1 className="det-name">{restaurantsDetailData?.name}</h1>
         <div className="det-ratings">
@@ -127,7 +145,9 @@ export default function RestaurantDetail({ menuItemData }) {
             <span className="time">45min</span>
           </div>
           <div className="switch" onClick={() => setIsDelivery(!isDelivery)}>
-            <div className={isDelivery ? "thumb delivery" : "thumb pickup"}></div>
+            <div
+              className={isDelivery ? "thumb delivery" : "thumb pickup"}
+            ></div>
           </div>
           <div className="label-container">
             <span className={!isDelivery ? "active" : ""}>Pickup</span>
@@ -187,15 +207,52 @@ export default function RestaurantDetail({ menuItemData }) {
           <div className="imgages-container">
             {allMenuItems.map((item, index) => (
               <div className="menu-item-wrapper" key={index}>
-                {/* {restaurantsDetailData.name} */}
-                <img
-                  className="res-det-photo"
-                  src={item.url}
-                  alt={item.name}
-                />
+                {item.restaurant_id === restId && item.itm_img_url === null ? (
+                  <img
+                    className="res-det-photo"
+                    src={item.url}
+                    alt={item.name}
+                  />
+                ) : (
+                  <img className="res-det-photo" src={item.url} />
+                )}
+
                 <div className="menu-item-name">{item.name}</div>
                 <div className="menu-item-price">
-                  {" "}
+                  ${parseFloat(item.price).toFixed(2)}
+                </div>
+                {restaurantsDetailData?.owner_id === sessionUser?.id && (
+                  <div className="delete-menu-item">
+                    <button
+                      onClick={(e) => {
+                        history.push("/");
+                      }}
+                    >
+                      Update
+                    </button>
+                    <OpenModalButton
+                      className="delete-it"
+                      buttonText="Delete"
+                      modalComponent={<DeleteMenuItem menuItemId={item.id} />}
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="imgages-container">
+            {restaurantsDetailData.menu_items.map((item, index) => (
+                item.restaurant_id == restId && item.itm_img_url &&
+              <div className="menu-item-wrapper" key={index}>
+                  <img
+                    className="res-det-photo"
+                    src={item.itm_img_url}
+                    alt={item.name}
+                  />
+
+
+                <div className="menu-item-name">{item.name}</div>
+                <div className="menu-item-price">
                   ${parseFloat(item.price).toFixed(2)}
                 </div>
                 {restaurantsDetailData?.owner_id === sessionUser?.id && (
@@ -219,17 +276,12 @@ export default function RestaurantDetail({ menuItemData }) {
           </div>
 
           <div className="create-new-restaurant-owner">
-
             <NavLink
               className="reviews"
               to={`/restaurants/${restId}/menu_items/new`}
               style={{ textDecoration: "none", color: "var(--white)" }}
             >
-
-
-
               Add a Menu Item
-
             </NavLink>
           </div>
         </div>

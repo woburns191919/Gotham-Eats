@@ -8,13 +8,17 @@ def create_menu_item(restaurant_id):
     try:
         data = request.get_json()
 
+        counter = 588
+
         new_menu_item = MenuItem(
             restaurant_id=restaurant_id,
             name=data.get('name'),
             description=data.get('description'),
             price=data.get('price'),
             type=data.get('type'),
+            menu_item_img_id=counter+1,
             itm_img_url=data.get("itm_img_url")
+
         )
 
         db.session.add(new_menu_item)
