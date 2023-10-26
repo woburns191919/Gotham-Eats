@@ -8,8 +8,8 @@ import DeleteMenuItem from "../../DeleteMenuItem/DeleteMenuItem";
 import "./RestaurantDetail.css";
 import MenuItemsDetailsModal from "../../MenuItemsDetailDisplayModal";
 
-export default function RestaurantDetail({ menuItemData }) {
-  console.log("details component mount?");
+export default function RestaurantDetail() {
+  // console.log("details component mount?");
   const dispatch = useDispatch();
   const [isDelivery, setIsDelivery] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -88,18 +88,9 @@ export default function RestaurantDetail({ menuItemData }) {
     setItmImgUrl(userImages);
   }, [restaurantsDetailData]);
 
-  // useEffect(() => {
-  //   allMenuItems.push(
-  //     restaurantsDetailData
-  //   );
-  //   setAwsArray(restaurantsDetailData);
-  // }, []);
 
-  // useEffect(() => {
-  //   console.log("menu item data:", menuItemData);
-  // }, [menuItemData]);
 
-  console.log('huge array', restaurantsDetailData?.menu_items)
+  // console.log('huge array', restaurantsDetailData?.menu_items)
 
   let drinks = menuDeetz?.drink || [];
   let entrees = menuDeetz?.entree || [];
@@ -111,19 +102,18 @@ export default function RestaurantDetail({ menuItemData }) {
   if (!restaurantsDetailData) {
     return null;
   }
-  // console.log("user input detail data??", itmImgUrl);
 
-  // console.log(
-  //   "restaurant detail find imgurl?",
-  //   restaurantsDetailData.menu_items?.find((item) => item.itm_img_url)
-  // );
 
-  console.log("all menu items aray", allMenuItems);
 
-  // console.log('new array??', awsArray)
 
   return (
     <div className="Res-Det-Container">
+       <div className="top-photo">
+          <img
+            src={`${process.env.PUBLIC_URL}${restaurantsDetailData.menu_item_images[0].url}`}
+            alt="Preview"
+          />
+        </div>
       <div className="res-container">
         <h1 className="det-name">{restaurantsDetailData?.name}</h1>
         <div className="det-ratings">
