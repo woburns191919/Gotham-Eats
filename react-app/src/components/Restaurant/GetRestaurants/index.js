@@ -10,28 +10,38 @@ export default function GetRestaurants({ ownerMode = false }) {
   const [allRestaurants, setAllRestaurants] = useState();
   const [currentUser, setCurrentUser] = useState(null);
   const [filteredRestaurants, setFilteredRestaurants] = useState(null);
+  const fetchCurrentUser = async () => {
+    try {
+      const res = await fetch("/api/auth/current_user");
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      } else {
+        console.error("Failed to fetch user. Status:", res.status);
+        return [];
+      }
+    } catch (error) {
+      console.error("Failed to fetch user:", error);
+      return [];
+    }
+  };
 
   const fetchAllRestaurants = async () => {
-    const res = await fetch("/api/restaurants");
-    if (res.ok) {
-      const data = await res.json();
-      return data.restaurants;
-    } else {
-      console.error("Failed to fetch");
+    try {
+      const res = await fetch("/api/restaurants");
+      if (res.ok) {
+        const data = await res.json();
+        return data.restaurants;
+      } else {
+        console.error("Failed to fetch restaurants. Status:", res.status);
+        return [];
+      }
+    } catch (error) {
+      console.error("Failed to fetch restaurants:", error);
       return [];
     }
   };
 
-  const fetchCurrentUser = async () => {
-    const res = await fetch("/api/auth/current_user");
-    if (res.ok) {
-      const data = await res.json();
-      return data;
-    } else {
-      console.error("Failed to fetch user");
-      return [];
-    }
-  };
 
   useEffect(() => {
     // Fetch all restaurants

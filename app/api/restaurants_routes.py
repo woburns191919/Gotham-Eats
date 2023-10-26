@@ -80,7 +80,7 @@ def update_restaurant(id):
         form.country.data = data['country']
         form.description.data = data['description']
         form.hours.data = data['hours']
-   
+
 
     # if form.validate_on_submit():
     restaurant_to_update.name = form.name.data
