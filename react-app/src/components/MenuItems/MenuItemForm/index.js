@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 
@@ -13,6 +13,48 @@ export default function MenuItemForm({ formType }) {
   const [imageUrl, setImageUrl] = useState("");
   const [menuItemImageId, setMenuItemImageId] = useState("");
   const [validationObj, setValidationObj] = useState({});
+
+
+  const fetchMenuItem = async () => {
+    try {
+      const res = await fetch(`/api/restaurants/${id}/menu_items/${menuItemId}`);
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      } else {
+        console.error('Failed to fetch menu item data:', res.status);
+        return null;
+      }
+    } catch (error) {
+      console.error('Error in fetchMenuItem:', error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (formType === "Edit" && menuItemId) {
+          const res = await fetchMenuItem();
+          console.log('res from useEffect', res)
+          if (res) {
+            setName(res.name);
+            setDescription(res.description);
+            setPrice(res.price);
+            setType(res.type);
+            setImageUrl(res.setImageUrl);
+
+          } else {
+            console.error("Failed to fetch restaurant data.");
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching restaurant data:", error);
+      }
+    };
+
+    fetchData();
+  }, [formType, menuItemId]);
 
   const fetchHandleItem = async (menuItemData) => {
     if (formType === "Create") {

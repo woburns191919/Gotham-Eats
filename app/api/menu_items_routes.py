@@ -54,3 +54,25 @@ def delete_menu_item(restaurant_id, menu_item_id):
             return jsonify(error="Menu item not found"), 404
     except Exception as e:
         return jsonify(error=str(e)), 500
+
+@menu_items.route('/<int:menu_item_id>/edit', methods=['GET', 'PUT'])
+def update_menu_item(restaurant_id, menu_item_id):
+    menu_item_to_update = MenuItem.query.get(menu_item_id)
+
+    if not menu_item_to_update:
+        return jsonify(error="Menu item not found"), 404
+
+    if menu_item_to_update.restaurant_id != restaurant_id:
+        return jsonify(error="Menu item does not belong to the specified restaurant"), 403
+
+    if request.method == 'GET':
+        return jsonify(menu_item_to_update.to_dict())
+    elif request.method == 'PUT':
+        data = request.get_json()
+        menu_item_to_update.name = data['name']
+        menu_item_to_update.description = data['description']
+        menu_item_to_update.price = data['price']
+        menu_item_to_update.type = data['type']
+
+        db.session.commit()
+        return jsonify(message="Menu item updated successfully"), 200
