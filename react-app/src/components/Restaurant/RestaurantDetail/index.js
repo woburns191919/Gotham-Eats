@@ -241,7 +241,7 @@ export default function RestaurantDetail() {
                     </button>
                   <div className="delete-menu-item">
                     <Link
-                    to={`/api/restaurants/${id}/menu_items/edit/${item.id}`}
+                    to={`/restaurants/${id}/menu_items/${item.id}/edit`}
                     style={{ textDecoration: "none", color: "var(--black)" }}
                     >
                     <button className="delete-it">
@@ -276,6 +276,16 @@ export default function RestaurantDetail() {
                   >
                     Delete
                   </button>
+                  <div className="delete-menu-item">
+                    <Link
+                    to={`/restaurants/${id}/menu_items/${item.id}/edit`}
+                    style={{ textDecoration: "none", color: "var(--black)" }}
+                    >
+                    <button className="delete-it">
+                      Update
+                    </button>
+                      </Link>
+                  </div>
                 </div>
                 )}
               </div>
