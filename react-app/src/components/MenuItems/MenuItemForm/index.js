@@ -32,9 +32,11 @@ export default function MenuItemForm({ formType }) {
   };
 
   useEffect(() => {
+
+    console.log(id, menuItemId)
     const fetchData = async () => {
       try {
-        if (formType === "Edit" && menuItemId) {
+        if (formType !== "Create") {
           const res = await fetchMenuItem();
           console.log('res from useEffect', res)
           if (res) {

@@ -131,7 +131,7 @@ export default function RestaurantDetail() {
     <div className="Res-Det-Container">
        <div className="top-photo">
           <img
-            src={`${process.env.PUBLIC_URL}${restaurantsDetailData.menu_item_images[0]?.url}`}
+            src={`${process.env.PUBLIC_URL}${restaurantsDetailData?.menu_item_images[0]?.url}`}
             alt="Preview"
           />
         </div>
@@ -255,7 +255,7 @@ export default function RestaurantDetail() {
             ))}
           </div>
           <div className="imgages-container">
-            {restaurantsDetailData.menu_items.map((item, index) => (
+            {restaurantsDetailData.menu_items?.map((item, index) => (
                 item.restaurant_id == restId && item.itm_img_url &&
               <div className="menu-item-wrapper" key={index}>
                   <img

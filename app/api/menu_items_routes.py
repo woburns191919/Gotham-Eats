@@ -86,3 +86,13 @@ def update_menu_item(restaurant_id, menu_item_id):
 
     db.session.commit()
     return jsonify(message="Menu item updated successfully"), 200
+
+
+@menu_items.route('/<int:menu_item_id>')
+def get_menu_item(restaurant_id, menu_item_id):
+    menu_item = MenuItem.query.get(menu_item_id)
+
+    if menu_item is not None:
+        return jsonify(menu_item.to_dict())
+    else:
+        return jsonify(error="Menu item not found"), 404
