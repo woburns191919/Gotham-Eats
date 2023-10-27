@@ -58,6 +58,8 @@ def delete_menu_item(restaurant_id, menu_item_id):
 
 @menu_items.route('/<int:menu_item_id>/edit', methods=['GET', 'PUT'])
 def update_menu_item(restaurant_id, menu_item_id):
+    print('received put on backend for menu item')
+    print(request.get_json())
     menu_item_to_update = MenuItem.query.get(menu_item_id)
 
     if not menu_item_to_update:
@@ -76,7 +78,7 @@ def update_menu_item(restaurant_id, menu_item_id):
         form.description.data = data['description']
         form.price.data = data['price']
         form.type.data = data['type']
-        form.itm_img_url.data = data['itm_img_url']
+        # form.itm_img_url.data = data['itm_img_url']
 
 
     menu_item_to_update.name = data['name']
