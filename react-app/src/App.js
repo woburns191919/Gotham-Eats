@@ -67,6 +67,9 @@ function App() {
           <Route exact path="/restaurants/:id/menu_items/new">
             <MenuItemForm formType="Create" />
           </Route>
+          <Route path="/restaurants/:id/menu_items/:menuItemId/edit">
+            <MenuItemForm />
+          </Route>
           <Route path="/restaurants">
             <GetRestaurants previewImgUrl={previewImgUrl} />
           </Route>

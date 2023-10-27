@@ -48,6 +48,7 @@ export default function RestaurantForm({ formType }) {
       try {
         if (formType === "Edit" && restaurantId) {
           const res = await fetchRestaurant();
+          console.log('res from restaurant form use effect', res)
           if (res) {
             setName(res.name);
             setStreetAddress(res.streetAddress);
