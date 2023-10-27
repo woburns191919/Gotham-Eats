@@ -131,7 +131,7 @@ export default function RestaurantDetail() {
     <div className="Res-Det-Container">
        <div className="top-photo">
           <img
-            src={`${process.env.PUBLIC_URL}${restaurantsDetailData.menu_item_images[0].url}`}
+            src={`${process.env.PUBLIC_URL}${restaurantsDetailData.menu_item_images[0]?.url}`}
             alt="Preview"
           />
         </div>
