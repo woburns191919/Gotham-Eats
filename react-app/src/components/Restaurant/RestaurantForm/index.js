@@ -44,6 +44,7 @@ export default function RestaurantForm({ formType }) {
   };
 
   useEffect(() => {
+   
     const fetchData = async () => {
       try {
         if (formType === "Edit" && restaurantId) {
