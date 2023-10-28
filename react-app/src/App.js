@@ -56,11 +56,11 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route exact path="/restaurants/new">
+            <CreateRestaurantForm formTye="Create" previewImgUrl={previewImgUrl} />
+          </Route>
           <Route path="/restaurants/edit/:restaurantId">
             <RestaurantForm formType="Edit" />
-          </Route>
-          <Route path="/restaurants/new">
-            <RestaurantForm previewImgUrl={previewImgUrl} />
           </Route>
           <Route exact path="/restaurants/:id">
             <RestaurantDetail menuItemData={menuItemData} />
