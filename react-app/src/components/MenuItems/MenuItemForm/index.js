@@ -94,7 +94,8 @@ export default function MenuItemForm({ formType }) {
           console.log('menu item data', menuItemData)
 
         if (res.ok) {
-          history.push(`restaurants/${id}`);
+       
+          history.push(`/restaurants/${id}`);
         } else {
           console.error("Failed to update menu item.");
         }
@@ -117,6 +118,8 @@ export default function MenuItemForm({ formType }) {
     };
     try {
       fetchHandleItem(menuItemData);
+      history.push(`restaurants/${id}`)
+
     } catch (error) {
       console.error("Error processing menu item:", error.message);
     }
