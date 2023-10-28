@@ -10,6 +10,7 @@ export default function GetRestaurants({ ownerMode = false }) {
   const [allRestaurants, setAllRestaurants] = useState();
   const [currentUser, setCurrentUser] = useState(null);
   const [filteredRestaurants, setFilteredRestaurants] = useState(null);
+  
   const fetchCurrentUser = async () => {
     try {
       const res = await fetch("/api/auth/current_user");

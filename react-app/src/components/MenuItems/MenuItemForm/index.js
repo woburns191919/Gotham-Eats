@@ -32,9 +32,11 @@ export default function MenuItemForm({ formType }) {
   };
 
   useEffect(() => {
+
+    console.log(id, menuItemId)
     const fetchData = async () => {
       try {
-        if (formType === "Edit" && menuItemId) {
+        if (formType !== "Create") {
           const res = await fetchMenuItem();
           console.log('res from useEffect', res)
           if (res) {
@@ -77,7 +79,7 @@ export default function MenuItemForm({ formType }) {
       } catch (error) {
         console.error("Error processing restaurant:", error.message);
       }
-    } else if (formType === "Edit") {
+    } else  {
       try {
         const res = await fetch(
           `/api/restaurants/${id}/menu_items/${menuItemId}/edit`,
@@ -88,10 +90,12 @@ export default function MenuItemForm({ formType }) {
             },
             body: JSON.stringify(menuItemData),
           }
-        );
+          );
+          console.log('menu item data', menuItemData)
 
         if (res.ok) {
-          history.push(`restaurants/${id}/menu_items/${menuItemId}`);
+       
+          history.push(`/restaurants/${id}`);
         } else {
           console.error("Failed to update menu item.");
         }
@@ -103,6 +107,7 @@ export default function MenuItemForm({ formType }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('submit button clicked')
     const menuItemData = {
       restaurantId: restId,
       name,
@@ -113,6 +118,8 @@ export default function MenuItemForm({ formType }) {
     };
     try {
       fetchHandleItem(menuItemData);
+      history.push(`restaurants/${id}`)
+
     } catch (error) {
       console.error("Error processing menu item:", error.message);
     }
@@ -172,17 +179,18 @@ export default function MenuItemForm({ formType }) {
           <option value="side">Side</option>
         </select>
       </label>
-      <label>
+      {/* <label>
         Image URL:
         <input
           type="text"
           value={imageUrl}
           onChange={handleInputChange(setImageUrl, "imageUrl")}
         />
-      </label>
+      </label> */}
 
       <button
       type="submit"
+      className="bttn-submit"
       >
         {formType === "Create" ? "Create Menu Item" : "Update Menu Item"}
       </button>
