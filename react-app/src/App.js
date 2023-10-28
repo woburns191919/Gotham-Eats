@@ -11,6 +11,7 @@ import MenuItemForm from './components/MenuItems/MenuItemForm';
 import Home from "./components/Home";
 import CreateRestaurantForm from "./components/Restaurant/RestaurantForm/CreateRestaurantForm";
 import EditRestaurantForm from "./components/Restaurant/RestaurantForm/EditRestaurantForm";
+import RestaurantForm from "./components/Restaurant/RestaurantForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,11 +56,11 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/restaurants/new">
-            <CreateRestaurantForm previewImgUrl={previewImgUrl} />
+          <Route exact path="/restaurants/new">
+            <CreateRestaurantForm formTye="Create" previewImgUrl={previewImgUrl} />
           </Route>
           <Route path="/restaurants/edit/:restaurantId">
-            <EditRestaurantForm formType="Edit" />
+            <RestaurantForm formType="Edit" />
           </Route>
           <Route exact path="/restaurants/:id">
             <RestaurantDetail menuItemData={menuItemData} />
