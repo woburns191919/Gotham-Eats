@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import "./RestaurantForm.css";
 
 export default function RestaurantForm({ formType }) {
+
   const history = useHistory();
   const { restaurantId } = useParams();
   const [restaurant, setRestaurant] = useState();
@@ -44,7 +45,7 @@ export default function RestaurantForm({ formType }) {
   };
 
   useEffect(() => {
-  
+
     const fetchData = async () => {
       try {
         if (formType === "Edit" && restaurantId) {
@@ -75,6 +76,7 @@ export default function RestaurantForm({ formType }) {
 
 
   const fetchHandleRestaurant = async (restaurantId, restaurantData) => {
+    // console.log('current user', sessionUser)
 
     if (formType === "Edit") {
       try {
@@ -87,7 +89,7 @@ export default function RestaurantForm({ formType }) {
         });
 
         if (res.ok) {
-          history.push(`/restaurants/edit/${restaurantId}`);
+          history.push(`/owner/restaurants/${sessionUser.id}`);
         } else {
           console.error("Failed to update restaurant.");
         }
@@ -116,8 +118,9 @@ export default function RestaurantForm({ formType }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const restaurantData = {
-      owner_id: sessionUser.id,
+      owner_id: sessionUser?.id,
       name,
       street_address: streetAddress,
       city,
